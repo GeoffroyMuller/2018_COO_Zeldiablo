@@ -1,0 +1,100 @@
+Zeldiablo - Projet COO
+
+
+3. Analyse
+	
+
+	Liste des classes :
+Aventurier
+Labyrinthe
+Case
+Jeu
+
+
+*Fonctionnalités V1.0
+Initialisation du personnage
+Déplacer le joueur
+Gestion de la vie
+Génération du Labyrinthe
+
+Autres :
+gestion des dégâts
+Type de personnage(magicien , type de perso …)
+gestion de l’inventaire
+Gestion des trésors
+sauvegarde partie
+gestion des scores
+procédure aléatoire des niveaux
+BOSS
+Attribut pour personnage (force,intelligence etc..) + gestion de l'expérience et des level
+level up  des monstre avec le joueur
+different environnement (esthétique et possiblement buff/debuff)
+Gestion des combats
+potions
+gestion bomb
+Gestion des ennemis
+Gestion du butin
+Ajout d’équipement : armes etc…
+Gestions de salle (Parfois verrouillée , nécessite une clé), salle safe
+Magasin
+Boost pour aventurier (Vitesse, force etc…)
+Labyrinthe avec étages
+Fin du jeu
+
+
+
+
+
+Fonctionnalité V1 critères de validation 
+	
+Initialisation du personnage
+Déplacer le joueur 
+Gestion de la vie
+Génération du Labyrinthe
+
+
+
+Description des fonctionnalité V1.0 :
+	Initialisation du personnage :
+
+Description :
+Initialisation de sa vie,de sa position(attribut case,assignation à l’entré du labyrinthe)
+	1)vie 
+	2)initialisation sur une case du labyrinthe
+
+Critère de validation :
+	1)initialisation de la vie a 100 
+	2)initialisation sur une case entrée
+	
+
+
+Déplacer le joueur :
+
+Description : 
+Déplacement du joueur dans le labyrinthe (Nord, Sud, Est, Ouest)
+
+Critères de validation:
+Ne pas rentrer dans les murs
+Pas de diagonales
+ Ne pas entrer en collision avec des monstres
+Ne pas allez sur des cases non autorisée		
+
+
+	Gestion de la vie :
+Description :
+Diminution du nombre de point de vie lorsqu’un dégât est reçu et augmentation de la vie lorsqu’il y a lieu
+
+Critère de validation :
+-Si les points de vie sont nul ou négatif alors l’aventurier est mort
+-Les points de vie ne peuvent dépasser 100
+
+
+
+	
+	Génération du Labyrinthe:
+Description :
+Création et placement static des case sur le labyrinthe(pour l'instant seulement case vide et murs)
+Critère de validation : 
+	Labyrinthe une à une entré et une sortie (le reste sont des murs ou case vide)
+	Il existe un chemin entre l’entrée et la sortie 
+
