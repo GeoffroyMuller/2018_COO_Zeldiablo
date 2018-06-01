@@ -20,7 +20,7 @@ public class TestAventurier {
 	}
 	
 	@Test
-	public void testConstructeur_2() { 
+	public void testConstructeur_2() {
 		Aventurier a = new Aventurier(new Coordonnee(10,100), new Labyrinthe());
 		assertEquals("La vie devrait etre egale a 100", 100,a.getVie());
 		assertEquals("L'aventurier devrait etre en vie", false,a.isMort());
