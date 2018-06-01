@@ -72,4 +72,13 @@ public class Aventurier {
 	public void setMort(boolean mort) {
 		this.mort = mort;
 	}
+	
+	public Case getPos() {
+		return pos;
+	}
+	
+	public void setPos(Case pos) {
+		this.pos = pos;
+	}
+	
 }
