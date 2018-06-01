@@ -4,9 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import zeldiablo.Aventurier;
-import zeldiablo.Coordonnee;
-import zeldiablo.Labyrinthe;
+import zeldiablo.*;
 import zeldiablo.Mur;
 
 public class TestAventurier {
