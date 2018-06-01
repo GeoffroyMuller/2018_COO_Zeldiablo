@@ -47,8 +47,14 @@ Critère de validation :
 
 Responsable : guezenne3u
 
+	Gestion des Coordonnee :
+Description :
+Chaque entitée possede des coordonnee.Cela permet de connaitre la position de celle-ci
+Critère de validation :
+-coordonnee en x
+-coordonnee en y
 
-
+Responsable : muller624u
 	
 	Génération du Labyrinthe:
 Description :
