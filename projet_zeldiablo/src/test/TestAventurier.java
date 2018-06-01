@@ -19,6 +19,7 @@ public class TestAventurier {
 	
 	@Test
 	public void testConstructeur_2() {
+		//Donnees
 		Aventurier a = new Aventurier(new Mur());
 		assertEquals("La vie devrait etre egale a 100", 100,a.getVie());
 		assertEquals("L'aventurier devrait etre en vie", false,a.isMort());

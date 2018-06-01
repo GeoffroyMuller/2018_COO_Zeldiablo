@@ -50,8 +50,8 @@ public class Aventurier {
 	
 	public boolean deplacerAventurier(Coordonnee c) {
 		boolean res = true;
-		if (c.getX() < l.getGrille().length && c.getY() < l.getGrille()[0].length) {
-			if(l.getGrille()[c.getX()][c.getY()].estTraversable()) {
+		if (c.getX() < lab.getGrille().length && c.getY() < lab.getGrille()[0].length) {
+			if(lab.getGrille()[c.getX()][c.getY()].estTraversable()) {
 				this.changerCoord(c);
 			}
 			else {
@@ -66,7 +66,7 @@ public class Aventurier {
 	}
 	
 	public void changerCoord(Coordonnee c) {
-		this.pos = c;
+		this.coor = c;
 	}
 	
 	public boolean enVie() {
@@ -101,6 +101,9 @@ public class Aventurier {
 		this.coor = coor;
 	}
 	
+	public Case getCase() {
+		return (this.lab.getGrille()[this.coor.getX()][this.coor.getY()]);
+	}
 
 	
 }
