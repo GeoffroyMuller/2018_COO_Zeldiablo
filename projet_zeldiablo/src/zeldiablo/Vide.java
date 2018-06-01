@@ -1,9 +1,7 @@
+package zeldiablo;
 
-public class Entree extends Case{
-	
-	public Entree(){
-		super();
-	}
+public class Vide extends Case{
+
 	@Override
 	public boolean estTraversable() {
 		return true;
@@ -11,7 +9,7 @@ public class Entree extends Case{
 
 	@Override
 	public String getType() {
-		return "entree";
+		return "vide";
 	}
-
+	
 }

@@ -1,3 +1,4 @@
+package zeldiablo;
 
 public class Aventurier {
 	private int vie;

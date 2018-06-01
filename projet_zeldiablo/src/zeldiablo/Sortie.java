@@ -1,5 +1,6 @@
+package zeldiablo;
 
-public class Vide extends Case{
+public class Sortie extends Case{
 
 	@Override
 	public boolean estTraversable() {
@@ -8,7 +9,7 @@ public class Vide extends Case{
 
 	@Override
 	public String getType() {
-		return "vide";
+		return "sortie";
 	}
-	
+
 }

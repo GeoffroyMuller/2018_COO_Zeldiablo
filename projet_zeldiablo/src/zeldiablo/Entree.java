@@ -1,6 +1,10 @@
+package zeldiablo;
 
-public class Sortie extends Case{
-
+public class Entree extends Case{
+	
+	public Entree(){
+		super();
+	}
 	@Override
 	public boolean estTraversable() {
 		return true;
@@ -8,7 +12,7 @@ public class Sortie extends Case{
 
 	@Override
 	public String getType() {
-		return "sortie";
+		return "entree";
 	}
 
 }

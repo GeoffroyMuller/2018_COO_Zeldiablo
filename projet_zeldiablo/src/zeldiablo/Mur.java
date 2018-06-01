@@ -1,3 +1,4 @@
+package zeldiablo;
 
 public class Mur extends Case{
 

@@ -1,0 +1,11 @@
+@startuml
+participant "aventurier : Aventurier" as aven
+->aven : etreMort()
+activate aven
+alt pointDeVie < 0
+<-- aven : true
+else pointDeVie >0
+<-- aven : false
+deactivate aven
+end
+@enduml

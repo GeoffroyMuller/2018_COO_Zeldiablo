@@ -1,3 +1,4 @@
+package zeldiablo;
 
 public abstract class Case {
 	public Case(){
