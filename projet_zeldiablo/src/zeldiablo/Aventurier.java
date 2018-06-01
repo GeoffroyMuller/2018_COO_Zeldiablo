@@ -6,7 +6,7 @@ public class Aventurier {
 	private Case pos; // case sur laquelle se trouve l'aventurier
 	private Coordonnee coor; //coordonnee de l'aventurier
 	private Labyrinthe lab;
-	
+
 	public Aventurier(){
 		vie = 100;
 		mort = false;
@@ -31,11 +31,11 @@ public class Aventurier {
 			}
 		}
 	}
-	
+
 	public void modifierVie(int pv) {
 		this.vie+=pv;
 	}
-	
+
 	public void subirDegats(int pv) {
 		if(pv > 0) {
 			if(this.vie-pv < 0) {
@@ -47,10 +47,11 @@ public class Aventurier {
 			}
 		}
 	}
-	
+
 	public boolean deplacerAventurier(Coordonnee c) {
 		boolean res = true;
-		if (c.getX() < lab.getGrille().length && c.getY() < lab.getGrille()[0].length) {
+		if ((c.getX() < lab.getGrille().length && c.getX() > 0) &&
+				(c.getY() < lab.getGrille()[0].length && c.getY() > 0)) {
 			if(lab.getGrille()[c.getX()][c.getY()].estTraversable()) {
 				this.changerCoord(c);
 			}
@@ -64,11 +65,11 @@ public class Aventurier {
 
 		return res;
 	}
-	
+
 	public void changerCoord(Coordonnee c) {
 		this.coor = c;
 	}
-	
+
 	public boolean enVie() {
 		return isMort();
 	}
@@ -100,10 +101,10 @@ public class Aventurier {
 	public void setCoor(Coordonnee coor) {
 		this.coor = coor;
 	}
-	
+
 	public Case getCase() {
 		return (this.lab.getGrille()[this.coor.getX()][this.coor.getY()]);
 	}
 
-	
+
 }
