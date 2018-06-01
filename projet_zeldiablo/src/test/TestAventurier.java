@@ -10,7 +10,7 @@ import zeldiablo.Labyrinthe;
 import zeldiablo.Mur;
 
 public class TestAventurier {
-	
+
 	@Test
 	public void testConstructeur_1() {
 		Aventurier a = new Aventurier();
@@ -18,7 +18,7 @@ public class TestAventurier {
 		assertEquals("L'aventurier devrait etre en vie", false,a.isMort());
 		assertEquals("La position devrait etre null", null,a.getPos());
 	}
-	
+
 	@Test
 	public void testConstructeur_2() {
 		Aventurier a = new Aventurier(new Coordonnee(10,100), new Labyrinthe());
@@ -27,7 +27,7 @@ public class TestAventurier {
 		assertEquals("La coordonnee en x devrait etre egale a 10", 10,a.getCoor().getX());
 		assertEquals("La coordonnee en y devrait etre egale a 100", 100,a.getCoor().getY());
 	}
-	
+
 	@Test
 	public void testConstructeur_3() {
 		Aventurier a = new Aventurier(new Mur(), new Labyrinthe());
@@ -36,7 +36,7 @@ public class TestAventurier {
 		assertEquals("La position devrait etre un mur", "mur",a.getPos().getType());
 		assertEquals("La position ne devrait pas etre traversable", false,a.getPos().estTraversable());
 	}
-	
+
 	@Test
 	public void testModifierVieNegatif() {
 		//Donnees
@@ -46,7 +46,7 @@ public class TestAventurier {
 		//Test
 		assertEquals("La vie devrait avoir diminue", 80,a.getVie());
 	}
-	
+
 	@Test
 	public void testModifierViePositif() {
 		//Donnees
@@ -56,7 +56,7 @@ public class TestAventurier {
 		//Test
 		assertEquals("La vie devrait avoir augmente", 110,a.getVie());
 	}
-	
+
 	@Test
 	public void testSubirDegatPositifToujoursEnVie() {
 		//Donnees
@@ -67,7 +67,7 @@ public class TestAventurier {
 		assertEquals("La vie devrait avoir diminue", 80,a.getVie());
 		assertFalse("L'aventurier devrait etre en vie",a.isMort());
 	}
-	
+
 	@Test
 	public void testSubirDegatPositifMort() {
 		//Donnees
@@ -77,7 +77,7 @@ public class TestAventurier {
 		//Test
 		assertTrue("L'aventurier devrait etre mort",a.isMort());
 	}
-	
+
 	@Test
 	public void testSubirDegatNegatif() {
 		//Donnees
@@ -87,7 +87,7 @@ public class TestAventurier {
 		//Test
 		assertEquals("La vie devrait ne pas avoir diminue",100, a.getVie());
 	}
-	
+
 	@Test
 	public void testSoignerNegatif() {
 		//Donnees
@@ -97,7 +97,7 @@ public class TestAventurier {
 		//Test
 		assertEquals("La vie devrait ne pas avoir diminue",100, a.getVie());
 	}
-	
+
 	@Test
 	public void testSoignerPositif() {
 		//Donnees
@@ -108,7 +108,7 @@ public class TestAventurier {
 		//Test
 		assertEquals("La vie devrait ne pas avoir diminue",100, a.getVie());
 	}
-	
+
 	@Test
 	public void testSoignerSup100() {
 		//Donnees
