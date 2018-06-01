@@ -87,5 +87,36 @@ public class TestAventurier {
 		//Test
 		assertEquals("La vie devrait ne pas avoir diminue",100, a.getVie());
 	}
+	
+	@Test
+	public void testSoignerNegatif() {
+		//Donnees
+		Aventurier a = new Aventurier();
+		//Methode testée
+		a.soigner(-20);
+		//Test
+		assertEquals("La vie devrait ne pas avoir diminue",100, a.getVie());
+	}
+	
+	@Test
+	public void testSoignerPositif() {
+		//Donnees
+		Aventurier a = new Aventurier();
+		a.subirDegats(20);
+		//Methode testée
+		a.soigner(20);
+		//Test
+		assertEquals("La vie devrait ne pas avoir diminue",100, a.getVie());
+	}
+	
+	@Test
+	public void testSoignerSup100() {
+		//Donnees
+		Aventurier a = new Aventurier();
+		//Methode testée
+		a.soigner(20);
+		//Test
+		assertEquals("La vie devrait ne pas avoir diminue",100, a.getVie());
+	}
 
 }

@@ -38,12 +38,12 @@ public class Aventurier {
 	
 	public void subirDegats(int pv) {
 		if(pv > 0) {
-			if(this.vie+pv < 0) {
+			if(this.vie-pv < 0) {
 				this.vie = 0;
 				setMort(true);
 			}
 			else {
-				modifierVie(pv);
+				modifierVie(-pv);
 			}
 		}
 	}
