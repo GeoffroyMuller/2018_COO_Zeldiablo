@@ -35,6 +35,12 @@ public class Labyrinthe {
 		}
 		return res;
 	}
+
+	public Case[][] getGrille() {
+		return grille;
+	}
 	
 
 }
+
+
