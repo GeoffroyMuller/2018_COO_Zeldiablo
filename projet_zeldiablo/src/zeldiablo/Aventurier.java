@@ -3,13 +3,14 @@ package zeldiablo;
 public class Aventurier {
 	private int vie;
 	private boolean mort;
-	private Case pos; // case sur laquelle se trouve l'aventurier
+	private Coordonnee pos; // case sur laquelle se trouve l'aventurier
+	private Labyrinthe l;
 	
 	public Aventurier(){
 		vie = 100;
 		mort = false;
 	}
-	public Aventurier(Case c){
+	public Aventurier(Coordonnee c){
 		vie = 100;
 		mort = false;
 		pos = c;
@@ -40,17 +41,25 @@ public class Aventurier {
 		}
 	}
 	
-	public boolean deplacerAventurier(Aventurier a, Case c) {
-		boolean res = false;
-		c.estTraversable();
-		c.getType();
-		if (c.estTraversable() == true && c.getType() == "vide") {
-			res = true;
+	public boolean deplacerAventurier(Coordonnee c) {
+		boolean res = true;
+		if (c.getX() < l.getGrille().length && c.getY() < l.getGrille()[0].length) {
+			if(l.getGrille()[c.getX()][c.getY()].estTraversable()) {
+				this.changerCoord(c);
+			}
+			else {
+				res = false;
+			}
 		}
 		else {
 			res = false;
 		}
+
 		return res;
+	}
+	
+	public void changerCoord(Coordonnee c) {
+		this.pos = c;
 	}
 	
 	public boolean enVie() {
@@ -73,11 +82,11 @@ public class Aventurier {
 		this.mort = mort;
 	}
 	
-	public Case getPos() {
+	public Coordonnee getPos() {
 		return pos;
 	}
 	
-	public void setPos(Case pos) {
+	public void setPos(Coordonnee pos) {
 		this.pos = pos;
 	}
 	
