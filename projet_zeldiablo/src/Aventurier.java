@@ -2,8 +2,17 @@
 public class Aventurier {
 	private int vie;
 	private boolean mort;
+	private Case pos; // case sur laquelle se trouve l'aventurier
 	
-	
+	public Aventurier(){
+		vie = 100;
+		mort = false;
+	}
+	public Aventurier(Case c){
+		vie = 100;
+		mort = false;
+		pos = c;
+	}
 	public void soigner(int pv) {
 		if(pv > 0) {
 			if(this.vie + pv > 100) {
