@@ -12,7 +12,7 @@ public class Labyrinthe {
 		
 		for (int i = 0; i < grille.length; i++) {
 			for (int j = 0; j < grille.length; j++) {
-				if(grille[i][j]!=null){
+				if(grille[i][j]==null){
 					if((i==0 || i==49) && (j==0 || j==49)){
 						grille[i][j]=new Mur();
 					}
