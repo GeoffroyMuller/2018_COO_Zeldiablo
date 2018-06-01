@@ -30,6 +30,19 @@ public class Aventurier {
 		}
 	}
 	
+	public boolean deplacerAventurier(Aventurier a, Case c) {
+		boolean res = false;
+		c.estTraversable();
+		c.getType();
+		if (c.estTraversable() == true && c.getType() == "vide") {
+			res = true;
+		}
+		else {
+			res = false;
+		}
+		return res;
+	}
+	
 	public boolean enVie() {
 		return isMort();
 	}
