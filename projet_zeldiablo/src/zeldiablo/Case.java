@@ -9,5 +9,8 @@ public abstract class Case {
 	
 	public abstract String getType();
 	
-	
+	public String toString() {
+		String s = this.getType();
+		return s;
+	}
 }

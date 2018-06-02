@@ -97,6 +97,8 @@ public class TestDeplacement {
 		//Methode testee
 		l.getGrille()[c1.getX()][c1.getY()].estTraversable();
 		//assertion
+		System.out.println(l);
 		assertFalse("Le joueur ne devrait pas pouvoir se deplacer sur la case", l.getGrille()[c1.getX()][c1.getY()].estTraversable());
+		
 	}
 }

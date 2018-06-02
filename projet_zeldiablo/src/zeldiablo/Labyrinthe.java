@@ -13,7 +13,7 @@ public class Labyrinthe {
 		for (int i = 0; i < grille.length; i++) {
 			for (int j = 0; j < grille.length; j++) {
 				if(grille[i][j]==null){
-					if((i==0 || i==49) && (j==0 || j==49)){
+					if(i==0 || i==49 || j==0 || j==49){
 						grille[i][j]=new Mur();
 					}
 					else {
@@ -28,9 +28,9 @@ public class Labyrinthe {
 	public String toString(){
 		String res="";
 		for (int i = 0; i < grille.length; i++) {
-			res="\n";
+			res+="\n";
 			for (int j = 0; j < grille.length; j++) {
-				res += " | "+grille[i][j]+" | ";
+				res += " | "+i+":"+j+" "+grille[i][j]+" | ";
 			}
 		}
 		return res;

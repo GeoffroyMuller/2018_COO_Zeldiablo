@@ -28,7 +28,7 @@ public class TestLabyrinthe {
 		for (int i = 0; i < grille.length; i++) {
 			for (int j = 0; j < grille.length; j++) {
 				if((i!=0 && j!=24)||(i!=49 && j!=24)){
-					if((i==0 || i==49) && (j==0 || j==49)){
+					if(i==0 || i==49 || j==0 || j==49){
 						assertEquals("entree devrais etre mur","mur", grille[i][j].getType());
 					}
 					else {
