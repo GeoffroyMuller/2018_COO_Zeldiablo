@@ -13,7 +13,7 @@ public class ZeldiabloJeu implements Jeu {
 	public ZeldiabloJeu() {
 		dj= new Donjon("ElTesto");
 
-		this.av = new Aventurier(new Coordonnee(3,1),this.dj.getEtages().get(0).getSalles().get(0), this.dj.getEtages().get(0));
+		this.av = new Aventurier(new Coordonnee(12,12),this.dj.getEtages().get(0).getSalles().get(0), this.dj.getEtages().get(0));
 	}
 	@Override
 	public void evoluer(Commande commandeUser) {
