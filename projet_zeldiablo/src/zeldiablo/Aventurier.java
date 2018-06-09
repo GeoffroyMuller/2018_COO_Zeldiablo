@@ -3,7 +3,6 @@ package zeldiablo;
 public class Aventurier {
 	private int vie;
 	private boolean mort;
-	private Case pos; // case sur laquelle se trouve l'aventurier
 	private Coordonnee coor; //coordonnee de l'aventurier
 	private Labyrinthe lab;
 
@@ -11,11 +10,7 @@ public class Aventurier {
 		vie = 100;
 		mort = false;
 	}
-	public Aventurier(Case c, Labyrinthe l){
-		vie = 100;
-		mort = false;
-		pos = c;
-	}
+
 	public Aventurier(Coordonnee c, Labyrinthe l){
 		vie = 100;
 		mort = false;
@@ -88,12 +83,6 @@ public class Aventurier {
 
 	public void setMort(boolean mort) {
 		this.mort = mort;
-	}
-	public Case getPos() {
-		return pos;
-	}
-	public void setPos(Case pos) {
-		this.pos = pos;
 	}
 	public Coordonnee getCoor() {
 		return coor;

@@ -1,57 +1,26 @@
 @startuml
-
-
-interface DessinJeu{
-	+dessiner(BufferedImage):void
-	}
-	
-interface Jeu{
-	+evoluer(Commande):void
-	+etreFini():boolean
-	}
-
-class ZeldiabloJeu [[java:zeldiablo.Jeu]] {
+class Jeu [[java:zeldiablo.Jeu]] {
 	-ArrayList<Labyrinthe> listLab
-	+ZeldiabloJeu()
-	+evoluer(Commande):void
-	+etreFini():boolean
+	+Jeu()
 }
-
-class ZeldiabloDessin{
-	+ZeldiabloDessin(ZeldiabloJeu)
-	+dessiner(BufferedImage):void
-}
-
-ZeldiabloDessin --> "1" ZeldiabloJeu : jeu
-DessinJeu <|.. ZeldiabloDessin
-Jeu <|.. ZeldiabloJeu
-
 class Aventurier [[java:zeldiablo.Aventurier]] {
 }
-
-ZeldiabloJeu --> "1" Aventurier : av
-
+Jeu --> "1" Aventurier : av
 class Entree [[java:zeldiablo.Entree]] {
 	+Entree()
 	+boolean estTraversable()
 	+String getType()
 }
-
 class Case [[java:zeldiablo.Case]] {
 }
-
 Case <|-- Entree
-
 class Vide [[java:zeldiablo.Vide]] {
 	+boolean estTraversable()
 	+String getType()
 }
-
 class Case [[java:zeldiablo.Case]] {
 }
-
 Case <|-- Vide
-
 class Aventurier [[java:zeldiablo.Aventurier]] {
 	-int vie
 	-boolean mort
@@ -71,38 +40,25 @@ class Aventurier [[java:zeldiablo.Aventurier]] {
 	+void setCoor(Coordonnee coor)
 	+Case getCase()
 }
-
-class Case [[java:zeldiablo.Case]] {
-}
-
-
 class Coordonnee [[java:zeldiablo.Coordonnee]] {
 }
-
 Aventurier --> "1" Coordonnee : coor
-
 class Labyrinthe [[java:zeldiablo.Labyrinthe]] {
 }
-
 Aventurier --> "1" Labyrinthe : lab
-
 class Sortie [[java:zeldiablo.Sortie]] {
 	+boolean estTraversable()
 	+String getType()
 }
-
 class Case [[java:zeldiablo.Case]] {
 }
-
 Case <|-- Sortie
-
 abstract class Case [[java:zeldiablo.Case]] {
 	+Case()
 	+{abstract}boolean estTraversable()
 	+{abstract}String getType()
 	+String toString()
 }
-
 class Coordonnee [[java:zeldiablo.Coordonnee]] {
 	-int x
 	-int y
@@ -112,19 +68,18 @@ class Coordonnee [[java:zeldiablo.Coordonnee]] {
 	+int getY()
 	+void setY(int y)
 }
-
 class Mur [[java:zeldiablo.Mur]] {
 	+boolean estTraversable()
 	+String getType()
 }
-
 class Case [[java:zeldiablo.Case]] {
 }
-
 Case <|-- Mur
-
-
+class PrincipaleTest [[java:zeldiablo.PrincipaleTest]] {
+	+{static}void main(String[] args)
+}
 class Labyrinthe [[java:zeldiablo.Labyrinthe]] {
+	-Case[][] grille
 	+Labyrinthe()
 	+String toString()
 	+Case[][] getGrille()
