@@ -68,6 +68,19 @@ public class Aventurier {
 				(c.getY() < salle.getGrille()[0].length && c.getY() >= 0)) {
 			if(salle.getGrille()[c.getX()][c.getY()].estTraversable()) {
 				this.changerCoord(c);
+				if(salle.getGrille()[coor.getX()][coor.getY()]==salle.getEntree()) {
+					this.salle=salle.getEntree().getSallePrecedente();
+					changementSalle(this.salle,salle.getSortie());
+					System.out.println("entree");
+				}
+				else {
+					if(salle.getGrille()[coor.getX()][coor.getY()]==salle.getSortie()) {
+						this.salle=salle.getSortie().getSalleSuivante();
+						changementSalle(this.salle, salle.getEntree());
+						System.out.println("sortie");
+					}
+				}
+
 			}
 			else {
 				res = false;
@@ -113,6 +126,61 @@ public class Aventurier {
 	public Case getCase() {
 		return (this.salle.getGrille()[this.coor.getX()][this.coor.getY()]);
 	}
+
+	public void changementSalle(Salle s, Case c) {
+		Case [][] grille = s.getGrille();
+		int x=12,y=12;
+
+		for (int i = 0; i < salle.TAILLE_SALLES; i++) {
+			for (int j = 0; j < salle.TAILLE_SALLES; j++) {
+				if(grille[i][j]==c) {
+					x=i;
+					y=j;
+				}
+			}
+		}
+		System.out.println("changement salle");
+		Coordonnee co = new Coordonnee(x, y);
+		System.out.println("x : "+x+" y : "+y);
+		co.decrementerX();
+		System.out.println(co);
+		if(deplacerAventurier(co)) {
+			System.out.println("1");
+
+		}
+		else {
+			co.incrementerY();
+			co.incrementerX();
+			System.out.println(co);
+			if(deplacerAventurier(co)) {
+				System.out.println("2");
+			}
+			else {
+				co.decrementerY();
+				co.incrementerX();
+				System.out.println(co);
+				if(deplacerAventurier(co)) {
+					System.out.println("3");
+				}
+				else {
+					co.decrementerX();
+					co.decrementerY();
+					System.out.println(co);
+					if(deplacerAventurier(co)) {
+						System.out.println("4");
+					}
+					else {
+						System.out.println("erreur de deplacement");
+					}
+					
+
+				}
+			}
+		}
+
+	}
+
+
 
 
 }
