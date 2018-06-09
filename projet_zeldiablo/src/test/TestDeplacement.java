@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import zeldiablo.Aventurier;
 import zeldiablo.Coordonnee;
+import zeldiablo.Etage;
 import zeldiablo.Salle;
 
 public class TestDeplacement {
@@ -15,7 +16,7 @@ public class TestDeplacement {
 		Salle l = new Salle();
 		Coordonnee c = new Coordonnee(1,1);
 		Coordonnee c1 = new Coordonnee(0,1);
-		Aventurier a = new Aventurier(c,l); 
+		Aventurier a = new Aventurier(c,l, new Etage(0)); 
 		//Methode testee
 		a.deplacerAventurier(c1);
 		//assertion 
@@ -28,7 +29,7 @@ public class TestDeplacement {
 		Salle l = new Salle();
 		Coordonnee c = new Coordonnee(1,1);
 		Coordonnee c1 = new Coordonnee(1,0);
-		Aventurier a = new Aventurier(c,l);
+		Aventurier a = new Aventurier(c,l, new Etage(0));
 		//Methode testee
 		a.deplacerAventurier(c1);
 		//assertion
@@ -42,7 +43,7 @@ public class TestDeplacement {
 		int y = l.getGrille().length;
 		Coordonnee c = new Coordonnee(1,49);
 		Coordonnee c1 = new Coordonnee(1,y);
-		Aventurier a = new Aventurier(c,l);
+		Aventurier a = new Aventurier(c,l, new Etage(0));
 		//Methode testee
 		a.deplacerAventurier(c1); 
 		//assertion
@@ -56,7 +57,7 @@ public class TestDeplacement {
 		int y = l.getGrille().length;
 		Coordonnee c = new Coordonnee(49,1);
 		Coordonnee c1 = new Coordonnee(y,1);
-		Aventurier a = new Aventurier(c,l);
+		Aventurier a = new Aventurier(c,l, new Etage(0));
 		//Methode testee
 		a.deplacerAventurier(c1); 
 		//assertion
@@ -69,7 +70,7 @@ public class TestDeplacement {
 		Salle l = new Salle();
 		Coordonnee c = new Coordonnee(1,1);
 		Coordonnee c1 = new Coordonnee(1,2);
-		Aventurier a = new Aventurier(c,l);
+		Aventurier a = new Aventurier(c,l, new Etage(0));
 		//Methode testee
 		a.deplacerAventurier(c1);
 		//assertion
@@ -80,8 +81,8 @@ public class TestDeplacement {
 	public void testDeplacerCaseTraversable() {
 		//initialisation des donnees
 		Salle l = new Salle();
-		Coordonnee c = new Coordonnee(1,48);
-		Coordonnee c1 = new Coordonnee(1,47);
+		Coordonnee c = new Coordonnee(1,12);
+		Coordonnee c1 = new Coordonnee(1,15);
 		//Methode testee
 		l.getGrille()[c1.getX()][c1.getY()].estTraversable();
 		//assertion
@@ -97,7 +98,6 @@ public class TestDeplacement {
 		//Methode testee
 		l.getGrille()[c1.getX()][c1.getY()].estTraversable();
 		//assertion
-		System.out.println(l);
 		assertFalse("Le joueur ne devrait pas pouvoir se deplacer sur la case", l.getGrille()[c1.getX()][c1.getY()].estTraversable());
 		
 	}
