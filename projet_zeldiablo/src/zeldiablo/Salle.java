@@ -5,7 +5,25 @@ import java.io.Serializable;
 public class Salle implements Serializable{
 	
 	public static final int TAILLE_SALLES=25;
+	private Entree entree;
+	private Sortie Sortie;
 	
+	public Entree getEntree() {
+		return entree;
+	}
+
+	public void setEntree(Entree entree) {
+		this.entree = entree;
+	}
+
+	public Sortie getSortie() {
+		return Sortie;
+	}
+
+	public void setSortie(Sortie sortie) {
+		Sortie = sortie;
+	}
+
 	private Case[][] grille;
 	
 	public Salle(){
