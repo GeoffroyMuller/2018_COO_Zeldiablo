@@ -23,14 +23,13 @@ public class ZeldiabloDessin implements DessinJeu {
 	@Override
 	public void dessiner(BufferedImage image) {
 		Graphics2D g = (Graphics2D) image.getGraphics();
-		//g.drawImage(im, this.jeu.getAv().getCoor().getX()*TAILLE, this.jeu.getAv().getCoor().getY()*TAILLE,TAILLE,TAILLE,null);
 		Salle salle = this.jeu.getAv().getSalle();
 		g.setColor(Color.BLACK);
 		for(int i = 0; i<salle.TAILLE_SALLES;i++) {
 			for(int j = 0; j<salle.TAILLE_SALLES;j++) {
 					g.drawImage(salle.getGrille()[i][j].getTexture(), i*TAILLE, j*TAILLE,null);
 				}
-		}
+			}
 		g.drawImage(this.jeu.getAv().getTexture(), this.jeu.getAv().getCoor().getX()*TAILLE, this.jeu.getAv().getCoor().getY()*TAILLE,TAILLE,TAILLE,null);
 		g.dispose();
 

@@ -10,10 +10,13 @@ import java.util.Observable;
 public class Niveau extends Observable{
 	private Salle salle;
 	private Zone zone;
+	
 	private Case[][] tab_case;
 	private int taille;
+	
 	private boolean estsalle,estzone;
 
+	
 	public Niveau() {
 		// TODO Auto-generated constructor stub
 		salle = null;
@@ -32,7 +35,7 @@ public class Niveau extends Observable{
 		taille = Salle.TAILLE_SALLES;
 		System.out.println("creation salle");
 		setChanged();
-		notifyObservers();
+		notifyObservers(VueNiveau.ADD_ML);
 	}
 	
 	public void creationZone(String nom) {
@@ -42,7 +45,7 @@ public class Niveau extends Observable{
 		taille = Zone.TAILLE_ZONE;
 		System.out.println("creation zone :"+nom);
 		setChanged();
-		notifyObservers();
+		notifyObservers(VueNiveau.ADD_ML);
 	}
 
 	public boolean isEstsalle() {
