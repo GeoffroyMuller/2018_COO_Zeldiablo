@@ -13,16 +13,17 @@ import moteur.DessinJeu;
 
 public class ZeldiabloDessin implements DessinJeu {
 	private ZeldiabloJeu jeu;
+
 	public static int TAILLE = 30;
-	
+
 	public ZeldiabloDessin(ZeldiabloJeu j) {
 		this.jeu = j;
 	}
-	
+
 	@Override
 	public void dessiner(BufferedImage image) {
 		Graphics2D g = (Graphics2D) image.getGraphics();
-		
+
 		File aventurier = new File("..\\texture\\Aventurier_Final.png");
 		Image im=null;
 		try {
@@ -31,7 +32,7 @@ public class ZeldiabloDessin implements DessinJeu {
 			e.printStackTrace();
 		}
 		g.drawImage(im, this.jeu.getAv().getCoor().getX()*30, this.jeu.getAv().getCoor().getY()*30,30,30,null);
-		
+
 		Salle lab = this.jeu.getAv().getSalle();
 		g.setColor(Color.BLACK);
 		for(int i = 0; i<lab.getGrille().length;i++) {
@@ -42,7 +43,7 @@ public class ZeldiabloDessin implements DessinJeu {
 			}
 		}
 		g.dispose();
-		
+
 	}
 
 }

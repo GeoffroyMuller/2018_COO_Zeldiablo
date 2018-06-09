@@ -45,4 +45,7 @@ public class Coordonnee {
 		this.y = c.getY();
 	}
 	
+	public String toString() {
+		return "Coord : "+this.getX()+" / "+this.getY();
+	}
 }
