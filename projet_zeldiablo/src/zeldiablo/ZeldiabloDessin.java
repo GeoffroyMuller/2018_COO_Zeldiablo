@@ -31,7 +31,7 @@ public class ZeldiabloDessin implements DessinJeu {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		g.drawImage(im, this.jeu.getAv().getCoor().getX()*30, this.jeu.getAv().getCoor().getY()*30,30,30,null);
+		g.drawImage(im, this.jeu.getAv().getCoor().getX()*TAILLE, this.jeu.getAv().getCoor().getY()*TAILLE,TAILLE,TAILLE,null);
 
 		Salle lab = this.jeu.getAv().getSalle();
 		g.setColor(Color.BLACK);
