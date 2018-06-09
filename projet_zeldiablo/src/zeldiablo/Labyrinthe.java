@@ -11,7 +11,7 @@ public class Labyrinthe {
 		grille[49][24] = new Sortie();
 		
 		for (int i = 0; i < grille.length; i++) {
-			for (int j = 0; j < grille.length; j++) {
+			for (int j = 0; j < grille[0].length; j++) {
 				if(grille[i][j]==null){
 					if(i==0 || i==49 || j==0 || j==49){
 						grille[i][j]=new Mur();

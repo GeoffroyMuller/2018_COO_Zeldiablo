@@ -24,5 +24,20 @@ public class Coordonnee {
 		this.y = y;
 	}
 	
+	public void incrementerX() {
+		this.x+=1;
+	}
+	
+	public void incrementerY() {
+		this.y+=1;
+	}
+	
+	public void decrementerX() {
+		this.x-=1;
+	}
+	
+	public void decrementerY() {
+		this.y-=1;
+	}
 	
 }

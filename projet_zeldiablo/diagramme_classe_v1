@@ -79,7 +79,6 @@ class PrincipaleTest [[java:zeldiablo.PrincipaleTest]] {
 	+{static}void main(String[] args)
 }
 class Labyrinthe [[java:zeldiablo.Labyrinthe]] {
-	-Case[][] grille
 	+Labyrinthe()
 	+String toString()
 	+Case[][] getGrille()

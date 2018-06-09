@@ -11,7 +11,7 @@ create "cont : Controleur" as cont
 participant "jeuZ : ZeldiabloJeu" as zjeu #99FF99
 interface-> cont : Controleur()
 create "panel : PanelDessin" as pan
-interface->pan
+interface->pan : PanelDessin(dessin)
 m->interface : getControleur()
 activate interface
 m <-- interface : cont
@@ -27,6 +27,21 @@ m->zjeu : evoluer(commande)
 activate zjeu
 m <-- zjeu
 deactivate zjeu
+m->interface : dessiner()
+activate interface
+interface->pan : dessiner()
+activate pan
+pan -> zdessin : dessiner(image)
+activate zdessin
+pan <-- zdessin
+deactivate zdessin
+pan -> pan : repaint()
+interface <-- pan
+deactivate pan
+m<--interface
+deactivate interface
 end
+main<--m
+deactivate m
 
 @enduml
