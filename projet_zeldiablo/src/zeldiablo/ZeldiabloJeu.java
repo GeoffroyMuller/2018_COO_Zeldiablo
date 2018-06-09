@@ -32,8 +32,6 @@ public class ZeldiabloJeu implements Jeu {
 			
 			if(this.av.getSalle().getGrille()[this.av.getCoor().getX()][this.av.getCoor().getY()].getType().contains("escalier")) {
 				changementEtage();	
-			}else if(this.av.getSalle().getGrille()[this.av.getCoor().getX()][this.av.getCoor().getY()].getType().contains("sortie")){
-				changementSalle();
 			}
 		}
 	}
@@ -43,12 +41,9 @@ public class ZeldiabloJeu implements Jeu {
 		Salle nouvelleSalle = nouveauEtage.getSalles().get(0);
 		this.av.setEtage(nouveauEtage);
 		this.av.setSalle(nouvelleSalle);
+		this.av.changementSalle(nouvelleSalle, nouvelleSalle.getEntree());
 	}
 	
-	public void changementSalle() {
-		Salle nouvelleSalle = ((Sortie) this.av.getSalle().getGrille()[this.av.getCoor().getX()][this.av.getCoor().getY()]).getSalleSuivante();
-		this.av.setSalle(nouvelleSalle);
-	}
 	
 	@Override
 	public boolean etreFini() {
