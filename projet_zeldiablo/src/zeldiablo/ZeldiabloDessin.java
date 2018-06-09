@@ -25,30 +25,37 @@ public class ZeldiabloDessin implements DessinJeu {
 		Graphics2D g = (Graphics2D) image.getGraphics();
 
 		File aventurierTexture = new File("..\\texture\\Aventurier_Final.png");
-		File wallStone = new File("..\\texture\\wall_stone.png");
 		Image im=null;
+
+		//g.drawImage(im, this.jeu.getAv().getCoor().getX()*TAILLE, this.jeu.getAv().getCoor().getY()*TAILLE,TAILLE,TAILLE,null);
+
+
+		Salle salle = this.jeu.getAv().getSalle();
+		g.setColor(Color.BLACK);
+
+
+		for(int i = 0; i<salle.TAILLE_SALLES;i++) {
+			for(int j = 0; j<salle.TAILLE_SALLES;j++) {
+
+				//System.out.println(salle.getGrille()[i][j].getCheminTexture());
+				File textureCase = new File(salle.getGrille()[i][j].getCheminTexture());
+				try {
+					im = ImageIO.read(textureCase);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				g.drawImage(im, i*30, j*30,null);
+			}
+
+
+		}
+
 		try {
 			im = ImageIO.read(aventurierTexture);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		g.drawImage(im, this.jeu.getAv().getCoor().getX()*TAILLE, this.jeu.getAv().getCoor().getY()*TAILLE,TAILLE,TAILLE,null);
-		
-		try {
-			im = ImageIO.read(wallStone);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		Salle salle = this.jeu.getAv().getSalle();
-		g.setColor(Color.BLACK);
-		for(int i = 0; i<salle.TAILLE_SALLES;i++) {
-			for(int j = 0; j<salle.TAILLE_SALLES;j++) {
-				if(salle.getGrille()[i][j].getType().contains("mur")) {
-					g.fillRect(i*30, j*30, 30, 30);
-					g.drawImage(im, i*30, j*30,null);
-				}
-			}
-		}
 		g.dispose();
 
 	}

@@ -9,10 +9,12 @@ public class Sortie extends Case{
 	
 	public Sortie() {
 		super();
+		this.cheminTexture = "..\\texture\\Portail_Sortie.png";
 	}
 	public Sortie(Salle s) {
 		super();
 		this.salleSuivante = s;
+		this.cheminTexture = "..\\texture\\Portail_Sortie.png";
 	}
 	
 	public Salle getSalleSuivante() {

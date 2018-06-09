@@ -5,11 +5,13 @@ public class Entree extends Case{
 	
 	public Entree(){
 		super();
+		this.cheminTexture = "..\\texture\\Portail_Entree.png";
 	}
 	
 	public Entree(Salle s) {
 		super();
 		sallePrecedente =s;
+		this.cheminTexture = "..\\texture\\Portail_Entree.png";
 	}
 	@Override
 	public boolean estTraversable() {
