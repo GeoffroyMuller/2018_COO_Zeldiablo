@@ -2,18 +2,20 @@ package zeldiablo;
 
 public class Labyrinthe {
 	
+	public static final int TAILLE_LAB=25;
+	
 	private Case[][] grille;
 	
 	public Labyrinthe(){
-		grille = new Case[50][50];
-		grille[0][24] = new Entree();
+		grille = new Case[TAILLE_LAB][TAILLE_LAB];
+		grille[0][(int)TAILLE_LAB/2] = new Entree();
 		
-		grille[49][24] = new Sortie();
+		grille[TAILLE_LAB-1][TAILLE_LAB-1] = new Sortie();
 		
 		for (int i = 0; i < grille.length; i++) {
 			for (int j = 0; j < grille[0].length; j++) {
 				if(grille[i][j]==null){
-					if(i==0 || i==49 || j==0 || j==49){
+					if(i==0 || i==TAILLE_LAB-1 || j==0 || j==TAILLE_LAB-1){
 						grille[i][j]=new Mur();
 					}
 					else {

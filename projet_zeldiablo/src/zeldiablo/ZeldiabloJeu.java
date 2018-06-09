@@ -9,7 +9,7 @@ import moteur.Jeu;
 public class ZeldiabloJeu implements Jeu {
 	private Aventurier av;
 	private ArrayList<Labyrinthe> listLab;
-	
+
 	public ZeldiabloJeu() {
 		this.listLab= new ArrayList<Labyrinthe>();
 		for (int i = 0; i < 10; i++) {
@@ -30,7 +30,7 @@ public class ZeldiabloJeu implements Jeu {
 			posAv.decrementerY();
 		}
 		this.av.deplacerAventurier(posAv);
-		
+
 	}
 	@Override
 	public boolean etreFini() {
@@ -43,6 +43,6 @@ public class ZeldiabloJeu implements Jeu {
 	public ArrayList<Labyrinthe> getListLab() {
 		return listLab;
 	}
-	
+
 
 }
