@@ -46,8 +46,8 @@ public class Aventurier {
 	public boolean deplacerAventurier(Coordonnee c) {
 		boolean res = true;
 		
-		if ((c.getX() < lab.getGrille().length && c.getX() > 0) &&
-				(c.getY() < lab.getGrille()[0].length && c.getY() > 0)) {
+		if ((c.getX() < lab.getGrille().length && c.getX() >= 0) &&
+				(c.getY() < lab.getGrille()[0].length && c.getY() >= 0)) {
 			if(lab.getGrille()[c.getX()][c.getY()].estTraversable()) {
 				this.changerCoord(c);
 			}
