@@ -29,9 +29,10 @@ public class Salle implements Serializable{
 	public Salle(){
 		grille = new Case[TAILLE_SALLES][TAILLE_SALLES];
 		grille[0][(int)TAILLE_SALLES/2] = new Entree();
+		this.entree=(Entree)grille[0][(int)TAILLE_SALLES/2];
 		
 		grille[TAILLE_SALLES-1][(int)TAILLE_SALLES/2] = new Sortie();
-		
+		this.Sortie = (Sortie)grille[TAILLE_SALLES-1][(int)TAILLE_SALLES/2];
 		for (int i = 0; i < grille.length; i++) {
 			for (int j = 0; j < grille[0].length; j++) {
 				if(grille[i][j]==null){
