@@ -1,17 +1,30 @@
 package zeldiablo;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 public class Entree extends Case{
 	private Salle sallePrecedente;
 	
 	public Entree(){
 		super();
-		this.cheminTexture = "..\\texture\\Portail_Entree.png";
+		try {
+			this.texture = ImageIO.read(new File("..\\texture\\Portail_Entree.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public Entree(Salle s) {
 		super();
 		sallePrecedente =s;
-		this.cheminTexture = "..\\texture\\Portail_Entree.png";
+		try {
+			this.texture = ImageIO.read(new File("..\\texture\\Portail_Entree.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	@Override
 	public boolean estTraversable() {

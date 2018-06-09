@@ -1,5 +1,10 @@
 package zeldiablo;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 public class Mur extends Case{
 
 	@Override
@@ -10,7 +15,11 @@ public class Mur extends Case{
 	
 	public Mur() {
 		super();
-		cheminTexture = "..\\texture\\wall_stone.png";
+		try {
+			this.texture = ImageIO.read(new File("..\\texture\\wall_stone.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Override

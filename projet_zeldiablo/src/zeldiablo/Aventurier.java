@@ -1,23 +1,48 @@
 package zeldiablo;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 public class Aventurier {
 	private int vie;
 	private boolean mort;
 	private Coordonnee coor; //coordonnee de l'aventurier
 	private Salle salle;
 	private Etage etage;
+	private Image texture;
+
+	public Image getTexture() {
+		return texture;
+	}
+
+	public void setTexture(Image texture) {
+		this.texture = texture;
+	}
 
 	public Aventurier(){
 		vie = 100;
 		mort = false;
+		try {
+			this.texture = ImageIO.read(new File("..\\texture\\Aventurier_Final.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
-	public Aventurier(Coordonnee c, Salle l, Etage e){
+	public Aventurier(Coordonnee c, Salle l, Etage et){
 		vie = 100;
 		mort = false;
 		coor = c;
 		salle = l;
-		this.etage = e;
+		this.etage = et;
+		try {
+			this.texture = ImageIO.read(new File("..\\texture\\Aventurier_Final.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	public void setSalle(Salle salle) {
 		this.salle = salle;

@@ -1,5 +1,10 @@
 package zeldiablo;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 public class Vide extends Case{
 
 	@Override
@@ -8,7 +13,11 @@ public class Vide extends Case{
 	}
 	
 	public Vide(){
-		this.cheminTexture = "..\\texture\\wood.png";
+		try {
+			this.texture = ImageIO.read(new File("..\\texture\\wood.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override

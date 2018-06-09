@@ -10,7 +10,7 @@ public class Principale {
 		ZeldiabloDessin zD = new ZeldiabloDessin(zJ);
 		
 		MoteurGraphique moteur = new MoteurGraphique(zJ,zD);
-		moteur.lancerJeu(800, 800);
+		moteur.lancerJeu(750, 750);
 
 	}
 
