@@ -19,30 +19,39 @@ public class PanneauChoix extends JPanel{
 	private JButton jbcreer = new JButton("Creer");
 	
 	private JComboBox jcbcase = new JComboBox(new String[]{"Mur","Vide","Autre"});
+	private JButton jbsave = new JButton("Save");
+	private JButton jbouvrir = new JButton("Ouvrir");
+	
+	private JPanel rb = new JPanel();
+	private JPanel op = new JPanel();
 
 	public PanneauChoix() {
 		// TODO Auto-generated constructor stub
 		setLayout(new BorderLayout());
-		JPanel rb = new JPanel();
-		JPanel op = new JPanel();
+		
 		
 		rbzone.setSelected(true);
 		
 		bg.add(rbzone);
 		bg.add(rbsalle);
 		
+		op.add(jbsave);
 		op.add(jcbcase);
+		op.add(jbouvrir);
+		op.setBackground(new Color(60,60,60));
+		
 		rb.add(rbzone);
 		rb.add(rbsalle);
 		rb.add(jtfnom);
 		rb.add(jbcreer);
 		rb.setBackground(new Color(70,70,70));
-		op.setBackground(new Color(60,60,60));
-		
+
 		add(rb, BorderLayout.NORTH);
 		add(op, BorderLayout.CENTER);
 		
 		jcbcase.setEnabled(false);
+		jbsave.setEnabled(false);
+		jbouvrir.setEnabled(false);
 		
 		ActionListener aclrb = new ActionListener() {
 			
@@ -74,7 +83,10 @@ public class PanneauChoix extends JPanel{
 				rbsalle.setEnabled(false);
 				rbzone.setEnabled(false);
 				jtfnom.setEnabled(false);
+				
 				jcbcase.setEnabled(true);
+				jbsave.setEnabled(true);
+				jbouvrir.setEnabled(true);
 			}
 
 		};
