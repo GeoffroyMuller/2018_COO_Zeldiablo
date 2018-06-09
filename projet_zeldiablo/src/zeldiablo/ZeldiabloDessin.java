@@ -24,21 +24,28 @@ public class ZeldiabloDessin implements DessinJeu {
 	public void dessiner(BufferedImage image) {
 		Graphics2D g = (Graphics2D) image.getGraphics();
 
-		File aventurier = new File("..\\texture\\Aventurier_Final.png");
+		File aventurierTexture = new File("..\\texture\\Aventurier_Final.png");
+		File wallStone = new File("..\\texture\\wall_stone.png");
 		Image im=null;
 		try {
-			im = ImageIO.read(aventurier);
+			im = ImageIO.read(aventurierTexture);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		g.drawImage(im, this.jeu.getAv().getCoor().getX()*TAILLE, this.jeu.getAv().getCoor().getY()*TAILLE,TAILLE,TAILLE,null);
-
-		Salle lab = this.jeu.getAv().getSalle();
+		
+		try {
+			im = ImageIO.read(wallStone);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Salle salle = this.jeu.getAv().getSalle();
 		g.setColor(Color.BLACK);
-		for(int i = 0; i<lab.getGrille().length;i++) {
-			for(int j = 0; j<lab.getGrille()[0].length;j++) {
-				if(lab.getGrille()[i][j].getType().contains("mur")) {
+		for(int i = 0; i<salle.TAILLE_SALLES;i++) {
+			for(int j = 0; j<salle.TAILLE_SALLES;j++) {
+				if(salle.getGrille()[i][j].getType().contains("mur")) {
 					g.fillRect(i*30, j*30, 30, 30);
+					g.drawImage(im, i*30, i*30,null);
 				}
 			}
 		}
