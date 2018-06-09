@@ -19,7 +19,8 @@ public class ZeldiabloJeu implements Jeu {
 	}
 	@Override
 	public void evoluer(Commande commandeUser) {
-		Coordonnee posAv = this.av.getCoor();
+		Coordonnee posAv = new Coordonnee(0,0);
+		posAv.dupliquerCoordonnee(this.av.getCoor());
 		if(commandeUser.gauche) {
 			posAv.decrementerX();
 		}else if(commandeUser.droite) {
