@@ -68,7 +68,7 @@ public class Aventurier {
 				(c.getY() < salle.getGrille()[0].length && c.getY() >= 0)) {
 			if(salle.getGrille()[c.getX()][c.getY()].estTraversable()) {
 				this.changerCoord(c);
-				
+
 				if(salle.getGrille()[coor.getX()][coor.getY()]==salle.getEntree()) {
 					this.salle=salle.getEntree().getSallePrecedente();
 					changementSalle(this.salle,salle.getSortie());
@@ -173,7 +173,7 @@ public class Aventurier {
 					else {
 						System.out.println("erreur de deplacement");
 					}
-					
+
 
 				}
 			}

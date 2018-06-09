@@ -28,25 +28,28 @@ public class ZeldiabloDessin implements DessinJeu {
 		Image im=null;
 
 		//g.drawImage(im, this.jeu.getAv().getCoor().getX()*TAILLE, this.jeu.getAv().getCoor().getY()*TAILLE,TAILLE,TAILLE,null);
-		
+
 
 		Salle salle = this.jeu.getAv().getSalle();
 		g.setColor(Color.BLACK);
+
+
 		for(int i = 0; i<salle.TAILLE_SALLES;i++) {
 			for(int j = 0; j<salle.TAILLE_SALLES;j++) {
-				
-					//System.out.println(salle.getGrille()[i][j].getCheminTexture());
-					File textureCase = new File(salle.getGrille()[i][j].getCheminTexture());
-					try {
-						im = ImageIO.read(textureCase);
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-					g.drawImage(im, i*30, j*30,null);
+
+				//System.out.println(salle.getGrille()[i][j].getCheminTexture());
+				File textureCase = new File(salle.getGrille()[i][j].getCheminTexture());
+				try {
+					im = ImageIO.read(textureCase);
+				} catch (IOException e) {
+					e.printStackTrace();
 				}
-			
+				g.drawImage(im, i*30, j*30,null);
+			}
+
+
 		}
-		
+
 		try {
 			im = ImageIO.read(aventurierTexture);
 		} catch (IOException e) {
