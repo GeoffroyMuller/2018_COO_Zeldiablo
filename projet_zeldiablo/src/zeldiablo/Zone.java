@@ -3,8 +3,6 @@ package zeldiablo;
 import java.io.Serializable;
 
 public class Zone implements Serializable{
-	private Case[][] grille;
-	
 	public static final int TAILLE_ZONE = (int)(Salle.TAILLE_SALLES-5)/2;
 	
 	private Case[][] grilleZone;
@@ -20,4 +18,9 @@ public class Zone implements Serializable{
 			
 		}
 	}
+
+	public Case[][] getGrilleZone() {
+		return grilleZone;
+	}
+	
 }

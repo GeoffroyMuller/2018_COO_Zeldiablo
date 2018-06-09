@@ -6,35 +6,44 @@ import zeldiablo.*;
 public class Niveau {
 	private Salle salle;
 	private Zone zone;
-	private boolean sa,zo;
+	private Case[][] tab_case;
+	private boolean estsalle,estzone;
 
 	public Niveau() {
 		// TODO Auto-generated constructor stub
 		salle = null;
 		zone = null;
-		sa = false;
-		zo = false;
+		estsalle = false;
+		estzone = false;
 	}
 	
 	public void creationSalle() {
 		salle = new Salle();
-		sa = true;
-		System.out.println("creation salle");
+		estsalle = true;
+		tab_case = salle.getGrille();
+		System.out.println("creation salle"+tab_case.length);
 	}
 	
 	public void creationZone(String nom) {
 		zone = new Zone(nom);
-		zo = true;
-		System.out.println("creation zone : "+ nom);
+		estzone = true;
+		tab_case = zone.getGrilleZone();
+		System.out.println("creation zone"+ tab_case.length +" :"+nom);
 	}
 
-	public boolean isSa() {
-		return sa;
+	public boolean isEstsalle() {
+		return estsalle;
 	}
 
-	public boolean isZo() {
-		return zo;
+	public boolean isEstzone() {
+		return estzone;
 	}
+
+	public Case[][] getTab_case() {
+		return tab_case;
+	}
+
+	
 	
 	
 }

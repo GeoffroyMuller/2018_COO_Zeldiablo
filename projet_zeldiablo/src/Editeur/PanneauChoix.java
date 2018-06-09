@@ -32,7 +32,7 @@ public class PanneauChoix extends JPanel{
 		niv = nive;
 		setLayout(new BorderLayout());
 		
-		rbzone.setSelected(true);
+		rbsalle.setSelected(true);
 		
 		bg.add(rbzone);
 		bg.add(rbsalle);
