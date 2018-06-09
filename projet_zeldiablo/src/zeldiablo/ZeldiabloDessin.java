@@ -44,7 +44,7 @@ public class ZeldiabloDessin implements DessinJeu {
 		for(int i = 0; i<salle.TAILLE_SALLES;i++) {
 			for(int j = 0; j<salle.TAILLE_SALLES;j++) {
 				if(salle.getGrille()[i][j].getType().contains("mur")) {
-					//g.fillRect(i*30, j*30, 30, 30);
+
 					g.drawImage(im, i*30, j*30,null);
 				}
 			}
