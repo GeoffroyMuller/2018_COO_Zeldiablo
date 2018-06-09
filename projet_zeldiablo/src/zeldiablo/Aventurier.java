@@ -63,7 +63,7 @@ public class Aventurier {
 
 	public boolean deplacerAventurier(Coordonnee c) {
 		boolean res = true;
-		
+
 		if ((c.getX() < salle.getGrille().length && c.getX() >= 0) &&
 				(c.getY() < salle.getGrille()[0].length && c.getY() >= 0)) {
 			if(salle.getGrille()[c.getX()][c.getY()].estTraversable()) {
