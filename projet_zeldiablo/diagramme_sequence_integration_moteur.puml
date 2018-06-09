@@ -1,0 +1,32 @@
+@startuml
+actor main
+
+create "moteur : Moteur" as m
+main -> m : MoteurGraphique(jeuZ,dessinZ)
+main -> m : lancerJeu(500,500)
+activate m
+create "i : interfaceG" as interface
+m->interface
+create "cont : Controleur" as cont
+participant "jeuZ : ZeldiabloJeu" as zjeu #99FF99
+interface-> cont : Controleur()
+create "panel : PanelDessin" as pan
+interface->pan
+m->interface : getControleur()
+activate interface
+m <-- interface : cont
+deactivate interface
+participant "dessinZ : ZeldiabloDessin" as zdessin #99FF99
+
+loop non jeuZ.etreFini()
+m->cont : getCommande()
+activate cont
+m <-- cont : commande
+deactivate cont
+m->zjeu : evoluer(commande)
+activate zjeu
+m <-- zjeu
+deactivate zjeu
+end
+
+@enduml

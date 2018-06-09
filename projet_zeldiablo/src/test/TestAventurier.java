@@ -4,7 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import zeldiablo.*;
+import zeldiablo.Aventurier;
+import zeldiablo.Coordonnee;
+import zeldiablo.Labyrinthe;
 import zeldiablo.Mur;
 
 public class TestAventurier {
@@ -14,7 +16,6 @@ public class TestAventurier {
 		Aventurier a = new Aventurier();
 		assertEquals("La vie devrait etre egale a 100", 100,a.getVie());
 		assertEquals("L'aventurier devrait etre en vie", false,a.isMort());
-		assertEquals("La position devrait etre null", null,a.getPos());
 	}
 
 	@Test
@@ -28,11 +29,11 @@ public class TestAventurier {
 
 	@Test
 	public void testConstructeur_3() {
-		Aventurier a = new Aventurier(new Mur(), new Labyrinthe());
+		Aventurier a = new Aventurier(new Coordonnee(0,0), new Labyrinthe());
 		assertEquals("La vie devrait etre egale a 100", 100,a.getVie());
 		assertEquals("L'aventurier devrait etre en vie", false,a.isMort());
-		assertEquals("La position devrait etre un mur", "mur",a.getPos().getType());
-		assertEquals("La position ne devrait pas etre traversable", false,a.getPos().estTraversable());
+		assertEquals("La position devrait etre un mur", "mur",a.getCase());
+		assertEquals("La position ne devrait pas etre traversable", false,a.getCase().estTraversable());
 	}
 
 	@Test
