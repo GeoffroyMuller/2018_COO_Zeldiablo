@@ -5,18 +5,36 @@ public class Aventurier {
 	private boolean mort;
 	private Coordonnee coor; //coordonnee de l'aventurier
 	private Salle salle;
+	private Etage etage;
 
 	public Aventurier(){
 		vie = 100;
 		mort = false;
 	}
 
-	public Aventurier(Coordonnee c, Salle l){
+	public Aventurier(Coordonnee c, Salle l, Etage e){
 		vie = 100;
 		mort = false;
 		coor = c;
 		salle = l;
+		this.etage = e;
 	}
+	public void setSalle(Salle salle) {
+		this.salle = salle;
+	}
+
+	public void setEtage(Etage etage) {
+		this.etage = etage;
+	}
+
+	public Salle getSalle() {
+		return salle;
+	}
+
+	public Etage getEtage() {
+		return etage;
+	}
+
 	public void soigner(int pv) {
 		if(pv > 0) {
 			if(this.vie + pv > 100) {
