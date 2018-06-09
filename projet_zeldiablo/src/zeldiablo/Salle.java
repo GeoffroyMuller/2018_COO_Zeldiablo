@@ -1,21 +1,23 @@
 package zeldiablo;
 
-public class Salle {
+import java.io.Serializable;
+
+public class Salle implements Serializable{
 	
-	public static final int TAILLE_LAB=25;
+	public static final int TAILLE_SALLES=25;
 	
 	private Case[][] grille;
 	
 	public Salle(){
-		grille = new Case[TAILLE_LAB][TAILLE_LAB];
-		grille[0][(int)TAILLE_LAB/2] = new Entree();
+		grille = new Case[TAILLE_SALLES][TAILLE_SALLES];
+		grille[0][(int)TAILLE_SALLES/2] = new Entree();
 		
-		grille[TAILLE_LAB-1][(int)TAILLE_LAB/2] = new Sortie();
+		grille[TAILLE_SALLES-1][(int)TAILLE_SALLES/2] = new Sortie();
 		
 		for (int i = 0; i < grille.length; i++) {
 			for (int j = 0; j < grille[0].length; j++) {
 				if(grille[i][j]==null){
-					if(i==0 || i==TAILLE_LAB-1 || j==0 || j==TAILLE_LAB-1){
+					if(i==0 || i==TAILLE_SALLES-1 || j==0 || j==TAILLE_SALLES-1){
 						grille[i][j]=new Mur();
 					}
 					else {
