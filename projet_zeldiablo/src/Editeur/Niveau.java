@@ -1,12 +1,17 @@
 package Editeur;
 
+import java.awt.*;
+import java.util.*;
+
+import javax.swing.*;
 import zeldiablo.*;
+import java.util.Observable;
 
-
-public class Niveau {
+public class Niveau extends Observable{
 	private Salle salle;
 	private Zone zone;
 	private Case[][] tab_case;
+	private int taille;
 	private boolean estsalle,estzone;
 
 	public Niveau() {
@@ -15,20 +20,29 @@ public class Niveau {
 		zone = null;
 		estsalle = false;
 		estzone = false;
+		tab_case = null;
+		taille = 0;
+		
 	}
 	
 	public void creationSalle() {
 		salle = new Salle();
 		estsalle = true;
 		tab_case = salle.getGrille();
-		System.out.println("creation salle"+tab_case.length);
+		taille = Salle.TAILLE_SALLES;
+		System.out.println("creation salle");
+		setChanged();
+		notifyObservers();
 	}
 	
 	public void creationZone(String nom) {
 		zone = new Zone(nom);
 		estzone = true;
 		tab_case = zone.getGrilleZone();
-		System.out.println("creation zone"+ tab_case.length +" :"+nom);
+		taille = Zone.TAILLE_ZONE;
+		System.out.println("creation zone :"+nom);
+		setChanged();
+		notifyObservers();
 	}
 
 	public boolean isEstsalle() {
@@ -42,6 +56,12 @@ public class Niveau {
 	public Case[][] getTab_case() {
 		return tab_case;
 	}
+
+	public int getTaille() {
+		return taille;
+	}
+
+
 
 	
 	

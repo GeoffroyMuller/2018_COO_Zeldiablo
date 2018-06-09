@@ -13,7 +13,8 @@ import moteur.DessinJeu;
 
 public class ZeldiabloDessin implements DessinJeu {
 	private ZeldiabloJeu jeu;
-	public static int TAILLE = 40;
+
+	public static int TAILLE = 30;
 
 	public ZeldiabloDessin(ZeldiabloJeu j) {
 		this.jeu = j;
