@@ -6,6 +6,10 @@ public class Vide extends Case{
 	public boolean estTraversable() {
 		return true;
 	}
+	
+	public Vide(){
+		this.cheminTexture = "..\\texture\\wood.png";
+	}
 
 	@Override
 	public String getType() {
