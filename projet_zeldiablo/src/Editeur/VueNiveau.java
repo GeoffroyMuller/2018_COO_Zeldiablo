@@ -5,6 +5,7 @@ import java.util.*;
 
 import javax.swing.*;
 
+import zeldiablo.Case;
 import zeldiablo.ZeldiabloDessin;
 
 public class VueNiveau  extends JPanel implements Observer{
@@ -59,12 +60,18 @@ public class VueNiveau  extends JPanel implements Observer{
 		}
 	}
 	
-	public Rectangle estDedans(int xe,int ye) {
+	public Case estDedans(int xe,int ye) {
 		if(tab_rec.size()==((niv.getTaille())*(niv.getTaille()))) {
 			for(int i=0;i<tab_rec.size();i++) {
 				if(tab_rec.get(i).contains(xe, ye)) {
 					System.out.println("estDedand retourn Rectangle num:"+i);
-					return tab_rec.get(i);
+					int x,y;
+					x = i%25;
+					y = (int)i/25;
+					System.out.println(" case : x :"+x+" y : "+y);
+					Case c = niv.getTab_case()[x][y];
+					return c;
+					
 				}
 			}
 		}
