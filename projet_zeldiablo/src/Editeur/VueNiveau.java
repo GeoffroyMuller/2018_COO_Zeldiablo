@@ -6,36 +6,37 @@ import java.util.*;
 import javax.swing.*;
 
 import zeldiablo.Case;
+import zeldiablo.Coordonnee;
 import zeldiablo.ZeldiabloDessin;
 
 public class VueNiveau  extends JPanel implements Observer{
-	
+
 	private static final int MARGE_TAILLECASE_X = 10;
 	private static final int MARGE_TAILLECASE_Y = 10;
-	
+
 	public static final int ADD_ML = 100;
-	
+
 	private int x=0;
 	private int y=0;
 	private int taillecase=ZeldiabloDessin.TAILLE;
-	
 	private ControleurCase cc;
+
 	private Niveau niv;
 	private ArrayList<Rectangle> tab_rec; //tableau de rectangle correnspondant a des cases
-	
+
 	public VueNiveau(Niveau nive) {
 		// TODO Auto-generated constructor stub
 		setBackground(new Color(180,180,180));
-		
+
 		tab_rec = new ArrayList<Rectangle>();
-		
+
 		niv = nive;
 		niv.addObserver(this);
-		
-		cc = new ControleurCase(this);
-		
+
+		cc = new ControleurCase(this,niv);
+
 	}
-	
+
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		x=MARGE_TAILLECASE_X;
@@ -46,11 +47,21 @@ public class VueNiveau  extends JPanel implements Observer{
 			for(int i=0;i<niv.getTaille();i++) {
 				for(int j=0;j<niv.getTaille();j++) {
 					ajouterRectangle(x, y);
-					/*if(niv.getCase(i, j)=="mur") {
-						g.setColor(Color.RED);
-					}else {
-						g.setColor(Color.blue);
-					}*/
+					g.setColor(Color.white);
+					if(niv.getTypeCase(j, i)=="mur") {
+						g.setColor(Color.BLACK);
+					}
+					if(niv.getTypeCase(j, i)=="entree") {
+						g.setColor(Color.MAGENTA);
+					}
+					if(niv.getTypeCase(j, i)=="sortie") {
+						g.setColor(Color.BLUE);
+					}
+					if(niv.getTypeCase(j, i)=="vide") {
+						g.setColor(Color.GRAY);
+					}
+
+
 					g.fillRect(x, y, taillecase, taillecase);
 					x+=taillecase+2;
 				}
@@ -64,19 +75,27 @@ public class VueNiveau  extends JPanel implements Observer{
 			tab_rec.add(new Rectangle(xe, ye, taillecase, taillecase));
 		}
 	}
-	
-	public Case estDedans(int xe,int ye) {
+
+	public Coordonnee estDedans(int xe,int ye) {
 		if(tab_rec.size()==((niv.getTaille())*(niv.getTaille()))) {
 			for(int i=0;i<tab_rec.size();i++) {
 				if(tab_rec.get(i).contains(xe, ye)) {
 					System.out.println("estDedand retourn Rectangle num:"+i);
 					int x,y;
-					x = i%25;
-					y = (int)i/25;
-					System.out.println(" case : x :"+x+" y : "+y);
-					Case c = niv.getTab_case()[x][y];
+					int div =10;
+					if(tab_rec.size()==625) {
+						div=25;
+
+					}
+					x = i%div;
+					y = (int)i/div;
+
+					Coordonnee c = new Coordonnee(x, y);
+					Case ct = niv.getTab_case()[x][y];
+					System.out.println(" case "+" : x :"+x+" y : "+y);
+					System.out.println(" de type : "+ct.getType());
 					return c;
-					
+
 				}
 			}
 		}
@@ -93,6 +112,8 @@ public class VueNiveau  extends JPanel implements Observer{
 			addMouseListener(cc.getMl());
 			System.out.println("ajout listner ml");
 			break;
+			default :
+				break;
 		}
 
 		repaint();

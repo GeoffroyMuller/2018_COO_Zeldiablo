@@ -18,7 +18,7 @@ public class PanneauChoix extends JPanel{
 	private JTextField jtfnom = new JTextField("nom", 15);
 	private JButton jbcreer = new JButton("Creer");
 	
-	private JComboBox jcbcase = new JComboBox(new String[]{"Mur","Vide","Autre"});
+	private JComboBox jcbcase = new JComboBox(new String[]{"Mur","Vide","Entree","Sortie"});
 	private JButton jbsave = new JButton("Save");
 	private JButton jbouvrir = new JButton("Ouvrir");
 	
@@ -94,6 +94,21 @@ public class PanneauChoix extends JPanel{
 		jbcreer.addActionListener(acl);
 		rbsalle.addActionListener(aclrb);
 		rbzone.addActionListener(aclrb);
+		
+		ActionListener aljcb = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				typeFigureSelec();
+				
+			}
+		};
+		
+		jcbcase.addActionListener(aljcb);
+	}
+	
+	public void typeFigureSelec() {
+		niv.selectedIndex(jcbcase.getSelectedIndex());
 	}
 
 }

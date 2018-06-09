@@ -1,8 +1,9 @@
 package zeldiablo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Donjon {
+public class Donjon{
 	ArrayList<Etage> etages;
 	private String nom;
 	public final static int NUM_ETAGES=5;

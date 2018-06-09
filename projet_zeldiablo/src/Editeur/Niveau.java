@@ -12,7 +12,9 @@ public class Niveau extends Observable{
 	private Zone zone;
 	
 	private Case[][] tab_case;
+	private ControleurCase cc;
 	private int taille;
+	private int selectedIndex;
 	
 	private boolean estsalle,estzone;
 
@@ -25,7 +27,6 @@ public class Niveau extends Observable{
 		estzone = false;
 		tab_case = null;
 		taille = 0;
-		
 	}
 	
 	public void creationSalle() {
@@ -64,12 +65,49 @@ public class Niveau extends Observable{
 		return taille;
 	}
 	
-	public String getCase(int xe , int ye) {//peux procur des erreur 
+	public String getTypeCase(int xe , int ye) {//peux procur des erreur 
 		return tab_case[xe][ye].getType();
 	}
 
-
+	public void selectedIndex(int i) {
+		this.selectedIndex=i;
+	}
 	
-	
+	public void changerCase(Coordonnee co) {
+		System.out.println(selectedIndex);
+		
+		try {
+		switch (selectedIndex) {
+		case 0 :
+			tab_case[co.getX()][co.getY()]=new Mur();
+			break;
+			
+			
+		case 1 :
+			tab_case[co.getX()][co.getY()]= new Vide();
+			break;
+			
+		case 2 :
+			tab_case[co.getX()][co.getY()]= new Entree();
+			break;
+			
+		case 3 :
+			tab_case[co.getX()][co.getY()] = new Sortie();
+			break;
+			
+			
+			default :
+				
+				break;
+		}
+		}
+		catch(NullPointerException npe) {
+			System.out.println("clique entre deux case");
+		}
+		
+		
+		setChanged();
+		notifyObservers(0);
+	}
 	
 }

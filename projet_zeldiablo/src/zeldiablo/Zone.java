@@ -22,5 +22,9 @@ public class Zone implements Serializable{
 	public Case[][] getGrilleZone() {
 		return grilleZone;
 	}
+
+	public void setGrilleZone(Case[][] grilleZone) {
+		this.grilleZone = grilleZone;
+	}
 	
 }

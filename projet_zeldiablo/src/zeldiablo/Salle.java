@@ -112,6 +112,10 @@ public class Salle implements Serializable{
 		return c;
 	}
 
+	public void setGrille(Case[][] grille) {
+		this.grille = grille;
+	}
+
 }
 
 

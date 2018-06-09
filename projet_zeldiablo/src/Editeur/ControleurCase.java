@@ -3,13 +3,17 @@ package Editeur;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import zeldiablo.*;
+
 public class ControleurCase {
 	private VueNiveau vn;
+	private Niveau nv;
 	private MouseListener ml;
 	
-	public ControleurCase(VueNiveau vne) {
+	public ControleurCase(VueNiveau pvn,Niveau pnv) {
 		// TODO Auto-generated constructor stub
-		vn = vne;
+		vn = pvn;
+		nv=pnv;
 		ml = new MouseListener() {
 			
 			@Override
@@ -22,7 +26,9 @@ public class ControleurCase {
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
 				System.out.println("Clics");
-				vn.estDedans(e.getX(), e.getY());
+				Coordonnee c=vn.estDedans(e.getX(), e.getY());
+				nv.changerCase(c);
+				
 			}
 			
 			@Override
