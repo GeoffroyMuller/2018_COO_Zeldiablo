@@ -44,6 +44,19 @@ public class PanneauChoix extends JPanel{
 		
 		jcbcase.setEnabled(false);
 		
+		ActionListener aclrb = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(rbsalle.isSelected()) {
+					jtfnom.setEnabled(false);
+				}
+				if(rbzone.isSelected()) {
+					jtfnom.setEnabled(true);
+				}
+			}
+		};
 		ActionListener acl = new ActionListener() {
 			
 			@Override
@@ -66,6 +79,8 @@ public class PanneauChoix extends JPanel{
 
 		};
 		jbcreer.addActionListener(acl);
+		rbsalle.addActionListener(aclrb);
+		rbzone.addActionListener(aclrb);
 	}
 
 }
