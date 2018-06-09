@@ -32,7 +32,7 @@ public class ZeldiabloDessin implements DessinJeu {
 		}
 		g.drawImage(im, this.jeu.getAv().getCoor().getX()*30, this.jeu.getAv().getCoor().getY()*30,30,30,null);
 		
-		Labyrinthe lab = this.jeu.getListLab().get(0);
+		Salle lab = this.jeu.getDj().getEtages().get(0).getSalles().get(0);
 		g.setColor(Color.BLACK);
 		for(int i = 0; i<lab.getGrille().length;i++) {
 			for(int j = 0; j<lab.getGrille()[0].length;j++) {

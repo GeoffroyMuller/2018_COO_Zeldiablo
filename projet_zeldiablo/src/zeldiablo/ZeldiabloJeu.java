@@ -8,14 +8,12 @@ import moteur.Jeu;
 
 public class ZeldiabloJeu implements Jeu {
 	private Aventurier av;
-	private ArrayList<Labyrinthe> listLab;
+	private Donjon dj;
 
 	public ZeldiabloJeu() {
-		this.listLab= new ArrayList<Labyrinthe>();
-		for (int i = 0; i < 10; i++) {
-			listLab.add(new Labyrinthe());
-		}
-		this.av = new Aventurier(new Coordonnee(3,1),this.listLab.get(0));
+		dj= new Donjon("ElTesto");
+
+		this.av = new Aventurier(new Coordonnee(3,1),this.dj.getEtages().get(0).getSalles().get(0));
 	}
 	@Override
 	public void evoluer(Commande commandeUser) {
@@ -41,8 +39,8 @@ public class ZeldiabloJeu implements Jeu {
 	public Aventurier getAv() {
 		return av;
 	}
-	public ArrayList<Labyrinthe> getListLab() {
-		return listLab;
+	public Donjon getDj() {
+		return dj;
 	}
 
 

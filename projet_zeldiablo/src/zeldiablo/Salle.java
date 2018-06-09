@@ -1,12 +1,12 @@
 package zeldiablo;
 
-public class Labyrinthe {
+public class Salle {
 	
 	public static final int TAILLE_LAB=25;
 	
 	private Case[][] grille;
 	
-	public Labyrinthe(){
+	public Salle(){
 		grille = new Case[TAILLE_LAB][TAILLE_LAB];
 		grille[0][(int)TAILLE_LAB/2] = new Entree();
 		

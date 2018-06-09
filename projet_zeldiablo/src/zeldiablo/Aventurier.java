@@ -4,18 +4,18 @@ public class Aventurier {
 	private int vie;
 	private boolean mort;
 	private Coordonnee coor; //coordonnee de l'aventurier
-	private Labyrinthe lab;
+	private Salle salle;
 
 	public Aventurier(){
 		vie = 100;
 		mort = false;
 	}
 
-	public Aventurier(Coordonnee c, Labyrinthe l){
+	public Aventurier(Coordonnee c, Salle l){
 		vie = 100;
 		mort = false;
 		coor = c;
-		lab = l;
+		salle = l;
 	}
 	public void soigner(int pv) {
 		if(pv > 0) {
@@ -46,9 +46,9 @@ public class Aventurier {
 	public boolean deplacerAventurier(Coordonnee c) {
 		boolean res = true;
 		
-		if ((c.getX() < lab.getGrille().length && c.getX() >= 0) &&
-				(c.getY() < lab.getGrille()[0].length && c.getY() >= 0)) {
-			if(lab.getGrille()[c.getX()][c.getY()].estTraversable()) {
+		if ((c.getX() < salle.getGrille().length && c.getX() >= 0) &&
+				(c.getY() < salle.getGrille()[0].length && c.getY() >= 0)) {
+			if(salle.getGrille()[c.getX()][c.getY()].estTraversable()) {
 				this.changerCoord(c);
 			}
 			else {
@@ -93,7 +93,7 @@ public class Aventurier {
 	}
 
 	public Case getCase() {
-		return (this.lab.getGrille()[this.coor.getX()][this.coor.getY()]);
+		return (this.salle.getGrille()[this.coor.getX()][this.coor.getY()]);
 	}
 
 

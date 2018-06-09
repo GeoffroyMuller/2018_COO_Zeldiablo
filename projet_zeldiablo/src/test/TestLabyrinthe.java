@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import zeldiablo.Case;
-import zeldiablo.Labyrinthe;
+import zeldiablo.Salle;
 import zeldiablo.Mur;
 import zeldiablo.Vide;
 
@@ -15,7 +15,7 @@ public class TestLabyrinthe {
 	public void testConstructeurVide() throws Exception {
 		// initialisation
 		//Execution du test
-		Labyrinthe laby = new Labyrinthe();
+		Salle laby = new Salle();
 		Case[][] grille =laby.getGrille();
 		
 		

@@ -6,13 +6,13 @@ import org.junit.Test;
 
 import zeldiablo.Aventurier;
 import zeldiablo.Coordonnee;
-import zeldiablo.Labyrinthe;
+import zeldiablo.Salle;
 
 public class TestDeplacement {
 	@Test
 	public void testDeplacerEnDehorsDroiteGauche() {
 		//initialisation des donnees
-		Labyrinthe l = new Labyrinthe();
+		Salle l = new Salle();
 		Coordonnee c = new Coordonnee(1,1);
 		Coordonnee c1 = new Coordonnee(0,1);
 		Aventurier a = new Aventurier(c,l); 
@@ -25,7 +25,7 @@ public class TestDeplacement {
 	@Test
 	public void testDeplacerEnDehorsHautBas() {
 		//initialisation des donnees
-		Labyrinthe l = new Labyrinthe();
+		Salle l = new Salle();
 		Coordonnee c = new Coordonnee(1,1);
 		Coordonnee c1 = new Coordonnee(1,0);
 		Aventurier a = new Aventurier(c,l);
@@ -38,7 +38,7 @@ public class TestDeplacement {
 	@Test
 	public void testDeplacerEnDehorsLimiteLaby() {
 		//initialisation des donnees
-		Labyrinthe l = new Labyrinthe();
+		Salle l = new Salle();
 		int y = l.getGrille().length;
 		Coordonnee c = new Coordonnee(1,49);
 		Coordonnee c1 = new Coordonnee(1,y);
@@ -52,7 +52,7 @@ public class TestDeplacement {
 	@Test
 	public void testDeplacerEnDehorsLimiteLaby2() {
 		//initialisation des donnees
-		Labyrinthe l = new Labyrinthe();
+		Salle l = new Salle();
 		int y = l.getGrille().length;
 		Coordonnee c = new Coordonnee(49,1);
 		Coordonnee c1 = new Coordonnee(y,1);
@@ -66,7 +66,7 @@ public class TestDeplacement {
 	@Test
 	public void testDeplacerValide() {
 		//initialisation des donnees
-		Labyrinthe l = new Labyrinthe();
+		Salle l = new Salle();
 		Coordonnee c = new Coordonnee(1,1);
 		Coordonnee c1 = new Coordonnee(1,2);
 		Aventurier a = new Aventurier(c,l);
@@ -79,7 +79,7 @@ public class TestDeplacement {
 	@Test
 	public void testDeplacerCaseTraversable() {
 		//initialisation des donnees
-		Labyrinthe l = new Labyrinthe();
+		Salle l = new Salle();
 		Coordonnee c = new Coordonnee(1,48);
 		Coordonnee c1 = new Coordonnee(1,47);
 		//Methode testee
@@ -91,7 +91,7 @@ public class TestDeplacement {
 	@Test
 	public void testDeplacerCaseNonTraversable() {
 		//initialisation des donnees
-		Labyrinthe l = new Labyrinthe();
+		Salle l = new Salle();
 		Coordonnee c = new Coordonnee(1,1);
 		Coordonnee c1 = new Coordonnee(0,1);
 		//Methode testee
