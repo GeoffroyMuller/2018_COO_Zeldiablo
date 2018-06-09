@@ -63,7 +63,10 @@ public class Niveau extends Observable{
 	public int getTaille() {
 		return taille;
 	}
-
+	
+	public String getCase(int xe , int ye) {//peux procur des erreur 
+		return tab_case[xe][ye].getType();
+	}
 
 
 	

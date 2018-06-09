@@ -46,6 +46,11 @@ public class VueNiveau  extends JPanel implements Observer{
 			for(int i=0;i<niv.getTaille();i++) {
 				for(int j=0;j<niv.getTaille();j++) {
 					ajouterRectangle(x, y);
+					/*if(niv.getCase(i, j)=="mur") {
+						g.setColor(Color.RED);
+					}else {
+						g.setColor(Color.blue);
+					}*/
 					g.fillRect(x, y, taillecase, taillecase);
 					x+=taillecase+2;
 				}
