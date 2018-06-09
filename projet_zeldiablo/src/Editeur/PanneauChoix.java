@@ -24,11 +24,13 @@ public class PanneauChoix extends JPanel{
 	
 	private JPanel rb = new JPanel();
 	private JPanel op = new JPanel();
+	
+	private Niveau niv;
 
-	public PanneauChoix() {
+	public PanneauChoix(Niveau nive) {
 		// TODO Auto-generated constructor stub
+		niv = nive;
 		setLayout(new BorderLayout());
-		
 		
 		rbzone.setSelected(true);
 		
@@ -72,13 +74,12 @@ public class PanneauChoix extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				if(rbsalle.isSelected()) {
-					Salle sl = new Salle();
-					System.out.println("creation salle");
+					niv.creationSalle();
 				}
 				if(rbzone.isSelected()) {
-					Zone sl = new Zone(jtfnom.getText());
-					System.out.println("creation zone : "+ jtfnom.getText());
+					niv.creationZone(jtfnom.getText());
 				}
+				
 				jbcreer.setEnabled(false);
 				rbsalle.setEnabled(false);
 				rbzone.setEnabled(false);
