@@ -13,7 +13,7 @@ import moteur.DessinJeu;
 
 public class ZeldiabloDessin implements DessinJeu {
 	private ZeldiabloJeu jeu;
-	public static int TAILLE = 23;
+	public static int TAILLE = 40;
 	
 	public ZeldiabloDessin(ZeldiabloJeu j) {
 		this.jeu = j;
@@ -30,14 +30,14 @@ public class ZeldiabloDessin implements DessinJeu {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		g.drawImage(im, this.jeu.getAv().getCoor().getX()*23, this.jeu.getAv().getCoor().getY()*23,23,23,null);
+		g.drawImage(im, this.jeu.getAv().getCoor().getX()*30, this.jeu.getAv().getCoor().getY()*30,30,30,null);
 		
 		Labyrinthe lab = this.jeu.getListLab().get(0);
 		g.setColor(Color.BLACK);
 		for(int i = 0; i<lab.getGrille().length;i++) {
 			for(int j = 0; j<lab.getGrille()[0].length;j++) {
 				if(lab.getGrille()[i][j].getType().contains("mur")) {
-					g.fillRect(i*23, j*23, 23, 23);
+					g.fillRect(i*30, j*30, 30, 30);
 				}
 			}
 		}

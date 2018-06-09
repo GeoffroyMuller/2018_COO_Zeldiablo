@@ -40,4 +40,9 @@ public class Coordonnee {
 		this.y-=1;
 	}
 	
+	public void dupliquerCoordonnee(Coordonnee c) {
+		this.x = c.getX();
+		this.y = c.getY();
+	}
+	
 }
