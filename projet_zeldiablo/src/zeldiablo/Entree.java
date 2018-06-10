@@ -2,6 +2,7 @@ package zeldiablo;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.imageio.ImageIO;
 
@@ -9,7 +10,7 @@ import javax.imageio.ImageIO;
  * @author Guezennec Lucas, Biancalana Théo, Geoffroy Muller et Masson Loic
  *
  */
-public class Entree extends Case{
+public class Entree extends Case implements Serializable{
 	/**
 	 * La salle précédente
 	 * @see Entree#Entree(Salle)
@@ -21,11 +22,7 @@ public class Entree extends Case{
 	 */
 	public Entree(){
 		super();
-		try {
-			this.texture = ImageIO.read(new File("..\\texture\\Portail_Entree.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		this.setTextureMotCle("portail_entree");
 	}
 	
 	/**
@@ -36,11 +33,8 @@ public class Entree extends Case{
 	public Entree(Salle s) {
 		super();
 		sallePrecedente =s;
-		try {
-			this.texture = ImageIO.read(new File("..\\texture\\Portail_Entree.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		this.setTextureMotCle("portail_entree");
+
 	}
 	/**
 	 * @see zeldiablo.Case#estTraversable()

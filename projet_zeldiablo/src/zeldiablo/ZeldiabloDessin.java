@@ -50,7 +50,7 @@ public class ZeldiabloDessin implements DessinJeu {
 		g.setColor(Color.BLACK);
 		for(int i = 0; i<salle.TAILLE_SALLES;i++) {
 			for(int j = 0; j<salle.TAILLE_SALLES;j++) {
-					g.drawImage(salle.getGrille()[i][j].getTexture(), i*TAILLE, j*TAILLE,null);
+					//g.drawImage(salle.getGrille()[i][j].getTexture(), i*TAILLE, j*TAILLE,null);
 				}
 			}
 		g.drawImage(this.jeu.getAv().getTexture(), this.jeu.getAv().getCoor().getX()*TAILLE, this.jeu.getAv().getCoor().getY()*TAILLE,TAILLE,TAILLE,null);

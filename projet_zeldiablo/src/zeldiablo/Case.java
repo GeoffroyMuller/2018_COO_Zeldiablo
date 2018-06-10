@@ -18,25 +18,8 @@ public abstract class Case implements Serializable{
 	 * @see Case#getTexture()
 	 * @see Case#setTexture(Image)
 	 */
-	protected Image texture;
+	private String textureMotCle;
 
-
-	/**
-	 * Permet de retourner la texture de la case
-	 * @return La texture de la case
-	 */
-	public Image getTexture() {
-		return texture;
-	}
-
-	/**
-	 * Permet d'appliquer une texture sur une case
-	 * @param texture
-	 * 		La texture à appliquer
-	 */
-	public void setTexture(Image texture) {
-		this.texture = texture;
-	}
 
 	/**
 	 * Constructeur vide pour créer une case
@@ -64,6 +47,14 @@ public abstract class Case implements Serializable{
 	public String toString() {
 		String s = this.getType();
 		return s;
+	}
+
+	public String getTextureMotCle() {
+		return textureMotCle;
+	}
+
+	public void setTextureMotCle(String textureMotCle) {
+		this.textureMotCle = textureMotCle;
 	}
 	
 	
