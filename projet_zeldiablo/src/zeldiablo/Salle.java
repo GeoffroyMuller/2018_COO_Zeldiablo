@@ -2,32 +2,79 @@ package zeldiablo;
 
 import java.io.Serializable;
 
+/**
+ * @author Guezennec Lucas, Biancalana Théo, Geoffroy Muller et Masson Loic
+ *
+ */
 public class Salle implements Serializable{
 	
+	/**
+	 * Taille d'une salle
+	 */
 	public static final int TAILLE_SALLES=25;
+	/**
+	 * Entree de la salle
+	 * @see Salle#getEntree()
+	 * @see Salle#setEntree(Entree)
+	 */
 	private Entree entree;
+	/**
+	 * Sortie de la salle
+	 * @see Salle#getSortie()
+	 * @see Salle#setSortie(Sortie)
+	 */
 	private Sortie Sortie;
 	
+	/**
+	 * Les cases de la salle
+	 * @see Salle#getGrille()
+	 * @see Salle#setGrille(Case[][])
+	 */
 	private Case[][] grille;
 	
+	/**
+	 * Permet de retourner l'entrée d'une salle
+	 * @return l'entrée de la salle
+	 * @see Salle#entree
+	 */
 	public Entree getEntree() {
 		return entree;
 	}
 
+	/**
+	 * Permet de définir l'entrée d'une salle
+	 * @param entree
+	 * 		L'entrée de la salle
+	 * @see Salle#entree
+	 */
 	public void setEntree(Entree entree) {
 		this.entree = entree;
 	}
 
+	/**
+	 * Permet de retourner la sortie d'une salle
+	 * @return la sortie de la salle
+	 * @see Salle#Sortie
+	 */
 	public Sortie getSortie() {
 		return Sortie;
 	}
 
+	/**
+	 * Permet de définir la sortie de la salle
+	 * @param sortie
+	 * 		La sortie de la salle
+	 * @see Salle#Sortie
+	 */
 	public void setSortie(Sortie sortie) {
 		Sortie = sortie;
 	}
 
 
 	
+	/**
+	 * Constructeur permettant la création d'une salle
+	 */
 	public Salle(){
 		grille = new Case[TAILLE_SALLES][TAILLE_SALLES];
 		
@@ -61,6 +108,7 @@ public class Salle implements Serializable{
 		}
 	}
 	
+
 	public String toString(){
 		String res="";
 		for (int i = 0; i < grille.length; i++) {
@@ -72,10 +120,19 @@ public class Salle implements Serializable{
 		return res;
 	}
 
+	/**
+	 * Permet de retourner la grille de case de la salle
+	 * @return la grille de case de la salle
+	 * @see Salle#grille
+	 */
 	public Case[][] getGrille() {
 		return grille;
 	}
 	
+	/**
+	 * Permet 
+	 * @return
+	 */
 	public Coordonnee placerSurMurAlea() {
 		Coordonnee c = new Coordonnee(0, 0);
 		int des = (int)(Math.random()*4+1);
@@ -112,6 +169,12 @@ public class Salle implements Serializable{
 		return c;
 	}
 
+	/**
+	 * Permet de définir la grille de case
+	 * @param grille
+	 * 		La grille de case
+	 * @see Salle#grille
+	 */
 	public void setGrille(Case[][] grille) {
 		this.grille = grille;
 	}

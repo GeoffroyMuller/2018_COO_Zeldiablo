@@ -1,16 +1,24 @@
 package zeldiablo;
 
+/**
+ * @author Guezennec Lucas, Biancalana Théo, Geoffroy Muller et Masson Loic
+ *
+ */
 public class Escalier extends Case {
 
+	/**
+	 * @see zeldiablo.Case#estTraversable()
+	 */
 	@Override
 	public boolean estTraversable() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
+	/**
+	 * @see zeldiablo.Case#getType()
+	 */
 	@Override
 	public String getType() {
-		// TODO Auto-generated method stub
 		return "escalier";
 	}
 

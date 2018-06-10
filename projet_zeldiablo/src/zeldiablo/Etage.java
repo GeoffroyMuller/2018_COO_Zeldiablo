@@ -2,13 +2,33 @@ package zeldiablo;
 
 import java.util.ArrayList;
 
+/**
+ * @author Guezennec Lucas, Biancalana Théo, Geoffroy Muller et Masson Loic
+ *
+ */
 public class Etage {
+	/**
+	 * Numéro de l'étage
+	 * @see Etage#getNumetage()
+	 * @see Etage#Etage(int)
+	 */
 	private int numetage;
+	/**
+	 * Ensemble de salle de l'étage
+	 */
 	ArrayList<Salle> salles;
+	/**
+	 * Nombre de salle de l'étage
+	 */
 	public final static int NUM_SALLES=10;
 
 
 
+	/**
+	 * Constructuer, permettant la création de l'étage
+	 * @param pnum
+	 * 		numero de l'étage
+	 */
 	public Etage(int pnum) {
 		this.numetage = pnum;
 		salles = new ArrayList<Salle>();
@@ -36,10 +56,20 @@ public class Etage {
 	}
 
 
+	/**
+	 * Permet de retourner la numéro de l'étage
+	 * @return le numero de l'étage
+	 * @see Etage#numetage
+	 */
 	public int getNumetage() {
 		return numetage;
 	}
 
+	/**
+	 * Permet de retourner l'ensemble des salle
+	 * @return l'ensemble des salle
+	 * @see Etage#salles
+	 */
 	public ArrayList<Salle> getSalles() {
 		return salles;
 	}

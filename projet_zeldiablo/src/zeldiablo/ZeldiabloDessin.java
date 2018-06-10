@@ -11,15 +11,38 @@ import javax.imageio.ImageIO;
 
 import moteur.DessinJeu;
 
+/**
+ * @author Guezennec Lucas, Biancalana Théo, Geoffroy Muller et Masson Loic
+ *
+ */
 public class ZeldiabloDessin implements DessinJeu {
+	/**
+	 * Le jeu Zeldiablo
+	 * @see ZeldiabloDessin#ZeldiabloDessin(ZeldiabloJeu)
+	 */
 	private ZeldiabloJeu jeu;
 	
+	/**
+	 * La taille d'un carré, 30*30pixel
+	 */
 	public static int TAILLE = 30;
 
+	/**
+	 * Constructeur de ZeldiabloDessin
+	 * @param j
+	 * 		Jeu Zeldiablo
+	 * @see ZeldiabloDessin#jeu
+	 */
 	public ZeldiabloDessin(ZeldiabloJeu j) {
 		this.jeu = j;
 	}
 
+	/**
+	 * Permet l'affichage du jeu
+	 * @param image
+	 * 			BufferedImage
+	 * @see moteur.DessinJeu#dessiner(java.awt.image.BufferedImage)
+	 */
 	@Override
 	public void dessiner(BufferedImage image) {
 		Graphics2D g = (Graphics2D) image.getGraphics();
