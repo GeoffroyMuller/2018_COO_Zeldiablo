@@ -63,7 +63,15 @@ public class PanneauChoix extends JPanel{
 		add(op, BorderLayout.CENTER);
 		
 		PositionPanneaux1();
-		
+		ActionListener aclsave = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				niv.sauvegarder();
+			}
+		};
+		jbsave.addActionListener(aclsave);
 		ActionListener aclsuppr = new ActionListener() {
 			
 			@Override
