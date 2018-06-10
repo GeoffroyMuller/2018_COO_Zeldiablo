@@ -91,6 +91,7 @@ public class PanneauChoix extends JPanel{
 			        if(returnVal == JFileChooser.APPROVE_OPTION) {
 			           System.out.println("You chose to open this file: " +
 			                chooser.getSelectedFile().getName());
+			           jtfnom.setText(chooser.getSelectedFile().getName());
 			           niv.ouverture(chooser.getSelectedFile());
 			           System.out.println("apres niv ouvert");
 			        }

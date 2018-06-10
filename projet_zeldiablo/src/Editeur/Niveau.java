@@ -125,13 +125,13 @@ public class Niveau extends Observable implements Serializable{
 		try {
 
 			if(estsalle) {
-				ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("..\\Salles\\"+nomSave+".niv"));
+				ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("..\\Salles\\"+nomSave));
 				oos.writeObject(salle);
 				System.out.println("Salle Sauvegarder");
 				oos.close();
 			}
 			if(estzone) {
-				ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("..\\Zones\\"+nomSave+".niv"));
+				ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("..\\Zones\\"+nomSave));
 				oos.writeObject(zone);
 				System.out.println("Zone Sauvegarder");
 				oos.close();
