@@ -33,11 +33,7 @@ public class Sortie extends Case implements Serializable{
 	 */
 	public Sortie() {
 		super();
-		try {
-			this.texture = ImageIO.read(new File("..\\texture\\Portail_Sortie.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		this.setTextureMotCle("portail_sortie");
 	}
 	/**
 	 * Permet la création d'une case de type Sortie en spécifiant la salle suivante
@@ -47,11 +43,7 @@ public class Sortie extends Case implements Serializable{
 	public Sortie(Salle s) {
 		super();
 		this.salleSuivante = s;
-		try {
-			this.texture = ImageIO.read(new File("..\\texture\\Portail_Sortie.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		this.setTextureMotCle("portail_sortie");
 	}
 	
 	/**

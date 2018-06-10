@@ -26,11 +26,7 @@ public class Mur extends Case implements Serializable{
 	 */
 	public Mur() {
 		super();
-		try {
-			this.texture = ImageIO.read(new File("..\\texture\\wall_dark_stone.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		this.setTextureMotCle("wall_dark");
 	}
 	
 	/**

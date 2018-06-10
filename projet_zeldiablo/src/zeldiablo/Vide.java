@@ -24,11 +24,7 @@ public class Vide extends Case implements Serializable{
 	 * Permet la création d'une case vide
 	 */
 	public Vide(){
-		try {
-			this.texture = ImageIO.read(new File("..\\texture\\wood.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		this.setTextureMotCle("sol_bois");
 	}
 
 	/**

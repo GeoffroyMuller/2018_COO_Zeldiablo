@@ -22,11 +22,7 @@ public class Entree extends Case implements Serializable{
 	 */
 	public Entree(){
 		super();
-		try {
-			this.texture = ImageIO.read(new File("..\\texture\\Portail_Entree.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		this.setTextureMotCle("portail_entree");
 	}
 	
 	/**
@@ -37,11 +33,8 @@ public class Entree extends Case implements Serializable{
 	public Entree(Salle s) {
 		super();
 		sallePrecedente =s;
-		try {
-			this.texture = ImageIO.read(new File("..\\texture\\Portail_Entree.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		this.setTextureMotCle("portail_entree");
+
 	}
 	/**
 	 * @see zeldiablo.Case#estTraversable()
