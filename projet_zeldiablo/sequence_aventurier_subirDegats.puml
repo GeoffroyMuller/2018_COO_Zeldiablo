@@ -1,0 +1,23 @@
+@startuml
+participant "aventurier : Aventurier " as av
+participant "pointDeVie : Int" as pv #99FF99
+->av : subirDegats(10)
+activate av
+alt 10>0
+alt pointDeVie-10 < 0
+av->av : setpointDeVie(0)
+activate av
+deactivate av
+av->av : setMort(true)
+activate av
+deactivate av
+else pointDeVie-10 > 0
+av->av : modifierVie(-10)
+activate av
+deactivate av
+<--av
+deactivate av
+end
+end
+
+@enduml
