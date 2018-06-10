@@ -17,7 +17,7 @@ public class PanneauChoix extends JPanel{
 	private JRadioButton rbsalle = new JRadioButton("Salle");
 	private ButtonGroup bg = new ButtonGroup();
 	private JTextField jtfnom = new JTextField("nom", 15);
-	private JButton jbcreer = new JButton("Creer");
+	private JButton jbcreer = new JButton("Nouveau Projet");
 	
 	private JComboBox jcbcase = new JComboBox(new String[]{"Mur","Vide","Entree","Sortie"});
 	private JButton jbsave = new JButton("Save");

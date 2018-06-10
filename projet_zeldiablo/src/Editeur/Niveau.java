@@ -122,16 +122,27 @@ public class Niveau extends Observable implements Serializable{
 		notifyObservers(0);
 	}
 	public void sauvegarder(String nomSave) {
+		String ext ="";
+		if(nomSave.length()>4) {
+			String nom_ext =nomSave.substring(nomSave.length()-5, nomSave.length());
+			System.out.println(nom_ext);
+			if(!nom_ext.equals(".niv")) {
+				ext=".niv";
+			}
+		}
+		else {
+			ext=".niv";
+		}
 		try {
 
 			if(estsalle) {
-				ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("..\\Salles\\"+nomSave));
+				ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("..\\Salles\\"+nomSave+ext));
 				oos.writeObject(salle);
 				System.out.println("Salle Sauvegarder");
 				oos.close();
 			}
 			if(estzone) {
-				ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("..\\Zones\\"+nomSave));
+				ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("..\\Zones\\"+nomSave+ext));
 				oos.writeObject(zone);
 				System.out.println("Zone Sauvegarder");
 				oos.close();
@@ -151,7 +162,7 @@ public class Niveau extends Observable implements Serializable{
 			try {
 				Salle s = (Salle)ois.readObject();
 				creationSalle(s);
-				
+
 			}
 			catch(Exception e) {
 				System.out.println("pas une salle");
@@ -163,7 +174,7 @@ public class Niveau extends Observable implements Serializable{
 			catch(Exception e) {
 				System.out.println("pas une zone");
 			}
-			
+
 			ois.close();
 		}
 		catch(Exception e) {
@@ -180,7 +191,7 @@ public class Niveau extends Observable implements Serializable{
 		setChanged();
 		notifyObservers(VueNiveau.ADD_ML);
 	}
-	
+
 	public void creationZone(Zone z) {
 		zone =z;
 		tab_case=z.getGrilleZone();
