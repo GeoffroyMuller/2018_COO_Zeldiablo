@@ -1,0 +1,21 @@
+@startuml
+Participant "coordonnee : Coordonnee" as c
+Participant "coord : Coordonnee" as coord #99FF99
+Participant "x : coordonnee.x" as x #99FF99
+Participant "y : coordonnee.y" as y #99FF99
+
+->c : duplieurCoordonnee(coord)
+activate c
+c->coord : coord.getX()
+activate coord
+c<--coord : 10
+deactivate coord
+c->coord : coord.getY()
+activate coord
+c<--coord : 20
+deactivate coord
+c->x : x=10
+c->y : y=20
+<--c
+deactivate c
+@enduml
