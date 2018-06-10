@@ -124,7 +124,7 @@ public class Niveau extends Observable implements Serializable{
 	public void sauvegarder(String nomSave) {
 		String ext ="";
 		if(nomSave.length()>4) {
-			String nom_ext =nomSave.substring(nomSave.length()-5, nomSave.length());
+			String nom_ext =nomSave.substring(nomSave.length()-4, nomSave.length());
 			System.out.println(nom_ext);
 			if(!nom_ext.equals(".niv")) {
 				ext=".niv";
@@ -158,24 +158,27 @@ public class Niveau extends Observable implements Serializable{
 
 	public void ouverture(File f) {
 		try {
-			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
+			
 			try {
+				ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
 				Salle s = (Salle)ois.readObject();
 				creationSalle(s);
+				ois.close();
 
 			}
 			catch(Exception e) {
 				System.out.println("pas une salle");
 			}
 			try {
+				ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
 				Zone z = (Zone)ois.readObject();
 				creationZone(z);
+				ois.close();
 			}
 			catch(Exception e) {
 				System.out.println("pas une zone");
 			}
 
-			ois.close();
 		}
 		catch(Exception e) {
 			e.printStackTrace();

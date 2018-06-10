@@ -26,8 +26,8 @@ public class Zone implements Serializable{
 	 * @param pNom
 	 * 	nom de la zone
 	 */
-	public Zone(String pNom) {
-		nomZone=pNom;
+	public Zone(String pnom) {
+		nomZone=pnom;
 		grilleZone = new Case[TAILLE_ZONE][TAILLE_ZONE];
 		for (int i = 0; i < TAILLE_ZONE; i++) {
 			for (int j = 0; j < TAILLE_ZONE; j++) {
