@@ -16,9 +16,7 @@ public class PincipalEditeur {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		JFrame f=new JFrame("Editeur Zeldiablo");
-		
-		JPanel bas=new JPanel();
-		bas.setBackground(new Color(60,60,60));
+
 		
 		JPanel droit=new JPanel();
 		droit.setBackground(new Color(70,70,70));
@@ -35,7 +33,7 @@ public class PincipalEditeur {
 		
 		f.getContentPane().add(pc,BorderLayout.NORTH);
 		f.getContentPane().add(vn,BorderLayout.CENTER);
-		f.getContentPane().add(bas,BorderLayout.SOUTH);
+		f.getContentPane().add(pc.getBas(),BorderLayout.SOUTH);
 		f.getContentPane().add(droit,BorderLayout.EAST);
 		f.getContentPane().add(gauche,BorderLayout.WEST);
 		

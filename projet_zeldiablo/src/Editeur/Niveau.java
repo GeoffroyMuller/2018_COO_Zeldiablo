@@ -105,7 +105,18 @@ public class Niveau extends Observable{
 			System.out.println("clique entre deux case");
 		}
 		
-		
+		setChanged();
+		notifyObservers(0);
+	}
+	
+	public void supprimerTout() {
+		System.out.println("Supprimer Tout");
+		salle = null;
+		zone = null;
+		estsalle = false;
+		estzone = false;
+		tab_case = null;
+		taille = 0;
 		setChanged();
 		notifyObservers(0);
 	}
