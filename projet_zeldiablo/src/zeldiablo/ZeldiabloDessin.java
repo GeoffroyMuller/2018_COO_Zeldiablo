@@ -16,6 +16,8 @@ import moteur.DessinJeu;
  *
  */
 public class ZeldiabloDessin implements DessinJeu {
+	
+	private GestionnaireTexture  gt = new GestionnaireTexture();
 	/**
 	 * Le jeu Zeldiablo
 	 * @see ZeldiabloDessin#ZeldiabloDessin(ZeldiabloJeu)
@@ -50,7 +52,7 @@ public class ZeldiabloDessin implements DessinJeu {
 		g.setColor(Color.BLACK);
 		for(int i = 0; i<salle.TAILLE_SALLES;i++) {
 			for(int j = 0; j<salle.TAILLE_SALLES;j++) {
-					//g.drawImage(salle.getGrille()[i][j].getTexture(), i*TAILLE, j*TAILLE,null);
+					g.drawImage(gt.attribuerTexture(salle.getGrille()[i][j]), i*TAILLE, j*TAILLE,null);
 				}
 			}
 		g.drawImage(this.jeu.getAv().getTexture(), this.jeu.getAv().getCoor().getX()*TAILLE, this.jeu.getAv().getCoor().getY()*TAILLE,TAILLE,TAILLE,null);

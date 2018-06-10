@@ -3,6 +3,7 @@ package zeldiablo;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.imageio.ImageIO;
 
@@ -10,7 +11,7 @@ import javax.imageio.ImageIO;
  * @author Guezennec Lucas, Biancalana Théo, Geoffroy Muller et Masson Loic
  *
  */
-public class Aventurier {
+public class Aventurier implements Serializable{
 	/**
 	 * Les points de vie de l'aventurier
 	 * @see Aventurier#getVie()

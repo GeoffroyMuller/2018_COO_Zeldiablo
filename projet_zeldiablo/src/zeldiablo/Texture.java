@@ -19,4 +19,12 @@ public class Texture {
 		}
 	}
 
+	public Image getImg() {
+		return img;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
 }

@@ -1,10 +1,12 @@
 package zeldiablo;
 
+import java.io.Serializable;
+
 /**
  * @author Guezennec Lucas, Biancalana Théo, Geoffroy Muller et Masson Loic
  *
  */
-public class Coordonnee {
+public class Coordonnee implements Serializable{
 	/**
 	 * x , coordonnée de l'axe des abscisses
 	 * @see Coordonnee#decrementerX()
