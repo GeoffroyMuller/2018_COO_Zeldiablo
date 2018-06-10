@@ -3,6 +3,7 @@ package zeldiablo;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.imageio.ImageIO;
 
@@ -10,7 +11,7 @@ import javax.imageio.ImageIO;
  * @author Guezennec Lucas, Biancalana Théo, Geoffroy Muller et Masson Loic
  *
  */
-public abstract class Case {
+public abstract class Case implements Serializable{
 	
 	 /**
 	 * La texture de la case, correspond a une image .png de 30*30pixel
