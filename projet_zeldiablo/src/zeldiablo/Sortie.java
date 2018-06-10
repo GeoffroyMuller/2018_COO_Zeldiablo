@@ -2,6 +2,7 @@ package zeldiablo;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.imageio.ImageIO;
 
@@ -9,7 +10,7 @@ import javax.imageio.ImageIO;
  * @author Guezennec Lucas, Biancalana Théo, Geoffroy Muller et Masson Loic
  *
  */
-public class Sortie extends Case{
+public class Sortie extends Case implements Serializable{
 	/**
 	 * La salle suivante
 	 * @see Sortie#getSalleSuivante()
