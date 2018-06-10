@@ -8,6 +8,7 @@ import java.io.Serializable;
  */
 public class Salle implements Serializable{
 	
+	
 	/**
 	 * Taille d'une salle
 	 */

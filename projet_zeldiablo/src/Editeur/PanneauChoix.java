@@ -8,6 +8,7 @@ import java.util.concurrent.Delayed;
 import java.awt.*;
 import java.util.*;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import zeldiablo.*;
 
@@ -63,14 +64,43 @@ public class PanneauChoix extends JPanel{
 		add(op, BorderLayout.CENTER);
 		
 		PositionPanneaux1();
+		
+	    
+	    
+	    
 		ActionListener aclsave = new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				niv.sauvegarder();
+				niv.sauvegarder(jtfnom.getText());
 			}
 		};
+		jbsave.addActionListener(aclsave);
+		
+		
+		ActionListener aclouvrir= new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				 JFileChooser chooser = new JFileChooser();
+			    FileNameExtensionFilter filter = new FileNameExtensionFilter(
+			            ".niv Niveau custom", "niv");
+			        chooser.setFileFilter(filter);
+			        int returnVal = chooser.showOpenDialog(getParent());
+			        if(returnVal == JFileChooser.APPROVE_OPTION) {
+			           System.out.println("You chose to open this file: " +
+			                chooser.getSelectedFile().getName());
+			           niv.ouverture(chooser.getSelectedFile());
+			           System.out.println("apres niv ouvert");
+			        }
+				
+				
+			}
+		};
+		jbouvrir.addActionListener(aclouvrir);
+		
+		
 		jbsave.addActionListener(aclsave);
 		ActionListener aclsuppr = new ActionListener() {
 			
@@ -93,6 +123,9 @@ public class PanneauChoix extends JPanel{
 		jbNonsuppr.addActionListener(aclsuppr);
 		jbsuppr.addActionListener(aclsuppr);
 		
+		
+			
+
 		ActionListener aclrb = new ActionListener() {
 			
 			@Override
@@ -152,7 +185,7 @@ public class PanneauChoix extends JPanel{
 		jbNonsuppr.setVisible(false);
 		jcbcase.setEnabled(false);
 		jbsave.setEnabled(false);
-		jbouvrir.setEnabled(false);
+		jbouvrir.setEnabled(true);
 		jbsuppr.setEnabled(false);
 		jbcreer.setEnabled(true);
 		rbsalle.setEnabled(true);
@@ -174,7 +207,7 @@ public class PanneauChoix extends JPanel{
 	public void PosiationPanneauxallclose() {
 		jcbcase.setEnabled(false);
 		jbsave.setEnabled(false);
-		jbouvrir.setEnabled(false);
+		jbouvrir.setEnabled(true);
 		jbsuppr.setEnabled(false);
 		jbcreer.setEnabled(false);
 		rbsalle.setEnabled(false);

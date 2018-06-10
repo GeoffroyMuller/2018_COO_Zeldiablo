@@ -1,10 +1,6 @@
 package Editeur;
 
 import java.awt.*;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.io.*;
 import java.util.*;
 
@@ -125,24 +121,73 @@ public class Niveau extends Observable implements Serializable{
 		setChanged();
 		notifyObservers(0);
 	}
-	public void sauvegarder() {
+	public void sauvegarder(String nomSave) {
 		try {
-			ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("save1.txt"));
+
 			if(estsalle) {
+				ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("..\\Salles\\"+nomSave+".niv"));
 				oos.writeObject(salle);
 				System.out.println("Salle Sauvegarder");
+				oos.close();
 			}
 			if(estzone) {
+				ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("..\\Zones\\"+nomSave+".niv"));
 				oos.writeObject(zone);
 				System.out.println("Zone Sauvegarder");
+				oos.close();
 			}
-			oos.close();
+
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			System.out.println("erreur Sauvegarde : IOException");
 			e.printStackTrace();
 		}
+	}
+
+	public void ouverture(File f) {
+		try {
+			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
+			try {
+				Salle s = (Salle)ois.readObject();
+				creationSalle(s);
+				
+			}
+			catch(Exception e) {
+				System.out.println("pas une salle");
+			}
+			try {
+				Zone z = (Zone)ois.readObject();
+				creationZone(z);
+			}
+			catch(Exception e) {
+				System.out.println("pas une zone");
+			}
+			
+			ois.close();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void creationSalle(Salle s) {
+		salle=s;
+		System.out.println(salle);
+		tab_case=s.getGrille();
+		System.out.println(tab_case);
+		System.out.println("ouverture  salle");
+		setChanged();
+		notifyObservers(VueNiveau.ADD_ML);
+	}
+	
+	public void creationZone(Zone z) {
+		zone =z;
+		tab_case=z.getGrilleZone();
+		taille = Zone.TAILLE_ZONE;
+		System.out.println("ouverture zone ");
+		setChanged();
+		notifyObservers(VueNiveau.ADD_ML);
 	}
 
 }
