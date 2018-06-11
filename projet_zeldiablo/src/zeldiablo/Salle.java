@@ -134,6 +134,30 @@ public class Salle implements Serializable{
 
 
 	}
+	//Constructeur pour test
+	public Salle(int o) {
+		this.monstrePresent = new ArrayList<Monstre>();
+		grille = new Case[TAILLE_SALLES][TAILLE_SALLES];
+		this.grilleMonstreSpawn = new String[TAILLE_SALLES][TAILLE_SALLES];
+		AleatoireVrai randomV= new AleatoireVrai();
+		Coordonnee cs = placerSurMurAlea(randomV);
+
+		grille[cs.getX()][cs.getY()] = new Sortie();
+		this.Sortie = (Sortie)grille[cs.getX()][cs.getY()] ;
+
+
+
+		for (int i = 0; i < grille.length; i++) {
+			for (int j = 0; j < grille[0].length; j++) {
+				if(grille[i][j]==null){
+						grille[i][j]=new Vide();
+				}
+			}
+
+		}
+		this.creeGrilleMonstre();
+		this.apparitionMonstre(randomV);
+	}
 
 	public void creeGrilleMonstre() {
 		for(int i =0; i < grille.length;i++) {
@@ -306,8 +330,15 @@ public class Salle implements Serializable{
 	public boolean isSpawnPossible(int x, int y) {
 		boolean res = true;
 		if((this.grilleMonstreSpawn[x][y].contains("o"))
-				|| ((!this.grille[x][y].estTraversable())||(this.grille[x][y].isMonstrePresent()))
-				|| (x==0 && y==0) || (x==Salle.TAILLE_SALLES || y==Salle.TAILLE_SALLES) || this.grille[x][y].getType().contains("entree") || this.grille[x][y].getType().contains("sortie") ) {
+				|| ((!this.grille[x][y].estTraversable()) || this.grille[x][y].getType().contains("entree") || this.grille[x][y].getType().contains("sortie"))) {
+			res = false;
+		}
+		return res;
+	}
+	
+	public boolean isDeplacementPossible(int x, int y) {
+		boolean res = true;
+		if(((!this.grille[x][y].estTraversable()) || this.grille[x][y].getType().contains("entree") || this.grille[x][y].getType().contains("sortie"))) {
 			res = false;
 		}
 		return res;
