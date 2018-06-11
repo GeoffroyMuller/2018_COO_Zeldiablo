@@ -39,7 +39,7 @@ public class PanneauChoix extends JPanel{
 		niv = nive;
 		setLayout(new BorderLayout());
 		
-		rbsalle.setSelected(true);
+		rbzone.setSelected(true);
 		
 		bg.add(rbzone);
 		bg.add(rbsalle);
@@ -89,13 +89,14 @@ public class PanneauChoix extends JPanel{
 			        chooser.setFileFilter(filter);
 			        int returnVal = chooser.showOpenDialog(getParent());
 			        if(returnVal == JFileChooser.APPROVE_OPTION) {
-			           System.out.println("You chose to open this file: " +
+			           System.out.println("Choisir le fichier a ouvrir : " +
 			                chooser.getSelectedFile().getName());
 			           jtfnom.setText(chooser.getSelectedFile().getName());
 			           niv.ouverture(chooser.getSelectedFile());
 			           System.out.println("apres niv ouvert");
 			        }
-				
+				jbcreer.doClick();
+				System.out.println("doclick");
 				
 			}
 		};

@@ -2,6 +2,7 @@ package Editeur;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import zeldiablo.*;
 
@@ -9,6 +10,7 @@ public class ControleurCase {
 	private VueNiveau vn;
 	private Niveau nv;
 	private MouseListener ml;
+	private MouseMotionListener mml;
 	
 	public ControleurCase(VueNiveau pvn,Niveau pnv) {
 		// TODO Auto-generated constructor stub
@@ -49,10 +51,31 @@ public class ControleurCase {
 				
 			}
 		};
+		
+		mml = new MouseMotionListener() {
+			
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println("Dragg");
+				Coordonnee c=vn.estDedans(e.getX(), e.getY());
+				nv.changerCase(c);
+			}
+		};
 	}
 
 	public MouseListener getMl() {
 		return ml;
+	}
+
+	public MouseMotionListener getMml() {
+		return mml;
 	}
 	
 
