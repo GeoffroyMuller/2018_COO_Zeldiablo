@@ -9,7 +9,9 @@ import zeldiablo.Salle;
 import zeldiablo.ZeldiabloJeu;
 
 public class TestZeldiabloJeu {
-
+	/**
+	 * test du changement d'etage de la classe ZeldiabloJeu
+	 */
 	@Test
 	public void testChangementEtage() {
 		//Preparation des données

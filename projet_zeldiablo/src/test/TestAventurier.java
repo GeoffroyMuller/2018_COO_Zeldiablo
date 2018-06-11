@@ -8,7 +8,9 @@ import zeldiablo.*;
 
 
 public class TestAventurier {
-
+	/**
+	 * test du constructeur vide
+	 */
 	@Test
 	public void testConstructeur_1() {
 		//initialisation des donnees
@@ -19,7 +21,9 @@ public class TestAventurier {
 		assertEquals("La vie devrait etre egale a 100",a.getVie(), pv);
 		assertFalse("L'aventurier devrait etre en vie",a.isMort());
 	}
-
+	/**
+	 * test du constructeur avec parametres valides
+	 */
 	@Test
 	public void testConstructeur_2() {
 		//initialisation des donnees
@@ -32,7 +36,9 @@ public class TestAventurier {
 		assertEquals("La coordonnee en x devrait etre egale a 10", 10,a.getCoor().getX());
 		assertEquals("La coordonnee en y devrait etre egale a 100", 100,a.getCoor().getY());
 	}
-
+	/**
+	 * test du constructeur avec parametre non valides
+	 */
 	@Test
 	public void testConstructeur_3() {
 		//initialisation des donnees
@@ -43,7 +49,9 @@ public class TestAventurier {
 		assertEquals("La position devrait etre un mur", "mur",a.getCase().getType());
 		assertEquals("La position ne devrait pas etre traversable", false,a.getCase().estTraversable());
 	}
-	
+	/**
+	 * test de la methode enVie de Personnage
+	 */
 	@Test
 	public void testAventurierEnVie() {
 		//initialisation des donnees
@@ -53,7 +61,9 @@ public class TestAventurier {
 		//assertion
 		assertFalse("Le joueur devrait etre en vie", res);
 	}
-	
+	/**
+	 * test de la methode modifierVie avec une valeur négative
+	 */
 	@Test
 	public void testModifierVieNegatif() {
 		//Donnees
@@ -63,7 +73,9 @@ public class TestAventurier {
 		//Test
 		assertEquals("La vie devrait avoir diminue", 80,a.getVie());
 	}
-
+	/**
+	 * test de la methode modifierVie avec une valeur positive
+	 */
 	@Test
 	public void testModifierViePositif() {
 		//Donnees
@@ -73,7 +85,9 @@ public class TestAventurier {
 		//Test
 		assertEquals("La vie devrait avoir augmente", 110,a.getVie());
 	}
-
+	/**
+	 * test de la methode subirDegat avec l'aventurier toujours en vie
+	 */
 	@Test
 	public void testSubirDegatPositifToujoursEnVie() {
 		//Donnees
@@ -84,7 +98,9 @@ public class TestAventurier {
 		assertEquals("La vie devrait avoir diminue", 80,a.getVie());
 		assertFalse("L'aventurier devrait etre en vie",a.isMort()); 
 	}
-
+	/**
+	 * test de la methode subirDegat avec l'aventurier mort
+	 */
 	@Test
 	public void testSubirDegatPositifMort() {
 		//Donnees
@@ -94,7 +110,9 @@ public class TestAventurier {
 		//Test
 		assertTrue("L'aventurier devrait etre mort",a.isMort());
 	}
-
+	/**
+	 * test de la methode subirDegat avec une valeur negative
+	 */
 	@Test
 	public void testSubirDegatNegatif() {
 		//Donnees
@@ -104,7 +122,9 @@ public class TestAventurier {
 		//Test
 		assertEquals("La vie devrait ne pas avoir diminue",100, a.getVie());
 	}
-
+	/**
+	 * test de la methode soigner avec une valeur negative
+	 */
 	@Test
 	public void testSoignerNegatif() {
 		//Donnees
@@ -114,7 +134,9 @@ public class TestAventurier {
 		//Test
 		assertEquals("La vie devrait ne pas avoir diminue",100, a.getVie());
 	}
-
+	/**
+	 * test de la methode soigner avec une valeur positive
+	 */
 	@Test
 	public void testSoignerPositif() {
 		//Donnees
@@ -125,7 +147,9 @@ public class TestAventurier {
 		//Test
 		assertEquals("La vie devrait ne pas avoir diminue",100, a.getVie());
 	}
-
+	/**
+	 * test de la methode soigner avec une valeur depassant les point de vie de l'aventurier
+	 */
 	@Test
 	public void testSoignerSup100() {
 		//Donnees
@@ -135,7 +159,9 @@ public class TestAventurier {
 		//Test
 		assertEquals("La vie devrait ne pas avoir diminue",100, a.getVie());
 	}
-
+	/**
+	 * test de la methode deplacerAventurier en dehors de la salle a droite et a gauche
+	 */
 	@Test
 	public void testDeplacerEnDehorsDroiteGauche() {
 		//initialisation des donnees
@@ -148,7 +174,9 @@ public class TestAventurier {
 		//assertion 
 		assertFalse("Le joueur ne devrait pas pouvoir se deplacer en dehors", a.deplacerAventurier(c1));
 	}
-
+	/**
+	 * test de la methode deplacerAventurier en dehors de la salle en haut et en bas
+	 */
 	@Test
 	public void testDeplacerEnDehorsHautBas() {
 		//initialisation des donnees
@@ -161,7 +189,9 @@ public class TestAventurier {
 		//assertion
 		assertFalse("Le joueur ne devrait pas pouvoir se deplacer en dehors", a.deplacerAventurier(c1));
 	}
-
+	/**
+	 * test de la methode deplacerAventurier en dehors de la salle
+	 */
 	@Test
 	public void testDeplacerEnDehorsLimiteLaby() {
 		//initialisation des donnees
@@ -175,7 +205,9 @@ public class TestAventurier {
 		//assertion
 		assertFalse("Le joueur ne devrait pas pouvoir se deplacer en dehors", a.deplacerAventurier(c1));
 	}
-
+	/**
+	 * test de la methode deplacerAventurier en dehors de la salle
+	 */
 	@Test
 	public void testDeplacerEnDehorsLimiteLaby2() {
 		//initialisation des donnees
@@ -189,7 +221,9 @@ public class TestAventurier {
 		//assertion
 		assertFalse("Le joueur ne devrait pas pouvoir se deplacer en dehors", a.deplacerAventurier(c1));
 	}
-
+	/**
+	 * test de la methode deplacerAventurier avec un deplacement valide dans la salle
+	 */
 	@Test
 	public void testDeplacerValide() {
 		//initialisation des donnees
@@ -202,7 +236,9 @@ public class TestAventurier {
 		//assertion
 		assertTrue("Le joueur ne devrait pouvoir se deplacer", a.deplacerAventurier(c1));
 	}
-
+	/**
+	 * test de la methode estTraversable de Case avec une case traversable
+	 */
 	@Test
 	public void testDeplacerCaseTraversable() {
 		//initialisation des donnees
@@ -214,7 +250,9 @@ public class TestAventurier {
 		//assertion
 		assertTrue("Le joueur devrait pouvoir se deplacer sur la case", l.getGrille()[c.getX()][c.getY()].estTraversable());
 	}
-
+	/**
+	 * test de la methode estTraversable de Case avec une case non traversable
+	 */
 	@Test
 	public void testDeplacerCaseNonTraversable() {
 		//initialisation des donnees
@@ -227,7 +265,10 @@ public class TestAventurier {
 		assertFalse("Le joueur ne devrait pas pouvoir se deplacer sur la case", l.getGrille()[c1.getX()][c1.getY()].estTraversable());
 
 	}
-
+	/**
+	 * test de la methode changementSalle avec un aventurier qui prend une entrée 
+	 * et qui se retrouve a la sortie de la salle precedente
+	 */
 	@Test
 	public void testDeplacerCaseEntree() {
 		//initialisation des donnees

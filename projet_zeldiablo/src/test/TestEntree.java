@@ -8,7 +8,9 @@ import zeldiablo.Salle;
 import zeldiablo.Sortie;
 import zeldiablo.*;
 public class TestEntree {
-
+	/**
+	 * test du constructeur de la classe Entree
+	 */
 	@Test
 	public void testConstructeur() {
 		Salle sa = new Salle();
