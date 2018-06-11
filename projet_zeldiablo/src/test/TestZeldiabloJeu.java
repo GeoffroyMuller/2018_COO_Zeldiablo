@@ -20,17 +20,5 @@ public class TestZeldiabloJeu {
 		//Test
 		assertEquals("L'aventurier devrait avoir changer d'étage",numEtage+1, jD.getAv().getEtage().getNumetage());	
 	}
-	
-	@Test
-	public void testChangementSalle() {
-		//Preparation des données
-		ZeldiabloJeu jD = new ZeldiabloJeu();
-		jD.getAv().setCoor(new Coordonnee(24, (int)25/2));
-		Salle salleActuel =jD.getAv().getSalle() ;
-		//Methode testée
-		jD.changementSalle();
-		//Test
-		assertTrue("L'aventurier devrait avoir changer de salle",salleActuel != jD.getAv().getSalle());	
-	}
 
 }

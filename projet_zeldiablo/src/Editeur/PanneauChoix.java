@@ -101,8 +101,6 @@ public class PanneauChoix extends JPanel{
 		};
 		jbouvrir.addActionListener(aclouvrir);
 		
-		
-		jbsave.addActionListener(aclsave);
 		ActionListener aclsuppr = new ActionListener() {
 			
 			@Override
@@ -133,7 +131,7 @@ public class PanneauChoix extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				if(rbsalle.isSelected()) {
-					jtfnom.setEnabled(false);
+					jtfnom.setEnabled(true);
 				}
 				if(rbzone.isSelected()) {
 					jtfnom.setEnabled(true);
