@@ -45,6 +45,7 @@ public class VueNiveau  extends JPanel implements Observer{
 		super.paintComponent(g);
 		x=MARGE_TAILLECASE_X;
 		y=MARGE_TAILLECASE_Y;
+		g.drawString(""+niv.getTaille()+"*"+niv.getTaille(), this.getWidth()-40, this.getHeight()-8);
 		g.setColor(Color.black);
 		if(niv.getTab_case()!=null) {
 			g.setColor(Color.BLACK);
