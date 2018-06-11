@@ -21,10 +21,13 @@ public class Entree extends Case implements Serializable{
 	 */
 	private Salle sallePrecedente;
 	
+	private Coordonnee c;
+	
+	
 	/**
 	 * Permet la création d'une case de type entrée
 	 */
-	public Entree(){
+	public Entree(Coordonnee c){
 		super();
 		this.setEstTraversable(true);
 		this.setTextureMotCle("portail_entree");
@@ -35,7 +38,7 @@ public class Entree extends Case implements Serializable{
 	 * @param s
 	 * 		La salle précédente
 	 */
-	public Entree(Salle s) {
+	public Entree(Salle s,Coordonnee c) {
 		super();
 		this.setEstTraversable(true);
 		sallePrecedente =s;

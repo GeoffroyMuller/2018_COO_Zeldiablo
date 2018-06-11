@@ -100,7 +100,7 @@ public class Salle implements Serializable{
 		this.grilleMonstreSpawn = new String[TAILLE_SALLES][TAILLE_SALLES];
 		AleatoireVrai randomV= new AleatoireVrai();
 		Coordonnee ce = placerSurMurAlea(randomV);
-		grille[ce.getX()][ce.getY()] = new Entree();
+		grille[ce.getX()][ce.getY()] = new Entree(new Coordonnee(ce.getX(),ce.getY()));
 		this.entree=(Entree)grille[ce.getX()][ce.getY()];
 
 
