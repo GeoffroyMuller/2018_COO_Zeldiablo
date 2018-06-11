@@ -14,12 +14,24 @@ public class Escalier extends Case implements Serializable {
 	private static final long serialVersionUID = 454796313750726250L;
 
 	/**
-	 * @see zeldiablo.Case#estTraversable()
+	 * @author Guezennec Lucas, Biancalana Théo, Geoffroy Muller et Masson Loic
+	 *
 	 */
-	@Override
-	public boolean estTraversable() {
-		return true;
+
+	private Salle salleEtageSup;
+
+	/**
+	 * Permet la création d'une case de type entrée
+	 */
+	public Escalier(){
+		super();
+		this.setEstTraversable(true);
+		this.setTextureMotCle("portail_escalier");
 	}
+
+
+
+
 
 	/**
 	 * @see zeldiablo.Case#getType()
@@ -29,4 +41,22 @@ public class Escalier extends Case implements Serializable {
 		return "escalier";
 	}
 
+
+
+
+
+	public Salle getSalleEtageSup() {
+		return salleEtageSup;
+	}
+
+
+
+
+
+	public void setSalleEtageSup(Salle salleEtageSup) {
+		this.salleEtageSup = salleEtageSup;
+	}
+
 }
+
+
