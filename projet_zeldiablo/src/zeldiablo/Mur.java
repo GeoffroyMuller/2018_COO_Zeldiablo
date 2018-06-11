@@ -15,6 +15,11 @@ public class Mur extends Case implements Serializable{
 	
 	
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1340784360211029367L;
+
+	/**
 	 * Permet la création d'un mur
 	 */
 	public Mur() {
