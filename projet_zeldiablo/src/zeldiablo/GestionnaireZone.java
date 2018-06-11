@@ -34,7 +34,7 @@ public class GestionnaireZone {
 		try{
 		for (int i = 0; i < lf.size(); i++) {
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(lf.get(i)));
-			Zone z = (Zone)ois.readObject();
+			Zone z = ((Zone)ois.readObject());
 			ois.close();
 			lz.add(z);
 		}
