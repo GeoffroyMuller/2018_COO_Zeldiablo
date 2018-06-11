@@ -56,7 +56,9 @@ public class GestionnaireZone {
 	}
 	
 	public Zone donnerUneZone(){
-		int rd = (int)Math.random()*this.lz.size();
+		System.out.println("================="+lz.size());
+		int rd = (int)(Math.random()*this.lz.size());
+		System.out.println("==================="+rd);
 		Zone z =  lz.get(rd);
 		return z;
 		
