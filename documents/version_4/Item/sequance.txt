@@ -1,0 +1,36 @@
+@startuml
+Participant "s : Salle" as Salle
+Participant "tab_libre : ArrayList<Coordonnee>" as tab_libre
+Participant "itemPresent : Arraylist<Item>" as itemPresent
+
+-> Salle : placeAleatoirItem(aleaItem : int)
+activate Salle
+Salle -> Salle : placelibreItems()
+activate Salle
+Salle --> Salle : tab_libre
+deactivate Salle
+loop : i=0;i<tab_libre.size();i++
+Salle -> tab_libre : GetX()
+activate Salle
+activate tab_libre
+tab_libre --> Salle
+deactivate tab_libre
+deactivate Salle
+Salle -> tab_libre : GetY()
+activate Salle
+activate tab_libre
+tab_libre --> Salle
+deactivate tab_libre
+deactivate Salle
+create "i : Item" as Item
+Salle -> Item : "new Item("potion",this,6,7)"
+Salle -> itemPresent : add(i)
+activate Salle
+activate itemPresent
+Salle <-- itemPresent
+deactivate itemPresent
+deactivate Salle
+end
+<-- Salle
+deactivate Salle
+@enduml
