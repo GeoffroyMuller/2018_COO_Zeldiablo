@@ -343,6 +343,29 @@ public class Salle implements Serializable{
 		}
 		return res;
 	}
+	
+	
+	//=====Spawn Item=====//
+	
+	public ArrayList<Coordonnee> placeLibreItems(){
+		ArrayList<Coordonnee> tab_coo = new ArrayList<Coordonnee>();
+		for(int i=0;i<grille[0].length;i++){
+			for(int j=0;i<grille.length;j++){
+				if(grille[i][j].estTraversable()){
+					tab_coo.add(new Coordonnee(i, j));
+				}
+			}
+		}
+		return tab_coo;
+	}
+	
+	/*public ArrayList<Coordonnee> placeAleatoirItems(){
+		ArrayList<Coordonnee> tab_libre = placeLibreItems();
+		int aleaItem = (int)Math.random() * (tab_libre.size() - 0);
+		
+		
+	}*/
+	
 
 
 

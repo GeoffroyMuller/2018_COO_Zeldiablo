@@ -11,29 +11,49 @@ public class TestAventurier {
 
 	@Test
 	public void testConstructeur_1() {
+		//initialisation des donnees
 		Aventurier a = new Aventurier();
-		assertEquals("La vie devrait etre egale a 100", 100,a.getVie());
-		assertEquals("L'aventurier devrait etre en vie", false,a.isMort());
+		//methodes testees
+		int pv = a.getVie();
+		//assertion
+		assertEquals("La vie devrait etre egale a 100",a.getVie(), pv);
+		assertFalse("L'aventurier devrait etre en vie",a.isMort());
 	}
 
 	@Test
 	public void testConstructeur_2() {
+		//initialisation des donnees
 		Aventurier a = new Aventurier(new Coordonnee(10,100), new Salle(), new Etage(0));
-		assertEquals("La vie devrait etre egale a 100", 100,a.getVie());
-		assertEquals("L'aventurier devrait etre en vie", false,a.isMort());
+		//methodes testees 
+		int pv = a.getVie();
+		
+		assertEquals("La vie devrait etre egale a 100",a.getVie(),pv);
+		assertFalse("L'aventurier devrait etre en vie",a.isMort());
 		assertEquals("La coordonnee en x devrait etre egale a 10", 10,a.getCoor().getX());
 		assertEquals("La coordonnee en y devrait etre egale a 100", 100,a.getCoor().getY());
 	}
 
 	@Test
 	public void testConstructeur_3() {
+		//initialisation des donnees
 		Aventurier a = new Aventurier(new Coordonnee(0,0), new Salle(), new Etage(0));
+		//asseertion
 		assertEquals("La vie devrait etre egale a 100", 100,a.getVie());
-		assertEquals("L'aventurier devrait etre en vie", false,a.isMort());
+		assertFalse("L'aventurier devrait etre en vie",a.isMort());
 		assertEquals("La position devrait etre un mur", "mur",a.getCase().getType());
 		assertEquals("La position ne devrait pas etre traversable", false,a.getCase().estTraversable());
 	}
-
+	
+	@Test
+	public void testAventurierEnVie() {
+		//initialisation des donnees
+		Aventurier a = new Aventurier();
+		//methode testee
+		boolean res = a.enVie();
+		//assertion
+		assertFalse("Le joueur devrait etre en vie", res);
+	}
+	
 	@Test
 	public void testModifierVieNegatif() {
 		//Donnees
@@ -62,7 +82,7 @@ public class TestAventurier {
 		a.subirDegats(20);
 		//Test
 		assertEquals("La vie devrait avoir diminue", 80,a.getVie());
-		assertFalse("L'aventurier devrait etre en vie",a.isMort());
+		assertFalse("L'aventurier devrait etre en vie",a.isMort()); 
 	}
 
 	@Test
