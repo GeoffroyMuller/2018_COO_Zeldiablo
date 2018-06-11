@@ -207,15 +207,27 @@ public class Salle implements Serializable{
 		this.grilleMonstreSpawn = grilleMonstreSpawn;
 	}
 	
-	public String toString2() {
-		String res ="";
-		for(int i = 0; i< this.grilleMonstreSpawn.length;i++) {
-			for(int j=0; j < this.grilleMonstreSpawn[0].length;j++) {
-				res+=this.grilleMonstreSpawn[i][j];
+	public void apparitionMonstre() {
+		int random = 0;
+		for(int i =0; i<grille.length;i++) {
+			for(int j = 0; j<grille.length;j++) {
+				if(this.isSpawnPossible(i, j)) {
+					random =(int) (Math.random() * ( 100 - 0 ));
+					if(random <=10) {
+						new Monstre() =
+					}
+				}
 			}
-			res+="\n";
 		}
 		
+	}
+	
+	public boolean isSpawnPossible(int x, int y) {
+		boolean res = true;
+		if(this.grilleMonstreSpawn[x][y].contains("o")
+				&& (!this.grille[x][y].estTraversable())) {
+			res = false;
+		}
 		return res;
 	}
 
