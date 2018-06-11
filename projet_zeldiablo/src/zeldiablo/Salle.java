@@ -32,7 +32,10 @@ public class Salle implements Serializable{
 	 * @see Salle#setGrille(Case[][])
 	 */
 	private Case[][] grille;
-	
+	/**
+	 * Les cases où les monstres peuvent apparaitre
+	 */
+	private String[][] grilleMonstreSpawn;
 	/**
 	 * Permet de retourner l'entrée d'une salle
 	 * @return l'entrée de la salle
@@ -78,7 +81,7 @@ public class Salle implements Serializable{
 	 */
 	public Salle(){
 		grille = new Case[TAILLE_SALLES][TAILLE_SALLES];
-		
+		this.grilleMonstreSpawn = new String[TAILLE_SALLES][TAILLE_SALLES];
 		
 		Coordonnee ce = placerSurMurAlea();
 		grille[ce.getX()][ce.getY()] = new Entree();
@@ -107,9 +110,24 @@ public class Salle implements Serializable{
 			}
 			
 		}
+		
+		this.creeGrilleMonstre();
+		
 	}
 	
-
+	public void creeGrilleMonstre() {
+		for(int i =0; i < grille.length;i++) {
+			for(int j = 0; j < grille[0].length;j++) {
+				if( (i>1 && i!=Zone.TAILLE_ZONE+2) && (i!=(Zone.TAILLE_ZONE*2)+3) && (j!=Zone.TAILLE_ZONE+2) && (j>1) && (j!=(Zone.TAILLE_ZONE*2)+3)
+						&& (j!=(Zone.TAILLE_ZONE*2)+4)) {
+					this.grilleMonstreSpawn[i][j]="x";
+					
+				}else {
+					this.grilleMonstreSpawn[i][j]="o";
+				}
+			}
+		}
+	}
 	public String toString(){
 		String res="";
 		for (int i = 0; i < grille.length; i++) {
@@ -179,6 +197,28 @@ public class Salle implements Serializable{
 	public void setGrille(Case[][] grille) {
 		this.grille = grille;
 	}
+	
+	
+	public String[][] getGrilleMonstreSpawn() {
+		return grilleMonstreSpawn;
+	}
+
+	public void setGrilleMonstreSpawn(String[][] grilleMonstreSpawn) {
+		this.grilleMonstreSpawn = grilleMonstreSpawn;
+	}
+	
+	public String toString2() {
+		String res ="";
+		for(int i = 0; i< this.grilleMonstreSpawn.length;i++) {
+			for(int j=0; j < this.grilleMonstreSpawn[0].length;j++) {
+				res+=this.grilleMonstreSpawn[i][j];
+			}
+			res+="\n";
+		}
+		
+		return res;
+	}
+
 
 }
 
