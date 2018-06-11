@@ -12,13 +12,6 @@ import javax.imageio.ImageIO;
  */
 public class Mur extends Case implements Serializable{
 
-	/**
-	 * @see zeldiablo.Case#estTraversable()
-	 */
-	@Override
-	public boolean estTraversable() {
-		return false;
-	}
 	
 	
 	/**
@@ -26,6 +19,7 @@ public class Mur extends Case implements Serializable{
 	 */
 	public Mur() {
 		super();
+		this.setEstTraversable(false);
 		this.setTextureMotCle("wall_dark");
 	}
 	

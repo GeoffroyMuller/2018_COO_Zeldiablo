@@ -100,6 +100,13 @@ public abstract class Personnage {
 		salle = l;
 		this.etage = et;
 	}
+	
+	public Personnage(Coordonnee c, Salle l){
+		vie = 100;
+		mort = false;
+		coor = c;
+		this.salle = l;
+	}
 	/**
 	 * Permet de modifier la salle de l'aventurier
 	 * @param salle

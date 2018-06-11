@@ -15,10 +15,12 @@ public class GestionnaireTexture {
 	public Image attribuerTexture(Case c) {
 		Image t = null;
 		for (int i = 0; i < listeTexture.size(); i++) {
-			if(listeTexture.get(i).getNom()==c.getTextureMotCle()) {
+
+			if(listeTexture.get(i).getNom().equals(c.getTextureMotCle())) {
 				t=listeTexture.get(i).getImg();
 			}
 		}
+		
 		return t;
 	}
 

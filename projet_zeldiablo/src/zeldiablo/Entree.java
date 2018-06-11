@@ -22,6 +22,7 @@ public class Entree extends Case implements Serializable{
 	 */
 	public Entree(){
 		super();
+		this.setEstTraversable(true);
 		this.setTextureMotCle("portail_entree");
 	}
 	
@@ -32,18 +33,12 @@ public class Entree extends Case implements Serializable{
 	 */
 	public Entree(Salle s) {
 		super();
+		this.setEstTraversable(true);
 		sallePrecedente =s;
 		this.setTextureMotCle("portail_entree");
 
 	}
-	/**
-	 * @see zeldiablo.Case#estTraversable()
-	 */
-	@Override
-	public boolean estTraversable() {
-		return true;
-	}
-	
+
 	
 
 	/**

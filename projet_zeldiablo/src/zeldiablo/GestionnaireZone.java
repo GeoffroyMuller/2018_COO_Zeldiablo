@@ -17,17 +17,6 @@ public class GestionnaireZone {
 	public GestionnaireZone(){
 		lz = new ArrayList<Zone>();
 		lf = new ArrayList<File>();
-		/**try{
-	    
-	        Files.newDirectoryStream(Paths.get("..\\Zones"),path -> path.toString().endsWith(".niv"))
-	                .forEach(System.out::println);
-	       Files.newDirectoryStream(Paths.get("..\\Zones"),path -> path.toString().endsWith(".niv"))
-            .forEach(chemin.add(lala)::);
-		}
-		catch(Exception e){
-			
-		}
-		*/
 		
 		File folder = new File("..\\Zones\\");
 		File[] listOfFiles = folder.listFiles();
@@ -56,7 +45,9 @@ public class GestionnaireZone {
 	}
 	
 	public Zone donnerUneZone(){
-		int rd = (int)Math.random()*this.lz.size();
+		System.out.println("================="+lz.size());
+		int rd = (int)(Math.random()*this.lz.size());
+		System.out.println("==================="+rd);
 		Zone z =  lz.get(rd);
 		return z;
 		
