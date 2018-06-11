@@ -1,5 +1,7 @@
 package zeldiablo;
 
+import java.awt.Graphics;
+
 public abstract class Item {
 	String type;
 	Salle salle;
@@ -16,9 +18,10 @@ public abstract class Item {
 	public Coordonnee getCoo() {
 		return coo;
 	}
-	
+
 	public Salle getSalle() {
 		return salle;
 	}
+
 
 }
