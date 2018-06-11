@@ -17,11 +17,12 @@ public class Monstre extends Personnage {
 		}
 	}
 
-	public boolean deplacement() {
+	public boolean deplacement(Aleatoire nbrAleatoire) {
 		boolean res = false;
 		int x = this.getCoor().getX();
 		int y = this.getCoor().getY();
-		int random = (int) (Math.random() * ( 4 - 0 ));
+		int random = nbrAleatoire.genererNombreAleatoire(0, 4);
+			//	(int) (Math.random() * ( 4 - 0 ));
 		
 		
 		

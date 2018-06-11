@@ -4,11 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import zeldiablo.Aventurier;
-import zeldiablo.Coordonnee;
-import zeldiablo.Etage;
-import zeldiablo.Salle;
-import zeldiablo.Mur;
+import zeldiablo.*;
+
 
 public class TestAventurier {
 
@@ -33,7 +30,7 @@ public class TestAventurier {
 		Aventurier a = new Aventurier(new Coordonnee(0,0), new Salle(), new Etage(0));
 		assertEquals("La vie devrait etre egale a 100", 100,a.getVie());
 		assertEquals("L'aventurier devrait etre en vie", false,a.isMort());
-		assertEquals("La position devrait etre un mur", "mur",a.getCase());
+		assertEquals("La position devrait etre un mur", "mur",a.getCase().getType());
 		assertEquals("La position ne devrait pas etre traversable", false,a.getCase().estTraversable());
 	}
 
@@ -118,7 +115,7 @@ public class TestAventurier {
 		//Test
 		assertEquals("La vie devrait ne pas avoir diminue",100, a.getVie());
 	}
-	
+
 	@Test
 	public void testDeplacerEnDehorsDroiteGauche() {
 		//initialisation des donnees
@@ -131,7 +128,7 @@ public class TestAventurier {
 		//assertion 
 		assertFalse("Le joueur ne devrait pas pouvoir se deplacer en dehors", a.deplacerAventurier(c1));
 	}
-	
+
 	@Test
 	public void testDeplacerEnDehorsHautBas() {
 		//initialisation des donnees
@@ -144,7 +141,7 @@ public class TestAventurier {
 		//assertion
 		assertFalse("Le joueur ne devrait pas pouvoir se deplacer en dehors", a.deplacerAventurier(c1));
 	}
-	
+
 	@Test
 	public void testDeplacerEnDehorsLimiteLaby() {
 		//initialisation des donnees
@@ -158,7 +155,7 @@ public class TestAventurier {
 		//assertion
 		assertFalse("Le joueur ne devrait pas pouvoir se deplacer en dehors", a.deplacerAventurier(c1));
 	}
-	
+
 	@Test
 	public void testDeplacerEnDehorsLimiteLaby2() {
 		//initialisation des donnees
@@ -172,7 +169,7 @@ public class TestAventurier {
 		//assertion
 		assertFalse("Le joueur ne devrait pas pouvoir se deplacer en dehors", a.deplacerAventurier(c1));
 	}
-	 
+
 	@Test
 	public void testDeplacerValide() {
 		//initialisation des donnees
@@ -185,7 +182,7 @@ public class TestAventurier {
 		//assertion
 		assertTrue("Le joueur ne devrait pouvoir se deplacer", a.deplacerAventurier(c1));
 	}
-	
+
 	@Test
 	public void testDeplacerCaseTraversable() {
 		//initialisation des donnees
@@ -197,7 +194,7 @@ public class TestAventurier {
 		//assertion
 		assertTrue("Le joueur devrait pouvoir se deplacer sur la case", l.getGrille()[c.getX()][c.getY()].estTraversable());
 	}
-	
+
 	@Test
 	public void testDeplacerCaseNonTraversable() {
 		//initialisation des donnees
@@ -208,7 +205,25 @@ public class TestAventurier {
 		l.getGrille()[c1.getX()][c1.getY()].estTraversable();
 		//assertion
 		assertFalse("Le joueur ne devrait pas pouvoir se deplacer sur la case", l.getGrille()[c1.getX()][c1.getY()].estTraversable());
-		
+
+	}
+
+	@Test
+	public void testDeplacerCaseEntree() {
+		//initialisation des donnees
+		Salle l = new Salle();
+		Salle l1 = new Salle();
+		Salle l2 = new Salle();
+		Etage e = new Etage(1);
+		Coordonnee co = new Coordonnee(4,5);
+		Case c = l.getSortie();
+		Aventurier a = new Aventurier(co,l1,e);
+		//methode testee
+		a.deplacerAventurier(l1.getEntree());
+		a.getSalle().getEntree();
+		a.changementSalle(l, c);
+		//assertion
+		assertEquals("Le joueur devrait etre sur la sortie de la salle precedente", l.getEntree(), a.getCase());
 	}
 
 }

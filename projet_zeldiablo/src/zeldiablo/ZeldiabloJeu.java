@@ -58,10 +58,10 @@ public class ZeldiabloJeu implements Jeu {
 				changementEtage();	
 			}
 		}
-		
+		Aleatoire randomV=new AleatoireVrai();
 		if(compteur == 8) {
 			for(int i =0; i< this.av.getSalle().getMonstrePresent().size();i++) {
-				this.av.getSalle().getMonstrePresent().get(i).deplacement();
+				this.av.getSalle().getMonstrePresent().get(i).deplacement(randomV);
 			}
 			compteur=0;
 		}
