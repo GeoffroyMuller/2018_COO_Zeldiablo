@@ -12,6 +12,10 @@ import javax.imageio.ImageIO;
  */
 public class Entree extends Case implements Serializable{
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5551888599501718393L;
+	/**
 	 * La salle précédente
 	 * @see Entree#Entree(Salle)
 	 */

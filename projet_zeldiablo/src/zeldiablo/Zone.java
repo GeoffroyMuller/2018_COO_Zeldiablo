@@ -8,6 +8,11 @@ import java.io.Serializable;
  */
 public class Zone implements Serializable{
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 81293606137789190L;
+
+	/**
 	 * Taille d'une zone
 	 */
 	public static final int TAILLE_ZONE = (int)(Salle.TAILLE_SALLES-5)/2;

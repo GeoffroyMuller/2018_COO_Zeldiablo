@@ -15,6 +15,11 @@ public class Vide extends Case implements Serializable{
 
 	
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7264174760504718360L;
+
+	/**
 	 * Permet la création d'une case vide
 	 */
 	public Vide(){

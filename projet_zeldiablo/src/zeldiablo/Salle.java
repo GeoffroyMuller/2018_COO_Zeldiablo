@@ -11,7 +11,7 @@ import com.sun.org.apache.bcel.internal.generic.NEW;
  */
 public class Salle implements Serializable{
 
-	private GestionnaireZone gz = new GestionnaireZone();
+	private GestionnaireZone gz;
 
 	/**
 	 * Taille d'une salle
@@ -94,6 +94,7 @@ public class Salle implements Serializable{
 	 * Constructeur permettant la création d'une salle
 	 */
 	public Salle(){
+		 gz = new GestionnaireZone();
 		this.monstrePresent = new ArrayList<Monstre>();
 		grille = new Case[TAILLE_SALLES][TAILLE_SALLES];
 		this.grilleMonstreSpawn = new String[TAILLE_SALLES][TAILLE_SALLES];
