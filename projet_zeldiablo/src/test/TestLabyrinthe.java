@@ -10,7 +10,10 @@ import zeldiablo.Mur;
 import zeldiablo.Vide;
 
 public class TestLabyrinthe {
-	
+	/**
+	 * test du constructeur vide de Salle
+	 * @throws Exception
+	 */
 	@Test
 	public void testConstructeurVide() throws Exception {
 		// initialisation

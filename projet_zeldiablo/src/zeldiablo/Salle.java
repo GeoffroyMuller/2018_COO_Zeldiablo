@@ -12,6 +12,8 @@ import com.sun.org.apache.bcel.internal.generic.NEW;
 public class Salle implements Serializable{
 
 	private GestionnaireZone gz;
+	
+	private Escalier escalier;
 
 	/**
 	 * Taille d'une salle
@@ -100,7 +102,7 @@ public class Salle implements Serializable{
 		this.grilleMonstreSpawn = new String[TAILLE_SALLES][TAILLE_SALLES];
 		AleatoireVrai randomV= new AleatoireVrai();
 		Coordonnee ce = placerSurMurAlea(randomV);
-		grille[ce.getX()][ce.getY()] = new Entree();
+		grille[ce.getX()][ce.getY()] = new Entree(new Coordonnee(ce.getX(),ce.getY()));
 		this.entree=(Entree)grille[ce.getX()][ce.getY()];
 
 
@@ -157,6 +159,10 @@ public class Salle implements Serializable{
 		}
 		this.creeGrilleMonstre();
 		this.apparitionMonstre(randomV);
+	}
+
+	public Escalier getEscalier() {
+		return escalier;
 	}
 
 	public void creeGrilleMonstre() {
@@ -267,6 +273,8 @@ public class Salle implements Serializable{
 			break;
 
 		}
+		if(gz.getLz().size()>0){
+			
 		Aleatoire random = new AleatoireVrai();
 		Zone z = gz.donnerUneZone(random);
 		Case[][] tab_caseZone = z.getGrilleZone();
@@ -278,15 +286,17 @@ public class Salle implements Serializable{
 
 		for (int j = 0; j < Zone.TAILLE_ZONE; j++) {
 			for (int j2 = 0; j2 < Zone.TAILLE_ZONE; j2++) {
-				System.out.println("x :"+x);
-				System.out.println("y : "+y);
-				System.out.println(" yzone :"+j);
-				System.out.println(" xzone :"+j2);
+				//System.out.println("x :"+x);
+				//System.out.println("y : "+y);
+				//System.out.println(" yzone :"+j);
+				//System.out.println(" xzone :"+j2);
 				this.grille[x][y]=(Case)tab_caseZone[j2][j];//peut etre probleme car passage d'adresse
 				x++;
 			}
 			x= (int)startPos.getX();
 			y++;
+		}
+		
 		}
 
 
@@ -309,6 +319,7 @@ public class Salle implements Serializable{
 					random = alea.genererNombreAleatoire(0, 100);
 	
 
+
 					if(random <=6) {
 						Monstre m = new Monstre(new Coordonnee(i,j),this);
 						this.grille[i][j].setEstTraversable(false);
@@ -330,7 +341,10 @@ public class Salle implements Serializable{
 	public boolean isSpawnPossible(int x, int y) {
 		boolean res = true;
 		if((this.grilleMonstreSpawn[x][y].contains("o"))
-				|| ((!this.grille[x][y].estTraversable()) || this.grille[x][y].getType().contains("entree") || this.grille[x][y].getType().contains("sortie"))) {
+
+				|| ((!this.grille[x][y].estTraversable())||(this.grille[x][y].isMonstrePresent()))
+				|| (x==0 && y==0) || (x==Salle.TAILLE_SALLES || y==Salle.TAILLE_SALLES) || this.grille[x][y].getType().contains("entree") || this.grille[x][y].getType().contains("sortie") || this.grille[x][y].getType().contains("escalier")) {
+
 			res = false;
 		}
 		return res;
@@ -367,7 +381,9 @@ public class Salle implements Serializable{
 	}*/
 	
 
-
+	public void rechercheDeSortie(){
+		
+	}
 
 }
 

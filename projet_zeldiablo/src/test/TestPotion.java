@@ -5,7 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import zeldiablo.*;
 public class TestPotion {
-
+	/**
+	 * test du constructeur de la classe Potion
+	 */
 	@Test
 	public void testConstructeur() {
 		//initialisation des donnees

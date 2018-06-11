@@ -66,6 +66,9 @@ public class VueNiveau  extends JPanel implements Observer{
 					if(niv.getTypeCase(j, i)=="vide") {
 						g.setColor(Color.GRAY);
 					}
+					if(niv.getTypeCase(j, i)=="escalier") {
+						g.setColor(Color.yellow);
+					}
 
 
 					g.fillRect(x, y, taillecase, taillecase);

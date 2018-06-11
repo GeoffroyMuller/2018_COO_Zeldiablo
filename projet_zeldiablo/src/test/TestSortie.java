@@ -6,7 +6,9 @@ import org.junit.Test;
 import zeldiablo.*;
 
 public class TestSortie {
-
+	/**
+	 * test du constructeur vide de la classe Sortie
+	 */
 	@Test
 	public void testConstructeur1() {
 		//initialisation des donnees
@@ -19,7 +21,9 @@ public class TestSortie {
 		assertFalse("La sortie ne devrait pas contenir de monstre", s.isMonstrePresent());
 		assertFalse("La sortie ne devrait pas contenir d'objet", s.isObjetPresent());
 	}
-	
+	/**
+	 * test du constructeur avec parametres de la classe Sortie
+	 */
 	@Test
 	public void testConstructeur2() {
 		//initialisation des donnees

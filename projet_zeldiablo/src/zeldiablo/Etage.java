@@ -39,7 +39,7 @@ public class Etage {
 			if(i==0) {
 				salles.get(i).getSortie().setSalleSuivante(salles.get(i+1));
 				salles.get(i).getEntree().setSallePrecedente(salles.get(NUM_SALLES-1));
-				
+
 			}
 			else {
 				if(i==NUM_SALLES-1) {

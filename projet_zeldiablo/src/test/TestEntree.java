@@ -8,11 +8,13 @@ import zeldiablo.Salle;
 import zeldiablo.Sortie;
 import zeldiablo.*;
 public class TestEntree {
-
+	/**
+	 * test du constructeur de la classe Entree
+	 */
 	@Test
 	public void testConstructeur() {
 		Salle sa = new Salle();
-		Entree e = new Entree(sa);
+		Entree e = new Entree(sa,new Coordonnee(0,2));
 		//methodes testees
 		String str = e.getTextureMotCle();
 		//assertion
