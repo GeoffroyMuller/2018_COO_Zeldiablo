@@ -9,6 +9,11 @@ import java.io.Serializable;
 public class Escalier extends Case implements Serializable {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 454796313750726250L;
+
+	/**
 	 * @see zeldiablo.Case#estTraversable()
 	 */
 	@Override

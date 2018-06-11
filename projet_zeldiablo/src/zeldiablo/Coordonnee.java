@@ -8,6 +8,10 @@ import java.io.Serializable;
  */
 public class Coordonnee implements Serializable{
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7796251197453909177L;
+	/**
 	 * x , coordonnée de l'axe des abscisses
 	 * @see Coordonnee#decrementerX()
 	 * @see Coordonnee#getX()

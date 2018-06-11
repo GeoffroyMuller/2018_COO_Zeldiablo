@@ -85,6 +85,7 @@ public class PanneauChoix extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
 				JFileChooser chooser = new JFileChooser();
 				FileNameExtensionFilter filter = new FileNameExtensionFilter(
 						".niv Niveau custom", "niv");
@@ -96,9 +97,11 @@ public class PanneauChoix extends JPanel{
 					jtfnom.setText(chooser.getSelectedFile().getName());
 					niv.ouverture(chooser.getSelectedFile());
 					System.out.println("apres niv ouvert");
+					//jbcreer.doClick();
+					//System.out.println("doclick");
+					PositionPanneaux2();
 				}
-				jbcreer.doClick();
-				System.out.println("doclick");
+				
 
 			}
 		};
@@ -203,7 +206,7 @@ public class PanneauChoix extends JPanel{
 		jbNonsuppr.setVisible(false);
 		jcbcase.setEnabled(true);
 		jbsave.setEnabled(true);
-		jbouvrir.setEnabled(false);
+		jbouvrir.setEnabled(true);
 		jbsuppr.setEnabled(true);
 		jbcreer.setEnabled(false);
 		rbsalle.setEnabled(false);

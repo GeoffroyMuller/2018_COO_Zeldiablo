@@ -14,6 +14,11 @@ import javax.imageio.ImageIO;
 public abstract class Case implements Serializable{
 	
 	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3638565670666757172L;
+
+	/**
 	 * La texture de la case, correspond a une image .png de 30*30pixel
 	 * @see Case#getTexture()
 	 * @see Case#setTexture(Image)
