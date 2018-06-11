@@ -33,6 +33,7 @@ public class Sortie extends Case implements Serializable{
 	 */
 	public Sortie() {
 		super();
+		this.setEstTraversable(true);
 		this.setTextureMotCle("portail_sortie");
 	}
 	/**
@@ -42,6 +43,7 @@ public class Sortie extends Case implements Serializable{
 	 */
 	public Sortie(Salle s) {
 		super();
+		this.setEstTraversable(true);
 		this.salleSuivante = s;
 		this.setTextureMotCle("portail_sortie");
 	}
@@ -53,13 +55,7 @@ public class Sortie extends Case implements Serializable{
 	public Salle getSalleSuivante() {
 		return salleSuivante;
 	}
-	/**
-	 * @see zeldiablo.Case#estTraversable()
-	 */
-	@Override
-	public boolean estTraversable() {
-		return true;
-	}
+
 
 	/**
 	 * @see zeldiablo.Case#getType()

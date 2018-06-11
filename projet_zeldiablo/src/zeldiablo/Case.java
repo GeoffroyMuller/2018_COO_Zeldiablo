@@ -19,20 +19,47 @@ public abstract class Case implements Serializable{
 	 * @see Case#setTexture(Image)
 	 */
 	private String textureMotCle;
+	
+	private boolean estTraversable;
+	private boolean monstrePresent;
+	private boolean objetPresent;
 
+
+	public boolean isMonstrePresent() {
+		return monstrePresent;
+	}
+
+	public void setMonstrePresent(boolean monstrePresent) {
+		this.monstrePresent = monstrePresent;
+	}
+
+	public boolean isObjetPresent() {
+		return objetPresent;
+	}
+
+	public void setObjetPresent(boolean objetPresent) {
+		this.objetPresent = objetPresent;
+	}
+
+	public void setEstTraversable(boolean estTraversable) {
+		this.estTraversable = estTraversable;
+	}
 
 	/**
 	 * Constructeur vide pour créer une case
 	 */
 	public Case(){
-
+		this.monstrePresent = false;
+		this.objetPresent = false;
 	}
 	
 	/**
 	 * Permet de savoir si une case est traversable ou non
 	 * @return Vrai si la case est traversable et faux le cas écheant
 	 */
-	public abstract boolean estTraversable();
+	public boolean estTraversable() {
+		return this.estTraversable;
+	}
 	
 	/**
 	 * Permet de savoir le type d'une case

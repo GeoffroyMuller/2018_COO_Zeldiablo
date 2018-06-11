@@ -1,6 +1,7 @@
 package zeldiablo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * @author Guezennec Lucas, Biancalana Théo, Geoffroy Muller et Masson Loic
@@ -36,6 +37,8 @@ public class Salle implements Serializable{
 	 * Les cases où les monstres peuvent apparaitre
 	 */
 	private String[][] grilleMonstreSpawn;
+	
+	private ArrayList<Monstre> monstrePresent;
 	/**
 	 * Permet de retourner l'entrée d'une salle
 	 * @return l'entrée de la salle
@@ -43,6 +46,14 @@ public class Salle implements Serializable{
 	 */
 	public Entree getEntree() {
 		return entree;
+	}
+
+	public ArrayList<Monstre> getMonstrePresent() {
+		return monstrePresent;
+	}
+
+	public void setMonstrePresent(ArrayList<Monstre> monstrePresent) {
+		this.monstrePresent = monstrePresent;
 	}
 
 	/**
@@ -80,6 +91,7 @@ public class Salle implements Serializable{
 	 * Constructeur permettant la création d'une salle
 	 */
 	public Salle(){
+		this.monstrePresent = new ArrayList<Monstre>();
 		grille = new Case[TAILLE_SALLES][TAILLE_SALLES];
 		this.grilleMonstreSpawn = new String[TAILLE_SALLES][TAILLE_SALLES];
 		
@@ -112,6 +124,8 @@ public class Salle implements Serializable{
 		}
 		
 		this.creeGrilleMonstre();
+		this.apparitionMonstre();
+		System.out.println("test");
 		
 	}
 	
@@ -211,10 +225,17 @@ public class Salle implements Serializable{
 		int random = 0;
 		for(int i =0; i<grille.length;i++) {
 			for(int j = 0; j<grille.length;j++) {
-				if(this.isSpawnPossible(i, j)) {
+				if((this.isSpawnPossible(i, j)) && ((i != 0) && (j != 0)
+						&& i!=Salle.TAILLE_SALLES &&  j!=Salle.TAILLE_SALLES)) {
 					random =(int) (Math.random() * ( 100 - 0 ));
-					if(random <=10) {
-						new Monstre() =
+					if(random <=1) {
+						Monstre m = new Monstre(new Coordonnee(i,j),this);
+						this.grille[i][j].setEstTraversable(false);
+						this.grille[i][j].setMonstrePresent(true);
+						this.monstrePresent.add(m);
+					}else {
+						this.grille[i][j].setEstTraversable(true);
+						this.grille[i][j].setMonstrePresent(false);
 					}
 				}
 			}
@@ -224,8 +245,9 @@ public class Salle implements Serializable{
 	
 	public boolean isSpawnPossible(int x, int y) {
 		boolean res = true;
-		if(this.grilleMonstreSpawn[x][y].contains("o")
-				&& (!this.grille[x][y].estTraversable())) {
+		if((this.grilleMonstreSpawn[x][y].contains("o"))
+				|| ((!this.grille[x][y].estTraversable())||(this.grille[x][y].isMonstrePresent()))
+				|| (x==0 && y==0) || (x==Salle.TAILLE_SALLES || y==Salle.TAILLE_SALLES) || this.grille[x][y].getType().contains("entree") || this.grille[x][y].getType().contains("sortie") ) {
 			res = false;
 		}
 		return res;

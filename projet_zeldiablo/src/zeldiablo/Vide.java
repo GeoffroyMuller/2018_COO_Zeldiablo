@@ -12,18 +12,13 @@ import javax.imageio.ImageIO;
  */
 public class Vide extends Case implements Serializable{
 
-	/**
-	 * @see zeldiablo.Case#estTraversable()
-	 */
-	@Override
-	public boolean estTraversable() {
-		return true;
-	}
+
 	
 	/**
 	 * Permet la création d'une case vide
 	 */
 	public Vide(){
+		this.setEstTraversable(true);
 		this.setTextureMotCle("sol_bois");
 	}
 

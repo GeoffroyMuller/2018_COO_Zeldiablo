@@ -56,6 +56,13 @@ public class ZeldiabloDessin implements DessinJeu {
 				}
 			}
 		g.drawImage(this.jeu.getAv().getTexture(), this.jeu.getAv().getCoor().getX()*TAILLE, this.jeu.getAv().getCoor().getY()*TAILLE,TAILLE,TAILLE,null);
+		g.setColor(Color.GREEN);
+		for(int i = 0; i < this.jeu.getAv().getSalle().getMonstrePresent().size();i++) {
+			
+			
+			
+			g.drawImage(this.jeu.getAv().getSalle().getMonstrePresent().get(i).getTexture(),this.jeu.getAv().getSalle().getMonstrePresent().get(i).getCoor().getX()*TAILLE, this.jeu.getAv().getSalle().getMonstrePresent().get(i).getCoor().getY()*TAILLE, TAILLE, TAILLE,null);
+		}
 		g.dispose();
 
 	}
