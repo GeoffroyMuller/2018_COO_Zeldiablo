@@ -100,15 +100,15 @@ public class Salle implements Serializable{
 		this.monstrePresent = new ArrayList<Monstre>();
 		grille = new Case[TAILLE_SALLES][TAILLE_SALLES];
 		this.grilleMonstreSpawn = new String[TAILLE_SALLES][TAILLE_SALLES];
-
-		Coordonnee ce = placerSurMurAlea();
-		grille[ce.getX()][ce.getY()] = new Entree();
+		AleatoireVrai randomV= new AleatoireVrai();
+		Coordonnee ce = placerSurMurAlea(randomV);
+		grille[ce.getX()][ce.getY()] = new Entree(new Coordonnee(ce.getX(),ce.getY()));
 		this.entree=(Entree)grille[ce.getX()][ce.getY()];
 
 
-		Coordonnee cs = placerSurMurAlea();
+		Coordonnee cs = placerSurMurAlea(randomV);
 		while(cs.getX()==ce.getX() && cs.getY()==ce.getY()) {
-			cs = placerSurMurAlea();
+			cs = placerSurMurAlea(randomV);
 		}
 		grille[cs.getX()][cs.getY()] = new Sortie();
 		this.Sortie = (Sortie)grille[cs.getX()][cs.getY()] ;
@@ -132,9 +132,33 @@ public class Salle implements Serializable{
 			insererZone(i);
 		}
 		this.creeGrilleMonstre();
-		this.apparitionMonstre();
+		this.apparitionMonstre(randomV);
 
 
+	}
+	//Constructeur pour test
+	public Salle(int o) {
+		this.monstrePresent = new ArrayList<Monstre>();
+		grille = new Case[TAILLE_SALLES][TAILLE_SALLES];
+		this.grilleMonstreSpawn = new String[TAILLE_SALLES][TAILLE_SALLES];
+		AleatoireVrai randomV= new AleatoireVrai();
+		Coordonnee cs = placerSurMurAlea(randomV);
+
+		grille[cs.getX()][cs.getY()] = new Sortie();
+		this.Sortie = (Sortie)grille[cs.getX()][cs.getY()] ;
+
+
+
+		for (int i = 0; i < grille.length; i++) {
+			for (int j = 0; j < grille[0].length; j++) {
+				if(grille[i][j]==null){
+						grille[i][j]=new Vide();
+				}
+			}
+
+		}
+		this.creeGrilleMonstre();
+		this.apparitionMonstre(randomV);
 	}
 
 	public Escalier getEscalier() {
@@ -178,30 +202,30 @@ public class Salle implements Serializable{
 	 * Permet 
 	 * @return
 	 */
-	public Coordonnee placerSurMurAlea() {
+	public Coordonnee placerSurMurAlea(Aleatoire random) {
 		Coordonnee c = new Coordonnee(0, 0);
-		int des = (int)(Math.random()*4+1);
+		int des = random.genererNombreAleatoire(1, 4);
 		switch (des) {
 		case 1:
 			c.setY(0);
-			c.setX(((int)(Math.random()*(Salle.TAILLE_SALLES-2)+1)));
+			c.setX(random.genererNombreAleatoire(1, Salle.TAILLE_SALLES-2));
 			break;
 
 		case 2:
 
 			c.setY(Salle.TAILLE_SALLES-1);
-			c.setX(((int)(Math.random()*(Salle.TAILLE_SALLES-2)+1)));
+			c.setX(random.genererNombreAleatoire(1, Salle.TAILLE_SALLES-2));
 			break;
 
 		case 3:
 
 			c.setX(0);
-			c.setY(((int)(Math.random()*(Salle.TAILLE_SALLES-2)+1)));
+			c.setY(random.genererNombreAleatoire(1, Salle.TAILLE_SALLES-2));
 			break;
 
 		case 4:
 			c.setX(Salle.TAILLE_SALLES-1);
-			c.setY(((int)(Math.random()*(Salle.TAILLE_SALLES-2)+1)));
+			c.setY(random.genererNombreAleatoire(1, Salle.TAILLE_SALLES-2));
 			break;
 
 
@@ -251,8 +275,8 @@ public class Salle implements Serializable{
 		}
 		if(gz.getLz().size()>0){
 			
-		
-		Zone z = gz.donnerUneZone();
+		Aleatoire random = new AleatoireVrai();
+		Zone z = gz.donnerUneZone(random);
 		Case[][] tab_caseZone = z.getGrilleZone();
 
 		int x = startPos.getX();
@@ -286,15 +310,17 @@ public class Salle implements Serializable{
 		this.grilleMonstreSpawn = grilleMonstreSpawn;
 	}
 
-	public void apparitionMonstre() {
+	public void apparitionMonstre(Aleatoire alea) {
 		int random = 0;
 		for(int i =0; i<grille.length;i++) {
 			for(int j = 0; j<grille.length;j++) {
 				if((this.isSpawnPossible(i, j)) && ((i != 0) && (j != 0)
 						&& i!=Salle.TAILLE_SALLES &&  j!=Salle.TAILLE_SALLES)) {
-					random =(int) (Math.random() * ( 100 - 0 ));
+					random = alea.genererNombreAleatoire(0, 100);
+	
 
-					if(random <=5) {
+
+					if(random <=6) {
 						Monstre m = new Monstre(new Coordonnee(i,j),this);
 						this.grille[i][j].setEstTraversable(false);
 						this.grille[i][j].setMonstrePresent(true);
@@ -315,12 +341,45 @@ public class Salle implements Serializable{
 	public boolean isSpawnPossible(int x, int y) {
 		boolean res = true;
 		if((this.grilleMonstreSpawn[x][y].contains("o"))
+
 				|| ((!this.grille[x][y].estTraversable())||(this.grille[x][y].isMonstrePresent()))
 				|| (x==0 && y==0) || (x==Salle.TAILLE_SALLES || y==Salle.TAILLE_SALLES) || this.grille[x][y].getType().contains("entree") || this.grille[x][y].getType().contains("sortie") || this.grille[x][y].getType().contains("escalier")) {
+
 			res = false;
 		}
 		return res;
 	}
+	
+	public boolean isDeplacementPossible(int x, int y) {
+		boolean res = true;
+		if(((!this.grille[x][y].estTraversable()) || this.grille[x][y].getType().contains("entree") || this.grille[x][y].getType().contains("sortie"))) {
+			res = false;
+		}
+		return res;
+	}
+	
+	
+	//=====Spawn Item=====//
+	
+	public ArrayList<Coordonnee> placeLibreItems(){
+		ArrayList<Coordonnee> tab_coo = new ArrayList<Coordonnee>();
+		for(int i=0;i<grille[0].length;i++){
+			for(int j=0;i<grille.length;j++){
+				if(grille[i][j].estTraversable()){
+					tab_coo.add(new Coordonnee(i, j));
+				}
+			}
+		}
+		return tab_coo;
+	}
+	
+	/*public//a modifier en void car attribu : ArrayList<Item> placeAleatoirItems(){
+		ArrayList<Coordonnee> tab_libre = placeLibreItems();
+		int aleaItem = (int)Math.random() * (tab_libre.size() - 0);
+		
+		
+	}*/
+	
 
 	public void rechercheDeSortie(){
 		

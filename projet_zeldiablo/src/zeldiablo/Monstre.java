@@ -17,11 +17,12 @@ public class Monstre extends Personnage {
 		}
 	}
 
-	public boolean deplacement() {
+	public boolean deplacement(Aleatoire nbrAleatoire) {
 		boolean res = false;
 		int x = this.getCoor().getX();
 		int y = this.getCoor().getY();
-		int random = (int) (Math.random() * ( 4 - 0 ));
+		int random = nbrAleatoire.genererNombreAleatoire(0, 4);
+			//	(int) (Math.random() * ( 4 - 0 ));
 		
 		
 		
@@ -29,7 +30,7 @@ public class Monstre extends Personnage {
 				(y!= 0) && (y!= Salle.TAILLE_SALLES-1)) {
 			switch(random) {
 			case 0:
-				if((this.getSalle().isSpawnPossible(x+1, y)) && (x+1>0 && x+1< Salle.TAILLE_SALLES-1)) {
+				if((this.getSalle().isDeplacementPossible(x+1, y))/* && (x+1>0 && x+1< Salle.TAILLE_SALLES-1)*/) {
 					this.getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()].setMonstrePresent(false);
 					this.getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()].setEstTraversable(true);
 					this.changerCoord(new Coordonnee(x+1,y));
@@ -40,7 +41,7 @@ public class Monstre extends Personnage {
 				}
 				break;
 			case 1:
-				if(this.getSalle().isSpawnPossible(x-1, y)&& (x-1>0 && x-1< Salle.TAILLE_SALLES-1)) {
+				if(this.getSalle().isDeplacementPossible(x-1, y)/*&& (x-1>0 && x-1< Salle.TAILLE_SALLES-1)*/) {
 					this.getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()].setMonstrePresent(false);
 					this.getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()].setEstTraversable(true);
 					this.changerCoord(new Coordonnee(x-1,y));
@@ -51,7 +52,7 @@ public class Monstre extends Personnage {
 				}
 				break;
 			case 2:
-				if(this.getSalle().isSpawnPossible(x, y+1)&& (y+1>0 && y+1< Salle.TAILLE_SALLES-1)) {
+				if(this.getSalle().isDeplacementPossible(x, y+1)/*&& (y+1>0 && y+1< Salle.TAILLE_SALLES-1)*/) {
 					this.getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()].setMonstrePresent(false);
 					this.getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()].setEstTraversable(true);
 					this.changerCoord(new Coordonnee(x,y+1));
@@ -62,7 +63,7 @@ public class Monstre extends Personnage {
 				}
 				break;
 			case 3:
-				if(this.getSalle().isSpawnPossible(x, y-1)&& (y-1>0 && y-1< Salle.TAILLE_SALLES-1)) {
+				if(this.getSalle().isDeplacementPossible(x, y-1)/*&& (y-1>0 && y-1< Salle.TAILLE_SALLES-1)*/) {
 					this.getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()].setMonstrePresent(false);
 					this.getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()].setEstTraversable(true);
 					this.changerCoord(new Coordonnee(x,y-1));

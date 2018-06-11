@@ -1,5 +1,7 @@
 package zeldiablo;
 
+import java.awt.Graphics;
+
 public abstract class Item {
 	String type;
 	Salle salle;
@@ -8,8 +10,7 @@ public abstract class Item {
 		// TODO Auto-generated constructor stub
 		type = rtype;
 		salle = se;
-		coo.setX(xe);
-		coo.setY(ye);
+		coo = new Coordonnee(xe,ye);
 	}
 	public String getType() {
 		return type;
@@ -17,7 +18,10 @@ public abstract class Item {
 	public Coordonnee getCoo() {
 		return coo;
 	}
-	
-	
+
+	public Salle getSalle() {
+		return salle;
+	}
+
 
 }
