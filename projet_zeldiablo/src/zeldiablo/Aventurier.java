@@ -54,26 +54,30 @@ public class Aventurier extends Personnage implements Serializable{
 	 * @return un booleen indiquant si le déplacement est bien effectué
 	 */
 	public boolean deplacerAventurier(Coordonnee c) {
-		boolean res = true;
+		boolean res = false;
 
 		if ((c.getX() < this.getSalle().getGrille().length && c.getX() >= 0) &&
 				(c.getY() < this.getSalle().getGrille()[0].length && c.getY() >= 0)) {
+			
 			if(this.getSalle().getGrille()[c.getX()][c.getY()].estTraversable()) {
+				
 				this.changerCoord(c);
-
+				res=true;
+				
 				if(this.getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()]==this.getSalle().getEntree()) {
+					
 					this.setSalle(this.getSalle().getEntree().getSallePrecedente());
 					changementSalle(this.getSalle(),this.getSalle().getSortie());
-					System.out.println("entree");
+					
 				}
-				else {
-					if(this.getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()]==this.getSalle().getSortie()) {
+				
+				else if(this.getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()]==this.getSalle().getSortie()) {
+					
 						this.setSalle(this.getSalle().getSortie().getSalleSuivante());
 						changementSalle(this.getSalle(), this.getSalle().getEntree());
 						System.out.println("sortie");
 					}
-					else{
-						if(this.getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()]==this.getSalle().getSortie()) {
+					else if(this.getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()]==this.getSalle().getSortie()) {
 
 							this.setSalle(this.getSalle().getSortie().getSalleSuivante());
 							changementSalle(this.getSalle(), this.getSalle().getEntree());
@@ -82,12 +86,6 @@ public class Aventurier extends Personnage implements Serializable{
 
 					}
 				}
-
-			}
-			else {
-				res = false;
-			}
-		}
 		else {
 			res = false;
 		}
