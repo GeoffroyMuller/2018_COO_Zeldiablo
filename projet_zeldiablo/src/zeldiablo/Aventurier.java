@@ -58,34 +58,28 @@ public class Aventurier extends Personnage implements Serializable{
 
 		if ((c.getX() < this.getSalle().getGrille().length && c.getX() >= 0) &&
 				(c.getY() < this.getSalle().getGrille()[0].length && c.getY() >= 0)) {
-			
+
 			if(this.getSalle().getGrille()[c.getX()][c.getY()].estTraversable()) {
-				
+
 				this.changerCoord(c);
 				res=true;
-				
+
 				if(this.getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()]==this.getSalle().getEntree()) {
-					
+
 					this.setSalle(this.getSalle().getEntree().getSallePrecedente());
 					changementSalle(this.getSalle(),this.getSalle().getSortie());
-					
+
 				}
-				
+
 				else if(this.getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()]==this.getSalle().getSortie()) {
-					
-						this.setSalle(this.getSalle().getSortie().getSalleSuivante());
-						changementSalle(this.getSalle(), this.getSalle().getEntree());
-						System.out.println("sortie");
-					}
-					else if(this.getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()]==this.getSalle().getSortie()) {
 
-							this.setSalle(this.getSalle().getSortie().getSalleSuivante());
-							changementSalle(this.getSalle(), this.getSalle().getEntree());
-							System.out.println("sortie");
-						}
-
-					}
+					this.setSalle(this.getSalle().getSortie().getSalleSuivante());
+					changementSalle(this.getSalle(), this.getSalle().getEntree());
+					System.out.println("sortie");
 				}
+
+			}
+		}
 		else {
 			res = false;
 		}

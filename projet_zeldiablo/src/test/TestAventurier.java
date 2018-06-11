@@ -2,6 +2,8 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 import zeldiablo.*;
@@ -283,6 +285,73 @@ public class TestAventurier {
 		a.changementSalle(l, c);
 		//assertion
 		assertEquals("Le joueur devrait etre sur la sortie de la salle precedente", l.getSortie(), a.getCase());
+	}
+	
+	/**
+	 * Test de la methode de deplacement sur une case traversable
+	 */
+	@Test
+	public void testDeplacementPossibleCaseTraversable() {
+		//Preparation des données
+		Etage e = new Etage(7);
+		Salle s = new Salle(7);
+		ArrayList<Salle> lS = new ArrayList<Salle>();
+		lS.add(s);
+		e.setSalles(lS);
+		Aventurier a = new Aventurier(new Coordonnee(12,12),s,e);
+		//Methode testee
+		a.deplacerAventurier(new Coordonnee(13,12));
+		//Test
+		assertEquals("L'aventurier devrait avoir avancer vers la gauche",13,a.getCoor().getX());
+	}
+	
+	/**
+	 * Test de la methode de deplacement sur une case non traversable
+	 */
+	@Test
+	public void testDeplacementPossibleCaseNonTraversable() {
+		//Preparation des données
+		Etage e = new Etage(7);
+		Salle s = new Salle();
+		Aventurier a = new Aventurier(new Coordonnee(1,1),s,e);
+		//Methode testee
+		a.deplacerAventurier(new Coordonnee(0,1));
+		//Test
+		assertEquals("L'aventurier devrait ne pas bouger",1,a.getCoor().getX());
+	}
+	
+	/**
+	 * Test de la methode de deplacement sur une case entree
+	 */
+	@Test
+	public void testDeplacementSurEntree() {
+		//Preparation des données
+		Etage e = new Etage(0);
+		Salle sallePrecedente = e.getSalles().get(0).getEntree().getSallePrecedente();
+		Coordonnee entree = e.getSalles().get(0).getEntree().getC();
+		Aventurier a = new Aventurier(new Coordonnee(12,12),e.getSalles().get(0),e);
+		//Methode testee
+		a.deplacerAventurier(e.getSalles().get(0).getEntree().getC());
+		//Test
+		assertTrue("L'aventurier devrait avoir changer de salle",a.getSalle()==sallePrecedente);
+	}
+	
+	/**
+	 * Test de la methode de deplacement sur une case sortie
+	 */
+	@Test
+	public void testDeplacementSurSortie() {
+		//Preparation des données
+		Etage e = new Etage(0);
+		Coordonnee sortie = e.getSalles().get(1).getSortie().getCoord();getClass();
+		Sortie sortieS = new Sortie(e.getSalles().get(2),sortie);
+		e.getSalles().get(1).setSortie(sortieS);
+		Salle salleSuivante = e.getSalles().get(1).getSortie().getSalleSuivante();
+		Aventurier a = new Aventurier(new Coordonnee(12,12),e.getSalles().get(1),e);
+		//Methode testee
+		a.deplacerAventurier(e.getSalles().get(1).getSortie().getCoord());
+		//Test
+		assertTrue("L'aventurier devrait avoir changer de salle",a.getSalle()==e.getSalles().get(2));
 	}
 
 }

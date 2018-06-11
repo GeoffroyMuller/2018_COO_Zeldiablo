@@ -21,7 +21,7 @@ public class Entree extends Case implements Serializable{
 	 */
 	private Salle sallePrecedente;
 
-	private Coordonnee c;
+	private Coordonnee coord;
 	
 	
 	/**
@@ -31,6 +31,8 @@ public class Entree extends Case implements Serializable{
 		super();
 		this.setEstTraversable(true);
 		this.setTextureMotCle("portail_entree");
+		this.coord = c;
+		
 	}
 	
 	/**
@@ -43,6 +45,7 @@ public class Entree extends Case implements Serializable{
 		this.setEstTraversable(true);
 		sallePrecedente =s;
 		this.setTextureMotCle("portail_entree");
+		this.coord = c;
 
 	}
 
@@ -71,6 +74,6 @@ public class Entree extends Case implements Serializable{
 	}
 	
 	public Coordonnee getC() {
-		return c;
+		return coord;
 	}
 }

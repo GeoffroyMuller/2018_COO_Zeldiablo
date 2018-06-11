@@ -12,7 +12,7 @@ import com.sun.org.apache.bcel.internal.generic.NEW;
 public class Salle implements Serializable{
 
 	private GestionnaireZone gz;
-	
+
 	private Escalier escalier;
 
 	/**
@@ -96,13 +96,15 @@ public class Salle implements Serializable{
 	 * Constructeur permettant la création d'une salle
 	 */
 	public Salle(){
-		 gz = new GestionnaireZone();
+		gz = new GestionnaireZone();
 		this.monstrePresent = new ArrayList<Monstre>();
 		grille = new Case[TAILLE_SALLES][TAILLE_SALLES];
 		this.grilleMonstreSpawn = new String[TAILLE_SALLES][TAILLE_SALLES];
 		AleatoireVrai randomV= new AleatoireVrai();
 		Coordonnee ce = placerSurMurAlea(randomV);
+		
 		grille[ce.getX()][ce.getY()] = new Entree(new Coordonnee(ce.getX(),ce.getY()));
+		
 		this.entree=(Entree)grille[ce.getX()][ce.getY()];
 
 
@@ -110,7 +112,7 @@ public class Salle implements Serializable{
 		while(cs.getX()==ce.getX() && cs.getY()==ce.getY()) {
 			cs = placerSurMurAlea(randomV);
 		}
-		grille[cs.getX()][cs.getY()] = new Sortie();
+		grille[cs.getX()][cs.getY()] = new Sortie(new Coordonnee(ce.getX(),ce.getY()));
 		this.Sortie = (Sortie)grille[cs.getX()][cs.getY()] ;
 
 
@@ -144,19 +146,36 @@ public class Salle implements Serializable{
 		AleatoireVrai randomV= new AleatoireVrai();
 		Coordonnee cs = placerSurMurAlea(randomV);
 
-		grille[cs.getX()][cs.getY()] = new Sortie();
+		grille[cs.getX()][cs.getY()] = new Sortie(new Coordonnee(cs.getX(),cs.getY()));
 		this.Sortie = (Sortie)grille[cs.getX()][cs.getY()] ;
 
 
+		if(o==9) {
+			for (int i = 0; i < grille.length; i++) {
+				for (int j = 0; j < grille[0].length; j++) {
+					if(grille[i][j]==null){
+						if(i!=12 && j!=12) {
+							grille[i][j]=new Mur();
+						}else {
+							grille[i][j]=new Vide();
+						}
 
-		for (int i = 0; i < grille.length; i++) {
-			for (int j = 0; j < grille[0].length; j++) {
-				if(grille[i][j]==null){
-						grille[i][j]=new Vide();
+					}
+
 				}
 			}
 
+		}else {
+			for (int i = 0; i < grille.length; i++) {
+				for (int j = 0; j < grille[0].length; j++) {
+					if(grille[i][j]==null){
+						grille[i][j]=new Vide();
+					}
+				}
+
+			}
 		}
+
 		this.creeGrilleMonstre();
 		this.apparitionMonstre(randomV);
 	}
@@ -274,29 +293,29 @@ public class Salle implements Serializable{
 
 		}
 		if(gz.getLz().size()>0){
-			
-		Aleatoire random = new AleatoireVrai();
-		Zone z = gz.donnerUneZone(random);
-		Case[][] tab_caseZone = z.getGrilleZone();
 
-		int x = startPos.getX();
-		int y = startPos.getY();
-		System.out.println(x);
-		System.out.println(y);
+			Aleatoire random = new AleatoireVrai();
+			Zone z = gz.donnerUneZone(random);
+			Case[][] tab_caseZone = z.getGrilleZone();
 
-		for (int j = 0; j < Zone.TAILLE_ZONE; j++) {
-			for (int j2 = 0; j2 < Zone.TAILLE_ZONE; j2++) {
-				//System.out.println("x :"+x);
-				//System.out.println("y : "+y);
-				//System.out.println(" yzone :"+j);
-				//System.out.println(" xzone :"+j2);
-				this.grille[x][y]=(Case)tab_caseZone[j2][j];//peut etre probleme car passage d'adresse
-				x++;
+			int x = startPos.getX();
+			int y = startPos.getY();
+			System.out.println(x);
+			System.out.println(y);
+
+			for (int j = 0; j < Zone.TAILLE_ZONE; j++) {
+				for (int j2 = 0; j2 < Zone.TAILLE_ZONE; j2++) {
+					//System.out.println("x :"+x);
+					//System.out.println("y : "+y);
+					//System.out.println(" yzone :"+j);
+					//System.out.println(" xzone :"+j2);
+					this.grille[x][y]=(Case)tab_caseZone[j2][j];//peut etre probleme car passage d'adresse
+					x++;
+				}
+				x= (int)startPos.getX();
+				y++;
 			}
-			x= (int)startPos.getX();
-			y++;
-		}
-		
+
 		}
 
 
@@ -317,7 +336,7 @@ public class Salle implements Serializable{
 				if((this.isSpawnPossible(i, j)) && ((i != 0) && (j != 0)
 						&& i!=Salle.TAILLE_SALLES &&  j!=Salle.TAILLE_SALLES)) {
 					random = alea.genererNombreAleatoire(0, 100);
-	
+
 
 
 					if(random <=6) {
@@ -349,7 +368,7 @@ public class Salle implements Serializable{
 		}
 		return res;
 	}
-	
+
 	public boolean isDeplacementPossible(int x, int y) {
 		boolean res = true;
 		if(((!this.grille[x][y].estTraversable()) || this.grille[x][y].getType().contains("entree") || this.grille[x][y].getType().contains("sortie"))) {
@@ -357,10 +376,10 @@ public class Salle implements Serializable{
 		}
 		return res;
 	}
-	
-	
+
+
 	//=====Spawn Item=====//
-	
+
 	public ArrayList<Coordonnee> placeLibreItems(){
 		ArrayList<Coordonnee> tab_coo = new ArrayList<Coordonnee>();
 		for(int i=0;i<grille[0].length;i++){
@@ -372,17 +391,17 @@ public class Salle implements Serializable{
 		}
 		return tab_coo;
 	}
-	
+
 	/*public//a modifier en void car attribu : ArrayList<Item> placeAleatoirItems(){
 		ArrayList<Coordonnee> tab_libre = placeLibreItems();
 		int aleaItem = (int)Math.random() * (tab_libre.size() - 0);
-		
-		
+
+
 	}*/
-	
+
 
 	public void rechercheDeSortie(){
-		
+
 	}
 
 }

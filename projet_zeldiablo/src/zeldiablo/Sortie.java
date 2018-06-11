@@ -23,6 +23,8 @@ public class Sortie extends Case implements Serializable{
 	 */
 	private Salle salleSuivante;
 	
+	private Coordonnee coord;
+	
 	/**
 	 * Permet de modifier la salle suivante
 	 * @param salleSuivante
@@ -35,21 +37,23 @@ public class Sortie extends Case implements Serializable{
 	/**
 	 * Permet la création d'une case de type Sortie
 	 */
-	public Sortie() {
+	public Sortie(Coordonnee c) {
 		super();
 		this.setEstTraversable(true);
 		this.setTextureMotCle("portail_sortie");
+		this.coord = c;
 	}
 	/**
 	 * Permet la création d'une case de type Sortie en spécifiant la salle suivante
 	 * @param s
 	 * 		La salle suivante
 	 */
-	public Sortie(Salle s) {
+	public Sortie(Salle s, Coordonnee c) {
 		super();
 		this.setEstTraversable(true);
 		this.salleSuivante = s;
 		this.setTextureMotCle("portail_sortie");
+		this.coord = c;
 	}
 	
 	/**
@@ -67,6 +71,14 @@ public class Sortie extends Case implements Serializable{
 	@Override
 	public String getType() {
 		return "sortie";
+	}
+
+	public Coordonnee getCoord() {
+		return this.coord;
+	}
+
+	public void setCoord(Coordonnee coord) {
+		this.coord = coord;
 	}
 
 }

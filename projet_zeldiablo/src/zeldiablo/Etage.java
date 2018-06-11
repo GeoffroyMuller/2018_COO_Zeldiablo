@@ -33,7 +33,7 @@ public class Etage {
 		this.numetage = pnum;
 		salles = new ArrayList<Salle>();
 		for (int i = 0; i < NUM_SALLES; i++) {
-			salles.add(new Salle());
+			this.salles.add(new Salle());
 		}
 		for (int i = 0; i < NUM_SALLES; i++) {
 			if(i==0) {
@@ -71,6 +71,11 @@ public class Etage {
 	 * @see Etage#salles
 	 */
 	public ArrayList<Salle> getSalles() {
-		return salles;
+		return this.salles;
+	}
+
+
+	public void setSalles(ArrayList<Salle> salles) {
+		this.salles = salles;
 	}
 }
