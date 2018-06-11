@@ -1,0 +1,32 @@
+@startuml
+Participant "salle : Salle" as s
+Participant "grille[][] : Case" as g
+Participant "grilleZone[][] : Case" as gZ
+Participant "zone : Zone" as z
+
+Participant "gestionnaireZone : GestionnaireZone" as gz
+
+-> s : Salle()
+activate s
+s-> s : chargerFichierZone()
+s-> gz : donnerUneZone()
+activate gz
+gz --> s : Zone zone
+deactivate gz
+
+activate s
+s -> s : ajoutZone(zone)
+s -> z : getGrilleZone()
+activate z
+z--> s : grilleZone[][] gZ
+deactivate z
+
+loop
+s -> gZ : getCase(case)
+activate gZ
+gZ--> s : Case case
+deactivate gZ
+s -> g : setCase(case)
+end
+deactivate s
+@enduml
