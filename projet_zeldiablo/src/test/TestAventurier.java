@@ -274,17 +274,15 @@ public class TestAventurier {
 		//initialisation des donnees
 		Salle l = new Salle();
 		Salle l1 = new Salle();
-		Salle l2 = new Salle();
 		Etage e = new Etage(1);
 		Coordonnee co = new Coordonnee(4,5);
 		Case c = l.getSortie();
 		Aventurier a = new Aventurier(co,l1,e);
 		//methode testee
-		a.deplacerAventurier(l1.getEntree());
-		a.getSalle().getEntree();
+		a.changerCoord(((Entree)l1.getEntree()).getC());
 		a.changementSalle(l, c);
 		//assertion
-		assertEquals("Le joueur devrait etre sur la sortie de la salle precedente", l.getEntree(), a.getCase());
+		assertEquals("Le joueur devrait etre sur la sortie de la salle precedente", l.getSortie(), a.getCase());
 	}
 
 }

@@ -20,7 +20,7 @@ public class Entree extends Case implements Serializable{
 	 * @see Entree#Entree(Salle)
 	 */
 	private Salle sallePrecedente;
-	
+
 	private Coordonnee c;
 	
 	
@@ -69,5 +69,8 @@ public class Entree extends Case implements Serializable{
 	public String getType() {
 		return "entree";
 	}
-
+	
+	public Coordonnee getC() {
+		return c;
+	}
 }
