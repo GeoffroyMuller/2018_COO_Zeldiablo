@@ -23,6 +23,7 @@ public class PanneauChoix extends JPanel{
 	private JButton jbsave = new JButton("Save");
 	private JButton jbouvrir = new JButton("Ouvrir");
 	private JButton jbsuppr = new JButton("Supprimer");
+	private JButton jbefface = new JButton("Effacer");
 	
 	private JButton jbOuisuppr = new JButton("Oui");
 	private JButton jbNonsuppr = new JButton("Non");
@@ -48,6 +49,7 @@ public class PanneauChoix extends JPanel{
 		op.add(jcbcase);
 		op.add(jbouvrir);
 		op.add(jbsuppr);
+		op.add(jbefface);
 		op.setBackground(new Color(60,60,60));
 		
 		rb.add(rbzone);
@@ -154,15 +156,6 @@ public class PanneauChoix extends JPanel{
 					niv.creationZone(jtfnom.getText());
 				}
 				
-				/*jbcreer.setEnabled(false);
-				rbsalle.setEnabled(false);
-				rbzone.setEnabled(false);
-				jtfnom.setEnabled(false);
-				
-				jcbcase.setEnabled(true);
-				jbsave.setEnabled(true);
-				jbouvrir.setEnabled(true);
-				jbsuppr.setEnabled(true);*/
 				PositionPanneaux2();
 			}
 
@@ -203,7 +196,7 @@ public class PanneauChoix extends JPanel{
 		jbcreer.setEnabled(false);
 		rbsalle.setEnabled(false);
 		rbzone.setEnabled(false);
-		jtfnom.setEnabled(false);
+		jtfnom.setEnabled(true);
 	}
 	public void PosiationPanneauxallclose() {
 		jcbcase.setEnabled(false);
