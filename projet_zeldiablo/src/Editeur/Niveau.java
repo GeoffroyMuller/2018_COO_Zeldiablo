@@ -37,7 +37,7 @@ public class Niveau extends Observable implements Serializable{
 		taille = Salle.TAILLE_SALLES;
 		System.out.println("creation salle");
 		setChanged();
-		notifyObservers(VueNiveau.ADD_ML);
+		notifyObservers(VueNiveau.ADD_ML_MML);
 	}
 
 	public void creationZone(String nom) {
@@ -47,7 +47,7 @@ public class Niveau extends Observable implements Serializable{
 		taille = Zone.TAILLE_ZONE;
 		System.out.println("creation zone :"+nom);
 		setChanged();
-		notifyObservers(VueNiveau.ADD_ML);
+		notifyObservers(VueNiveau.ADD_ML_MML);
 	}
 
 	public boolean isEstsalle() {
@@ -119,7 +119,7 @@ public class Niveau extends Observable implements Serializable{
 		tab_case = null;
 		taille = 0;
 		setChanged();
-		notifyObservers(0);
+		notifyObservers(VueNiveau.SUP_ALL);
 	}
 	public void sauvegarder(String nomSave) {
 		String ext ="";
@@ -192,7 +192,7 @@ public class Niveau extends Observable implements Serializable{
 		System.out.println(tab_case);
 		System.out.println("ouverture  salle");
 		setChanged();
-		notifyObservers(VueNiveau.ADD_ML);
+		notifyObservers(VueNiveau.ADD_ML_MML);
 	}
 
 	public void creationZone(Zone z) {
@@ -201,7 +201,7 @@ public class Niveau extends Observable implements Serializable{
 		taille = Zone.TAILLE_ZONE;
 		System.out.println("ouverture zone ");
 		setChanged();
-		notifyObservers(VueNiveau.ADD_ML);
+		notifyObservers(VueNiveau.ADD_ML_MML);
 	}
 
 }

@@ -15,6 +15,10 @@ public class VueNiveau  extends JPanel implements Observer{
 	private static final int MARGE_TAILLECASE_Y = 10;
 
 	public static final int ADD_ML = 100;
+	public static final int ADD_MML = 101;
+	public static final int ADD_ML_MML = 102;
+
+	public static final int SUP_ALL = 202;
 
 	private int x=0;
 	private int y=0;
@@ -41,6 +45,7 @@ public class VueNiveau  extends JPanel implements Observer{
 		super.paintComponent(g);
 		x=MARGE_TAILLECASE_X;
 		y=MARGE_TAILLECASE_Y;
+		g.drawString(""+niv.getTaille()+"*"+niv.getTaille(), this.getWidth()-40, this.getHeight()-8);
 		g.setColor(Color.black);
 		if(niv.getTab_case()!=null) {
 			g.setColor(Color.BLACK);
@@ -101,19 +106,41 @@ public class VueNiveau  extends JPanel implements Observer{
 		}
 		return null;
 	}
-
+	
+	public void supprimerToutVN(){
+		tab_rec = new ArrayList<Rectangle>();
+		x = 0;
+		y = 0;
+		System.out.println("Supprimer Tout VueNiveau");
+	}
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
 		niv = (Niveau) arg0;
 		int cas = (int) arg1;
+
 		switch(cas) {
 		case ADD_ML :
 			addMouseListener(cc.getMl());
 			System.out.println("ajout listner ml");
 			break;
-			default :
-				break;
+		case ADD_MML :
+			addMouseMotionListener(cc.getMml());
+			System.out.println("ajout listner mml");
+			break;
+		case ADD_ML_MML :
+			addMouseListener(cc.getMl());
+			addMouseMotionListener(cc.getMml());
+			System.out.println("ajout listner ml & mml");
+			break;
+		case SUP_ALL :
+			removeMouseListener(cc.getMl());
+			removeMouseMotionListener(cc.getMml());
+			System.out.println("remove listner ml & mml");
+			supprimerToutVN();
+			break;
+		default :
+			break;
 		}
 
 		repaint();

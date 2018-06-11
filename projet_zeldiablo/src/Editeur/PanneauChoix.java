@@ -23,6 +23,7 @@ public class PanneauChoix extends JPanel{
 	private JButton jbsave = new JButton("Save");
 	private JButton jbouvrir = new JButton("Ouvrir");
 	private JButton jbsuppr = new JButton("Supprimer");
+	private JButton jbefface = new JButton("Effacer");
 	
 	private JButton jbOuisuppr = new JButton("Oui");
 	private JButton jbNonsuppr = new JButton("Non");
@@ -39,7 +40,7 @@ public class PanneauChoix extends JPanel{
 		niv = nive;
 		setLayout(new BorderLayout());
 		
-		rbsalle.setSelected(true);
+		rbzone.setSelected(true);
 		
 		bg.add(rbzone);
 		bg.add(rbsalle);
@@ -48,6 +49,7 @@ public class PanneauChoix extends JPanel{
 		op.add(jcbcase);
 		op.add(jbouvrir);
 		op.add(jbsuppr);
+		op.add(jbefface);
 		op.setBackground(new Color(60,60,60));
 		
 		rb.add(rbzone);
@@ -89,13 +91,14 @@ public class PanneauChoix extends JPanel{
 			        chooser.setFileFilter(filter);
 			        int returnVal = chooser.showOpenDialog(getParent());
 			        if(returnVal == JFileChooser.APPROVE_OPTION) {
-			           System.out.println("You chose to open this file: " +
+			           System.out.println("Choisir le fichier a ouvrir : " +
 			                chooser.getSelectedFile().getName());
 			           jtfnom.setText(chooser.getSelectedFile().getName());
 			           niv.ouverture(chooser.getSelectedFile());
 			           System.out.println("apres niv ouvert");
 			        }
-				
+				jbcreer.doClick();
+				System.out.println("doclick");
 				
 			}
 		};
@@ -153,15 +156,7 @@ public class PanneauChoix extends JPanel{
 					niv.creationZone(jtfnom.getText());
 				}
 				
-				jbcreer.setEnabled(false);
-				rbsalle.setEnabled(false);
-				rbzone.setEnabled(false);
-				jtfnom.setEnabled(false);
-				
-				jcbcase.setEnabled(true);
-				jbsave.setEnabled(true);
-				jbouvrir.setEnabled(true);
-				jbsuppr.setEnabled(true);
+				PositionPanneaux2();
 			}
 
 		};
@@ -196,17 +191,17 @@ public class PanneauChoix extends JPanel{
 		jbNonsuppr.setVisible(false);
 		jcbcase.setEnabled(true);
 		jbsave.setEnabled(true);
-		jbouvrir.setEnabled(true);
+		jbouvrir.setEnabled(false);
 		jbsuppr.setEnabled(true);
 		jbcreer.setEnabled(false);
 		rbsalle.setEnabled(false);
 		rbzone.setEnabled(false);
-		jtfnom.setEnabled(false);
+		jtfnom.setEnabled(true);
 	}
 	public void PosiationPanneauxallclose() {
 		jcbcase.setEnabled(false);
 		jbsave.setEnabled(false);
-		jbouvrir.setEnabled(true);
+		jbouvrir.setEnabled(false);
 		jbsuppr.setEnabled(false);
 		jbcreer.setEnabled(false);
 		rbsalle.setEnabled(false);
