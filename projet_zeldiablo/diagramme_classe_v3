@@ -1,0 +1,271 @@
+@startuml
+class Vide [[java:zeldiablo.Vide]] {
+	+boolean estTraversable()
+	+Vide()
+	+String getType()
+}
+class Case [[java:zeldiablo.Case]] {
+}
+Case <|-- Vide
+
+class GestionnaireTexture [[java:zeldiablo.GestionnaireTexture]] {
+	~ArrayList<Texture> listeTexture
+	+GestionnaireTexture()
+	+Image attribuerTexture(Case c)
+}
+class Donjon [[java:zeldiablo.Donjon]] {
+	-String nom
+	+{static}int NUM_ETAGES
+	+Donjon(String pnom)
+	+ArrayList<Etage> getEtages()
+	+String getNom()
+}
+class Entree [[java:zeldiablo.Entree]] {
+	+Entree()
+	+Entree(Salle s)
+	+boolean estTraversable()
+	+Salle getSallePrecedente()
+	+void setSallePrecedente(Salle sallePrecedente)
+	+String getType()
+}
+class Salle [[java:zeldiablo.Salle]] {
+}
+Entree --> "1" Salle : sallePrecedente
+class Case [[java:zeldiablo.Case]] {
+}
+Case <|-- Entree
+
+class Salle [[java:zeldiablo.Salle]] {
+	+{static}int TAILLE_SALLES
+	+Entree getEntree()
+	+void setEntree(Entree entree)
+	+Sortie getSortie()
+	+void setSortie(Sortie sortie)
+	+Salle()
+	+String toString()
+	+Case[][] getGrille()
+	+Coordonnee placerSurMurAlea()
+	+void setGrille(Case[][] grille)
+	+void ajoutZone(Zone z, int entier)
+}
+class Entree [[java:zeldiablo.Entree]] {
+}
+Salle --> "1" Entree : entree
+class Sortie [[java:zeldiablo.Sortie]] {
+}
+Salle --> "1" Sortie : Sortie
+
+class ZeldiabloJeu [[java:zeldiablo.ZeldiabloJeu]] {
+	+ZeldiabloJeu()
+	+void evoluer(Commande commandeUser)
+	+void changementEtage()
+	+boolean etreFini()
+	+Aventurier getAv()
+	+Donjon getDj()
+}
+class Aventurier [[java:zeldiablo.Aventurier]] {
+}
+ZeldiabloJeu --> "1" Aventurier : av
+class Donjon [[java:zeldiablo.Donjon]] {
+}
+ZeldiabloJeu --> "1" Donjon : dj
+interface Jeu [[java:moteur.Jeu]] {
+}
+Jeu <|.. ZeldiabloJeu
+class Aventurier [[java:zeldiablo.Aventurier]] {
+	-int vie
+	-boolean mort
+	-Image texture
+	+Image getTexture()
+	+void setTexture(Image texture)
+	+Aventurier()
+	+Aventurier(Coordonnee c, Salle l, Etage et)
+	+void setSalle(Salle salle)
+	+void setEtage(Etage etage)
+	+Salle getSalle()
+	+Etage getEtage()
+	+void soigner(int pv)
+	+void modifierVie(int pv)
+	+void subirDegats(int pv)
+	+boolean deplacerAventurier(Coordonnee c)
+	+void changerCoord(Coordonnee c)
+	+boolean enVie()
+	+int getVie()
+	+void setVie(int vie)
+	+boolean isMort()
+	+void setMort(boolean mort)
+	+Coordonnee getCoor()
+	+void setCoor(Coordonnee coor)
+	+Case getCase()
+	+void changementSalle(Salle s, Case c)
+}
+class Coordonnee [[java:zeldiablo.Coordonnee]] {
+}
+class Salle [[java:zeldiablo.Salle]] {
+}
+class Etage [[java:zeldiablo.Etage]] {
+}
+
+class Sortie [[java:zeldiablo.Sortie]] {
+	+void setSalleSuivante(Salle salleSuivante)
+	+Sortie()
+	+Sortie(Salle s)
+	+Salle getSalleSuivante()
+	+boolean estTraversable()
+	+String getType()
+}
+class Salle [[java:zeldiablo.Salle]] {
+}
+Sortie --> "1" Salle : salleSuivante
+class Case [[java:zeldiablo.Case]] {
+}
+Case <|-- Sortie
+
+class ZeldiabloDessin [[java:zeldiablo.ZeldiabloDessin]] {
+	+{static}int TAILLE
+	+ZeldiabloDessin(ZeldiabloJeu j)
+	+void dessiner(BufferedImage image)
+}
+class GestionnaireTexture [[java:zeldiablo.GestionnaireTexture]] {
+}
+ZeldiabloDessin --> "1" GestionnaireTexture : gt
+class ZeldiabloJeu [[java:zeldiablo.ZeldiabloJeu]] {
+}
+ZeldiabloDessin --> "1" ZeldiabloJeu : jeu
+interface DessinJeu [[java:moteur.DessinJeu]] {
+}
+DessinJeu <|.. ZeldiabloDessin
+class Zone [[java:zeldiablo.Zone]] {
+	+{static}int TAILLE_ZONE
+	-String nomZone
+	+Zone(String pnom)
+	+Case[][] getGrilleZone()
+	+void setGrilleZone(Case[][] grilleZone)
+}
+
+abstract class Case [[java:zeldiablo.Case]] {
+	-String textureMotCle
+	-boolean tresorPresent
+	-boolean monstrePresent
+	+Case()
+	+{abstract}boolean estTraversable()
+	+{abstract}String getType()
+	+String toString()
+	+String getTextureMotCle()
+	+void setTextureMotCle(String textureMotCle)
+}
+
+class Texture [[java:zeldiablo.Texture]] {
+	-Image img
+	-String nom
+	+Texture(String n, String chemin)
+	+Image getImg()
+	+String getNom()
+}
+class Coordonnee [[java:zeldiablo.Coordonnee]] {
+	-int x
+	-int y
+	+Coordonnee(int cX, int cY)
+	+int getX()
+	+void setX(int x)
+	+int getY()
+	+void setY(int y)
+	+void incrementerX()
+	+void incrementerY()
+	+void decrementerX()
+	+void decrementerY()
+	+void dupliquerCoordonnee(Coordonnee c)
+	+String toString()
+}
+
+class Mur [[java:zeldiablo.Mur]] {
+	+boolean estTraversable()
+	+Mur()
+	+String getType()
+}
+class Case [[java:zeldiablo.Case]] {
+}
+Case <|-- Mur
+
+class Etage [[java:zeldiablo.Etage]] {
+	-int numetage
+	+{static}int NUM_SALLES
+	+Etage(int pnum)
+	+int getNumetage()
+	+ArrayList<Salle> getSalles()
+}
+class Escalier [[java:zeldiablo.Escalier]] {
+	+boolean estTraversable()
+	+String getType()
+}
+class Case [[java:zeldiablo.Case]] {
+}
+Case <|-- Escalier
+
+interface Personnage [[java:moteur.Jeu]] {
+-int vie
+-boolean mort
+-Image texture
+
+	+void setSalle(Salle salle)
+	+void setEtage(Etage etage)
+	+Salle getSalle()
+	+Etage getEtage()
+	+void soigner(int pv)
+	+void modifierVie(int pv)
+	+void subirDegats(int pv)
+	+boolean deplacerAventurier(Coordonnee c)
+	+void changerCoord(Coordonnee c)
+	+boolean enVie()
+	+int getVie()
+	+void setVie(int vie)
+	+boolean isMort()
+	+void setMort(boolean mort)
+	+Coordonnee getCoor()
+	+void setCoor(Coordonnee coor)
+	+Case getCase()
+	+void changementSalle(Salle s, Case c)
+
+}
+Personnage --> "1" Coordonnee : coor
+Personnage --> "1" Etage : etage
+Personnage --> "1" Salle : salle
+Aventurier ..|> Personnage
+class Monstre{
+-int vie
+-boolean mort
+-Image texture
+
+	+void setSalle(Salle salle)
+	+void setEtage(Etage etage)
+	+Salle getSalle()
+	+Etage getEtage()
+	+void soigner(int pv)
+	+void modifierVie(int pv)
+	+void subirDegats(int pv)
+	+boolean deplacerAventurier(Coordonnee c)
+	+void changerCoord(Coordonnee c)
+	+boolean enVie()
+	+int getVie()
+	+void setVie(int vie)
+	+boolean isMort()
+	+void setMort(boolean mort)
+	+Coordonnee getCoor()
+	+void setCoor(Coordonnee coor)
+	+Case getCase()
+	+void changementSalle(Salle s, Case c)
+}
+Monstre ..|> Personnage
+class Tresor{
+-String type
+
++String getType()
++String setType(String)
+}
+Tresor --> "1" Case : emplacement
+Zone --> "*" Case : grilleZone
+Donjon --> "*" Etage : etages
+Etage --> "*" Salle : salles
+Salle --> "*" Case : grille
+
+@enduml

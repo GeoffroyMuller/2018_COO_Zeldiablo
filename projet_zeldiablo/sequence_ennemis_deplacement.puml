@@ -1,0 +1,9 @@
+@startuml
+Participant "monstre : Monstre" as s
+Participant "grille[][] : Case" as coord #99FF99
+Participant "case : Case" as c #99FF99
+Participant "random : Integer" as rdm #99FF99
+
+
+
+@enduml

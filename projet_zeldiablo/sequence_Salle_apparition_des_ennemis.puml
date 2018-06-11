@@ -1,0 +1,50 @@
+@startuml
+Participant "salle : Salle" as s
+Participant "grille[][] : Case" as coord #99FF99
+Participant "case : Case" as c #99FF99
+Participant "grilleMonstreSpawn[][] : String" as spawn #99FF99
+Participant "random : Integer" as rdm #99FF99
+
+->s : apparitionMonstre()
+activate s
+loop i=0;i<grille.length
+loop j=0;j<grille[0].length
+s->coord : this.grille[i][j]
+activate coord
+coord-->s : case
+deactivate coord
+
+s->spawn : isSpawnPossible(i,j)
+activate spawn
+spawn-->s : true
+deactivate spawn
+
+alt isSpawnPossible() = true
+
+
+
+
+s->rdm : i = [0-100]
+activate rdm
+rdm-->s
+deactivate rdm
+alt i < 10
+create "monstre : Monstre" as monstre #99FF99
+s->monstre : new Monstre()
+s->c : setMonstre(true)
+activate c
+c-->s
+deactivate c
+else i>5
+s->c : setMonstre(false)
+activate c
+c-->s 
+deactivate c
+
+end
+end
+end
+end
+<--s
+deactivate s
+@enduml
