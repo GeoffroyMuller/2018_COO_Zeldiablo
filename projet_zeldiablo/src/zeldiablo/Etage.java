@@ -41,19 +41,18 @@ public class Etage {
 				salles.get(i).getEntree().setSallePrecedente(salles.get(NUM_SALLES-1));
 
 			}
-			else {
-				if(i==NUM_SALLES-1) {
-					salles.get(i).getSortie().setSalleSuivante(salles.get(0));
-					salles.get(i).getEntree().setSallePrecedente(salles.get(i-1));
-				}
-				else{
-					salles.get(i).getSortie().setSalleSuivante(salles.get(i+1));
-					salles.get(i).getEntree().setSallePrecedente(salles.get(i-1));
-				}
+			else if(i==NUM_SALLES-1) {
+				salles.get(i).getSortie().setSalleSuivante(salles.get(0));
+				salles.get(i).getEntree().setSallePrecedente(salles.get(i-1));
+			}
+			else{
+				salles.get(i).getSortie().setSalleSuivante(salles.get(i+1));
+				salles.get(i).getEntree().setSallePrecedente(salles.get(i-1));
 			}
 		}
-
 	}
+
+
 
 
 	/**

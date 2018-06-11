@@ -33,7 +33,7 @@ public class Donjon{
  */
 public Donjon (String pnom) {
 	this.nom = pnom;
-	etages = new ArrayList<>();
+	etages = new ArrayList<Etage>();
 	for (int i = 0; i < NUM_ETAGES; i++) {
 		etages.add(new Etage(i));
 	}

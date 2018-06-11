@@ -1,0 +1,31 @@
+@startuml
+Participant "main" as m
+
+create "entree : Entree" as ent
+m->ent : new Entree(salle,coordonnee)
+
+create "monstrePresent : Boolean" as mp
+ent->mp : monstrePresent = false
+activate ent
+create "objetPresent : Boolean" as oP
+ent->oP : objetPresent = false
+
+ent->ent : setEstTraversable(true)
+activate ent
+ent-->ent
+deactivate ent
+
+ent->ent : setTextureMotCle("portail_entree")
+activate ent
+ent-->ent
+deactivate ent
+
+
+create "coord : Coordonnee" as coordo
+ent->coordo : this.coord = coordonnee
+
+m<--ent : entree
+deactivate entree
+
+Participant "coord : Coordonnee" as c #99FF99
+@enduml
