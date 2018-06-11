@@ -11,7 +11,8 @@ import zeldiablo.*
 		//initialisation des donnees
 		Zone z = new Zone("Moi");
 		//methodes testees
-		z.getGrilleZone()[z.TAILLE_ZONE][z.TAILLE_ZONE];
+		Case[][] tc = z.getGrilleZone();
+		assertEquals("erreur sur nom"+z.getNomZone(),"Moi", z.getNomZone());
 	}
 
 }
