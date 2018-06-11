@@ -2,12 +2,15 @@ package zeldiablo;
 
 import java.io.Serializable;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 /**
  * @author Guezennec Lucas, Biancalana Théo, Geoffroy Muller et Masson Loic
  *
  */
 public class Salle implements Serializable{
 	
+	private GestionnaireZone gz = new GestionnaireZone();
 	
 	/**
 	 * Taille d'une salle
@@ -107,6 +110,10 @@ public class Salle implements Serializable{
 			}
 			
 		}
+		
+		for (int i = 0; i < 4; i++) {
+			insererZone(i);
+		}
 	}
 	
 
@@ -169,6 +176,9 @@ public class Salle implements Serializable{
 		System.out.println("coordonné generer alea  : "+c);
 		return c;
 	}
+	
+	
+	
 
 	/**
 	 * Permet de définir la grille de case
@@ -179,7 +189,47 @@ public class Salle implements Serializable{
 	public void setGrille(Case[][] grille) {
 		this.grille = grille;
 	}
-
+	
+	public void insererZone(int i){
+		Coordonnee startPos;
+		switch(i){
+		case 0 :
+			startPos = new Coordonnee(2, 2);
+			break;
+			
+		case 1 :
+			startPos = new Coordonnee(Salle.TAILLE_SALLES-3-Zone.TAILLE_ZONE, 2);
+			break;
+			
+		case 2 :
+			startPos = new Coordonnee(Salle.TAILLE_SALLES-3-Zone.TAILLE_ZONE, Salle.TAILLE_SALLES-3-Zone.TAILLE_ZONE);
+			break;
+		case 3 :
+			startPos = new Coordonnee(2, Salle.TAILLE_SALLES-3-Zone.TAILLE_ZONE);
+		break;
+			default :
+				startPos = new Coordonnee(2, 2);
+			break;
+		
+		}
+		
+		Zone z = gz.donnerUneZone();
+		Case[][] tab_caseZone = z.getGrilleZone();
+		
+		int x = startPos.getX();
+		int y = startPos.getY();
+		
+		
+		for (int j = 0; j < Zone.TAILLE_ZONE; j++) {
+			for (int j2 = 0; j2 < Zone.TAILLE_ZONE; j2++) {
+				this.grille[x][y]=tab_caseZone[j2][j];//peut etre probleme car passage d'adresse
+				x++;
+			}
+			y++;
+		}
+		
+		
+	}
 }
 
 
