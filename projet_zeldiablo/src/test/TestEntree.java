@@ -14,7 +14,7 @@ public class TestEntree {
 	@Test
 	public void testConstructeur() {
 		Salle sa = new Salle();
-		Entree e = new Entree(sa);
+		Entree e = new Entree(sa,new Coordonnee(0,2));
 		//methodes testees
 		String str = e.getTextureMotCle();
 		//assertion
