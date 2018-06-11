@@ -154,7 +154,7 @@ public class PanneauChoix extends JPanel{
 					niv.creationZone(jtfnom.getText());
 				}
 				
-				jbcreer.setEnabled(false);
+				/*jbcreer.setEnabled(false);
 				rbsalle.setEnabled(false);
 				rbzone.setEnabled(false);
 				jtfnom.setEnabled(false);
@@ -162,7 +162,8 @@ public class PanneauChoix extends JPanel{
 				jcbcase.setEnabled(true);
 				jbsave.setEnabled(true);
 				jbouvrir.setEnabled(true);
-				jbsuppr.setEnabled(true);
+				jbsuppr.setEnabled(true);*/
+				PositionPanneaux2();
 			}
 
 		};
@@ -197,7 +198,7 @@ public class PanneauChoix extends JPanel{
 		jbNonsuppr.setVisible(false);
 		jcbcase.setEnabled(true);
 		jbsave.setEnabled(true);
-		jbouvrir.setEnabled(true);
+		jbouvrir.setEnabled(false);
 		jbsuppr.setEnabled(true);
 		jbcreer.setEnabled(false);
 		rbsalle.setEnabled(false);
@@ -207,7 +208,7 @@ public class PanneauChoix extends JPanel{
 	public void PosiationPanneauxallclose() {
 		jcbcase.setEnabled(false);
 		jbsave.setEnabled(false);
-		jbouvrir.setEnabled(true);
+		jbouvrir.setEnabled(false);
 		jbsuppr.setEnabled(false);
 		jbcreer.setEnabled(false);
 		rbsalle.setEnabled(false);
