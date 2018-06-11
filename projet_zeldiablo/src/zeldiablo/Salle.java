@@ -328,7 +328,7 @@ public class Salle implements Serializable{
 		return tab_coo;
 	}
 	
-	/*public ArrayList<Coordonnee> placeAleatoirItems(){
+	/*public//a modifier en void car attribu : ArrayList<Item> placeAleatoirItems(){
 		ArrayList<Coordonnee> tab_libre = placeLibreItems();
 		int aleaItem = (int)Math.random() * (tab_libre.size() - 0);
 		
