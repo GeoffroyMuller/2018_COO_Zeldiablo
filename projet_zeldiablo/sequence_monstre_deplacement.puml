@@ -1,0 +1,153 @@
+@startuml
+Participant "monstre : Monstre" as m
+Participant "alea : Aleatoire" as r #99FF99
+Participant "random : Integer" as rdm #99FF99
+
+Participant "case : Case" as salle #99FF99
+
+->m : deplacement(alea)
+activate m
+
+m->m : getCoor().getX()
+activate m
+m-->m : x
+deactivate m
+
+m->m : getCoor().getY()
+activate m
+m-->m : y
+deactivate m
+
+m-> r : genererNombreAleatoire(0,4)
+activate r
+r-->m : random
+deactivate r
+
+alt (x != 0) && (x!= Salle.TAILLE_SALLES-1) && (y!= 0) && (y!= Salle.TAILLE_SALLES-1)
+
+alt random == 0
+alt this.getSalle().isDeplacementPossible(x+1, y)
+
+m->m : getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()]
+activate m
+m-->m : case
+deactivate m
+
+m->salle : setMonstrePresent(false)
+m->salle : setestTraversable(true)
+
+m->m : changerCoord(new Coordonnee(x+1,y))
+activate m
+m-->m
+deactivate m
+
+m->m : getSalle().getGrille()[x+1][y]
+activate m
+m-->m : case
+deactivate m
+
+m->salle : setMonstrePresent(true)
+m->salle : setestTraversable(false)
+
+else
+m->rdm : rdm=rdm+1
+
+end
+end
+
+alt random == 1
+alt this.getSalle().isDeplacementPossible(x-1, y)
+
+m->m : getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()]
+activate m
+m-->m : case
+deactivate m
+
+m->salle : setMonstrePresent(false)
+m->salle : setestTraversable(true)
+
+m->m : changerCoord(new Coordonnee(x-1,y))
+activate m
+m-->m
+deactivate m
+
+m->m : getSalle().getGrille()[x-1][y]
+activate m
+m-->m : case
+deactivate m
+
+m->salle : setMonstrePresent(true)
+m->salle : setestTraversable(false)
+
+else
+m->rdm : rdm=rdm+1
+
+end
+end
+
+alt random == 2
+alt this.getSalle().isDeplacementPossible(x, y+1)
+
+m->m : getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()]
+activate m
+m-->m : case
+deactivate m
+
+m->salle : setMonstrePresent(false)
+m->salle : setestTraversable(true)
+
+m->m : changerCoord(new Coordonnee(x,y+1))
+activate m
+m-->m
+deactivate m
+
+m->m : getSalle().getGrille()[x][y+1]
+activate m
+m-->m : case
+deactivate m
+
+m->salle : setMonstrePresent(true)
+m->salle : setestTraversable(false)
+
+else
+m->rdm : rdm=rdm+1
+
+end
+end
+
+alt random == 3
+alt this.getSalle().isDeplacementPossible(x, y-1)
+
+m->m : getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()]
+activate m
+m-->m : case
+deactivate m
+
+m->salle : setMonstrePresent(false)
+m->salle : setestTraversable(true)
+
+m->m : changerCoord(new Coordonnee(x,y-1))
+activate m
+m-->m
+deactivate m
+
+m->m : getSalle().getGrille()[x][y-1]
+activate m
+m-->m : case
+deactivate m
+
+m->salle : setMonstrePresent(true)
+m->salle : setestTraversable(false)
+
+end
+end
+end
+<--m
+deactivate m
+
+
+
+Participant "x : Integer" as x #99FF99
+Participant "y : Integer" as y #99FF99
+
+@enduml

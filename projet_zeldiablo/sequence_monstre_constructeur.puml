@@ -1,0 +1,29 @@
+@startuml
+Participant "main" as m
+
+create "monstre : Monstre" as monstre
+m->monstre : new Monstre(coord,salle)
+activate monstre
+
+create "this.vie : Integer" as vie
+monstre->vie : this.vie = 100
+
+create "this.mort : boolean" as mort
+monstre->mort : this.mort = false
+
+create "this.coor : Coordonnee" as cc
+monstre->cc : this.coor = coord
+
+create "this.salle : Salle" as ss
+monstre->ss : this.salle = salle
+
+
+monstre->monstre : setTexture(ImageIO.read(new File("..\\texture\\monstre_violet_3.png"))
+activate monstre
+monstre-->monstre
+deactivate monstre
+monstre-->m : monstre
+deactivate monstre
+Participant "coord : Coordonnee" as coooooo #99FF99
+Participant "salle : Salle" as saaaaa #99FF99
+@enduml
