@@ -12,6 +12,8 @@ import com.sun.org.apache.bcel.internal.generic.NEW;
 public class Salle implements Serializable{
 
 	private GestionnaireZone gz;
+	
+	private Escalier escalier;
 
 	/**
 	 * Taille d'une salle
@@ -135,6 +137,10 @@ public class Salle implements Serializable{
 
 	}
 
+	public Escalier getEscalier() {
+		return escalier;
+	}
+
 	public void creeGrilleMonstre() {
 		for(int i =0; i < grille.length;i++) {
 			for(int j = 0; j < grille[0].length;j++) {
@@ -243,7 +249,9 @@ public class Salle implements Serializable{
 			break;
 
 		}
-
+		if(gz.getLz().size()>0){
+			
+		
 		Zone z = gz.donnerUneZone();
 		Case[][] tab_caseZone = z.getGrilleZone();
 
@@ -254,15 +262,17 @@ public class Salle implements Serializable{
 
 		for (int j = 0; j < Zone.TAILLE_ZONE; j++) {
 			for (int j2 = 0; j2 < Zone.TAILLE_ZONE; j2++) {
-				System.out.println("x :"+x);
-				System.out.println("y : "+y);
-				System.out.println(" yzone :"+j);
-				System.out.println(" xzone :"+j2);
+				//System.out.println("x :"+x);
+				//System.out.println("y : "+y);
+				//System.out.println(" yzone :"+j);
+				//System.out.println(" xzone :"+j2);
 				this.grille[x][y]=(Case)tab_caseZone[j2][j];//peut etre probleme car passage d'adresse
 				x++;
 			}
 			x= (int)startPos.getX();
 			y++;
+		}
+		
 		}
 
 
@@ -284,7 +294,7 @@ public class Salle implements Serializable{
 						&& i!=Salle.TAILLE_SALLES &&  j!=Salle.TAILLE_SALLES)) {
 					random =(int) (Math.random() * ( 100 - 0 ));
 
-					if(random <=1) {
+					if(random <=5) {
 						Monstre m = new Monstre(new Coordonnee(i,j),this);
 						this.grille[i][j].setEstTraversable(false);
 						this.grille[i][j].setMonstrePresent(true);
@@ -306,13 +316,15 @@ public class Salle implements Serializable{
 		boolean res = true;
 		if((this.grilleMonstreSpawn[x][y].contains("o"))
 				|| ((!this.grille[x][y].estTraversable())||(this.grille[x][y].isMonstrePresent()))
-				|| (x==0 && y==0) || (x==Salle.TAILLE_SALLES || y==Salle.TAILLE_SALLES) || this.grille[x][y].getType().contains("entree") || this.grille[x][y].getType().contains("sortie") ) {
+				|| (x==0 && y==0) || (x==Salle.TAILLE_SALLES || y==Salle.TAILLE_SALLES) || this.grille[x][y].getType().contains("entree") || this.grille[x][y].getType().contains("sortie") || this.grille[x][y].getType().contains("escalier")) {
 			res = false;
 		}
 		return res;
 	}
 
-
+	public void rechercheDeSortie(){
+		
+	}
 
 }
 

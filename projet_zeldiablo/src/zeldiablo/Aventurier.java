@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
  *
  */
 public class Aventurier extends Personnage implements Serializable{
-	
+
 	/**
 	 * Permet la création d'un aventurier
 	 */
@@ -71,6 +71,15 @@ public class Aventurier extends Personnage implements Serializable{
 						this.setSalle(this.getSalle().getSortie().getSalleSuivante());
 						changementSalle(this.getSalle(), this.getSalle().getEntree());
 						System.out.println("sortie");
+					}
+					else{
+						if(this.getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()]==this.getSalle().getSortie()) {
+
+							this.setSalle(this.getSalle().getSortie().getSalleSuivante());
+							changementSalle(this.getSalle(), this.getSalle().getEntree());
+							System.out.println("sortie");
+						}
+
 					}
 				}
 

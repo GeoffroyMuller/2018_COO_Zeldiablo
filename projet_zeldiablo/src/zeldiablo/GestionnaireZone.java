@@ -44,6 +44,10 @@ public class GestionnaireZone {
 		}
 	}
 	
+	public ArrayList<File> getLf() {
+		return lf;
+	}
+
 	public Zone donnerUneZone(){
 		System.out.println("================="+lz.size());
 		int rd = (int)(Math.random()*this.lz.size());

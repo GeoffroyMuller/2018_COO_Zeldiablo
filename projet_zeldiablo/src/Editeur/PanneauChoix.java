@@ -164,11 +164,9 @@ public class PanneauChoix extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				if(rbsalle.isSelected()) {
-					try{
+					
 					niv.creationSalle();
-					} catch (NullPointerException e){
-						System.out.println("Il faut creer au moin une zone pour pouvoir creer une Salle");
-					}
+				
 				}
 				if(rbzone.isSelected()) {
 					niv.creationZone(jtfnom.getText());

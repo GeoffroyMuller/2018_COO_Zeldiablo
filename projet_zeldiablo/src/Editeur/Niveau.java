@@ -95,7 +95,10 @@ public class Niveau extends Observable implements Serializable{
 			case 3 :
 				tab_case[co.getX()][co.getY()] = new Sortie();
 				break;
-
+			
+			case 4 :
+				tab_case[co.getX()][co.getY()] = new Escalier();
+				break;
 
 			default :
 
