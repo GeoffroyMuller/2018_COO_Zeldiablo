@@ -96,8 +96,11 @@ public class ZeldiabloJeu implements Jeu {
 	 */
 	@Override
 	public boolean etreFini() {
-		// TODO Auto-generated method stub
-		return false;
+		boolean res = false;
+		if(this.av.isMort()) {
+			res=true;
+		}
+		return res;
 	}
 	/**
 	 * @return l'Aventurier controllé par le joueur
