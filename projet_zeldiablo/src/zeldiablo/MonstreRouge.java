@@ -15,11 +15,14 @@ public class MonstreRouge extends Monstre {
 	 */
 	public MonstreRouge(Coordonnee c, Salle s) {
 		super(c, s);
+		baseDegat=6;
+		baseVie=80;
+		majStat();
 		try {
 			this.setTexture(ImageIO.read(new File("..\\texture\\monstre_rouge_2.png")));
 		} catch (IOException e) {
 			e.printStackTrace();
-			this.setDegats(6+this.stat.getForce()/10);
+			
 		}
 	}
 	/**
