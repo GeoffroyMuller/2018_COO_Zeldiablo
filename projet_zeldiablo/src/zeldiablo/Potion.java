@@ -2,7 +2,7 @@ package zeldiablo;
 /**
  * Creation de la classe Potion 
  */
-public class Potion extends Item{
+public class Potion extends Item implements ObjetTexturer{
 	/**
 	 * Constructeur de Potion qui initilise les attributs avec les parametres
 	 * donnes
@@ -13,6 +13,12 @@ public class Potion extends Item{
 	public Potion(Salle se,int xe,int ye) {
 		super("potion",se,xe,ye);
 		System.out.println("potion_"+xe+"/"+ye);
+		this.motCle = "potion";
+	}
+
+	@Override
+	public String getTextureMotCle() {
+		return "potion";
 	}
 	
 	

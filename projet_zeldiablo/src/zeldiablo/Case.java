@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
  * @author Guezennec Lucas, Biancalana Théo, Geoffroy Muller et Masson Loic
  *
  */
-public abstract class Case implements Serializable{
+public abstract class Case implements Serializable, ObjetTexturer{
 	
 	 /**
 	 * 

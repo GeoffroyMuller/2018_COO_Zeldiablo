@@ -2,10 +2,11 @@ package zeldiablo;
 
 import java.awt.Graphics;
 
-public abstract class Item {
+public abstract class Item implements ObjetTexturer {
 	String type;
 	Salle salle;
 	Coordonnee coo;
+	String motCle;
 	public Item(String rtype,Salle se,int xe,int ye) {
 		// TODO Auto-generated constructor stub
 		type = rtype;
