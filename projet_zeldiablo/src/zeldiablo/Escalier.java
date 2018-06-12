@@ -19,6 +19,23 @@ public class Escalier extends Case implements Serializable {
 	 */
 
 	private Salle salleEtageSup;
+	private Etage EtageSup;
+
+	public Etage getEtageSup() {
+		return EtageSup;
+	}
+
+
+
+
+
+	public void setEtageSup(Etage etageSup) {
+		EtageSup = etageSup;
+	}
+
+
+
+
 
 	/**
 	 * Permet la création d'une case de type entrée

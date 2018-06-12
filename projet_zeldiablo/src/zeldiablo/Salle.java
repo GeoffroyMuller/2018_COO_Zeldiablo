@@ -32,6 +32,10 @@ public class Salle implements Serializable{
 	 */
 	private Sortie Sortie;
 
+	public void setEscalier(Escalier escalier) {
+		this.escalier = escalier;
+	}
+
 	/**
 	 * Les cases de la salle
 	 * @see Salle#getGrille()

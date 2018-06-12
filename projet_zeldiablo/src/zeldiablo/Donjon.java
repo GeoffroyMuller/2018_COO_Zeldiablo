@@ -37,6 +37,15 @@ public Donjon (String pnom) {
 	for (int i = 0; i < NUM_ETAGES; i++) {
 		etages.add(new Etage(i));
 	}
+	
+	for (int i = 0; i < NUM_ETAGES-1; i++) {
+		Etage e = etages.get(i);
+		Escalier es = new Escalier();
+		es.setEtageSup(etages.get(i+1));
+		es.setSalleEtageSup(etages.get(i+1).getSalles().get(0));
+		e.getSalles().get((int)(e.NUM_SALLES)/2).setEscalier(es);
+		e.getSalles().get((int)(e.NUM_SALLES)/2).getGrille()[12][12]=es;;
+	}
 }
 
 /**
