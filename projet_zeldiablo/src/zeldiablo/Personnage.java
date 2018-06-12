@@ -297,7 +297,6 @@ public abstract class Personnage {
 		return (this.salle.getGrille()[this.coor.getX()][this.coor.getY()]);
 	}
 
-
 }
 
 
