@@ -432,6 +432,9 @@ public class Salle implements Serializable{
 		for(int i=0;i<itemPresent.size();i++) {
 			if(av.getCoor().getX()==itemPresent.get(i).getCoo().getX()) {
 				if(av.getCoor().getY()==itemPresent.get(i).getCoo().getY()) {
+					if(itemPresent.get(i).getType().equals("potion")) {
+						av.setVie(10000);
+					}
 					itemPresent.remove(i);
 					System.out.println("item_pris");
 					return true;

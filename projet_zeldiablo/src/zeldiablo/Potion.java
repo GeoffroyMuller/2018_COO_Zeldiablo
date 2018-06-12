@@ -15,5 +15,6 @@ public class Potion extends Item{
 		System.out.println("potion_"+xe+"/"+ye);
 	}
 	
+	
 
 }
