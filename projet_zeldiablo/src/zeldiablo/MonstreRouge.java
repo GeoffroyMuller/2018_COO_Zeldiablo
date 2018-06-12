@@ -15,12 +15,15 @@ public class MonstreRouge extends Monstre {
 	 */
 	public MonstreRouge(Coordonnee c, Salle s) {
 		super(c, s);
+		baseDegat=6;
+		baseVie=80;
+		majStat();
 		try {
 			this.setTexture(ImageIO.read(new File("..\\texture\\monstre_rouge_2.png")));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		this.setDegats(10);
+		this.setDegats(6+this.stat.getForce()/10);
 	}
 	/**
 	 * methode setter qui initialise les degats avec ceux donnes en parametre
@@ -28,5 +31,6 @@ public class MonstreRouge extends Monstre {
 	public void setDegats(int degats) {
 		super.setDegats(degats);
 	}
-
 }
+
+

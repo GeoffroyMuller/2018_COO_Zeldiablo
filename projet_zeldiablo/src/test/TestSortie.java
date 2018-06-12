@@ -12,7 +12,7 @@ public class TestSortie {
 	@Test
 	public void testConstructeur1() {
 		//initialisation des donnees
-		Sortie s = new Sortie();
+		Sortie s = new Sortie(new Coordonnee(0,2));
 		//methodes testees
 		String str = s.getTextureMotCle();
 		//assertion
@@ -28,7 +28,7 @@ public class TestSortie {
 	public void testConstructeur2() {
 		//initialisation des donnees
 		Salle sa = new Salle();
-		Sortie s = new Sortie(sa);
+		Sortie s = new Sortie(sa, new Coordonnee(0,3));
 		//methodes testees
 		String str = s.getTextureMotCle();
 		//assertion

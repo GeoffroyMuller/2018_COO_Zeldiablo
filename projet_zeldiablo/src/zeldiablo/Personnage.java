@@ -7,8 +7,9 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public abstract class Personnage {
-	
+	int baseDegat;
 	Stats stat;
+	int baseVie;
 	
 	/**
 	 * Les points de vie de l'aventurier
@@ -93,9 +94,9 @@ public abstract class Personnage {
 	 */
 	public Personnage(){
 		stat = new Stats(1);
-		vie = 100 + stat.getResistance();
+		vie = baseVie + stat.getResistance();
 		mort = false;
-		degats = 25+stat.getForce();
+		degats = baseDegat+stat.getForce();
 	}
 
 	public int getDegats() {
@@ -121,9 +122,9 @@ public abstract class Personnage {
 	 */
 	public Personnage(Coordonnee c, Salle l, Etage et){
 		stat = new Stats(1);
-		vie = 100 + stat.getResistance();
+		vie = baseVie + stat.getResistance();
 		mort = false;
-		degats = 25+stat.getForce();
+		degats = baseDegat+stat.getForce();
 		coor = c;
 		salle = l;
 		this.etage = et;
@@ -131,9 +132,9 @@ public abstract class Personnage {
 	
 	public Personnage(Coordonnee c, Salle l){
 		stat = new Stats(1);
-		vie = 100 + stat.getResistance();
+		vie = baseVie + stat.getResistance();
 		mort = false;
-		degats = 25+stat.getForce();
+		degats = baseDegat+stat.getForce();
 		coor = c;
 		this.salle = l;
 	}
@@ -249,6 +250,14 @@ public abstract class Personnage {
 		return vie;
 	}
 
+	public int getBaseDegat() {
+		return baseDegat;
+	}
+
+	public int getBaseVie() {
+		return baseVie;
+	}
+
 	public Stats getStat() {
 		return stat;
 	}
@@ -307,6 +316,10 @@ public abstract class Personnage {
 		return (this.salle.getGrille()[this.coor.getX()][this.coor.getY()]);
 	}
 
+	public void majStat() {
+		this.setVie( baseVie + stat.getResistance());
+		this.setDegats(baseDegat+stat.getForce());
+	}
 }
 
 

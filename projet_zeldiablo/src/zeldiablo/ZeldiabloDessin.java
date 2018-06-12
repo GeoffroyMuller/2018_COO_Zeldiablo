@@ -16,7 +16,6 @@ import moteur.DessinJeu;
  *
  */
 public class ZeldiabloDessin implements DessinJeu {
-	int vie = 100;
 
 	private GestionnaireTexture  gt = new GestionnaireTexture();
 	/**
@@ -66,13 +65,14 @@ public class ZeldiabloDessin implements DessinJeu {
 		afficherBarreXpAventurier(g);
 		
 		g.setColor(Color.GREEN);
-		for(int i=0;i<this.jeu.getAv().getSalle().getItemPresent().size();i++) {
-			Item it = this.jeu.getAv().getSalle().getItemPresent().get(i);
-			g.drawImage(gt.attribuerTexture(it),this.jeu.getAv().getSalle().getItemPresent().get(i).getCoo().getX()*TAILLE, this.jeu.getAv().getSalle().getItemPresent().get(i).getCoo().getY()*TAILLE,TAILLE,TAILLE,null);
-		}
+
 		for(int i = 0; i < this.jeu.getAv().getSalle().getMonstrePresent().size();i++) {
 			g.drawImage(this.jeu.getAv().getSalle().getMonstrePresent().get(i).getTexture(),this.jeu.getAv().getSalle().getMonstrePresent().get(i).getCoor().getX()*TAILLE, this.jeu.getAv().getSalle().getMonstrePresent().get(i).getCoor().getY()*TAILLE, TAILLE, TAILLE,null);
 			afficherBarreVieMonstre(i, g);
+		}
+		for(int i=0;i<this.jeu.getAv().getSalle().getItemPresent().size();i++) {
+			Item it = this.jeu.getAv().getSalle().getItemPresent().get(i);
+			g.drawImage(gt.attribuerTexture(it),this.jeu.getAv().getSalle().getItemPresent().get(i).getCoo().getX()*TAILLE, this.jeu.getAv().getSalle().getItemPresent().get(i).getCoo().getY()*TAILLE,TAILLE,TAILLE,null);
 		}
 
 		
@@ -88,7 +88,7 @@ public class ZeldiabloDessin implements DessinJeu {
 		g.setColor(Color.red);
 		g.fillRect(xmonstre*30, ymonstre*30, 30, 2);
 		g.setColor(Color.green);
-		g.fillRect(xmonstre*30, ymonstre*30, (int)(30*(((double)(this.jeu.getAv().getSalle().getMonstrePresent().get(i).getVie()))/((double)(this.vie+this.jeu.getAv().getSalle().getMonstrePresent().get(i).getStat().getForce())))), 2);
+		g.fillRect(xmonstre*30, ymonstre*30, (int)(30*(((double)(this.jeu.getAv().getSalle().getMonstrePresent().get(i).getVie()))/((double)(this.jeu.getAv().getSalle().getMonstrePresent().get(i).getBaseVie()+this.jeu.getAv().getSalle().getMonstrePresent().get(i).getStat().getResistance())))), 2);
 		g.setColor(Color.BLACK);
 		g.setColor(Color.green);
 		g.drawString(""+this.jeu.getAv().getSalle().getMonstrePresent().get(i).getStat().getNiveau(), xmonstre*30, ymonstre*30-2);
@@ -98,7 +98,7 @@ public class ZeldiabloDessin implements DessinJeu {
 		g.setColor(Color.red);
 		g.fillRect(0, Salle.TAILLE_SALLES*30, Salle.TAILLE_SALLES*30, 10);
 		g.setColor(Color.green);
-		g.fillRect(0, Salle.TAILLE_SALLES*30, (int)((Salle.TAILLE_SALLES*30)*((double)(this.jeu.getAv().getVie())/(double)(this.vie+this.jeu.getAv().getStat().getForce()))), 10);
+		g.fillRect(0, Salle.TAILLE_SALLES*30, (int)((Salle.TAILLE_SALLES*30)*((double)(this.jeu.getAv().getVie())/(double)(this.jeu.getAv().getBaseVie()+this.jeu.getAv().getStat().getResistance()))), 10);
 		g.setColor(Color.green);
 		g.drawString("Vie : "+this.jeu.getAv().getVie(), 10, 10);
 		g.setColor(Color.BLACK);
@@ -107,7 +107,7 @@ public class ZeldiabloDessin implements DessinJeu {
 		g.setColor(Color.gray);
 		g.fillRect(0, Salle.TAILLE_SALLES*30+10, Salle.TAILLE_SALLES*30, 10);
 		g.setColor(Color.blue);
-		g.fillRect(0, Salle.TAILLE_SALLES*30+10, (int)((Salle.TAILLE_SALLES*30)*((double)(this.jeu.getAv().getStat().getExp())/(double)(this.vie+this.jeu.getAv().getStat().getExpPourPasser()))), 10);
+		g.fillRect(0, Salle.TAILLE_SALLES*30+10, (int)((Salle.TAILLE_SALLES*30)*((double)(this.jeu.getAv().getStat().getExp())/(double)(this.jeu.getAv().getStat().getExpPourPasser()))), 10);
 		g.setColor(Color.green);
 		g.drawString("Exp : "+this.jeu.getAv().getStat().getExp(), 10, 20);
 		g.setColor(Color.BLACK);

@@ -97,6 +97,7 @@ public class TestSalle {
 		int taille = s.getItemPresent().size();
 		Aventurier a = new Aventurier(new Coordonnee(12,12),s,null);
 		
+
 		a.deplacerAventurier(new Coordonnee(12,13));
 		//methode testee
 		s.prendreItem(a);
