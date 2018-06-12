@@ -467,7 +467,7 @@ public class Salle implements Serializable{
 	public boolean detecterLesMorts() {
 		boolean res = false;
 		for(int i = 0; i < this.getMonstrePresent().size(); i++) {
-			if(this.getMonstrePresent().get(i).isMort()) {
+			if(this.getMonstrePresent().get(i).isMort() && this.getMonstrePresent().get(i).isLootable()) {
 				MonstreMort mM = new MonstreMort(new Coordonnee(this.getMonstrePresent().get(i).getCoor().getX(),this.getMonstrePresent().get(i).getCoor().getY()),this);
 				this.getMonstrePresent().remove(this.getMonstrePresent().indexOf(this.getMonstrePresent().get(i)));
 				this.getMonstrePresent().add(mM);

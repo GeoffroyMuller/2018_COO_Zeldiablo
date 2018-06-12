@@ -167,7 +167,7 @@ public class Aventurier extends Personnage implements Serializable, ObjetTexture
 					(monstre.getX() == this.getCoor().getX() && monstre.getY() == this.getCoor().getY()+1) ||
 					(monstre.getX() == this.getCoor().getX() && monstre.getY() == this.getCoor().getY()-1)) {
 				this.getSalle().getMonstrePresent().get(i).subirDegats(this.getDegats());
-				if(this.getSalle().getMonstrePresent().get(i).isMort()) {
+				if( this.getSalle().detecterLesMorts()) {
 					this.stat.ajoutExp(this.getSalle().getMonstrePresent().get(i).getStat().getExp());
 					if(this.stat.getExp()==0) {
 						majStat();
