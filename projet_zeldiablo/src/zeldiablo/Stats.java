@@ -1,6 +1,6 @@
 package zeldiablo;
 
-public class Stats {
+public class Stats{
 	private int force;
 	private int resistance;
 	private int exp;
@@ -45,6 +45,7 @@ public class Stats {
 		force+=10*niveau;
 		resistance+=10*niveau;
 		expPourPasser+=1000*niveau;
+		//System.out.println("changement niveau ");
 	}
 	
 	public void modifierNiveau(int niv){

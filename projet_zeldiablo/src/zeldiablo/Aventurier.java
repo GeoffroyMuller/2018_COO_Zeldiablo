@@ -167,6 +167,10 @@ public class Aventurier extends Personnage implements Serializable{
 					(monstre.getX() == this.getCoor().getX() && monstre.getY() == this.getCoor().getY()+1) ||
 					(monstre.getX() == this.getCoor().getX() && monstre.getY() == this.getCoor().getY()-1)) {
 				this.getSalle().getMonstrePresent().get(i).subirDegats(this.getDegats());
+				if(this.getSalle().getMonstrePresent().get(i).isMort()) {
+					this.stat.ajoutExp(this.getSalle().getMonstrePresent().get(i).getStat().getExp());
+					System.out.println("ajout d'xp : "+this.getSalle().getMonstrePresent().get(i).getStat().getExp());
+				}
 				System.out.println("Aventurier fait "+this.getDegats());
 				System.out.println("Vie monstre "+ this.getSalle().getMonstrePresent().get(i).getVie());
 			}
