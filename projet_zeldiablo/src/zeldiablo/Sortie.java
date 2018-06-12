@@ -72,11 +72,17 @@ public class Sortie extends Case implements Serializable{
 	public String getType() {
 		return "sortie";
 	}
-
+	/**
+	 * methode getter qui va chercher la coordonnee de la sortie
+	 * @return la coordonnee de la sortie 
+	 */
 	public Coordonnee getCoord() {
 		return this.coord;
 	}
-
+	/**
+	 * methode setter qui initialise la coordonnee de la sortie avec celle passee en parametre
+	 * @param coord, coordonnee de la sortie 
+	 */
 	public void setCoord(Coordonnee coord) {
 		this.coord = coord;
 	}
