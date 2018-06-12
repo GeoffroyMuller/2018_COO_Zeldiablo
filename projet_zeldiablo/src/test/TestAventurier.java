@@ -269,26 +269,6 @@ public class TestAventurier {
 
 	}
 	/**
-	 * test de la methode changementSalle avec un aventurier qui prend une entrée 
-	 * et qui se retrouve a la sortie de la salle precedente
-	 */
-	@Test
-	public void testDeplacerCaseEntree() {
-		//initialisation des donnees
-		Salle l = new Salle();
-		Salle l1 = new Salle();
-		Etage e = new Etage(1);
-		Coordonnee co = new Coordonnee(4,5);
-		Case c = l.getSortie();
-		Aventurier a = new Aventurier(co,l1,e);
-		//methode testee
-		a.changerCoord(((Entree)l1.getEntree()).getC());
-		a.changementSalle(l, c);
-		//assertion
-		assertEquals("Le joueur devrait etre sur la sortie de la salle precedente", l.getSortie(), a.getCase());
-	}
-	
-	/**
 	 * Test de la methode de deplacement sur une case traversable
 	 */
 	@Test
@@ -343,8 +323,8 @@ public class TestAventurier {
 	@Test
 	public void testDeplacementSurSortie() {
 		//Preparation des données
-		Etage e = new Etage(0);
-		Coordonnee sortie = e.getSalles().get(1).getSortie().getCoord();getClass();
+		Etage e = new Etage(2);
+		Coordonnee sortie = e.getSalles().get(1).getSortie().getCoord();
 		Sortie sortieS = new Sortie(e.getSalles().get(2),sortie);
 		e.getSalles().get(1).setSortie(sortieS);
 		Salle salleSuivante = e.getSalles().get(1).getSortie().getSalleSuivante();
