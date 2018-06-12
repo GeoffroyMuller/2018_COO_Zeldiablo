@@ -52,6 +52,9 @@ public class ZeldiabloJeu implements Jeu {
 		}else if(commandeUser.haut) {
 			posAv.decrementerY();
 		}
+		else if(commandeUser.attaque) {
+			this.av.attaque(5);
+		}
 		if(this.av.deplacerAventurier(posAv)) {
 
 			if(this.av.getSalle().getGrille()[this.av.getCoor().getX()][this.av.getCoor().getY()].getType().contains("escalier")) {
@@ -61,11 +64,16 @@ public class ZeldiabloJeu implements Jeu {
 		Aleatoire randomV=new AleatoireVrai();
 		if(compteur == 8) {
 			for(int i =0; i< this.av.getSalle().getMonstrePresent().size();i++) {
-				this.av.getSalle().getMonstrePresent().get(i).deplacement(randomV);
+				 this.av.getSalle().getMonstrePresent().get(i).deplacement(randomV);
+
 			}
+			this.av.getSalle().detecterCombat(av);
 			compteur=0;
 		}
 		compteur++;
+		
+		
+		
 
 	}
 

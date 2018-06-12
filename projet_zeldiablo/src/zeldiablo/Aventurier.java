@@ -90,6 +90,7 @@ public class Aventurier extends Personnage implements Serializable{
 		return res;
 	}
 	
+<<<<<<< HEAD
 	public void changementEtage(Salle s, Etage e) {
 		Coordonnee c = new Coordonnee(12, 12);
 		this.setCoor(c);
@@ -151,5 +152,19 @@ public class Aventurier extends Personnage implements Serializable{
 		}
 
 	
+=======
+	public void attaque(int att) {
+		Coordonnee monstre = new Coordonnee(0,1);
+		for(int i = 0; i < this.getSalle().getMonstrePresent().size(); i++) {
+			monstre = this.getSalle().getMonstrePresent().get(i).getCoor();
+			if((monstre.getX() == this.getCoor().getX()+1 && monstre.getY() == this.getCoor().getY()) ||
+					(monstre.getX() == this.getCoor().getX()-1 && monstre.getY() == this.getCoor().getY()) ||
+					(monstre.getX() == this.getCoor().getX() && monstre.getY() == this.getCoor().getY()+1) ||
+					(monstre.getX() == this.getCoor().getX()+1 && monstre.getY() == this.getCoor().getY()-1)) {
+				this.getSalle().getMonstrePresent().get(i).subirDegats(att);
+			}
+					
+		}
+>>>>>>> 7b4ad94312017821497e9ba75a8407eac79d9ce6
 	}
 }
