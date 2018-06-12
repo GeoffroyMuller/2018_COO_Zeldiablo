@@ -60,10 +60,9 @@ public class ZeldiabloDessin implements DessinJeu {
 			
 			//System.out.println("");
 		}
-		g.setColor(Color.red);
-		g.fillRect(0, Salle.TAILLE_SALLES*30, (int)((Salle.TAILLE_SALLES*30)*((double)(this.jeu.getAv().getVie())/(double)(this.vie+this.jeu.getAv().getStat().getForce()))), 10);
-		g.setColor(Color.BLACK);
+		
 		//System.out.println("============================================");
+		afficherBarreVieAventurier(g);
 		
 		g.setColor(Color.GREEN);
 		for(int i=0;i<this.jeu.getAv().getSalle().getItemPresent().size();i++) {
@@ -88,6 +87,14 @@ public class ZeldiabloDessin implements DessinJeu {
 		g.fillRect(xmonstre*30, ymonstre*30, 30, 2);
 		g.setColor(Color.green);
 		g.fillRect(xmonstre*30, ymonstre*30, (int)(30*(((double)(this.jeu.getAv().getSalle().getMonstrePresent().get(i).getVie()))/((double)(this.vie+this.jeu.getAv().getSalle().getMonstrePresent().get(i).getStat().getForce())))), 2);
+		g.setColor(Color.BLACK);
+	}
+	public void afficherBarreVieAventurier(Graphics2D g) {
+		g.setColor(Color.red);
+		g.fillRect(0, Salle.TAILLE_SALLES*30, Salle.TAILLE_SALLES*30, 10);
+		g.setColor(Color.green);
+		g.fillRect(0, Salle.TAILLE_SALLES*30, (int)((Salle.TAILLE_SALLES*30)*((double)(this.jeu.getAv().getVie())/(double)(this.vie+this.jeu.getAv().getStat().getForce()))), 10);
+		g.setColor(Color.BLACK);
 	}
 
 }
