@@ -8,6 +8,8 @@ import javax.imageio.ImageIO;
 
 public abstract class Personnage {
 	
+	Stats stat;
+	
 	/**
 	 * Les points de vie de l'aventurier
 	 * @see Aventurier#getVie()
@@ -80,9 +82,10 @@ public abstract class Personnage {
 	 * Permet la création d'un aventurier
 	 */
 	public Personnage(){
-		vie = 100;
+		stat = new Stats(1);
+		vie = 100 + stat.getResistance();
 		mort = false;
-		degats = 1;
+		degats = 25+stat.getForce();
 	}
 
 	public int getDegats() {
