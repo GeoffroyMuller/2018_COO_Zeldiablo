@@ -17,6 +17,7 @@ public class Monstre extends Personnage {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		this.setDeplacementPossible(true);
 		this.setDegats(2);
 	}
 	

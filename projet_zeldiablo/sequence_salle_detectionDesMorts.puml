@@ -1,5 +1,24 @@
 @startuml
 Participant "salle : Salle" as s
+Participant "monstre : ArrayList<Monstre>" as m
+->s : detecterMort()
+activate s
+loop i=0;i<monstre.length;i++
+s->m : get(i)
+activate m
+m-->s : monstre
+deactivate m
+alt monstre.estMort()
+create "monstreM : MonstreMort" as mm
+s->mm : new MonstreMort()
+s->mm : setCoord(new Coordonnee(monstre.getCoord.getX(), monstre.getCoord().getX))
+s->m : remove(monstre)
+activate m
+m-->s
+s->m : add(monstreM)
+end
+end
+<--s
 
-->s
+
 @enduml

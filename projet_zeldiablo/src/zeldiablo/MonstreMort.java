@@ -14,7 +14,13 @@ public class MonstreMort extends Monstre {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		this.setDeplacementPossible(false);
 		this.setDegats(0);
+	}
+	
+	@Override
+	public void setDeplacementPossible(boolean deplacementPossible) {
+		super.setDeplacementPossible(false);
 	}
 
 }

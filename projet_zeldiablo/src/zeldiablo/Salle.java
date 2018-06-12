@@ -454,11 +454,23 @@ public class Salle implements Serializable{
 					(monstre.getCoor().getX()-1 == a.getCoor().getX() && monstre.getCoor().getY() == a.getCoor().getY()) || 
 					(monstre.getCoor().getX() == a.getCoor().getX() && monstre.getCoor().getY()+1 == a.getCoor().getY()) || 
 					(monstre.getCoor().getX() == a.getCoor().getX() && monstre.getCoor().getY()-1 == a.getCoor().getY())) {
-				a.subirDegats(a.getDegats());
+				a.subirDegats(monstre.getDegats());
 				monstre.setDeplacementPossible(false);
 				System.out.println(a.getVie()+"");
 			}else {
 				monstre.setDeplacementPossible(true);
+			}
+		}
+	}
+	
+	public void detecterLesMorts() {
+		
+		for(int i = 0; i < this.getMonstrePresent().size(); i++) {
+			if(this.getMonstrePresent().get(i).isMort()) {
+				MonstreMort mM = new MonstreMort(new Coordonnee(this.getMonstrePresent().get(i).getCoor().getX(),this.getMonstrePresent().get(i).getCoor().getY()),this);
+				this.getMonstrePresent().remove(this.getMonstrePresent().indexOf(this.getMonstrePresent().get(i)));
+				this.getMonstrePresent().add(mM);
+				this.getGrille()[mM.getCoor().getX()][mM.getCoor().getY()].setEstTraversable(true);
 			}
 		}
 	}
