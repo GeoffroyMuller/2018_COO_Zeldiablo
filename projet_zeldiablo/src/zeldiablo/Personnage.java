@@ -18,6 +18,10 @@ public abstract class Personnage {
 	 */
 	private int vie;
 	/**
+	 * Les points d'attaque de l'aventurier
+	 */
+	private int degats;
+	/**
 	 * Permet de savoir si le joueur et vivant ou mort
 	 * @see Aventurier#isMort()
 	 * @see Aventurier#setMort(boolean)
@@ -78,6 +82,15 @@ public abstract class Personnage {
 	public Personnage(){
 		vie = 100;
 		mort = false;
+		degats = 1;
+	}
+
+	public int getDegats() {
+		return degats;
+	}
+
+	public void setDegats(int degats) {
+		this.degats = degats;
 	}
 
 	/**

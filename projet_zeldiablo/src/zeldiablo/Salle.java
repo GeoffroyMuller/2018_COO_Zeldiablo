@@ -350,10 +350,20 @@ public class Salle implements Serializable{
 
 
 					if(random <=6) {
-						Monstre m = new Monstre(new Coordonnee(i,j),this);
-						this.grille[i][j].setEstTraversable(false);
-						this.grille[i][j].setMonstrePresent(true);
-						this.monstrePresent.add(m);
+						random = alea.genererNombreAleatoire(0, 100);
+						if(random>=50) {
+							MonstreRouge m = new MonstreRouge(new Coordonnee(i,j),this);
+							this.grille[i][j].setEstTraversable(false);
+							this.grille[i][j].setMonstrePresent(true);
+							this.monstrePresent.add(m);
+						}else {
+							
+							Monstre m = new Monstre(new Coordonnee(i,j),this);
+							this.grille[i][j].setEstTraversable(false);
+							this.grille[i][j].setMonstrePresent(true);
+							this.monstrePresent.add(m);
+						}
+
 					}else {
 						this.grille[i][j].setEstTraversable(true);
 						this.grille[i][j].setMonstrePresent(false);
@@ -449,7 +459,7 @@ public class Salle implements Serializable{
 					(monstre.getCoor().getX()-1 == a.getCoor().getX() && monstre.getCoor().getY() == a.getCoor().getY()) || 
 					(monstre.getCoor().getX() == a.getCoor().getX() && monstre.getCoor().getY()+1 == a.getCoor().getY()) || 
 					(monstre.getCoor().getX() == a.getCoor().getX() && monstre.getCoor().getY()-1 == a.getCoor().getY())) {
-				a.subirDegats(1);
+				a.subirDegats(a.getDegats());
 				monstre.setDeplacementPossible(false);
 				System.out.println(a.getVie()+"");
 			}else {

@@ -23,6 +23,11 @@ public class Aventurier extends Personnage implements Serializable{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		this.setDegats(5);
+	}
+	
+	public void setDegats(int degats) {
+		super.setDegats(degats);
 	}
 
 	/**
@@ -152,7 +157,7 @@ public class Aventurier extends Personnage implements Serializable{
 	}
 
 	
-	public void attaque(int att) {
+	public void attaque() {
 		Coordonnee monstre = new Coordonnee(0,1);
 		for(int i = 0; i < this.getSalle().getMonstrePresent().size(); i++) {
 			monstre = this.getSalle().getMonstrePresent().get(i).getCoor();
@@ -160,7 +165,7 @@ public class Aventurier extends Personnage implements Serializable{
 					(monstre.getX() == this.getCoor().getX()-1 && monstre.getY() == this.getCoor().getY()) ||
 					(monstre.getX() == this.getCoor().getX() && monstre.getY() == this.getCoor().getY()+1) ||
 					(monstre.getX() == this.getCoor().getX()+1 && monstre.getY() == this.getCoor().getY()-1)) {
-				this.getSalle().getMonstrePresent().get(i).subirDegats(att);
+				this.getSalle().getMonstrePresent().get(i).subirDegats(this.getDegats());
 			}
 					
 		}

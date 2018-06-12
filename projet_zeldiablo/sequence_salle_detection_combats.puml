@@ -14,7 +14,7 @@ deactivate liste
 
 alt (monstre.getCoor().getX()+1 == a.getCoor().getX() && monstre.getCoor().getY() == a.getCoor().getY()) || (monstre.getCoor().getX()-1 == a.getCoor().getX() && monstre.getCoor().getY() == a.getCoor().getY()) || (monstre.getCoor().getX() == a.getCoor().getX() && monstre.getCoor().getY()+1 == a.getCoor().getY()) || (monstre.getCoor().getX() == a.getCoor().getX() && monstre.getCoor().getY()-1 == a.getCoor().getY())
 
-s->a : subirDegats(1)
+s->a : subirDegats(monstre.getDegats())
 
 activate a
 a-->s
