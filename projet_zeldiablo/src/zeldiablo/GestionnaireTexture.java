@@ -15,6 +15,7 @@ public class GestionnaireTexture {
 		listeTexture.add(new Texture("wall_dark", "..\\texture\\wall_dark_stone.png" ));
 		listeTexture.add(new Texture("portail_entree", "..\\texture\\Portail_Entree.png" ));
 		listeTexture.add(new Texture("portail_sortie", "..\\texture\\Portail_Sortie.png" ));
+		listeTexture.add(new Texture("portail_fin", "..\\texture\\Portail_Fin.png" ));
 		listeTexture.add(new Texture("portail_escalier", "..\\texture\\Portail_Escalier.png" ));
 		listeTexture.add(new Texture("potion", "..\\texture\\potion.png"));
 		listeTexture.add(new Texture("aventurier", "..\\texture\\Aventurier_Final.png"));

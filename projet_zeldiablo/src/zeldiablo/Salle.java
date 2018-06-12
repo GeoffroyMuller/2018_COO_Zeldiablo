@@ -18,6 +18,8 @@ public class Salle implements Serializable{
 	 * attribut Escalier qui contiendra un escalier 
 	 */
 	private Escalier escalier;
+	
+	private PortailFin portailFin;
 
 	/**
 	 * Taille d'une salle
@@ -29,6 +31,14 @@ public class Salle implements Serializable{
 	 * @see Salle#setEntree(Entree)
 	 */
 	private Entree entree;
+	public PortailFin getPortailFin() {
+		return portailFin;
+	}
+
+	public void setPortailFin(PortailFin portailFin) {
+		this.portailFin = portailFin;
+	}
+
 	/**
 	 * Sortie de la salle
 	 * @see Salle#getSortie()

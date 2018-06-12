@@ -1,5 +1,6 @@
 package zeldiablo;
 
+import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,6 +24,11 @@ public class ZeldiabloJeu implements Jeu {
 	 * Attribut "dj" de type Donjon correspond à l'ensemble des étage que le joueur est amené a parcourir
 	 */
 	private Donjon dj;
+	
+	private Image spriteVictoire;
+	private Image spriteDefaite;
+	
+	private boolean victoire;
 
 	private int compteur;
 
@@ -31,9 +37,18 @@ public class ZeldiabloJeu implements Jeu {
 	 */
 	public ZeldiabloJeu() {
 		dj= new Donjon("ElTesto");
+		victoire =false;
+		try {
+		spriteVictoire = ImageIO.read(new File("..\\\\texture\\You_Win.png"));
+		spriteDefaite = ImageIO.read(new File("..\\\\texture\\GameOver.png"));
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 
 		this.av = new Aventurier(new Coordonnee(12,12),this.dj.getEtages().get(0).getSalles().get(0), this.dj.getEtages().get(0));
 	}
+
 	/**
 	 * Fait evoluer le jeu en fonction de la commande du joueur.
 	 * 
@@ -67,7 +82,7 @@ public class ZeldiabloJeu implements Jeu {
 			}
 		}
 		Aleatoire randomV=new AleatoireVrai();
-		if(compteur == 8) {
+		if(compteur == 7) {
 			for(int i =0; i< this.av.getSalle().getMonstrePresent().size();i++) {
 				this.av.getSalle().getMonstrePresent().get(i).deplacement(randomV);
 
@@ -79,9 +94,24 @@ public class ZeldiabloJeu implements Jeu {
 
 		this.av.getSalle().prendreItem(av);
 		this.av.getSalle().detecterLesMorts();
+		if(av.getSalle()==dj.getEtages().get(Donjon.NUM_ETAGES-1).getSalles().get((int)(Etage.NUM_SALLES/2))) {
+			int xa =this.av.getCoor().getX();
+			int ya = this.av.getCoor().getY();
+			
+			int xs= av.getSalle().getPortailFin().getCoord().getX();
+			int ys= av.getSalle().getPortailFin().getCoord().getY();
+			if(xa==xs && ya==ys) {
+				victoire=true;
+			}
+					
+		}
+;
 
 	}
 
+	public boolean isVictoire() {
+		return victoire;
+	}
 	/**
 	 * Permet le changement d'étage de l'Aventurier
 	 */
@@ -106,6 +136,11 @@ public class ZeldiabloJeu implements Jeu {
 		if(this.av.isMort()) {
 			res=true;
 		}
+		else {
+			if(victoire) {
+				res=true;
+			}
+		}
 		return res;
 	}
 	/**
@@ -123,6 +158,13 @@ public class ZeldiabloJeu implements Jeu {
 	 */
 	public Donjon getDj() {
 		return dj;
+	}
+	
+	public Image getSpriteVictoire() {
+		return spriteVictoire;
+	}
+	public Image getSpriteDefaite() {
+		return spriteDefaite;
 	}
 
 
