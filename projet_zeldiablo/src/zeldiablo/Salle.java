@@ -119,7 +119,7 @@ public class Salle implements Serializable{
 		while(cs.getX()==ce.getX() && cs.getY()==ce.getY()) {
 			cs = placerSurMurAlea(randomV);
 		}
-		grille[cs.getX()][cs.getY()] = new Sortie(new Coordonnee(ce.getX(),ce.getY()));
+		grille[cs.getX()][cs.getY()] = new Sortie(new Coordonnee(cs.getX(),cs.getY()));
 		this.Sortie = (Sortie)grille[cs.getX()][cs.getY()] ;
 
 
