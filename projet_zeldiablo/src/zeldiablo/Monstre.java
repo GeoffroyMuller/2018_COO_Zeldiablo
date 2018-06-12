@@ -54,8 +54,8 @@ public class Monstre extends Personnage {
 		int random = nbrAleatoire.genererNombreAleatoire(0, 4);
 
 				
-		if((x != 0) && (x!= Salle.TAILLE_SALLES-1) &&
-				(y!= 0) && (y!= Salle.TAILLE_SALLES-1) && this.deplacementPossible) {
+		if(((x != 0) && (x!= Salle.TAILLE_SALLES-1) &&
+				(y!= 0) && (y!= Salle.TAILLE_SALLES-1)) && this.deplacementPossible && !this.isMort()) {
 			switch(random) {
 			case 0:
 				if((this.getSalle().isDeplacementPossible(x+1, y))) {

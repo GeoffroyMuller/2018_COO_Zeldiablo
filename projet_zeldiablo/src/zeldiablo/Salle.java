@@ -474,9 +474,15 @@ public class Salle implements Serializable{
 		for(int i = 0; i < this.getMonstrePresent().size(); i++) {
 			if(this.getMonstrePresent().get(i).isMort() && this.getMonstrePresent().get(i).isLootable()) {
 				MonstreMort mM = new MonstreMort(new Coordonnee(this.getMonstrePresent().get(i).getCoor().getX(),this.getMonstrePresent().get(i).getCoor().getY()),this);
+				
+				apparaitreLoot(this.getMonstrePresent().get(i), new AleatoireVrai());
+				
 				this.getMonstrePresent().remove(this.getMonstrePresent().indexOf(this.getMonstrePresent().get(i)));
 				this.getMonstrePresent().add(mM);
 				this.getGrille()[mM.getCoor().getX()][mM.getCoor().getY()].setEstTraversable(true);
+				
+				
+				
 				res = true;
 			}
 		}
@@ -486,7 +492,7 @@ public class Salle implements Serializable{
 	public void apparaitreLoot(Monstre m, Aleatoire alea) {
 		Coordonnee loot = m.getCoor();
 		int random = alea.genererNombreAleatoire(0, 100);
-		if(random <=33) {
+		if(random <=30) {
 			Potion p = new Potion(this,loot.getX(),loot.getY());
 			this.getItemPresent().add(p);
 		}
