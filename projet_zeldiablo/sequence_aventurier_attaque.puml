@@ -27,6 +27,12 @@ a->sta : ajouterExp(this.getSalle().getMonstrePresent().get(i).getSTat().getExp(
 activate sta
 sta-->a 
 deactivate sta
+alt this.stat.getExp()==0
+a->a : majStat()
+activate a
+a-->a 
+deactivate a
+end
 end
 
 end
