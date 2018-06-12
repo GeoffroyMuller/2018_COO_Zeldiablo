@@ -16,6 +16,8 @@ s->m : remove(monstre)
 activate m
 m-->s
 s->m : add(monstreM)
+Participant "grille : Case[][]" as grille
+s->grille : getGrille()[monstreM.getCoord().getX()][monstreM.getCoord().getY()].setEstTraversable(true)
 end
 end
 <--s
