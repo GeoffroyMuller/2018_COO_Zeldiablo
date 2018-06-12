@@ -50,6 +50,10 @@ public class Salle implements Serializable{
 	private ArrayList<Monstre> monstrePresent;
 
 	private ArrayList<Item> itemPresent;
+	public void setItemPresent(ArrayList<Item> itemPresent) {
+		this.itemPresent = itemPresent;
+	}
+
 	/**
 	 * Permet de retourner l'entrée d'une salle
 	 * @return l'entrée de la salle
@@ -420,7 +424,9 @@ public class Salle implements Serializable{
 		int yitem = 0;
 		for(int i=0;i<tab_libre.size();i++) {
 			nbalea = aleaItem.genererNombreAleatoire(0, 100);
+			System.out.println("dddddd"+nbalea);
 			if(nbalea>=99) {
+				System.out.println("entrer");
 				xitem = tab_libre.get(i).getX();
 				yitem = tab_libre.get(i).getY();
 				itemPresent.add(new Potion(this,xitem,yitem));
