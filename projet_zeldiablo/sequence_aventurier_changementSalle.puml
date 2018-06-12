@@ -2,13 +2,15 @@
 Participant "aventurier : Aventurier" as av
 
 participant "s : Salle" as s #99FF99
-participant "c : Case" as c #99FF99
+participant "s2 : Salle" as s2 #99FF99
+participant "e : Escalier" as es #99FF99
+participant "e : Etage" as e #99FF99
 
 participant "grille : Case[][]" as grille #99FF99
 participant "x : Int" as x #99FF99
 participant "y : Int" as y #99FF99
 
--> av : changementSalle(s,c)
+-> av : changementEtage(s,c)
 activate av
 av->s : getGrille()
 activate s
@@ -30,39 +32,23 @@ end
 end
 end
 
-create "co : Coordonnee" as coord #99FF99
-av->coord : new Coordonnee(x, y)
-av->coord : decrementerX()
-activate coord
-coord-->av
-deactivate coord
+av-> grille : grille[x][y]
+activate grille 
+grille --> av : Etage e
+deactivate grille
+
+av-> es : get EtageSup;
+activate es
+es--> av : Etage e
+av -> es : getSalleEtageSup 
+es --> av : Salle s2
+deactivate es
+
+av -> av : setEtage(e)
+av -> av : setSalle(s2)
+av -> av : setCoord(12,12)
 
 
-alt !deplacerAventurier(co)
-av->coord : incrementerY();
-activate coord
-coord-->av
-av->coord : incrementerX()
-coord-->av
-deactivate coord
-
-alt !deplacerAventurier(co)
-av->coord : decrementerY();
-activate coord
-coord-->av
-av->coord : incrementerX()
-coord-->av
-deactivate coord
-alt !deplacerAventurier(co)
-av->coord : decrementerY();
-activate coord
-coord-->av
-av->coord : decrementerX()
-coord-->av
-deactivate coord
-end
-end
-end
 <--av
 deactivate av
 

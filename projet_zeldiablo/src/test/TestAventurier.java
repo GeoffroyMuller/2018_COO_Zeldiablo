@@ -354,5 +354,26 @@ public class TestAventurier {
 		//Test
 		assertTrue("L'aventurier devrait avoir changer de salle",a.getSalle()==e.getSalles().get(2));
 	}
+	
+	
+	@Test
+	public void testChangementEtage() {
+		Donjon d = new Donjon("Eltesto");
+		Aventurier av = new Aventurier(new Coordonnee(12, 12),d.getEtages().get(0).getSalles().get(Etage.NUM_SALLES/2), d.getEtages().get(0));
+		
+		av.deplacerAventurier(new Coordonnee(12, 12));
+		
+		assertEquals("x devrais etre 12",12, av.getCoor().getX());
+
+		assertEquals("y devrais etre 12",12, av.getCoor().getY());
+		
+
+		assertEquals("la salle devrais etre la salle 0 de l'eatge sup",d.getEtages().get(1).getSalles().get(0), av.getSalle());
+		
+		assertEquals("letage devrais etre létage 1 du donjon",d.getEtages().get(1), av.getEtage());
+		
+		
+		
+	}
 
 }

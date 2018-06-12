@@ -190,44 +190,6 @@ public abstract class Personnage {
 		}
 	}
 
-	/**
-	 * Permet le déplacement de l'aventurier
-	 * @param c
-	 * 		Les futurs coordonnées de l'aventurier
-	 * @return un booleen indiquant si le déplacement est bien effectué
-	 */
-	public boolean deplacerAventurier(Coordonnee c) {
-		boolean res = true;
-
-		if ((c.getX() < salle.getGrille().length && c.getX() >= 0) &&
-				(c.getY() < salle.getGrille()[0].length && c.getY() >= 0)) {
-			if(salle.getGrille()[c.getX()][c.getY()].estTraversable()) {
-				this.changerCoord(c);
-
-				if(salle.getGrille()[coor.getX()][coor.getY()]==salle.getEntree()) {
-					this.salle=salle.getEntree().getSallePrecedente();
-					changementSalle(this.salle,salle.getSortie());
-					System.out.println("entree");
-				}
-				else {
-					if(salle.getGrille()[coor.getX()][coor.getY()]==salle.getSortie()) {
-						this.salle=salle.getSortie().getSalleSuivante();
-						changementSalle(this.salle, salle.getEntree());
-						System.out.println("sortie");
-					}
-				}
-
-			}
-			else {
-				res = false;
-			}
-		}
-		else {
-			res = false;
-		}
-
-		return res;
-	}
 
 	/**
 	 * Permet le changement des coordonnées de l'aventurier
@@ -311,60 +273,7 @@ public abstract class Personnage {
 		return (this.salle.getGrille()[this.coor.getX()][this.coor.getY()]);
 	}
 
-	/**
-	 * Permet à l'aventurier de changer de salle
-	 * @param s
-	 * 		La futur salle de l'aventurier
-	 * @param c
-	 * 		La future case de l'aventurier
-	 * @see Aventurier#salle
-	 * @see Case
-	 */
-	public void changementSalle(Salle s, Case c) {
-		Case [][] grille = s.getGrille();
-		int x=12,y=12;
 
-		for (int i = 0; i < Salle.TAILLE_SALLES; i++) {
-			for (int j = 0; j < Salle.TAILLE_SALLES; j++) {
-				if(grille[i][j]==c) {
-					x=i;
-					y=j;
-				}
-			}
-		}
-		Coordonnee co = new Coordonnee(x, y);
-		co.decrementerX();
-		if(deplacerAventurier(co)) {
-			System.out.println("1");
-
-		}
-		else {
-			co.incrementerY();
-			co.incrementerX();
-			if(deplacerAventurier(co)) {
-				System.out.println("2");
-			}
-			else {
-				co.decrementerY();
-				co.incrementerX();
-				if(deplacerAventurier(co)) {
-				}
-				else {
-					co.decrementerX();
-					co.decrementerY();
-					if(deplacerAventurier(co)) {
-					}
-					else {
-						System.out.println("erreur de deplacement");
-					}
-
-
-				}
-			}
-		}
-
-	
-	}
 }
 
 
