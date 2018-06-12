@@ -90,7 +90,6 @@ public class Aventurier extends Personnage implements Serializable{
 		return res;
 	}
 	
-<<<<<<< HEAD
 	public void changementEtage(Salle s, Etage e) {
 		Coordonnee c = new Coordonnee(12, 12);
 		this.setCoor(c);
@@ -150,9 +149,9 @@ public class Aventurier extends Personnage implements Serializable{
 				}
 			}
 		}
+	}
 
 	
-=======
 	public void attaque(int att) {
 		Coordonnee monstre = new Coordonnee(0,1);
 		for(int i = 0; i < this.getSalle().getMonstrePresent().size(); i++) {
@@ -165,6 +164,5 @@ public class Aventurier extends Personnage implements Serializable{
 			}
 					
 		}
->>>>>>> 7b4ad94312017821497e9ba75a8407eac79d9ce6
 	}
 }
