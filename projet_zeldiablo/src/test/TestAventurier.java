@@ -70,6 +70,7 @@ public class TestAventurier {
 	public void testModifierVieNegatif() {
 		//Donnees
 		Aventurier a = new Aventurier();
+		a.setVie(100);
 		//Methode testée
 		a.modifierVie(-20);
 		//Test
@@ -82,6 +83,7 @@ public class TestAventurier {
 	public void testModifierViePositif() {
 		//Donnees
 		Aventurier a = new Aventurier();
+		a.setVie(100);
 		//Methode testée
 		a.modifierVie(10);
 		//Test
@@ -95,6 +97,7 @@ public class TestAventurier {
 	public void testSubirDegatPositifToujoursEnVie() {
 		//Donnees
 		Aventurier a = new Aventurier();
+		a.setVie(100);
 		//Methode testée
 		a.subirDegats(20);
 		//Test
@@ -108,6 +111,7 @@ public class TestAventurier {
 	public void testSubirDegatPositifMort() {
 		//Donnees
 		Aventurier a = new Aventurier();
+		a.setVie(100);
 		//Methode testée
 		a.subirDegats(110);
 		//Test
@@ -120,6 +124,7 @@ public class TestAventurier {
 	public void testSubirDegatNegatif() {
 		//Donnees
 		Aventurier a = new Aventurier();
+		a.setVie(100);
 		//Methode testée
 		a.subirDegats(-10);
 		//Test
@@ -132,6 +137,7 @@ public class TestAventurier {
 	public void testSoignerNegatif() {
 		//Donnees
 		Aventurier a = new Aventurier();
+		a.setVie(100);
 		//Methode testée
 		a.soigner(-20);
 		//Test
@@ -144,6 +150,7 @@ public class TestAventurier {
 	public void testSoignerPositif() {
 		//Donnees
 		Aventurier a = new Aventurier();
+		a.setVie(100);
 		a.subirDegats(20);
 		//Methode testée
 		a.soigner(20);
@@ -157,6 +164,7 @@ public class TestAventurier {
 	public void testSoignerSup100() {
 		//Donnees
 		Aventurier a = new Aventurier();
+		a.setVie(100);
 		//Methode testée
 		a.soigner(20);
 		//Test
@@ -355,5 +363,39 @@ public class TestAventurier {
 		
 		
 	}
-
+	/**
+	 * Test de l'attaque de l'aventurier quand un ennemi est proche
+	 */
+	@Test
+	public void testAttaqueEnnemi(){
+		//Preparation des données
+				Salle s=new Salle(5);
+				Monstre m = new Monstre(new Coordonnee(12,13),s);
+				Aventurier av = new Aventurier(new Coordonnee(12,12),s,null);
+				av.setSalle(s);
+				s.getMonstrePresent().add(m);
+				int vie = m.getVie()-av.getDegats();
+				//Methode teste
+				av.attaque();
+				//Test
+				assertEquals("Le monstre devrait avoir prit des dégats",vie,m.getVie());
+	}
+	
+	/**
+	 * Test de l'attaque de l'aventurier aucun ennemi est a proximité
+	 */
+	@Test
+	public void testAttaqueEnnemiNonPresent(){
+		//Preparation des données
+				Salle s=new Salle(5);
+				Monstre m = new Monstre(new Coordonnee(15,15),s);
+				Aventurier av = new Aventurier(new Coordonnee(12,12),s,null);
+				av.setSalle(s);
+				s.getMonstrePresent().add(m);
+				int vie = m.getVie();
+				//Methode teste
+				av.attaque();
+				//Test
+				assertEquals("Le monstre devrait avoir prit des dégats",vie,m.getVie());
+	}
 }
