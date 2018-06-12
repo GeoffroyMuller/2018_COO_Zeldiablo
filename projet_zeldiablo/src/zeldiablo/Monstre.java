@@ -18,7 +18,8 @@ public class Monstre extends Personnage {
 			e.printStackTrace();
 		}
 		this.setDeplacementPossible(true);
-		this.setDegats(2);
+		this.setDegats(2+this.stat.getForce()/10);
+		this.getStat().ajoutExp(50);
 	}
 	
 	public void setDegats(int degats) {
