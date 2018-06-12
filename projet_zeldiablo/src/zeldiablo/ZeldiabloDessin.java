@@ -55,10 +55,13 @@ public class ZeldiabloDessin implements DessinJeu {
 				//System.out.print(salle.getGrille()[i][j]);
 				g.drawImage(gt.attribuerTexture(salle.getGrille()[i][j]), i*TAILLE, j*TAILLE,null);
 				//System.out.println(gt.attribuerTexture(salle.getGrille()[i][j]));
-
 			}
+			
 			//System.out.println("");
 		}
+		g.setColor(Color.red);
+		g.fillRect(0, Salle.TAILLE_SALLES*30, (((Salle.TAILLE_SALLES*30)%this.jeu.getAv().getVie())*this.jeu.getAv().getVie()), 10);
+		g.setColor(Color.BLACK);
 		//System.out.println("============================================");
 		g.drawImage(this.jeu.getAv().getTexture(), this.jeu.getAv().getCoor().getX()*TAILLE, this.jeu.getAv().getCoor().getY()*TAILLE,TAILLE,TAILLE,null);
 		g.setColor(Color.GREEN);
