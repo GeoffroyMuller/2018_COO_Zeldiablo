@@ -71,14 +71,18 @@ public class Aventurier extends Personnage implements Serializable, ObjetTexture
 				res=true;
 
 				if(this.getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()]==this.getSalle().getEntree()) {
-
+					
+					this.getSalle().getEntree().setEstTraversable(true);
+					this.getSalle().getSortie().setEstTraversable(true);
 					this.setSalle(this.getSalle().getEntree().getSallePrecedente());
 					changementSalle(this.getSalle(),this.getSalle().getSortie());
 
 				}
 
 				else if(this.getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()]==this.getSalle().getSortie()) {
-
+					
+					this.getSalle().getEntree().setEstTraversable(true);
+					this.getSalle().getSortie().setEstTraversable(true);
 					this.setSalle(this.getSalle().getSortie().getSalleSuivante());
 					changementSalle(this.getSalle(), this.getSalle().getEntree());
 					System.out.println("sortie");

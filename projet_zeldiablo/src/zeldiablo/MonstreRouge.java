@@ -19,8 +19,9 @@ public class MonstreRouge extends Monstre {
 			this.setTexture(ImageIO.read(new File("..\\texture\\monstre_rouge_2.png")));
 		} catch (IOException e) {
 			e.printStackTrace();
-			this.setDegats(6+this.stat.getForce()/10);
+		
 		}
+		this.setDegats(6+this.stat.getForce()/10);
 	}
 	/**
 	 * methode setter qui initialise les degats avec ceux donnes en parametre

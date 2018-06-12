@@ -351,8 +351,13 @@ public class Salle implements Serializable{
 
 					if(random <=6) {
 						random = alea.genererNombreAleatoire(0, 100);
-						if(random>=50) {
+						if(random<=33) {
 							MonstreRouge m = new MonstreRouge(new Coordonnee(i,j),this);
+							this.grille[i][j].setEstTraversable(false);
+							this.grille[i][j].setMonstrePresent(true);
+							this.monstrePresent.add(m);
+						}else if(random>=34 && random <=66) {
+							MonstreFantome m = new MonstreFantome(new Coordonnee(i,j),this);
 							this.grille[i][j].setEstTraversable(false);
 							this.grille[i][j].setMonstrePresent(true);
 							this.monstrePresent.add(m);
