@@ -4,13 +4,31 @@ Participant "main : Main " as m
 create "zeldiablojeu : ZelDiabloJeu" as j
 Participant "aventurier : Aventurier" as av
 Participant "salle : Salles" as s
-Participant "portailfin : PortailFin " as pf
+Participant "coordonne: Coordonne" as c
+Participant "case : Case " as c
 m->j 
-m->j 
+m->j : evoluer()
 activate j
-j->av : deplacerAventurier()
-av->
+j->av : getCoor(coor)
+
 activate av
+av--> j :Coordonnee co
+j->av : getSalle()
+av-->j : Salle salle
+
+deactivate av
+
+j-> c : getX()
+activate c
+c-->j : int x
+
+j-> c : getY()
+
+c-->j : int y
+
+loop : for sur i et j
+
+
 
 
 @enduml
