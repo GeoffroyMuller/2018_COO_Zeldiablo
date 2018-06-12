@@ -46,7 +46,7 @@ public class TestAventurier {
 		//initialisation des donnees
 		Aventurier a = new Aventurier(new Coordonnee(0,0), new Salle(), new Etage(0));
 		//asseertion
-		assertEquals("La vie devrait etre egale a 100", 110,a.getVie());
+		assertEquals("La vie devrait etre egale a 100", 150,a.getVie());
 		assertFalse("L'aventurier devrait etre en vie",a.isMort());
 		assertEquals("La position devrait etre un mur", "mur",a.getCase().getType());
 		assertEquals("La position ne devrait pas etre traversable", false,a.getCase().estTraversable());
@@ -239,13 +239,13 @@ public class TestAventurier {
 	public void testDeplacerValide() {
 		//initialisation des donnees
 		Salle l = new Salle();
-		Coordonnee c = new Coordonnee(1,1);
-		Coordonnee c1 = new Coordonnee(1,2);
+		Coordonnee c = new Coordonnee(12,12);
+		Coordonnee c1 = new Coordonnee(13,12);
 		Aventurier a = new Aventurier(c,l, new Etage(0));
 		//Methode testee
 		a.deplacerAventurier(c1);
 		//assertion
-		assertTrue("Le joueur ne devrait pouvoir se deplacer", a.deplacerAventurier(c1));
+		assertTrue("Le joueur ne devrait pouvoir se deplacer", a.getCoor()==c1);
 	}
 	/**
 	 * test de la methode estTraversable de Case avec une case traversable
@@ -300,13 +300,12 @@ public class TestAventurier {
 	@Test
 	public void testDeplacementPossibleCaseNonTraversable() {
 		//Preparation des données
-		Etage e = new Etage(7);
-		Salle s = new Salle();
-		Aventurier a = new Aventurier(new Coordonnee(1,1),s,e);
+		Salle s = new Salle(9);
+		Aventurier a = new Aventurier(new Coordonnee(12,12),s,null);
 		//Methode testee
-		a.deplacerAventurier(new Coordonnee(0,1));
+		a.deplacerAventurier(new Coordonnee(15,15));
 		//Test
-		assertEquals("L'aventurier devrait ne pas bouger",1,a.getCoor().getX());
+		assertEquals("L'aventurier devrait ne pas bouger",12,a.getCoor().getX());
 	}
 	
 	/**
@@ -320,28 +319,11 @@ public class TestAventurier {
 		Coordonnee entree = e.getSalles().get(0).getEntree().getC();
 		Aventurier a = new Aventurier(new Coordonnee(12,12),e.getSalles().get(0),e);
 		//Methode testee
-		a.deplacerAventurier(e.getSalles().get(0).getEntree().getC());
+		a.deplacerAventurier(entree);
 		//Test
 		assertTrue("L'aventurier devrait avoir changer de salle",a.getSalle()==sallePrecedente);
 	}
 	
-	/**
-	 * Test de la methode de deplacement sur une case sortie
-	 */
-	@Test
-	public void testDeplacementSurSortie() {
-		//Preparation des données
-		Etage e = new Etage(2);
-		Coordonnee sortie = e.getSalles().get(1).getSortie().getCoord();
-		Sortie sortieS = new Sortie(e.getSalles().get(2),sortie);
-		e.getSalles().get(1).setSortie(sortieS);
-		Salle salleSuivante = e.getSalles().get(1).getSortie().getSalleSuivante();
-		Aventurier a = new Aventurier(new Coordonnee(12,12),e.getSalles().get(1),e);
-		//Methode testee
-		a.deplacerAventurier(e.getSalles().get(1).getSortie().getCoord());
-		//Test
-		assertTrue("L'aventurier devrait avoir changer de salle",a.getSalle()==e.getSalles().get(2));
-	}
 	
 	
 	@Test
@@ -397,5 +379,22 @@ public class TestAventurier {
 				av.attaque();
 				//Test
 				assertEquals("Le monstre devrait avoir prit des dégats",vie,m.getVie());
+	}
+	
+	/**
+	 * Test de la methode de deplacement sur une case sortie
+	 */
+	@Test
+	public void testDeplacementSurSortie() {
+		//Preparation des données
+		Etage e = new Etage(2);
+		Coordonnee sortie = e.getSalles().get(2).getSortie().getCoord();
+		Salle salleSuivante = e.getSalles().get(3);
+		Aventurier a = new Aventurier(new Coordonnee(12,12),e.getSalles().get(2),e);
+		Salle actuel= a.getSalle();
+		//Methode testee
+		a.deplacerAventurier(e.getSalles().get(2).getSortie().getCoord());
+		//Test
+		assertTrue("L'aventurier devrait avoir changer de salle",a.getSalle()!=actuel);
 	}
 }
