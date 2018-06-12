@@ -16,8 +16,8 @@ public class TestGestionnaireTexture {
 		GestionnaireTexture gt = new GestionnaireTexture();
 		Case v = new Vide();
 		Case m = new Mur();
-		Case e = new Entree();
-		Case s = new Sortie();
+		Case e = new Entree(new Coordonnee(0,5));
+		Case s = new Sortie(new Coordonnee(0,2));
 		
 		Texture tv = new Texture("sol_bois", "..\\texture\\wood.png" );
 		Texture tm = new Texture("wall_dark", "..\\texture\\wall_dark_stone.png" );

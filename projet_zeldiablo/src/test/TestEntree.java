@@ -24,5 +24,19 @@ public class TestEntree {
 		assertFalse("La sortie ne devrait pas contenir de monstre", e.isMonstrePresent());
 		assertFalse("La sortie ne devrait pas contenir d'objet", e.isObjetPresent());
 	}
+	
+	/**
+	 * test du type
+	 */
+	@Test
+	public void testType() {
+		Salle sa = new Salle();
+		Entree e = new Entree(sa,new Coordonnee(0,2));
+		//methodes testees
+		String str = e.getType();
+		//assertion
+		assertEquals("Le type devrait etre entree", "entree", str);
+		
+	}
 
 }

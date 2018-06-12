@@ -19,8 +19,8 @@ public class Potion extends Item implements ObjetTexturer{
 	 * methode qui permet que l'aventurier puisse ressentir l'effet d'un item
 	 */
 	public void effetItem(Aventurier av) {
-		if(100+av.getStat().getResistance()<(av.getVie()+50)) {
-			av.setVie(100+av.getStat().getResistance());
+		if(av.getBaseVie()+av.getStat().getResistance()<(av.getVie()+50)) {
+			av.setVie(av.getBaseVie()+av.getStat().getResistance());
 		}else {
 			av.setVie(av.getVie()+50);
 		}
