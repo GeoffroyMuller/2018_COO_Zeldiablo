@@ -73,7 +73,10 @@ public class Etage {
 		return this.salles;
 	}
 
-
+	/**
+	 * methode setter qui initialise la liste de salles avec celle passee en parametre
+	 * @param salles liste de salles
+	 */
 	public void setSalles(ArrayList<Salle> salles) {
 		this.salles = salles;
 	}

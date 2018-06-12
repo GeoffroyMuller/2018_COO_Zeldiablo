@@ -4,9 +4,15 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-
+/**
+ * Creation de la classe MonstreMort
+ */
 public class MonstreMort extends Monstre {
-
+	/**
+	 * Constructeur de MonstreMort qui initialise les attributs
+	 * @param c, coordonnee du monstre mort
+	 * @param s, salle ou se trouve le monstre mort
+	 */
 	public MonstreMort(Coordonnee c, Salle s) {
 		super(c, s);
 		try {
@@ -20,7 +26,9 @@ public class MonstreMort extends Monstre {
 		this.setVie(0);
 		this.setLootable(false);
 	}
-	
+	/**
+	 * methode setter qui initialise le deplacement du monstre a faux tout le temps
+	 */
 	@Override
 	public void setDeplacementPossible(boolean deplacementPossible) {
 		super.setDeplacementPossible(false);

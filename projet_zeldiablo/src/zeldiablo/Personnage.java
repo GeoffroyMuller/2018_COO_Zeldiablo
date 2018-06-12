@@ -60,13 +60,21 @@ public abstract class Personnage {
 	 * @see Aventurier#setTexture(Image)
 	 */
 	private Image texture;
-	
+	/**
+	 * attribut String qui contiendra le mot cle de la texture
+	 */
 	private String textureMotCle;
-
+	/**
+	 * methode getter qui va chercher le mot cle de la texture
+	 * @return le mot cle de la texture
+	 */
 	public String getTextureMotCle() {
 		return textureMotCle;
 	}
-
+	/**
+	 * methode setter qui initialise le mot cle de la texture
+	 * @param textureMotCle, mot cle de la texture
+	 */
 	public void setTextureMotCle(String textureMotCle) {
 		this.textureMotCle = textureMotCle;
 	}
@@ -98,11 +106,17 @@ public abstract class Personnage {
 		mort = false;
 		degats = baseDegat+stat.getForce();
 	}
-
+	/**
+	 * methode getter qui va chercher les degats d'un personnage
+	 * @return les degats d'un personnage
+	 */
 	public int getDegats() {
 		return degats;
 	}
-
+	/**
+	 * methode setter qui initialise les degats du personnage avec ceux passes en parametre
+	 * @param degats, degats du personnage 
+	 */
 	public void setDegats(int degats) {
 		this.degats = degats;
 	}
@@ -129,7 +143,11 @@ public abstract class Personnage {
 		salle = l;
 		this.etage = et;
 	}
-	
+	/**
+	 * Constructeur de Personnage
+	 * @param c, coordonnee du personnage
+	 * @param l, salle ou est situe le personnage 
+	 */
 	public Personnage(Coordonnee c, Salle l){
 		stat = new Stats(1);
 		vie = baseVie + stat.getResistance();
@@ -249,15 +267,24 @@ public abstract class Personnage {
 	public int getVie() {
 		return vie;
 	}
-
+	/**
+	 * methode getter qui va chercher les points de base de degats d'un personnage
+	 * @return les points de base de degats du personnage
+	 */
 	public int getBaseDegat() {
 		return baseDegat;
 	}
-
+	/**
+	 * methode getter qui va chercher les points de base de vie du personnage
+	 * @return les points de base de la vie du personnage
+	 */
 	public int getBaseVie() {
 		return baseVie;
 	}
-
+	/**
+	 * methode getter qui va chercher les stats d'un personnage
+	 * @return les stats du perosnnage
+	 */
 	public Stats getStat() {
 		return stat;
 	}
@@ -315,7 +342,9 @@ public abstract class Personnage {
 	public Case getCase() {
 		return (this.salle.getGrille()[this.coor.getX()][this.coor.getY()]);
 	}
-
+	/**
+	 * methode qui met a jour les stats du personnage
+	 */
 	public void majStat() {
 		this.setVie( baseVie + stat.getResistance());
 		this.setDegats(baseDegat+stat.getForce());

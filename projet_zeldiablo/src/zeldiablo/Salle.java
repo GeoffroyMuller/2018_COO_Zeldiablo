@@ -10,9 +10,13 @@ import com.sun.org.apache.bcel.internal.generic.NEW;
  *
  */
 public class Salle implements Serializable{
-
+	/**
+	 * attribut GestionnaireZone qui contiendra un gestionnaire de zones
+	 */
 	private GestionnaireZone gz;
-
+	/**
+	 * attribut Escalier qui contiendra un escalier 
+	 */
 	private Escalier escalier;
 
 	/**
@@ -31,7 +35,10 @@ public class Salle implements Serializable{
 	 * @see Salle#setSortie(Sortie)
 	 */
 	private Sortie Sortie;
-
+	/**
+	 * methode setter qui initialise l'escalier avec celui passe en parametre
+	 * @param escalier, escalier a donner 
+	 */
 	public void setEscalier(Escalier escalier) {
 		this.escalier = escalier;
 	}
@@ -46,9 +53,13 @@ public class Salle implements Serializable{
 	 * Les cases où les monstres peuvent apparaitre
 	 */
 	private String[][] grilleMonstreSpawn;
-
+	/**
+	 * attribut ArrayList de Monstre qui contiendra la liste des monstres de la salle
+	 */
 	private ArrayList<Monstre> monstrePresent;
-
+	/**
+	 * attribut ArrayList d'Item qui contiendra la liste des items de la salle
+	 */
 	private ArrayList<Item> itemPresent;
 	/**
 	 * Permet de retourner l'entrée d'une salle
@@ -58,11 +69,17 @@ public class Salle implements Serializable{
 	public Entree getEntree() {
 		return entree;
 	}
-
+	/**
+	 * methode getter qui va chercher la liste des monstres de la salle
+	 * @return la liste des monstres de la salle
+	 */
 	public ArrayList<Monstre> getMonstrePresent() {
 		return monstrePresent;
 	}
-
+	/**
+	 * methode setter qui initialise la liste de monstres avec celle donnee en parametre
+	 * @param monstrePresent, liste de montres 
+	 */
 	public void setMonstrePresent(ArrayList<Monstre> monstrePresent) {
 		this.monstrePresent = monstrePresent;
 	}
@@ -189,11 +206,16 @@ public class Salle implements Serializable{
 		}
 
 	}
-
+	/**
+	 * methode getter qui va chercher l'escalier de la salle
+	 * @return l'escalier de la salle
+	 */
 	public Escalier getEscalier() {
 		return escalier;
 	}
-
+	/**
+	 * methode permettant de creer la grille pour les monstres
+	 */
 	public void creeGrilleMonstre() {
 		for(int i =0; i < grille.length;i++) {
 			for(int j = 0; j < grille[0].length;j++) {
@@ -207,6 +229,10 @@ public class Salle implements Serializable{
 			}
 		}
 	}
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString(){
 		String res="";
 		for (int i = 0; i < grille.length; i++) {
@@ -334,11 +360,17 @@ public class Salle implements Serializable{
 	public String[][] getGrilleMonstreSpawn() {
 		return grilleMonstreSpawn;
 	}
-
+	/**
+	 * methode setter qui initialise la grille des monstres avec celle passee en parametre 
+	 * @param grilleMonstreSpawn, grille des monstres
+	 */
 	public void setGrilleMonstreSpawn(String[][] grilleMonstreSpawn) {
 		this.grilleMonstreSpawn = grilleMonstreSpawn;
 	}
-
+	/**
+	 * methode qui permet de faire apparaitre un monstre
+	 * @param alea, nombre aleatoire
+	 */
 	public void apparitionMonstre(Aleatoire alea) {
 		int random = 0;
 		for(int i =0; i<grille.length;i++) {
@@ -381,7 +413,12 @@ public class Salle implements Serializable{
 
 
 
-
+	/**
+	 * methode qui permet de voir si un monstre peut apparaitre sur une coordonnee precise
+	 * @param x, coordonnee x de la grille
+	 * @param y, coordonnee y de la grille
+	 * @return vrai si l'apparition est possible, faux si elle n'est pas possible
+	 */
 	public boolean isSpawnPossible(int x, int y) {
 		boolean res = true;
 		if((this.grilleMonstreSpawn[x][y].contains("o"))
@@ -404,7 +441,10 @@ public class Salle implements Serializable{
 
 
 	//=====Spawn Item=====//
-
+	/**
+	 * methode qui permet de chercher des places libres pour un item
+	 * @return la liste de coordonnees des places libres pour placer un item
+	 */
 	public ArrayList<Coordonnee> placeLibreItems(){
 		ArrayList<Coordonnee> tab_coo = new ArrayList<Coordonnee>();
 		for(int i=0;i<grille.length;i++){
@@ -417,7 +457,10 @@ public class Salle implements Serializable{
 
 		return tab_coo;
 	}
-
+	/**
+	 * methode qui permet de placer aleatoirement un item
+	 * @param aleaItem, nombre aleatoire 
+	 */
 	public void placeAleatoirItem(Aleatoire aleaItem) {
 		ArrayList<Coordonnee> tab_libre = placeLibreItems();
 		int nbalea = 0;
@@ -432,7 +475,11 @@ public class Salle implements Serializable{
 			}
 		}
 	}
-
+	/**
+	 * methode qui permet a un aventurier de pouvoir prendre un item
+	 * @param av, aventurier qui doit prendre un item
+	 * @return vrai si l'aventurier a pris l'item, faux s'il ne l'a pas pris 
+	 */
 	public boolean prendreItem(Aventurier av){
 		for(int i=0;i<itemPresent.size();i++) {
 			if(av.getCoor().getX()==itemPresent.get(i).getCoo().getX()) {
@@ -446,12 +493,18 @@ public class Salle implements Serializable{
 		}
 		return false;
 	}
-
+	/**
+	 * methode getter qui va chercher la liste d'item de la salle
+	 * @return la liste d'item de la salle
+	 */
 	public ArrayList<Item> getItemPresent() {
 		return itemPresent;
 	}
 
-
+	/**
+	 * methode qui permet de voir si un combat est possible
+	 * @param a, aventurier qui doit combattre
+	 */
 	public void detecterCombat(Aventurier a) {
 		Monstre monstre = new Monstre(null,null);
 		for(int i = 0;i < this.monstrePresent.size();i++) {
@@ -468,7 +521,10 @@ public class Salle implements Serializable{
 			}
 		}
 	}
-
+	/**
+	 * methode qui permet de voir si les monstres sont morts
+	 * @return vrai si il y a des morts, s'il n'y en a pas 
+	 */
 	public boolean detecterLesMorts() {
 		boolean res = false;
 		for(int i = 0; i < this.getMonstrePresent().size(); i++) {
@@ -488,7 +544,11 @@ public class Salle implements Serializable{
 		}
 		return res;
 	}
-	
+	/**
+	 * methode qui permet de faire apparaitre le loot 
+	 * @param m, monstre qui va faire apparaitre un loot
+	 * @param alea, nombre aleatoire pour savoir quel item on va avoir
+	 */
 	public void apparaitreLoot(Monstre m, Aleatoire alea) {
 		Coordonnee loot = m.getCoor();
 		int random = alea.genererNombreAleatoire(0, 100);

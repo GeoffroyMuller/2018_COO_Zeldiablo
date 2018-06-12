@@ -4,20 +4,37 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-
+/**
+ * Creation de la classe Monstre
+ */
 public class Monstre extends Personnage {
-
+	/**
+	 * attribut booleen qui regardera si le deplacement du monstre est possible
+	 */
 	private boolean deplacementPossible;
+	/**
+	 * attribut boolean qui regardera si un monstre est lootable ou non
+	 */
 	private boolean lootable;
-	
+	/**
+	 * methode qui regarde si le monstre est lootable ou non
+	 * @return vrai si le monstre est lootable, faux s'il ne l'est pas 
+	 */
 	public boolean isLootable() {
 		return lootable;
 	}
-
+	/**
+	 * methode setter qui initialise le booleen avec celui passe en parametre
+	 * @param lootable, boolean pour savoir si le monstre est lootable ou non
+	 */
 	public void setLootable(boolean lootable) {
 		this.lootable = lootable;
 	}
-
+	/**
+	 * Constructeur de Monstre qui initialise les attributs
+	 * @param c, coordonnee du monstre
+	 * @param s, salle ou se trouve le monstre
+	 */
 	public Monstre(Coordonnee c,Salle s) {
 		super(c,s);
 		baseDegat=3;
@@ -34,26 +51,38 @@ public class Monstre extends Personnage {
 		this.getStat().ajoutExp(100);
 		this.setLootable(true);
 	}
-	
+	/**
+	 * methode setter qui initialise les degats du monstre avec ceux passes en parametre
+	 */
 	public void setDegats(int degats) {
 		super.setDegats(degats);
 	}
-
+	/**
+	 * methode qui permet de savoir si le deplacement du monstre est possible
+	 * @return vrai si le deplacement est possible, faux s'il est impossible
+	 */
 	public boolean isDeplacementPossible() {
 		return deplacementPossible;
 	}
-
+	/**
+	 * methode setter qui initialise le deplacement du monstre avec le boolean passe en parametre
+	 * @param deplacementPossible, boolean pour savoir si le deplacment du monstre est possible ou non
+	 */
 	public void setDeplacementPossible(boolean deplacementPossible) {
 		this.deplacementPossible = deplacementPossible;
 	}
-
+	/**
+	 * methode qui permet de faire se deplacer le monstre 
+	 * @param nbrAleatoire, nombre aleatoire
+	 * @return vrai si le deplacement a ete effectue, faux s'il ne l'a pas ete 
+	 */
 	public boolean deplacement(Aleatoire nbrAleatoire) {
 		boolean res = false;
 		int x = this.getCoor().getX();
 		int y = this.getCoor().getY();
 		int random = nbrAleatoire.genererNombreAleatoire(0, 4);
 
-				
+
 		if(((x != 0) && (x!= Salle.TAILLE_SALLES-1) &&
 				(y!= 0) && (y!= Salle.TAILLE_SALLES-1)) && this.deplacementPossible && !this.isMort()) {
 			switch(random) {
@@ -106,8 +135,11 @@ public class Monstre extends Personnage {
 
 		return res;
 	}
-	
-	
+
+	/**
+	 * methode qui permet de changer le niveau d'un monstre
+	 * @param niv, niveau du monstre
+	 */
 	public void changerNiveau(int niv) {
 		stat.modifierNiveau(niv);
 		majStat();
