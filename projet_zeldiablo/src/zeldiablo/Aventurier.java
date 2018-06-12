@@ -50,7 +50,7 @@ public class Aventurier extends Personnage implements Serializable{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		this.setDegats(50);
+		
 	}
 
 	/**
@@ -169,6 +169,9 @@ public class Aventurier extends Personnage implements Serializable{
 				this.getSalle().getMonstrePresent().get(i).subirDegats(this.getDegats());
 				if(this.getSalle().getMonstrePresent().get(i).isMort()) {
 					this.stat.ajoutExp(this.getSalle().getMonstrePresent().get(i).getStat().getExp());
+					if(this.stat.getExp()==0) {
+						majStat();
+					}
 					System.out.println("ajout d'xp : "+this.getSalle().getMonstrePresent().get(i).getStat().getExp());
 				}
 				System.out.println("Aventurier fait "+this.getDegats());
@@ -176,5 +179,10 @@ public class Aventurier extends Personnage implements Serializable{
 			}
 					
 		}
+	}
+	
+	public void majStat() {
+		this.setVie( 100 + stat.getResistance());
+		this.setDegats(25+stat.getForce());
 	}
 }

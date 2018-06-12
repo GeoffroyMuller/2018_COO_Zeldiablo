@@ -19,7 +19,7 @@ public class ZeldiabloJeu implements Jeu {
 	 * Attribut "dj" de type Donjon correspond à l'ensemble des étage que le joueur est amené a parcourir
 	 */
 	private Donjon dj;
-	
+
 	private int compteur;
 
 	/**
@@ -41,7 +41,7 @@ public class ZeldiabloJeu implements Jeu {
 	@Override
 	public void evoluer(Commande commandeUser) {
 		Coordonnee posAv = new Coordonnee(0,0);
-		
+
 		posAv.dupliquerCoordonnee(this.av.getCoor());
 		if(commandeUser.gauche) {
 			posAv.decrementerX();
@@ -64,7 +64,7 @@ public class ZeldiabloJeu implements Jeu {
 		Aleatoire randomV=new AleatoireVrai();
 		if(compteur == 8) {
 			for(int i =0; i< this.av.getSalle().getMonstrePresent().size();i++) {
-				 this.av.getSalle().getMonstrePresent().get(i).deplacement(randomV);
+				this.av.getSalle().getMonstrePresent().get(i).deplacement(randomV);
 
 			}
 			this.av.getSalle().detecterCombat(av);
