@@ -18,6 +18,7 @@ public class MonstreMort extends Monstre {
 		this.setDeplacementPossible(false);
 		this.setDegats(0);
 		this.setVie(0);
+		this.setLootable(false);
 	}
 	
 	@Override

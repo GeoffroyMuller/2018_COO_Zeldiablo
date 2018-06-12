@@ -8,7 +8,16 @@ import javax.imageio.ImageIO;
 public class Monstre extends Personnage {
 
 	private boolean deplacementPossible;
+	private boolean lootable;
 	
+	public boolean isLootable() {
+		return lootable;
+	}
+
+	public void setLootable(boolean lootable) {
+		this.lootable = lootable;
+	}
+
 	public Monstre(Coordonnee c,Salle s) {
 		super(c,s);
 		this.deplacementPossible = true;
@@ -19,7 +28,8 @@ public class Monstre extends Personnage {
 		}
 		this.setDeplacementPossible(true);
 		this.setDegats(2+this.stat.getForce()/10);
-		this.getStat().ajoutExp(500);
+		this.getStat().ajoutExp(100);
+		this.setLootable(true);
 	}
 	
 	public void setDegats(int degats) {
