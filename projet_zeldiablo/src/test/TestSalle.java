@@ -61,9 +61,7 @@ public class TestSalle {
 				//Test
 				assertTrue("Des morts devrait être détecté",res);
 			}
-			
-			@Test
-			public void testplaceLibreItems()
+
 
 
 }

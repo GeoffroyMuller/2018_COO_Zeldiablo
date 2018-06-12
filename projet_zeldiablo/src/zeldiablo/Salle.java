@@ -349,7 +349,7 @@ public class Salle implements Serializable{
 
 
 
-					if(random <=6) {
+					if(random <=5) {
 						random = alea.genererNombreAleatoire(0, 100);
 						if(random<=33) {
 							MonstreRouge m = new MonstreRouge(new Coordonnee(i,j),this);
