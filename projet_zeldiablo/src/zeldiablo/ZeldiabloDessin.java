@@ -95,6 +95,8 @@ public class ZeldiabloDessin implements DessinJeu {
 		g.fillRect(0, Salle.TAILLE_SALLES*30, Salle.TAILLE_SALLES*30, 10);
 		g.setColor(Color.green);
 		g.fillRect(0, Salle.TAILLE_SALLES*30, (int)((Salle.TAILLE_SALLES*30)*((double)(this.jeu.getAv().getVie())/(double)(this.vie+this.jeu.getAv().getStat().getForce()))), 10);
+		g.setColor(Color.green);
+		g.drawString("Vie : "+this.jeu.getAv().getVie(), 10, 10);
 		g.setColor(Color.BLACK);
 	}
 	public void afficherBarreXpAventurier(Graphics2D g) {
@@ -102,6 +104,8 @@ public class ZeldiabloDessin implements DessinJeu {
 		g.fillRect(0, Salle.TAILLE_SALLES*30+10, Salle.TAILLE_SALLES*30, 10);
 		g.setColor(Color.blue);
 		g.fillRect(0, Salle.TAILLE_SALLES*30+10, (int)((Salle.TAILLE_SALLES*30)*((double)(this.jeu.getAv().getStat().getExp())/(double)(this.vie+this.jeu.getAv().getStat().getExpPourPasser()))), 10);
+		g.setColor(Color.green);
+		g.drawString("Exp : "+this.jeu.getAv().getStat().getExp(), 10, 20);
 		g.setColor(Color.BLACK);
 	}
 
