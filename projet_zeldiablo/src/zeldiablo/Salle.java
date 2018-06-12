@@ -177,7 +177,10 @@ public class Salle implements Serializable{
 		}
 
 		this.creeGrilleMonstre();
-		this.apparitionMonstre(randomV);
+		if(o!=5) {
+			this.apparitionMonstre(randomV);
+		}
+
 	}
 
 	public Escalier getEscalier() {
