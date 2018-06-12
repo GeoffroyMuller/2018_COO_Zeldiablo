@@ -16,6 +16,7 @@ import moteur.DessinJeu;
  *
  */
 public class ZeldiabloDessin implements DessinJeu {
+	int vie = 100;
 
 	private GestionnaireTexture  gt = new GestionnaireTexture();
 	/**
@@ -60,7 +61,7 @@ public class ZeldiabloDessin implements DessinJeu {
 			//System.out.println("");
 		}
 		g.setColor(Color.red);
-		g.fillRect(0, Salle.TAILLE_SALLES*30, (((Salle.TAILLE_SALLES*30)%this.jeu.getAv().getVie())*this.jeu.getAv().getVie()), 10);
+		g.fillRect(0, Salle.TAILLE_SALLES*30, (int)((Salle.TAILLE_SALLES*30)*((double)(this.jeu.getAv().getVie())/(double)(this.vie+this.jeu.getAv().getStat().getForce()))), 10);
 		g.setColor(Color.BLACK);
 		//System.out.println("============================================");
 		
