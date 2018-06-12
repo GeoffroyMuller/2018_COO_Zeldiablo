@@ -17,7 +17,7 @@ public class Potion extends Item implements ObjetTexturer{
 	}
 
 	public void effetItem(Aventurier av) {
-		if(100>(av.getVie()+50)) {
+		if(100<(av.getVie()+50)) {
 			av.setVie(100);
 		}else {
 			av.setVie(av.getVie()+50);
