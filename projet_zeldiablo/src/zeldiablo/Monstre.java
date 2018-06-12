@@ -20,7 +20,7 @@ public class Monstre extends Personnage {
 
 	public Monstre(Coordonnee c,Salle s) {
 		super(c,s);
-		baseDegat=4;
+		baseDegat=3;
 		baseVie=100;
 		majStat();
 		this.deplacementPossible = true;
