@@ -1,0 +1,27 @@
+@startuml
+Participant "aventurier : Aventurier" as a
+Participant "salle : Salle" as s
+Participant "monstrePresent : ArrayList<Monstre>" as listM
+Participant "monstre : Monstre" as m
+
+->a : attaque(12)
+loop int i = 0; i<this.getSalle().getMonstrePresent().size();i++
+alt monstre.getX() == this.getCoor().getX()+1 && monstre.getY() == this.getCoor().getY()) || (monstre.getX() == this.getCoor().getX()-1 && monstre.getY() == this.getCoor().getY()) || (monstre.getX() == this.getCoor().getX() && monstre.getY() == this.getCoor().getY()+1) || (monstre.getX() == this.getCoor().getX()+1 && monstre.getY() == this.getCoor().getY()-1)
+activate a
+a->a : getSalle()
+activate a
+a-->a : salle
+deactivate a
+a->listM : getMonstrePresent().get(i)
+activate listM
+listM-->a: monstre
+deactivate listM
+a->m : subirDegats(12)
+activate m
+m-->a
+deactivate m
+
+end
+end
+<--a
+@enduml

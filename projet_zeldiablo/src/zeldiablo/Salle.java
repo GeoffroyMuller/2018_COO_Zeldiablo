@@ -32,6 +32,10 @@ public class Salle implements Serializable{
 	 */
 	private Sortie Sortie;
 
+	public void setEscalier(Escalier escalier) {
+		this.escalier = escalier;
+	}
+
 	/**
 	 * Les cases de la salle
 	 * @see Salle#getGrille()
@@ -180,7 +184,10 @@ public class Salle implements Serializable{
 		}
 
 		this.creeGrilleMonstre();
-		this.apparitionMonstre(randomV);
+		if(o!=5) {
+			this.apparitionMonstre(randomV);
+		}
+
 	}
 
 	public Escalier getEscalier() {
@@ -429,8 +436,22 @@ public class Salle implements Serializable{
 	}
 	
 	
-	
-	
+	public void detecterCombat(Aventurier a) {
+		Monstre monstre = new Monstre(null,null);
+		for(int i = 0;i < this.monstrePresent.size();i++) {
+			monstre = this.monstrePresent.get(i);
+			if((monstre.getCoor().getX()+1 == a.getCoor().getX() && monstre.getCoor().getY() == a.getCoor().getY()) ||
+					(monstre.getCoor().getX()-1 == a.getCoor().getX() && monstre.getCoor().getY() == a.getCoor().getY()) || 
+					(monstre.getCoor().getX() == a.getCoor().getX() && monstre.getCoor().getY()+1 == a.getCoor().getY()) || 
+					(monstre.getCoor().getX() == a.getCoor().getX() && monstre.getCoor().getY()-1 == a.getCoor().getY())) {
+				a.subirDegats(1);
+				monstre.setDeplacementPossible(false);
+				System.out.println(a.getVie()+"");
+			}else {
+				monstre.setDeplacementPossible(true);
+			}
+		}
+	}
 
 }
 

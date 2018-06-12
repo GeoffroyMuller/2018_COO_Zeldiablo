@@ -7,14 +7,24 @@ import javax.imageio.ImageIO;
 
 public class Monstre extends Personnage {
 
-
+	private boolean deplacementPossible;
+	
 	public Monstre(Coordonnee c,Salle s) {
 		super(c,s);
+		this.deplacementPossible = true;
 		try {
 			this.setTexture(ImageIO.read(new File("..\\texture\\monstre_violet_3.png")));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public boolean isDeplacementPossible() {
+		return deplacementPossible;
+	}
+
+	public void setDeplacementPossible(boolean deplacementPossible) {
+		this.deplacementPossible = deplacementPossible;
 	}
 
 	public boolean deplacement(Aleatoire nbrAleatoire) {
@@ -25,7 +35,7 @@ public class Monstre extends Personnage {
 
 				
 		if((x != 0) && (x!= Salle.TAILLE_SALLES-1) &&
-				(y!= 0) && (y!= Salle.TAILLE_SALLES-1)) {
+				(y!= 0) && (y!= Salle.TAILLE_SALLES-1) && this.deplacementPossible) {
 			switch(random) {
 			case 0:
 				if((this.getSalle().isDeplacementPossible(x+1, y))) {

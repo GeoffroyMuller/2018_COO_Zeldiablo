@@ -77,6 +77,9 @@ public class Aventurier extends Personnage implements Serializable{
 					changementSalle(this.getSalle(), this.getSalle().getEntree());
 					System.out.println("sortie");
 				}
+				else if(this.getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()]==this.getSalle().getEscalier()){
+					changementEtage(this.getSalle().getEscalier().getSalleEtageSup(), this.getSalle().getEscalier().getEtageSup());
+				}
 
 			}
 		}
@@ -85,5 +88,81 @@ public class Aventurier extends Personnage implements Serializable{
 		}
 
 		return res;
+	}
+	
+	public void changementEtage(Salle s, Etage e) {
+		Coordonnee c = new Coordonnee(12, 12);
+		this.setCoor(c);
+		this.setEtage(e);
+		this.setSalle(s);
+	}
+	
+	
+	/**
+	 * Permet à l'aventurier de changer de salle
+	 * @param s
+	 * 		La futur salle de l'aventurier
+	 * @param c
+	 * 		La future case de l'aventurier
+	 * @see Aventurier#salle
+	 * @see Case
+	 */
+	public void changementSalle(Salle s, Case c) {
+		Case [][] grille = s.getGrille();
+		int x=12,y=12;
+
+		for (int i = 0; i < Salle.TAILLE_SALLES; i++) {
+			for (int j = 0; j < Salle.TAILLE_SALLES; j++) {
+				if(grille[i][j]==c) {
+					x=i;
+					y=j;
+				}
+			}
+		}
+		Coordonnee co = new Coordonnee(x, y);
+		co.decrementerX();
+		if(deplacerAventurier(co)) {
+			System.out.println("1");
+
+		}
+		else {
+			co.incrementerY();
+			co.incrementerX();
+			if(deplacerAventurier(co)) {
+				System.out.println("2");
+			}
+			else {
+				co.decrementerY();
+				co.incrementerX();
+				if(deplacerAventurier(co)) {
+				}
+				else {
+					co.decrementerX();
+					co.decrementerY();
+					if(deplacerAventurier(co)) {
+					}
+					else {
+						System.out.println("erreur de deplacement");
+					}
+
+
+				}
+			}
+		}
+	}
+
+	
+	public void attaque(int att) {
+		Coordonnee monstre = new Coordonnee(0,1);
+		for(int i = 0; i < this.getSalle().getMonstrePresent().size(); i++) {
+			monstre = this.getSalle().getMonstrePresent().get(i).getCoor();
+			if((monstre.getX() == this.getCoor().getX()+1 && monstre.getY() == this.getCoor().getY()) ||
+					(monstre.getX() == this.getCoor().getX()-1 && monstre.getY() == this.getCoor().getY()) ||
+					(monstre.getX() == this.getCoor().getX() && monstre.getY() == this.getCoor().getY()+1) ||
+					(monstre.getX() == this.getCoor().getX()+1 && monstre.getY() == this.getCoor().getY()-1)) {
+				this.getSalle().getMonstrePresent().get(i).subirDegats(att);
+			}
+					
+		}
 	}
 }
