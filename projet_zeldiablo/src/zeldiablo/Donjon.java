@@ -23,7 +23,7 @@ public class Donjon{
 	/**
 	 * Nombre d'étage du donjon
 	 */
-	public final static int NUM_ETAGES=1;
+	public final static int NUM_ETAGES=2;
 
 /**
  * Constructeur permettant la création du donjon

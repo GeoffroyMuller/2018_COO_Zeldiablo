@@ -37,5 +37,11 @@ public class GestionnaireTexture {
 		
 		return t;
 	}
+	public ArrayList<Texture> getListeTexture() {
+		return listeTexture;
+	}
+	public void setListeTexture(ArrayList<Texture> listeTexture) {
+		this.listeTexture = listeTexture;
+	}
 
 }

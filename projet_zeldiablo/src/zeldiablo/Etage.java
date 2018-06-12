@@ -20,7 +20,7 @@ public class Etage {
 	/**
 	 * Nombre de salle de l'étage
 	 */
-	public final static int NUM_SALLES=2;
+	public final static int NUM_SALLES=3;
 
 
 
