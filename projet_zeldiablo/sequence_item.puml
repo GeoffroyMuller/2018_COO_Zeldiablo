@@ -4,7 +4,9 @@ Participant "tab_libre : ArrayList<Coordonnee>" as tab_libre
 Participant "itemPresent : Arraylist<Item>" as itemPresent
 Participant "aleaItem : Aleatoir" as aleaItem
 
+
 -> Salle : placeAleatoirItem(aleaItem : Aleatoir)
+loop : i=0;i<tab_libre.size();i++
 activate Salle
 Salle -> aleaItem : genererNombreAleatoire(0, 100)
 aleaItem --> Salle : nbalea
@@ -12,8 +14,8 @@ Salle -> Salle : placelibreItems()
 activate Salle
 Salle --> Salle : tab_libre
 deactivate Salle
-loop : i=0;i<tab_libre.size();i++
-alt : nbalea>=75
+
+alt : nbalea>=99
 Salle -> tab_libre : get(i).getX()
 activate Salle
 activate tab_libre
