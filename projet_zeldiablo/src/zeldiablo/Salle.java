@@ -414,7 +414,12 @@ public class Salle implements Serializable{
 				tab_libre.get(i).getX();
 				tab_libre.get(i).getY();
 				itemPresent.add(new Potion(this,xitem,yitem));
+				
 			}
+		}
+		for(int i=0;i<itemPresent.size();i++) {
+			System.out.println("tab_"+itemPresent.get(i).getCoo());
+			System.out.println("tab_"+itemPresent);
 		}
 
 	}
