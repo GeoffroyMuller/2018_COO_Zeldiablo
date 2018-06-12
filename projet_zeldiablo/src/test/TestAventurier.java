@@ -85,6 +85,7 @@ public class TestAventurier {
 		//Methode testée
 		a.modifierVie(10);
 		//Test
+		//pour loic
 		assertEquals("La vie devrait avoir augmente", 110,a.getVie());
 	}
 	/**
