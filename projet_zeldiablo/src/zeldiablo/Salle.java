@@ -411,17 +411,11 @@ public class Salle implements Serializable{
 		for(int i=0;i<tab_libre.size();i++) {
 			nbalea = aleaItem.genererNombreAleatoire(0, 100);
 			if(nbalea>=99) {
-				tab_libre.get(i).getX();
-				tab_libre.get(i).getY();
+				xitem = tab_libre.get(i).getX();
+				yitem = tab_libre.get(i).getY();
 				itemPresent.add(new Potion(this,xitem,yitem));
-				
 			}
 		}
-		for(int i=0;i<itemPresent.size();i++) {
-			System.out.println("tab_"+itemPresent.get(i).getCoo());
-			System.out.println("tab_"+itemPresent);
-		}
-
 	}
 	
 	public boolean prendreItem(Aventurier av){
@@ -429,6 +423,7 @@ public class Salle implements Serializable{
 			if(av.getCoor().getX()==itemPresent.get(i).getCoo().getX()) {
 				if(av.getCoor().getY()==itemPresent.get(i).getCoo().getY()) {
 					itemPresent.remove(i);
+					System.out.println("item_pris");
 					return true;
 				}
 			}
