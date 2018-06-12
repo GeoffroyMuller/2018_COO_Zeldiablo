@@ -20,6 +20,9 @@ public class Aventurier extends Personnage implements Serializable, ObjetTexture
 	 */
 	public Aventurier(){
 		super();
+		baseDegat=15;
+		baseVie=140;
+		majStat();
 		try {
 			this.setTexture(ImageIO.read(new File("..\\texture\\Aventurier_Final.png")));
 		} catch (IOException e) {
@@ -46,7 +49,11 @@ public class Aventurier extends Personnage implements Serializable, ObjetTexture
 	 * @see Aventurier#texture
 	 */
 	public Aventurier(Coordonnee c, Salle l, Etage et){
+		
 		super(c,l,et);
+		baseDegat=15;
+		baseVie=140;
+		majStat();
 		this.setTextureMotCle("aventurier");
 		
 	}

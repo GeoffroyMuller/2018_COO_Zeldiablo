@@ -7,8 +7,9 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public abstract class Personnage {
-	
+	int baseDegat;
 	Stats stat;
+	int baseVie;
 	
 	/**
 	 * Les points de vie de l'aventurier
@@ -308,8 +309,8 @@ public abstract class Personnage {
 	}
 
 	public void majStat() {
-		this.setVie( 100 + stat.getResistance());
-		this.setDegats(15+stat.getForce());
+		this.setVie( baseVie + stat.getResistance());
+		this.setDegats(baseDegat+stat.getForce());
 	}
 }
 

@@ -20,6 +20,9 @@ public class Monstre extends Personnage {
 
 	public Monstre(Coordonnee c,Salle s) {
 		super(c,s);
+		baseDegat=4;
+		baseVie=100;
+		majStat();
 		this.deplacementPossible = true;
 		try {
 			this.setTexture(ImageIO.read(new File("..\\texture\\monstre_violet_3.png")));

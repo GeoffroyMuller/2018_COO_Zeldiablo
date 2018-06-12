@@ -51,7 +51,10 @@ public Donjon (String pnom) {
 		for (int j = 0; j <Etage.NUM_SALLES; j++) {
 			ArrayList<Monstre> lm = this.getEtages().get(i).getSalles().get(j).getMonstrePresent();
 			for (int k = 0; k < lm.size(); k++) {
-				lm.get(k).changerNiveau(new AleatoireVrai().genererNombreAleatoire(i, i+2));
+				AleatoireVrai alea =new AleatoireVrai();
+				int rd = alea.genererNombreAleatoire(i, i+2);
+				lm.get(k).changerNiveau(rd);
+				lm.get(k).getStat().ajoutExp(100*rd);
 			}
 		}
 	}
