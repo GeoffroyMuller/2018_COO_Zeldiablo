@@ -67,13 +67,12 @@ public class ZeldiabloJeu implements Jeu {
 				 this.av.getSalle().getMonstrePresent().get(i).deplacement(randomV);
 
 			}
-			this.av.getSalle().detecterCombat(av);
 			compteur=0;
 		}
 		compteur++;
+		this.av.getSalle().detecterCombat(av);
 		this.av.getSalle().prendreItem(av);
-		
-		
+		this.av.getSalle().detecterLesMorts();
 
 	}
 
