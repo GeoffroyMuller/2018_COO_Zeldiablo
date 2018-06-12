@@ -59,6 +59,16 @@ public abstract class Personnage {
 	 * @see Aventurier#setTexture(Image)
 	 */
 	private Image texture;
+	
+	private String textureMotCle;
+
+	public String getTextureMotCle() {
+		return textureMotCle;
+	}
+
+	public void setTextureMotCle(String textureMotCle) {
+		this.textureMotCle = textureMotCle;
+	}
 
 	/**
 	 * Permet de retourner la texture de l'aventurier

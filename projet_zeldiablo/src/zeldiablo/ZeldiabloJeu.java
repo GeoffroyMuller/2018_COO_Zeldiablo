@@ -1,6 +1,10 @@
 package zeldiablo;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
 
 import moteur.Commande;
 import moteur.Jeu;
@@ -54,6 +58,7 @@ public class ZeldiabloJeu implements Jeu {
 		}
 		else if(commandeUser.attaque) {
 			this.av.attaque();
+			this.av.setTextureMotCle("aventurierAtt");
 		}
 		if(this.av.deplacerAventurier(posAv)) {
 
