@@ -90,6 +90,9 @@ public class ZeldiabloDessin implements DessinJeu {
 		g.setColor(Color.green);
 		g.fillRect(xmonstre*30, ymonstre*30, (int)(30*(((double)(this.jeu.getAv().getSalle().getMonstrePresent().get(i).getVie()))/((double)(this.vie+this.jeu.getAv().getSalle().getMonstrePresent().get(i).getStat().getForce())))), 2);
 		g.setColor(Color.BLACK);
+		g.setColor(Color.green);
+		g.drawString(""+this.jeu.getAv().getSalle().getMonstrePresent().get(i).getStat().getNiveau(), xmonstre*30, ymonstre*30-2);
+		g.setColor(Color.BLACK);
 	}
 	public void afficherBarreVieAventurier(Graphics2D g) {
 		g.setColor(Color.red);
