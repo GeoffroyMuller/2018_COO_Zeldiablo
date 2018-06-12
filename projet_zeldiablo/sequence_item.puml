@@ -2,34 +2,39 @@
 Participant "s : Salle" as Salle
 Participant "tab_libre : ArrayList<Coordonnee>" as tab_libre
 Participant "itemPresent : Arraylist<Item>" as itemPresent
+Participant "aleaItem : Aleatoir" as aleaItem
 
--> Salle : placeAleatoirItem(aleaItem : int)
+-> Salle : placeAleatoirItem(aleaItem : Aleatoir)
 activate Salle
+Salle -> aleaItem : genererNombreAleatoire(0, 100)
+aleaItem --> Salle : nbalea
 Salle -> Salle : placelibreItems()
 activate Salle
 Salle --> Salle : tab_libre
 deactivate Salle
 loop : i=0;i<tab_libre.size();i++
-Salle -> tab_libre : GetX()
+alt : nbalea>=75
+Salle -> tab_libre : get(i).getX()
 activate Salle
 activate tab_libre
 tab_libre --> Salle
 deactivate tab_libre
 deactivate Salle
-Salle -> tab_libre : GetY()
+Salle -> tab_libre : get(i).getY()
 activate Salle
 activate tab_libre
 tab_libre --> Salle
 deactivate tab_libre
 deactivate Salle
-create "i : Item" as Item
-Salle -> Item : "new Item("potion",this,6,7)"
-Salle -> itemPresent : add(i)
+create "p : potion" as potion
+Salle -> potion : "new potion(this,6,7)"
+Salle -> itemPresent : add(p)
 activate Salle
 activate itemPresent
 Salle <-- itemPresent
 deactivate itemPresent
 deactivate Salle
+end
 end
 <-- Salle
 deactivate Salle
