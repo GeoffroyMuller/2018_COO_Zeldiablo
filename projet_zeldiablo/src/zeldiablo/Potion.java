@@ -15,7 +15,9 @@ public class Potion extends Item implements ObjetTexturer{
 		System.out.println("potion_"+xe+"/"+ye);
 		this.motCle = "potion";
 	}
-
+	/**
+	 * methode qui permet que l'aventurier puisse ressentir l'effet d'un item
+	 */
 	public void effetItem(Aventurier av) {
 		if(av.getBaseVie()+av.getStat().getResistance()<(av.getVie()+50)) {
 			av.setVie(av.getBaseVie()+av.getStat().getResistance());
@@ -23,7 +25,9 @@ public class Potion extends Item implements ObjetTexturer{
 			av.setVie(av.getVie()+50);
 		}
 	}
-
+	/**
+	 * methode qui va chercher le mot cle de la texture 
+	 */
 	@Override
 	public String getTextureMotCle() {
 		return "potion";

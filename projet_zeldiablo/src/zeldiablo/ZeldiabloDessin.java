@@ -81,7 +81,11 @@ public class ZeldiabloDessin implements DessinJeu {
 		g.dispose();
 
 	}
-	
+	/**
+	 * methode qui permet d'afficher la barre de vie des monstres
+	 * @param i, vie du monstre
+	 * @param g, composant graphique
+	 */
 	public void afficherBarreVieMonstre(int i,Graphics2D g) {
 		int xmonstre = this.jeu.getAv().getSalle().getMonstrePresent().get(i).getCoor().getX();
 		int ymonstre = this.jeu.getAv().getSalle().getMonstrePresent().get(i).getCoor().getY();
@@ -94,6 +98,10 @@ public class ZeldiabloDessin implements DessinJeu {
 		g.drawString(""+this.jeu.getAv().getSalle().getMonstrePresent().get(i).getStat().getNiveau(), xmonstre*30, ymonstre*30-2);
 		g.setColor(Color.BLACK);
 	}
+	/**
+	 * methode qui permet d'afficher la barre de vie de l'aventurier
+	 * @param g, composant graphique
+	 */
 	public void afficherBarreVieAventurier(Graphics2D g) {
 		g.setColor(Color.red);
 		g.fillRect(0, Salle.TAILLE_SALLES*30, Salle.TAILLE_SALLES*30, 10);
@@ -103,6 +111,10 @@ public class ZeldiabloDessin implements DessinJeu {
 		g.drawString("Vie : "+this.jeu.getAv().getVie(), 10, 10);
 		g.setColor(Color.BLACK);
 	}
+	/**
+	 * methode qui permet d'afficher le barre d'experience de l'aventurier 
+	 * @param g, composant graphique
+	 */
 	public void afficherBarreXpAventurier(Graphics2D g) {
 		g.setColor(Color.gray);
 		g.fillRect(0, Salle.TAILLE_SALLES*30+10, Salle.TAILLE_SALLES*30, 10);

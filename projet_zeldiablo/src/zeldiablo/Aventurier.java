@@ -92,7 +92,6 @@ public class Aventurier extends Personnage implements Serializable, ObjetTexture
 					this.getSalle().getSortie().setEstTraversable(true);
 					this.setSalle(this.getSalle().getSortie().getSalleSuivante());
 					changementSalle(this.getSalle(), this.getSalle().getEntree());
-					System.out.println("sortie");
 				}
 				else if(this.getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()]==this.getSalle().getEscalier()){
 					changementEtage(this.getSalle().getEscalier().getSalleEtageSup(), this.getSalle().getEscalier().getEtageSup());
@@ -106,7 +105,11 @@ public class Aventurier extends Personnage implements Serializable, ObjetTexture
 
 		return res;
 	}
-	
+	/**
+	 * methode qui permet de faire le changement d'etage
+	 * @param s, salle ou l'on va
+	 * @param e, etage ou l'on va 
+	 */
 	public void changementEtage(Salle s, Etage e) {
 		Coordonnee c = new Coordonnee(12, 12);
 		this.setCoor(c);
@@ -168,7 +171,9 @@ public class Aventurier extends Personnage implements Serializable, ObjetTexture
 		}
 	}
 
-	
+	/**
+	 * methode qui permet d'attaquer pour les monstres et les aventuriers
+	 */
 	public void attaque() {
 		Coordonnee monstre = new Coordonnee(0,1);
 		for(int i = 0; i < this.getSalle().getMonstrePresent().size(); i++) {

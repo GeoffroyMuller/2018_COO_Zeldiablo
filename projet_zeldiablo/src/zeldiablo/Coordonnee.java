@@ -120,7 +120,10 @@ public class Coordonnee implements Serializable{
 		this.x = c.getX();
 		this.y = c.getY();
 	}
-	
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString() {
 		return "Coord : "+this.getX()+" / "+this.getY();
 	}

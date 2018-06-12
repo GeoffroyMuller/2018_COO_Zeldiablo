@@ -72,7 +72,10 @@ public class Entree extends Case implements Serializable{
 	public String getType() {
 		return "entree";
 	}
-	
+	/**
+	 * methode getter qui va chercher la coordonnee de l'entree
+	 * @return la coordonnee de l'entree
+	 */
 	public Coordonnee getC() {
 		return coord;
 	}
