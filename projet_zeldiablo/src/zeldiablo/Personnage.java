@@ -110,16 +110,20 @@ public abstract class Personnage {
 	 * @see Aventurier#texture
 	 */
 	public Personnage(Coordonnee c, Salle l, Etage et){
-		vie = 100;
+		stat = new Stats(1);
+		vie = 100 + stat.getResistance();
 		mort = false;
+		degats = 25+stat.getForce();
 		coor = c;
 		salle = l;
 		this.etage = et;
 	}
 	
 	public Personnage(Coordonnee c, Salle l){
-		vie = 100;
+		stat = new Stats(1);
+		vie = 100 + stat.getResistance();
 		mort = false;
+		degats = 25+stat.getForce();
 		coor = c;
 		this.salle = l;
 	}
@@ -233,6 +237,10 @@ public abstract class Personnage {
 	 */
 	public int getVie() {
 		return vie;
+	}
+
+	public Stats getStat() {
+		return stat;
 	}
 
 	/**
