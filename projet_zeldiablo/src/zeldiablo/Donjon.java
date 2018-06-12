@@ -13,7 +13,7 @@ public class Donjon{
 	 * @see Donjon#getEtages()
 	 * @see Donjon#getEtages()
 	 */
-	ArrayList<Etage> etages;
+	private ArrayList<Etage> etages;
 	/**
 	 * Nom du donjon
 	 * @see Donjon#Donjon(String)
@@ -23,7 +23,7 @@ public class Donjon{
 	/**
 	 * Nombre d'étage du donjon
 	 */
-	public final static int NUM_ETAGES=5;
+	public final static int NUM_ETAGES=1;
 
 /**
  * Constructeur permettant la création du donjon
@@ -46,6 +46,11 @@ public Donjon (String pnom) {
 		e.getSalles().get((int)(e.NUM_SALLES)/2).setEscalier(es);
 		e.getSalles().get((int)(e.NUM_SALLES)/2).getGrille()[12][12]=es;
 	}
+	PortailFin pf = new PortailFin();
+	pf.setCoord(new Coordonnee(12,12));
+	this.getEtages().get(NUM_ETAGES-1).getSalles().get((int)(Etage.NUM_SALLES)/2).getGrille()[12][12]=pf;
+	this.getEtages().get(NUM_ETAGES-1).getSalles().get((int)(Etage.NUM_SALLES)/2).setPortailFin(pf);
+	
 	
 	for (int i = 0; i < NUM_ETAGES; i++) {
 		for (int j = 0; j <Etage.NUM_SALLES; j++) {

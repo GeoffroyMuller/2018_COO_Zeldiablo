@@ -55,15 +55,16 @@ public class ZeldiabloDessin implements DessinJeu {
 				//System.out.print(salle.getGrille()[i][j]);
 				g.drawImage(gt.attribuerTexture(salle.getGrille()[i][j]), i*TAILLE, j*TAILLE,null);
 				//System.out.println(gt.attribuerTexture(salle.getGrille()[i][j]));
+
 			}
-			
+
 			//System.out.println("");
 		}
-		
+
 		//System.out.println("============================================");
 		afficherBarreVieAventurier(g);
 		afficherBarreXpAventurier(g);
-		
+
 		g.setColor(Color.GREEN);
 
 		for(int i = 0; i < this.jeu.getAv().getSalle().getMonstrePresent().size();i++) {
@@ -75,9 +76,21 @@ public class ZeldiabloDessin implements DessinJeu {
 			g.drawImage(gt.attribuerTexture(it),this.jeu.getAv().getSalle().getItemPresent().get(i).getCoo().getX()*TAILLE, this.jeu.getAv().getSalle().getItemPresent().get(i).getCoo().getY()*TAILLE,TAILLE,TAILLE,null);
 		}
 
-		
+
 		g.drawImage(gt.attribuerTexture(this.jeu.getAv()), this.jeu.getAv().getCoor().getX()*TAILLE, this.jeu.getAv().getCoor().getY()*TAILLE,TAILLE,TAILLE,null);
 		this.jeu.getAv().setTextureMotCle("aventurier");
+		
+		if (this.jeu.etreFini()) {
+			Image img;
+			if(this.jeu.isVictoire()) {
+				img=this.jeu.getSpriteVictoire();
+			}
+			else {
+				img=this.jeu.getSpriteDefaite();
+			}
+			
+			g.drawImage(img, 0, 0, null);
+		}
 		g.dispose();
 
 	}
