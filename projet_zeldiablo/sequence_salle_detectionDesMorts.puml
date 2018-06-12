@@ -1,0 +1,5 @@
+@startuml
+Participant "salle : Salle" as s
+
+->s
+@enduml
