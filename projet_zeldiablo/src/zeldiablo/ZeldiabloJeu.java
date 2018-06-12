@@ -53,7 +53,7 @@ public class ZeldiabloJeu implements Jeu {
 			posAv.decrementerY();
 		}
 		else if(commandeUser.attaque) {
-			this.av.attaque(5);
+			this.av.attaque();
 		}
 		if(this.av.deplacerAventurier(posAv)) {
 
