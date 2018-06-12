@@ -16,7 +16,7 @@ a->listM : getMonstrePresent().get(i)
 activate listM
 listM-->a: monstre
 deactivate listM
-a->m : subirDegats(12)
+a->m : subirDegats(aventurier.getDegats())
 activate m
 m-->a
 deactivate m
