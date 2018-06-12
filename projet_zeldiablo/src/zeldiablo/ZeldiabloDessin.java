@@ -71,12 +71,22 @@ public class ZeldiabloDessin implements DessinJeu {
 		}
 		for(int i = 0; i < this.jeu.getAv().getSalle().getMonstrePresent().size();i++) {
 			g.drawImage(this.jeu.getAv().getSalle().getMonstrePresent().get(i).getTexture(),this.jeu.getAv().getSalle().getMonstrePresent().get(i).getCoor().getX()*TAILLE, this.jeu.getAv().getSalle().getMonstrePresent().get(i).getCoor().getY()*TAILLE, TAILLE, TAILLE,null);
+			afficherBarreVieMonstre(i, g);
 		}
 
 		
 		g.drawImage(this.jeu.getAv().getTexture(), this.jeu.getAv().getCoor().getX()*TAILLE, this.jeu.getAv().getCoor().getY()*TAILLE,TAILLE,TAILLE,null);
 		g.dispose();
 
+	}
+	
+	public void afficherBarreVieMonstre(int i,Graphics2D g) {
+		int xmonstre = this.jeu.getAv().getSalle().getMonstrePresent().get(i).getCoor().getX();
+		int ymonstre = this.jeu.getAv().getSalle().getMonstrePresent().get(i).getCoor().getY();
+		g.setColor(Color.red);
+		g.fillRect(xmonstre*30, ymonstre*30, 30, 2);
+		g.setColor(Color.green);
+		g.fillRect(xmonstre*30, ymonstre*30, (int)(30*(((double)(this.jeu.getAv().getSalle().getMonstrePresent().get(i).getVie()))/((double)(this.vie+this.jeu.getAv().getSalle().getMonstrePresent().get(i).getStat().getForce())))), 2);
 	}
 
 }
