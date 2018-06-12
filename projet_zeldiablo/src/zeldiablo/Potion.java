@@ -16,11 +16,19 @@ public class Potion extends Item implements ObjetTexturer{
 		this.motCle = "potion";
 	}
 
+	public void effetItem(Aventurier av) {
+		if(100>(av.getVie()+50)) {
+			av.setVie(100);
+		}else {
+			av.setVie(av.getVie()+50);
+		}
+	}
+
 	@Override
 	public String getTextureMotCle() {
 		return "potion";
 	}
-	
-	
+
+
 
 }

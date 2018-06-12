@@ -13,6 +13,8 @@ public abstract class Item implements ObjetTexturer {
 		salle = se;
 		coo = new Coordonnee(xe,ye);
 	}
+	public abstract void effetItem(Aventurier av);
+	
 	public String getType() {
 		return type;
 	}

@@ -48,7 +48,7 @@ public class Salle implements Serializable{
 	private String[][] grilleMonstreSpawn;
 
 	private ArrayList<Monstre> monstrePresent;
-	
+
 	private ArrayList<Item> itemPresent;
 	/**
 	 * Permet de retourner l'entrée d'une salle
@@ -109,9 +109,9 @@ public class Salle implements Serializable{
 		this.grilleMonstreSpawn = new String[TAILLE_SALLES][TAILLE_SALLES];
 		AleatoireVrai randomV= new AleatoireVrai();
 		Coordonnee ce = placerSurMurAlea(randomV);
-		
+
 		grille[ce.getX()][ce.getY()] = new Entree(new Coordonnee(ce.getX(),ce.getY()));
-		
+
 		this.entree=(Entree)grille[ce.getX()][ce.getY()];
 
 
@@ -357,7 +357,7 @@ public class Salle implements Serializable{
 							this.grille[i][j].setMonstrePresent(true);
 							this.monstrePresent.add(m);
 						}else {
-							
+
 							Monstre m = new Monstre(new Coordonnee(i,j),this);
 							this.grille[i][j].setEstTraversable(false);
 							this.grille[i][j].setMonstrePresent(true);
@@ -409,7 +409,7 @@ public class Salle implements Serializable{
 				}
 			}
 		}
-		
+
 		return tab_coo;
 	}
 
@@ -427,14 +427,12 @@ public class Salle implements Serializable{
 			}
 		}
 	}
-	
+
 	public boolean prendreItem(Aventurier av){
 		for(int i=0;i<itemPresent.size();i++) {
 			if(av.getCoor().getX()==itemPresent.get(i).getCoo().getX()) {
 				if(av.getCoor().getY()==itemPresent.get(i).getCoo().getY()) {
-					if(itemPresent.get(i).getType().equals("potion")) {
-						av.setVie(10000);
-					}
+					itemPresent.get(i).effetItem(av);
 					itemPresent.remove(i);
 					System.out.println("item_pris");
 					return true;
@@ -447,8 +445,8 @@ public class Salle implements Serializable{
 	public ArrayList<Item> getItemPresent() {
 		return itemPresent;
 	}
-	
-	
+
+
 	public void detecterCombat(Aventurier a) {
 		Monstre monstre = new Monstre(null,null);
 		for(int i = 0;i < this.monstrePresent.size();i++) {
@@ -465,7 +463,7 @@ public class Salle implements Serializable{
 			}
 		}
 	}
-	
+
 	public boolean detecterLesMorts() {
 		boolean res = false;
 		for(int i = 0; i < this.getMonstrePresent().size(); i++) {
