@@ -3,6 +3,7 @@ Participant "aventurier : Aventurier" as a
 Participant "salle : Salle" as s
 Participant "monstrePresent : ArrayList<Monstre>" as listM
 Participant "monstre : Monstre" as m
+Participant "stats : Stat" as sta
 
 ->a : attaque(12)
 loop int i = 0; i<this.getSalle().getMonstrePresent().size();i++
@@ -20,6 +21,13 @@ a->m : subirDegats(aventurier.getDegats())
 activate m
 m-->a
 deactivate m
+
+alt this.getSalle().getMonstrePresent().get(i).isMort()
+a->sta : ajouterExp(this.getSalle().getMonstrePresent().get(i).getSTat().getExp())
+activate sta
+sta-->a 
+deactivate sta
+end
 
 end
 end
