@@ -17,6 +17,8 @@ public class GestionnaireTexture {
 		listeTexture.add(new Texture("portail_sortie", "..\\texture\\Portail_Sortie.png" ));
 		listeTexture.add(new Texture("portail_escalier", "..\\texture\\Portail_Escalier.png" ));
 		listeTexture.add(new Texture("potion", "..\\texture\\potion.png"));
+		listeTexture.add(new Texture("aventurier", "..\\texture\\Aventurier_Final.png"));
+		listeTexture.add(new Texture("aventurierAtt", "..\\texture\\aventurier_attaque.png"));
 	}
 	/**
 	 * methode permettant d'attribuer une texture a une case

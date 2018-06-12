@@ -11,8 +11,10 @@ import javax.imageio.ImageIO;
  * @author Guezennec Lucas, Biancalana Théo, Geoffroy Muller et Masson Loic
  *
  */
-public class Aventurier extends Personnage implements Serializable{
-
+public class Aventurier extends Personnage implements Serializable, ObjetTexturer{
+	
+	
+	
 	/**
 	 * Permet la création d'un aventurier
 	 */
@@ -45,11 +47,7 @@ public class Aventurier extends Personnage implements Serializable{
 	 */
 	public Aventurier(Coordonnee c, Salle l, Etage et){
 		super(c,l,et);
-		try {
-			this.setTexture(ImageIO.read(new File("..\\texture\\Aventurier_Final.png")));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		this.setTextureMotCle("aventurier");
 		
 	}
 
@@ -66,8 +64,10 @@ public class Aventurier extends Personnage implements Serializable{
 				(c.getY() < this.getSalle().getGrille()[0].length && c.getY() >= 0)) {
 
 			if(this.getSalle().getGrille()[c.getX()][c.getY()].estTraversable()) {
-
+				
+				this.getCase().setEstTraversable(true);
 				this.changerCoord(c);
+				this.getCase().setEstTraversable(false);
 				res=true;
 
 				if(this.getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()]==this.getSalle().getEntree()) {
@@ -182,4 +182,9 @@ public class Aventurier extends Personnage implements Serializable{
 	}
 	
 
+
+	@Override
+	public String getTextureMotCle() {
+		return super.getTextureMotCle();
+	}
 }

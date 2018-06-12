@@ -22,5 +22,7 @@ public class TestPotion {
 		assertEquals("La potion devrait etre dans la salle", p.getSalle(), sl);
 		assertEquals("La potion devrait etre de coordonnee (2,3)",p.getCoo(), c);
 	}
+	
+	
 
 }
