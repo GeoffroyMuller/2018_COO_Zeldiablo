@@ -1,0 +1,16 @@
+@startuml
+
+Participant "main : Main " as m
+create "zeldiablojeu : ZelDiabloJeu" as j
+Participant "aventurier : Aventurier" as av
+Participant "salle : Salles" as s
+Participant "portailfin : PortailFin " as pf
+m->j 
+m->j 
+activate j
+j->av : deplacerAventurier()
+av->
+activate av
+
+
+@enduml
