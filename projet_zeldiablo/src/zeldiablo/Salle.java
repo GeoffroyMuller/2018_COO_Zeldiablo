@@ -482,6 +482,12 @@ public class Salle implements Serializable{
 		}
 		return res;
 	}
+	
+	public void apparaitreLoot(Monstre m) {
+		Coordonnee loot = m.getCoor();
+		
+		
+	}
 
 }
 
