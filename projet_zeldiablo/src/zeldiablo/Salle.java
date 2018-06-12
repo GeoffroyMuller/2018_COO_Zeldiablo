@@ -44,6 +44,8 @@ public class Salle implements Serializable{
 	private String[][] grilleMonstreSpawn;
 
 	private ArrayList<Monstre> monstrePresent;
+	
+	private ArrayList<Item> itemPresent;
 	/**
 	 * Permet de retourner l'entrée d'une salle
 	 * @return l'entrée de la salle
@@ -96,6 +98,7 @@ public class Salle implements Serializable{
 	 * Constructeur permettant la création d'une salle
 	 */
 	public Salle(){
+		itemPresent = new ArrayList<Item>();
 		gz = new GestionnaireZone();
 		this.monstrePresent = new ArrayList<Monstre>();
 		grille = new Case[TAILLE_SALLES][TAILLE_SALLES];
@@ -135,7 +138,7 @@ public class Salle implements Serializable{
 		}
 		this.creeGrilleMonstre();
 		this.apparitionMonstre(randomV);
-
+		placeAleatoirItem(randomV);
 
 	}
 	//Constructeur pour test
@@ -382,27 +385,52 @@ public class Salle implements Serializable{
 
 	public ArrayList<Coordonnee> placeLibreItems(){
 		ArrayList<Coordonnee> tab_coo = new ArrayList<Coordonnee>();
-		for(int i=0;i<grille[0].length;i++){
-			for(int j=0;i<grille.length;j++){
+		for(int i=0;i<grille.length;i++){
+			for(int j=0;j<grille[0].length;j++){
 				if(grille[i][j].estTraversable()){
 					tab_coo.add(new Coordonnee(i, j));
 				}
 			}
 		}
+		
 		return tab_coo;
 	}
 
-	/*public//a modifier en void car attribu : ArrayList<Item> placeAleatoirItems(){
+	public void placeAleatoirItem(Aleatoire aleaItem) {
 		ArrayList<Coordonnee> tab_libre = placeLibreItems();
-		int aleaItem = (int)Math.random() * (tab_libre.size() - 0);
-
-
-	}*/
-
-
-	public void rechercheDeSortie(){
+		int nbalea = 0;
+		int xitem = 0;
+		int yitem = 0;
+		for(int i=0;i<tab_libre.size();i++) {
+			nbalea = aleaItem.genererNombreAleatoire(0, 100);
+			if(nbalea>=99) {
+				tab_libre.get(i).getX();
+				tab_libre.get(i).getY();
+				itemPresent.add(new Potion(this,xitem,yitem));
+			}
+		}
 
 	}
+	
+	public boolean prendreItem(Aventurier av){
+		for(int i=0;i<itemPresent.size();i++) {
+			if(av.getCoor().getX()==itemPresent.get(i).getCoo().getX()) {
+				if(av.getCoor().getY()==itemPresent.get(i).getCoo().getY()) {
+					itemPresent.remove(i);
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	public ArrayList<Item> getItemPresent() {
+		return itemPresent;
+	}
+	
+	
+	
+	
 
 }
 
