@@ -58,7 +58,10 @@ public class Zone implements Serializable{
 	public void setGrilleZone(Case[][] grilleZone) {
 		this.grilleZone = grilleZone;
 	}
-
+	/**
+	 * methode getter qui va chercher le nom de la zone
+	 * @return le nom de la zone
+	 */
 	public String getNomZone() {
 		return nomZone;
 	}
