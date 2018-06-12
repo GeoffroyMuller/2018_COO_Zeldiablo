@@ -102,7 +102,13 @@ public class Monstre extends Personnage {
 
 
 		return res;
-	}		
+	}
+	
+	
+	public void changerNiveau(int niv) {
+		stat.modifierNiveau(niv);
+		majStat();
+	}
 
 }
 

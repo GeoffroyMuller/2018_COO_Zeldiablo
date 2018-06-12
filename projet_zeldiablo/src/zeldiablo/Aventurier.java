@@ -181,8 +181,5 @@ public class Aventurier extends Personnage implements Serializable{
 		}
 	}
 	
-	public void majStat() {
-		this.setVie( 100 + stat.getResistance());
-		this.setDegats(25+stat.getForce());
-	}
+
 }

@@ -85,7 +85,7 @@ public abstract class Personnage {
 		stat = new Stats(1);
 		vie = 100 + stat.getResistance();
 		mort = false;
-		degats = 25+stat.getForce();
+		degats = 15+stat.getForce();
 	}
 
 	public int getDegats() {
@@ -297,6 +297,10 @@ public abstract class Personnage {
 		return (this.salle.getGrille()[this.coor.getX()][this.coor.getY()]);
 	}
 
+	public void majStat() {
+		this.setVie( 100 + stat.getResistance());
+		this.setDegats(15+stat.getForce());
+	}
 }
 
 
