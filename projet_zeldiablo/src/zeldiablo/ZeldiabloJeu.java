@@ -71,7 +71,7 @@ public class ZeldiabloJeu implements Jeu {
 			compteur=0;
 		}
 		compteur++;
-		
+		this.av.getSalle().prendreItem(av);
 		
 		
 
