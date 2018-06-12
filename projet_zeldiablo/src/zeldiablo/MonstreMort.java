@@ -14,6 +14,7 @@ public class MonstreMort extends Monstre {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		this.setMort(false);
 		this.setDeplacementPossible(false);
 		this.setDegats(0);
 	}

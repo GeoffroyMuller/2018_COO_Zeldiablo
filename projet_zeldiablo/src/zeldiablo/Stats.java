@@ -52,4 +52,19 @@ public class Stats {
 			changementNiveau();
 		}
 	}
+
+
+	public int getExp() {
+		return exp;
+	}
+
+
+	public int getExpPourPasser() {
+		return expPourPasser;
+	}
+
+
+	public int getNiveau() {
+		return niveau;
+	}
 }
