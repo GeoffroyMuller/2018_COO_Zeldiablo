@@ -3,15 +3,14 @@ Participant "s : Salle" as s
 Participant "av : Aventurier" as av
 Participant "itemPresent : ArrayList<Coordonnee>" as itemPresent
  -> s : prendreItem(av:Aventurier)
-  activate s
+ activate s
  loop : int i=0;i<itemPresent.size();i++
  alt : av.getCoor().getX()==itemPresent.get(i).getCoo().getX()
- alt : av.getCoor().getY()==itemPresent.get(i).getCoo().getY()
- s -> itemPresent : remove(i)
- itemPresent --> s
+
+
+ 
  end
  end
- end
-<--s : true
+<--s : false
 deactivate s
 @enduml
