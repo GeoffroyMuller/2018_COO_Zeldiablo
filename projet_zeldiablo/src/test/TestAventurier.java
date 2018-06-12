@@ -46,7 +46,7 @@ public class TestAventurier {
 		//initialisation des donnees
 		Aventurier a = new Aventurier(new Coordonnee(0,0), new Salle(), new Etage(0));
 		//asseertion
-		assertEquals("La vie devrait etre egale a 100", 100,a.getVie());
+		assertEquals("La vie devrait etre egale a 100", 110,a.getVie());
 		assertFalse("L'aventurier devrait etre en vie",a.isMort());
 		assertEquals("La position devrait etre un mur", "mur",a.getCase().getType());
 		assertEquals("La position ne devrait pas etre traversable", false,a.getCase().estTraversable());

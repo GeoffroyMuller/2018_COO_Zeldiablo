@@ -76,7 +76,8 @@ public class ZeldiabloDessin implements DessinJeu {
 		}
 
 		
-		g.drawImage(this.jeu.getAv().getTexture(), this.jeu.getAv().getCoor().getX()*TAILLE, this.jeu.getAv().getCoor().getY()*TAILLE,TAILLE,TAILLE,null);
+		g.drawImage(gt.attribuerTexture(this.jeu.getAv()), this.jeu.getAv().getCoor().getX()*TAILLE, this.jeu.getAv().getCoor().getY()*TAILLE,TAILLE,TAILLE,null);
+		this.jeu.getAv().setTextureMotCle("aventurier");
 		g.dispose();
 
 	}
