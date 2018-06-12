@@ -7,7 +7,7 @@ Participant "stats : Stat" as sta
 
 ->a : attaque(12)
 loop int i = 0; i<this.getSalle().getMonstrePresent().size();i++
-alt monstre.getX() == this.getCoor().getX()+1 && monstre.getY() == this.getCoor().getY()) || (monstre.getX() == this.getCoor().getX()-1 && monstre.getY() == this.getCoor().getY()) || (monstre.getX() == this.getCoor().getX() && monstre.getY() == this.getCoor().getY()+1) || (monstre.getX() == this.getCoor().getX()+1 && monstre.getY() == this.getCoor().getY()-1)
+alt detecterMonstreProximite(monstre.getCoord())
 activate a
 a->a : getSalle()
 activate a
@@ -22,7 +22,7 @@ activate m
 m-->a
 deactivate m
 
-alt this.getSalle().getMonstrePresent().get(i).isMort()
+alt this.getSalle().detecterLesMorts()
 a->sta : ajouterExp(this.getSalle().getMonstrePresent().get(i).getSTat().getExp())
 activate sta
 sta-->a 

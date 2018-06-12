@@ -12,9 +12,9 @@ import javax.imageio.ImageIO;
  *
  */
 public class Aventurier extends Personnage implements Serializable, ObjetTexturer{
-	
-	
-	
+
+
+
 	/**
 	 * Permet la création d'un aventurier
 	 */
@@ -30,7 +30,7 @@ public class Aventurier extends Personnage implements Serializable, ObjetTexture
 		}
 		this.setDegats(5);
 	}
-	
+
 	public void setDegats(int degats) {
 		super.setDegats(degats);
 	}
@@ -49,13 +49,13 @@ public class Aventurier extends Personnage implements Serializable, ObjetTexture
 	 * @see Aventurier#texture
 	 */
 	public Aventurier(Coordonnee c, Salle l, Etage et){
-		
+
 		super(c,l,et);
 		baseDegat=15;
 		baseVie=140;
 		majStat();
 		this.setTextureMotCle("aventurier");
-		
+
 	}
 
 	/**
@@ -66,30 +66,32 @@ public class Aventurier extends Personnage implements Serializable, ObjetTexture
 	 */
 	public boolean deplacerAventurier(Coordonnee c) {
 		boolean res = false;
+		Salle s = this.getSalle();
+		Case[][] grilleSalle = this.getSalle().getGrille();
 
-		if ((c.getX() < this.getSalle().getGrille().length && c.getX() >= 0) &&
-				(c.getY() < this.getSalle().getGrille()[0].length && c.getY() >= 0)) {
+		if ((c.getX() < grilleSalle.length && c.getX() >= 0) &&
+				(c.getY() < grilleSalle[0].length && c.getY() >= 0)) {
 
-			if(this.getSalle().getGrille()[c.getX()][c.getY()].estTraversable()) {
-				
+			if(grilleSalle[c.getX()][c.getY()].estTraversable()) {
+
 				this.getCase().setEstTraversable(true);
 				this.changerCoord(c);
 				this.getCase().setEstTraversable(false);
 				res=true;
 
-				if(this.getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()]==this.getSalle().getEntree()) {
-					
-					this.getSalle().getEntree().setEstTraversable(true);
-					this.getSalle().getSortie().setEstTraversable(true);
+				if(grilleSalle[this.getCoor().getX()][this.getCoor().getY()]==s.getEntree()) {
+
+					s.getEntree().setEstTraversable(true);
+					s.getSortie().setEstTraversable(true);
 					this.setSalle(this.getSalle().getEntree().getSallePrecedente());
 					changementSalle(this.getSalle(),this.getSalle().getSortie());
 
 				}
 
-				else if(this.getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()]==this.getSalle().getSortie()) {
-					
-					this.getSalle().getEntree().setEstTraversable(true);
-					this.getSalle().getSortie().setEstTraversable(true);
+				else if(grilleSalle[this.getCoor().getX()][this.getCoor().getY()]==this.getSalle().getSortie()) {
+
+					s.getEntree().setEstTraversable(true);
+					s.getSortie().setEstTraversable(true);
 					this.setSalle(this.getSalle().getSortie().getSalleSuivante());
 					changementSalle(this.getSalle(), this.getSalle().getEntree());
 				}
@@ -116,8 +118,8 @@ public class Aventurier extends Personnage implements Serializable, ObjetTexture
 		this.setEtage(e);
 		this.setSalle(s);
 	}
-	
-	
+
+
 	/**
 	 * Permet à l'aventurier de changer de salle
 	 * @param s
@@ -141,31 +143,17 @@ public class Aventurier extends Personnage implements Serializable, ObjetTexture
 		}
 		Coordonnee co = new Coordonnee(x, y);
 		co.decrementerX();
-		if(deplacerAventurier(co)) {
-			System.out.println("1");
 
-		}
-		else {
+		if(!deplacerAventurier(co)) {
 			co.incrementerY();
 			co.incrementerX();
-			if(deplacerAventurier(co)) {
-				System.out.println("2");
-			}
-			else {
+			if(!deplacerAventurier(co)) {
 				co.decrementerY();
 				co.incrementerX();
-				if(deplacerAventurier(co)) {
-				}
-				else {
+				if(!deplacerAventurier(co)) {
 					co.decrementerX();
 					co.decrementerY();
-					if(deplacerAventurier(co)) {
-					}
-					else {
-						System.out.println("erreur de deplacement");
-					}
-
-
+					if(deplacerAventurier(co));
 				}
 			}
 		}
@@ -178,25 +166,40 @@ public class Aventurier extends Personnage implements Serializable, ObjetTexture
 		Coordonnee monstre = new Coordonnee(0,1);
 		for(int i = 0; i < this.getSalle().getMonstrePresent().size(); i++) {
 			monstre = this.getSalle().getMonstrePresent().get(i).getCoor();
-			if((monstre.getX() == this.getCoor().getX()+1 && monstre.getY() == this.getCoor().getY()) ||
-					(monstre.getX() == this.getCoor().getX()-1 && monstre.getY() == this.getCoor().getY()) ||
-					(monstre.getX() == this.getCoor().getX() && monstre.getY() == this.getCoor().getY()+1) ||
-					(monstre.getX() == this.getCoor().getX() && monstre.getY() == this.getCoor().getY()-1)) {
+			
+			if(detecterMonstreProximite(monstre)) {
+				
 				this.getSalle().getMonstrePresent().get(i).subirDegats(this.getDegats());
+				
 				if( this.getSalle().detecterLesMorts()) {
+					
 					this.stat.ajoutExp(this.getSalle().getMonstrePresent().get(i).getStat().getExp());
+					
 					if(this.stat.getExp()==0) {
 						majStat();
 					}
-					System.out.println("ajout d'xp : "+this.getSalle().getMonstrePresent().get(i).getStat().getExp());
 				}
-				System.out.println("Aventurier fait "+this.getDegats());
-				System.out.println("Vie monstre "+ this.getSalle().getMonstrePresent().get(i).getVie());
 			}
-					
+
 		}
 	}
-	
+	/**
+	 * Methode qui permet de detecter des monstres a proximite du joueur
+	 * @param monstre
+	 * 		Coordonnee du monstre a tester
+	 * @return vrai si un monstre est detecte, faux le cas echeant
+	 */
+	public boolean detecterMonstreProximite(Coordonnee monstre) {
+		boolean res = false;
+		if((monstre.getX() == this.getCoor().getX()+1 && monstre.getY() == this.getCoor().getY()) ||
+				(monstre.getX() == this.getCoor().getX()-1 && monstre.getY() == this.getCoor().getY()) ||
+				(monstre.getX() == this.getCoor().getX() && monstre.getY() == this.getCoor().getY()+1) ||
+				(monstre.getX() == this.getCoor().getX() && monstre.getY() == this.getCoor().getY()-1)) {
+			res=true;
+		}
+		return res;
+	}
+
 
 
 	@Override

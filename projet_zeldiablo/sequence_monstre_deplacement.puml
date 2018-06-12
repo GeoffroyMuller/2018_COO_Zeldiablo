@@ -23,7 +23,7 @@ activate r
 r-->m : random
 deactivate r
 
-alt (x != 0) && (x!= Salle.TAILLE_SALLES-1) && (y!= 0) && (y!= Salle.TAILLE_SALLES-1)
+alt (x != 0) && (x!= Salle.TAILLE_SALLES-1) && (y!= 0) && (y!= Salle.TAILLE_SALLES-1) && this.deplacementPossible && !this.isMort() 
 
 alt random == 0
 alt this.getSalle().isDeplacementPossible(x+1, y)
