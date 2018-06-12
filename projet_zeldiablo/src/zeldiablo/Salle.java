@@ -483,10 +483,14 @@ public class Salle implements Serializable{
 		return res;
 	}
 	
-	public void apparaitreLoot(Monstre m) {
+	public void apparaitreLoot(Monstre m, Aleatoire alea) {
 		Coordonnee loot = m.getCoor();
-		
-		
+		int random = alea.genererNombreAleatoire(0, 100);
+		if(random <=33) {
+			Potion p = new Potion(this,loot.getX(),loot.getY());
+			this.getItemPresent().add(p);
+		}
+
 	}
 
 }
