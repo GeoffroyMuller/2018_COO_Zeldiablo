@@ -456,7 +456,7 @@ public class Salle implements Serializable{
 		ArrayList<Coordonnee> tab_coo = new ArrayList<Coordonnee>();
 		for(int i=0;i<grille.length;i++){
 			for(int j=0;j<grille[0].length;j++){
-				if(grille[i][j].estTraversable()){
+				if(grille[i][j].estTraversable()&&grille[i][j].getType()!="entree"&&grille[i][j].getType()!="sortie"){
 					tab_coo.add(new Coordonnee(i, j));
 				}
 			}
