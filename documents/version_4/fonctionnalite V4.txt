@@ -1,0 +1,32 @@
+Fonctionnalite V4 :
+
+Gestion des combats :
+
+	Description :
+Cette fonctionnalite à pour but d'implémenter les combats dans le jeu
+	Condition de validation :
+- Le joueur peut combattre un monstre
+- Le monstre attaque le joueur
+- Quand un monstre attaque le joueur, ce dernier perd de la vie
+- Quand un joueur attaque un monstre, ce dernier perd de la vie
+	Tache attribué à : Lucas Guezennec
+
+Gestion de la salle finale et changement d'étage :
+
+	Description :
+Cette fonctionnalité à pour but d'implémenter une salle finale, et le changement d'étage via
+un nouveau type de portail : "escalier"
+	Condition de validation :
+- Une salle finale devrat apparaitre et se différencier par la présence d'un nouveau portail
+- Lors du passage dans un portail "escalier" le joueur devrat changer d'étage
+	Tache attribué à : Théo Biancalana
+
+Gestion de l'apparition des objets aléatoire :
+	Description :
+Cette fonctionnalité à pour but de faire apparaitre de façon aléatoire des objets dans la salle
+,ici l'objet sera une Potion
+	Condition de validation :
+- Des objets devront apparaitre aléatoirement dans la salle
+- Les objets devront disparaitre quand un joueur passe dessus
+- Les potions devront augmenter la vie du joueur quand le joueur passe dessus
+	Tache attribué à : Geoffroy Muller

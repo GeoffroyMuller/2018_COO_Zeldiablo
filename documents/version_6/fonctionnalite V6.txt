@@ -1,0 +1,14 @@
+Fonctionnalite V6 :
+
+Gestion des trésors quand un monstre meurt :
+	Description :
+Cette fonctionnalité a pour but d'implémenter des trésors quand un monsre meurt
+de façon aléatoire.
+	Condition de validation :
+- Un trésor apparait quand on tue un Monstre 
+
+Gestion de la fon du jeu :
+	Description :
+Cette fonctionnalité a pour but de gérer la fin du jeu
+	Condition de validation :
+- La fin du jeu est notifié quand la joueur gagne

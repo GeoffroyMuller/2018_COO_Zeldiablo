@@ -1,0 +1,5 @@
+fonctionnalite V2 :
+
+Implémentation du moteur du jeu :
+	TP 16
+Fait par : Lucas Guezennec, Loic Masson, Geoffroy Muller, Théo Biancalana
