@@ -22,6 +22,7 @@ import org.junit.runners.Suite;
     TestVide.class,
     TestZeldiabloJeu.class,
     TestZone.class,
+    TestPortailFin.class,
     TestStats.class
     
 })
