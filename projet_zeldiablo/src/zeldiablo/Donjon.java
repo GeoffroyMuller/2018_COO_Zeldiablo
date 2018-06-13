@@ -51,15 +51,15 @@ public Donjon (String pnom) {
 	this.getEtages().get(NUM_ETAGES-1).getSalles().get((int)(Etage.NUM_SALLES)/2).getGrille()[12][12]=pf;
 	this.getEtages().get(NUM_ETAGES-1).getSalles().get((int)(Etage.NUM_SALLES)/2).setPortailFin(pf);
 	
-	
+	AleatoireVrai alea =new AleatoireVrai();
 	for (int i = 0; i < NUM_ETAGES; i++) {
 		for (int j = 0; j <Etage.NUM_SALLES; j++) {
 			ArrayList<Monstre> lm = this.getEtages().get(i).getSalles().get(j).getMonstrePresent();
 			for (int k = 0; k < lm.size(); k++) {
-				AleatoireVrai alea =new AleatoireVrai();
-				int rd = alea.genererNombreAleatoire(i, i+3);
+				
+				int rd = alea.genererNombreAleatoire(i, i+2);
 				lm.get(k).changerNiveau(rd);
-				lm.get(k).getStat().ajoutExp(100*rd);
+				lm.get(k).getStat().setExp(100*lm.get(k).getStat().getNiveau());
 			}
 		}
 	}
