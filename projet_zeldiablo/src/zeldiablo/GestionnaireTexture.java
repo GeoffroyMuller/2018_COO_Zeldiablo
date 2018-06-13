@@ -37,9 +37,17 @@ public class GestionnaireTexture {
 		
 		return t;
 	}
+	/**
+	 * methode getter qui va chercher la liste des textures
+	 * @return la liste des textures
+	 */
 	public ArrayList<Texture> getListeTexture() {
 		return listeTexture;
 	}
+	/**
+	 * methode setter qui initialise la liste des textures avec celle passee en parametre
+	 * @param listeTexture, liste des textures
+	 */
 	public void setListeTexture(ArrayList<Texture> listeTexture) {
 		this.listeTexture = listeTexture;
 	}

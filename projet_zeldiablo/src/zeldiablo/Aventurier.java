@@ -30,7 +30,9 @@ public class Aventurier extends Personnage implements Serializable, ObjetTexture
 		}
 		this.setDegats(5);
 	}
-
+	/**
+	 * methode setter qui initialise les degats avec ceux passe en parametre
+	 */
 	public void setDegats(int degats) {
 		super.setDegats(degats);
 	}
@@ -201,7 +203,9 @@ public class Aventurier extends Personnage implements Serializable, ObjetTexture
 	}
 
 
-
+	/**
+	 * methode getter qui va chercher le mot cle de la texture 
+	 */
 	@Override
 	public String getTextureMotCle() {
 		return super.getTextureMotCle();

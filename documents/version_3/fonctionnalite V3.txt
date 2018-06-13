@@ -1,0 +1,29 @@
+Liste des fonctionnalite V3 :
+
+Generation de salle :
+
+	Description :
+Des salles devront être généré de façon procédurale avec 4zone à l'aide fichier .niv
+crée via l'éditeur de zone
+	Condition de validation :
+- Des salles sont générés avec des zones aléatoires
+- Une salle doit posséder 4 zones
+- Les zones sont placées de façon correct
+	Taches attribué à : Théo Biancalana
+
+Generation des Monstres :
+	
+	Description :
+Cette taches à pour objectif de faire apparaitre des monstres aléatoirement, ces derniers
+pourront se déplacer.
+	Condition de validation : 
+- Des monstres apparaissent seulement dans les zones
+- Les monstres se déplace de façon aléatoire
+	Taches attribué à : Lucas Guezennec
+
+Gestion des objet (Tache en retard, suite fonctionnalite v4) :
+	Description :
+Des objets de type "Potion" apparaissent aléatoirement dans la salle
+	Condition de validation :
+- Des objets devront apparaitre dans la salle
+	Tache attribué à : Geoffroy Muller et Loic Masson
