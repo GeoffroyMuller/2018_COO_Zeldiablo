@@ -143,6 +143,8 @@ public class ZeldiabloDessin implements DessinJeu {
 		g.fillRect(0, Salle.TAILLE_SALLES*30+TAILLE_BARRE*2, Salle.TAILLE_SALLES*30, TAILLE_BARRE);
 		g.setColor(Color.white);
 		g.drawString("Niveau : "+this.jeu.getAv().getStat().getNiveau(), ((Salle.TAILLE_SALLES*30)/2)-15, Salle.TAILLE_SALLES*30+TAILLE_BARRE*2+15);
+		g.drawString("Degat : "+(this.jeu.getAv().getBaseDegat()+this.jeu.getAv().getStat().getForce()), ((Salle.TAILLE_SALLES*30)/4)-15, Salle.TAILLE_SALLES*30+TAILLE_BARRE*2+15);
+		g.drawString("Resistance : "+(this.jeu.getAv().getBaseDegat()+this.jeu.getAv().getStat().getResistance()), (((Salle.TAILLE_SALLES*30)/4)*3)-15, Salle.TAILLE_SALLES*30+TAILLE_BARRE*2+15);
 	}
 
 }

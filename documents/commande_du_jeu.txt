@@ -1,0 +1,4 @@
+Deplacement :
+	z,s,q,d 
+Attaque :
+	Barre espace
