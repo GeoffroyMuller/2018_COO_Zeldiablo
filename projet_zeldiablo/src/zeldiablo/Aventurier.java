@@ -70,10 +70,10 @@ public class Aventurier extends Personnage implements Serializable, ObjetTexture
 		boolean res = false;
 		Salle s = this.getSalle();
 		Case[][] grilleSalle = this.getSalle().getGrille();
-
+		Coordonnee cooo = new Coordonnee(0,0);
 		if ((c.getX() < grilleSalle.length && c.getX() >= 0) &&
 				(c.getY() < grilleSalle[0].length && c.getY() >= 0)) {
-
+			
 			if(grilleSalle[c.getX()][c.getY()].estTraversable()) {
 
 				this.getCase().setEstTraversable(true);
@@ -83,22 +83,35 @@ public class Aventurier extends Personnage implements Serializable, ObjetTexture
 
 				if(grilleSalle[this.getCoor().getX()][this.getCoor().getY()]==s.getEntree()) {
 
-					s.getEntree().setEstTraversable(true);
-					s.getSortie().setEstTraversable(true);
+					s.getSortie().setEstTraversable(false);
+					s.getEntree().setEstTraversable(false);
+					cooo = s.getEntree().getC();
 					this.setSalle(this.getSalle().getEntree().getSallePrecedente());
 					changementSalle(this.getSalle(),this.getSalle().getSortie());
+					this.getSalle().getGrille()[cooo.getX()][cooo.getY()].setEstTraversable(false);
+					this.getSalle().getSortie().setEstTraversable(true);
+					this.getSalle().getEntree().setEstTraversable(true);
+
 
 				}
 
 				else if(grilleSalle[this.getCoor().getX()][this.getCoor().getY()]==this.getSalle().getSortie()) {
 
-					s.getEntree().setEstTraversable(true);
-					s.getSortie().setEstTraversable(true);
+					s.getSortie().setEstTraversable(false);
+					s.getEntree().setEstTraversable(false);
+					cooo = s.getEntree().getC();
 					this.setSalle(this.getSalle().getSortie().getSalleSuivante());
 					changementSalle(this.getSalle(), this.getSalle().getEntree());
+					this.getSalle().getGrille()[cooo.getX()][cooo.getY()].setEstTraversable(false);
+					this.getSalle().getSortie().setEstTraversable(true);
+					this.getSalle().getEntree().setEstTraversable(true);
+					
+					
 				}
 				else if(this.getSalle().getGrille()[this.getCoor().getX()][this.getCoor().getY()]==this.getSalle().getEscalier()){
+					s.getEntree().setEstTraversable(true);
 					changementEtage(this.getSalle().getEscalier().getSalleEtageSup(), this.getSalle().getEscalier().getEtageSup());
+					s.getSortie().setEstTraversable(true);
 				}
 
 			}
