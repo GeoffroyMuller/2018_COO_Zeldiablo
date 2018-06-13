@@ -28,6 +28,11 @@ public class ZeldiabloDessin implements DessinJeu {
 	 * La taille d'un carré, 30*30pixel
 	 */
 	public static int TAILLE = 30;
+	
+	/**
+	 * La taille de la hauteur des barres de stats
+	 */
+	public static int TAILLE_BARRE = 20;
 
 	/**
 	 * Constructeur de ZeldiabloDessin
@@ -58,6 +63,7 @@ public class ZeldiabloDessin implements DessinJeu {
 		}
 		afficherBarreVieAventurier(g);
 		afficherBarreXpAventurier(g);
+		afficherStats(g);
 
 		g.setColor(Color.GREEN);
 
@@ -111,11 +117,11 @@ public class ZeldiabloDessin implements DessinJeu {
 	 */
 	public void afficherBarreVieAventurier(Graphics2D g) {
 		g.setColor(Color.red);
-		g.fillRect(0, Salle.TAILLE_SALLES*30, Salle.TAILLE_SALLES*30, 10);
+		g.fillRect(0, Salle.TAILLE_SALLES*30, Salle.TAILLE_SALLES*30, TAILLE_BARRE);
 		g.setColor(Color.green);
-		g.fillRect(0, Salle.TAILLE_SALLES*30, (int)((Salle.TAILLE_SALLES*30)*((double)(this.jeu.getAv().getVie())/(double)(this.jeu.getAv().getBaseVie()+this.jeu.getAv().getStat().getResistance()))), 10);
-		g.setColor(Color.green);
-		g.drawString("Vie : "+this.jeu.getAv().getVie(), 10, 10);
+		g.fillRect(0, Salle.TAILLE_SALLES*30, (int)((Salle.TAILLE_SALLES*30)*((double)(this.jeu.getAv().getVie())/(double)(this.jeu.getAv().getBaseVie()+this.jeu.getAv().getStat().getResistance()))), TAILLE_BARRE);
+		g.setColor(Color.black);
+		g.drawString("Vie : "+this.jeu.getAv().getVie()+"/"+(this.jeu.getAv().getStat().getResistance()+this.jeu.getAv().getBaseVie()), ((Salle.TAILLE_SALLES*30)/2)-15, Salle.TAILLE_SALLES*30+15);
 		g.setColor(Color.BLACK);
 	}
 	/**
@@ -124,12 +130,19 @@ public class ZeldiabloDessin implements DessinJeu {
 	 */
 	public void afficherBarreXpAventurier(Graphics2D g) {
 		g.setColor(Color.gray);
-		g.fillRect(0, Salle.TAILLE_SALLES*30+10, Salle.TAILLE_SALLES*30, 10);
+		g.fillRect(0, Salle.TAILLE_SALLES*30+TAILLE_BARRE, Salle.TAILLE_SALLES*30, TAILLE_BARRE);
 		g.setColor(Color.blue);
-		g.fillRect(0, Salle.TAILLE_SALLES*30+10, (int)((Salle.TAILLE_SALLES*30)*((double)(this.jeu.getAv().getStat().getExp())/(double)(this.jeu.getAv().getStat().getExpPourPasser()))), 10);
-		g.setColor(Color.green);
-		g.drawString("Exp : "+this.jeu.getAv().getStat().getExp(), 10, 20);
+		g.fillRect(0, Salle.TAILLE_SALLES*30+TAILLE_BARRE, (int)((Salle.TAILLE_SALLES*30)*((double)(this.jeu.getAv().getStat().getExp())/(double)(this.jeu.getAv().getStat().getExpPourPasser()))), TAILLE_BARRE);
+		g.setColor(Color.black);
+		g.drawString("Exp : "+this.jeu.getAv().getStat().getExp()+"/"+this.jeu.getAv().getStat().getExpPourPasser(), ((Salle.TAILLE_SALLES*30)/2)-15, Salle.TAILLE_SALLES*30+TAILLE_BARRE+15);
 		g.setColor(Color.BLACK);
+	}
+	
+	public void afficherStats(Graphics2D g) {
+		g.setColor(Color.BLACK);
+		g.fillRect(0, Salle.TAILLE_SALLES*30+TAILLE_BARRE*2, Salle.TAILLE_SALLES*30, TAILLE_BARRE);
+		g.setColor(Color.white);
+		g.drawString("Niveau : "+this.jeu.getAv().getStat().getNiveau(), ((Salle.TAILLE_SALLES*30)/2)-15, Salle.TAILLE_SALLES*30+TAILLE_BARRE*2+15);
 	}
 
 }
