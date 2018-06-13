@@ -28,7 +28,7 @@ public class Aventurier extends Personnage implements Serializable, ObjetTexture
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		this.setDegats(5);
+		this.setDegats(baseDegat+this.stat.getForce());
 	}
 	/**
 	 * methode setter qui initialise les degats avec ceux passe en parametre
@@ -179,16 +179,17 @@ public class Aventurier extends Personnage implements Serializable, ObjetTexture
 	 */
 	public void attaque() {
 		Coordonnee monstre = new Coordonnee(0,1);
+		
 		for(int i = 0; i < this.getSalle().getMonstrePresent().size(); i++) {
 			monstre = this.getSalle().getMonstrePresent().get(i).getCoor();
-			
+			int exp = this.getSalle().getMonstrePresent().get(i).getStat().getExp();
 			if(detecterMonstreProximite(monstre)) {
 				
 				this.getSalle().getMonstrePresent().get(i).subirDegats(this.getDegats());
 				
 				if( this.getSalle().detecterLesMorts()) {
 					
-					this.stat.ajoutExp(this.getSalle().getMonstrePresent().get(i).getStat().getExp());
+					this.stat.ajoutExp(exp);
 					
 					if(this.stat.getExp()==0) {
 						majStat();

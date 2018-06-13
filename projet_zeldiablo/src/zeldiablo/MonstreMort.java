@@ -25,6 +25,7 @@ public class MonstreMort extends Monstre {
 		this.setDegats(0);
 		this.setVie(0);
 		this.setLootable(false);
+		
 	}
 	/**
 	 * methode setter qui initialise le deplacement du monstre a faux tout le temps

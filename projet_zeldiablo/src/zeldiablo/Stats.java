@@ -57,6 +57,10 @@ public class Stats{
 		
 	}
 	
+	public void setExp(int exp) {
+		this.exp = exp;
+	}
+
 	/**
 	 * methode qui permet d'ajouter de l'experience a un personnage
 	 * @param aj, experience a ajouter
