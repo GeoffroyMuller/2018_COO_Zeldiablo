@@ -1,9 +1,0 @@
-@startuml
-Participant "main"
-create "coord : Coordonnee" as c
-main->c : new Coordonnee(5,4)
-create "x:Integer" as x
-c->x : this.x = 5
-create "y:Integer" as y
-c->y : this.y = 4
-@enduml
