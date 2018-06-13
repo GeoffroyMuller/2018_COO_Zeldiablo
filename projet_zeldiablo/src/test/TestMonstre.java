@@ -36,10 +36,11 @@ public class TestMonstre {
 	@Test
 	public void testMonstreDeplacementDroit() {
 		//Preparation des donnees
-		Salle s = new Salle(4);
+		Salle s = new Salle(5);
 		Aleatoire random = new AleatoireFaux(0);
-		Monstre m = s.getMonstrePresent().get(0);
-		Coordonnee cM = m.getCoor();
+		Coordonnee cM = new Coordonnee(13,13);
+		Monstre m = new Monstre(cM,s);
+		m.setCoor(cM);
 		//Methode testee
 		m.deplacement(random);
 		//Test
@@ -56,10 +57,11 @@ public class TestMonstre {
 	@Test
 	public void testMonstreDeplacementGauche() {
 		//Preparation des donnees
-		Salle s = new Salle(4);
+		Salle s = new Salle(5);
 		Aleatoire random = new AleatoireFaux(1);
-		Monstre m = s.getMonstrePresent().get(0);
-		Coordonnee cM = m.getCoor();
+		Coordonnee cM = new Coordonnee(13,13);
+		Monstre m = new Monstre(cM,s);
+		m.setCoor(cM);
 		//Methode testee
 		m.deplacement(random);
 		//Test
@@ -72,11 +74,11 @@ public class TestMonstre {
 	@Test
 	public void testMonstreDeplacementBas() {
 		//Preparation des donnees
-		Salle s = new Salle(4);
+		Salle s = new Salle(5);
 		Aleatoire random = new AleatoireFaux(2);
-		Monstre m = s.getMonstrePresent().get(0);
-		Coordonnee cM = m.getCoor();
-		//Methode testee
+		Coordonnee cM = new Coordonnee(13,13);
+		Monstre m = new Monstre(cM,s);
+		m.setCoor(cM);
 		m.deplacement(random);
 		//Test
 		assertEquals("Le monstre devrait se déplacer en bas", cM.getY()+1,m.getCoor().getY());	
@@ -88,10 +90,11 @@ public class TestMonstre {
 	@Test
 	public void testMonstreDeplacementHaut() {
 		//Preparation des donnees
-		Salle s = new Salle(4);
+		Salle s = new Salle(5);
 		Aleatoire random = new AleatoireFaux(3);
-		Monstre m = s.getMonstrePresent().get(0);
-		Coordonnee cM = m.getCoor();
+		Coordonnee cM = new Coordonnee(13,13);
+		Monstre m = new Monstre(cM,s);
+		m.setCoor(cM);
 		//Methode testee
 		m.deplacement(random);
 		//Test

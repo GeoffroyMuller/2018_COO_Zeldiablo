@@ -1,0 +1,536 @@
+@startuml
+interface DessinJeu [[java:moteur.DessinJeu]] {
+	void dessiner(BufferedImage image)
+}
+class AleatoireFaux [[java:zeldiablo.AleatoireFaux]] {
+	-int nbr
+	+AleatoireFaux(int i)
+	+int genererNombreAleatoire(int borneInf, int borneSup)
+}
+interface Aleatoire [[java:zeldiablo.Aleatoire]] {
+}
+Aleatoire <|.. AleatoireFaux
+class GestionnaireTexture [[java:zeldiablo.GestionnaireTexture]] {
+	~ArrayList<Texture> listeTexture
+	+GestionnaireTexture()
+	+Image attribuerTexture(ObjetTexturer c)
+	+ArrayList<Texture> getListeTexture()
+	+void setListeTexture(ArrayList<Texture> listeTexture)
+}
+class MonstreFantome [[java:zeldiablo.MonstreFantome]] {
+	+MonstreFantome(Coordonnee c, Salle s)
+}
+class Monstre [[java:zeldiablo.Monstre]] {
+}
+Monstre <|-- MonstreFantome
+class AleatoireVrai [[java:zeldiablo.AleatoireVrai]] {
+	+int genererNombreAleatoire(int borneInf, int borneSup)
+}
+interface Aleatoire [[java:zeldiablo.Aleatoire]] {
+}
+Aleatoire <|.. AleatoireVrai
+class Donjon [[java:zeldiablo.Donjon]] {
+	-ArrayList<Etage> etages
+	-String nom
+	+{static}int NUM_ETAGES
+	+Donjon(String pnom)
+	+ArrayList<Etage> getEtages()
+	+String getNom()
+}
+class Salle [[java:zeldiablo.Salle]] {
+	+{static}int TAILLE_SALLES
+	-Case[][] grille
+	-String[][] grilleMonstreSpawn
+	-ArrayList<Monstre> monstrePresent
+	-ArrayList<Item> itemPresent
+	+PortailFin getPortailFin()
+	+void setPortailFin(PortailFin portailFin)
+	+void setEscalier(Escalier escalier)
+	+void setItemPresent(ArrayList<Item> itemPresent)
+	+Entree getEntree()
+	+ArrayList<Monstre> getMonstrePresent()
+	+void setMonstrePresent(ArrayList<Monstre> monstrePresent)
+	+void setEntree(Entree entree)
+	+Sortie getSortie()
+	+void setSortie(Sortie sortie)
+	+Salle()
+	+Salle(int o)
+	+Escalier getEscalier()
+	+void creeGrilleMonstre()
+	+String toString()
+	+Case[][] getGrille()
+	+Coordonnee placerSurMurAlea(Aleatoire random)
+	+void setGrille(Case[][] grille)
+	+void insererZone(int i)
+	+String[][] getGrilleMonstreSpawn()
+	+void setGrilleMonstreSpawn(String[][] grilleMonstreSpawn)
+	+void apparitionMonstre(Aleatoire alea)
+	+boolean isSpawnPossible(int x, int y)
+	+boolean isDeplacementPossible(int x, int y)
+	+ArrayList<Coordonnee> placeLibreItems()
+	+void placeAleatoirItem(Aleatoire aleaItem)
+	+boolean prendreItem(Aventurier av)
+	+ArrayList<Item> getItemPresent()
+	+void detecterCombat(Aventurier a)
+	+boolean detecterAventurier(Aventurier a, Monstre monstre)
+	+boolean detecterLesMorts()
+	+void apparaitreLoot(Monstre m, Aleatoire alea)
+}
+class GestionnaireZone [[java:zeldiablo.GestionnaireZone]] {
+}
+Salle --> "1" GestionnaireZone : gz
+class Escalier [[java:zeldiablo.Escalier]] {
+}
+Salle --> "1" Escalier : escalier
+class PortailFin [[java:zeldiablo.PortailFin]] {
+}
+Salle --> "1" PortailFin : portailFin
+class Entree [[java:zeldiablo.Entree]] {
+}
+Salle --> "1" Entree : entree
+class Sortie [[java:zeldiablo.Sortie]] {
+}
+Salle --> "1" Sortie : Sortie
+interface Serializable [[java:java.io.Serializable]] {
+}
+Serializable <|.. Salle
+class Sortie [[java:zeldiablo.Sortie]] {
+	-{static}long serialVersionUID
+	+void setSalleSuivante(Salle salleSuivante)
+	+Sortie(Coordonnee c)
+	+Sortie(Salle s, Coordonnee c)
+	+Salle getSalleSuivante()
+	+String getType()
+	+Coordonnee getCoord()
+	+void setCoord(Coordonnee coord)
+}
+class Salle [[java:zeldiablo.Salle]] {
+}
+Sortie --> "1" Salle : salleSuivante
+class Coordonnee [[java:zeldiablo.Coordonnee]] {
+}
+Sortie --> "1" Coordonnee : coord
+class Case [[java:zeldiablo.Case]] {
+}
+Case <|-- Sortie
+interface Serializable [[java:java.io.Serializable]] {
+}
+Serializable <|.. Sortie
+abstract class Case [[java:zeldiablo.Case]] {
+	-{static}long serialVersionUID
+	-String textureMotCle
+	-boolean estTraversable
+	-boolean monstrePresent
+	-boolean objetPresent
+	+boolean isMonstrePresent()
+	+void setMonstrePresent(boolean monstrePresent)
+	+boolean isObjetPresent()
+	+void setObjetPresent(boolean objetPresent)
+	+void setEstTraversable(boolean estTraversable)
+	+Case()
+	+boolean estTraversable()
+	+{abstract}String getType()
+	+String toString()
+	+String getTextureMotCle()
+	+void setTextureMotCle(String textureMotCle)
+}
+interface Serializable [[java:java.io.Serializable]] {
+}
+Serializable <|.. Case
+interface ObjetTexturer [[java:zeldiablo.ObjetTexturer]] {
+}
+ObjetTexturer <|.. Case
+class Coordonnee [[java:zeldiablo.Coordonnee]] {
+	-{static}long serialVersionUID
+	-int x
+	-int y
+	+Coordonnee(int cX, int cY)
+	+int getX()
+	+void setX(int x)
+	+int getY()
+	+void setY(int y)
+	+void incrementerX()
+	+void incrementerY()
+	+void decrementerX()
+	+void decrementerY()
+	+void dupliquerCoordonnee(Coordonnee c)
+	+String toString()
+}
+interface Serializable [[java:java.io.Serializable]] {
+}
+Serializable <|.. Coordonnee
+class Etage [[java:zeldiablo.Etage]] {
+	-int numetage
+	~ArrayList<Salle> salles
+	+{static}int NUM_SALLES
+	+Etage(int pnum)
+	+int getNumetage()
+	+ArrayList<Salle> getSalles()
+	+void setSalles(ArrayList<Salle> salles)
+}
+class Potion [[java:zeldiablo.Potion]] {
+	+Potion(Salle se, int xe, int ye)
+	+void effetItem(Aventurier av)
+	+String getTextureMotCle()
+}
+class Item [[java:zeldiablo.Item]] {
+}
+Item <|-- Potion
+interface ObjetTexturer [[java:zeldiablo.ObjetTexturer]] {
+}
+ObjetTexturer <|.. Potion
+class Escalier [[java:zeldiablo.Escalier]] {
+	-{static}long serialVersionUID
+	+Etage getEtageSup()
+	+void setEtageSup(Etage etageSup)
+	+Escalier()
+	+String getType()
+	+Salle getSalleEtageSup()
+	+void setSalleEtageSup(Salle salleEtageSup)
+}
+class Salle [[java:zeldiablo.Salle]] {
+}
+Escalier --> "1" Salle : salleEtageSup
+class Etage [[java:zeldiablo.Etage]] {
+}
+Escalier --> "1" Etage : EtageSup
+class Case [[java:zeldiablo.Case]] {
+}
+Case <|-- Escalier
+interface Serializable [[java:java.io.Serializable]] {
+}
+Serializable <|.. Escalier
+class Vide [[java:zeldiablo.Vide]] {
+	-{static}long serialVersionUID
+	+Vide()
+	+String getType()
+}
+class Case [[java:zeldiablo.Case]] {
+}
+Case <|-- Vide
+interface Serializable [[java:java.io.Serializable]] {
+}
+Serializable <|.. Vide
+class MonstreMort [[java:zeldiablo.MonstreMort]] {
+	+MonstreMort(Coordonnee c, Salle s)
+	+void setDeplacementPossible(boolean deplacementPossible)
+}
+class Monstre [[java:zeldiablo.Monstre]] {
+}
+Monstre <|-- MonstreMort
+class Commande [[java:moteur.Commande]] {
+	+boolean gauche
+	+boolean droite
+	+boolean haut
+	+boolean bas
+	+boolean attaque
+	+Commande()
+	+Commande(Commande commandeACopier)
+}
+abstract class Item [[java:zeldiablo.Item]] {
+	~String type
+	~String motCle
+	+Item(String rtype, Salle se, int xe, int ye)
+	+{abstract}void effetItem(Aventurier av)
+	+String getType()
+	+Coordonnee getCoo()
+	+Salle getSalle()
+}
+class Salle [[java:zeldiablo.Salle]] {
+}
+Item --> "1" Salle : salle
+class Coordonnee [[java:zeldiablo.Coordonnee]] {
+}
+Item --> "1" Coordonnee : coo
+interface ObjetTexturer [[java:zeldiablo.ObjetTexturer]] {
+}
+ObjetTexturer <|.. Item
+class MoteurGraphique [[java:moteur.MoteurGraphique]] {
+	+MoteurGraphique(Jeu pJeu, DessinJeu pAffiche)
+	+void lancerJeu(int width, int height)
+}
+class Jeu [[java:moteur.Jeu]] {
+}
+MoteurGraphique --> "1" Jeu : jeu
+class InterfaceGraphique [[java:moteur.InterfaceGraphique]] {
+}
+MoteurGraphique --> "1" InterfaceGraphique : gui
+class DessinJeu [[java:moteur.DessinJeu]] {
+}
+MoteurGraphique --> "1" DessinJeu : dessin
+class MonstreRouge [[java:zeldiablo.MonstreRouge]] {
+	+MonstreRouge(Coordonnee c, Salle s)
+	+void setDegats(int degats)
+}
+class Monstre [[java:zeldiablo.Monstre]] {
+}
+Monstre <|-- MonstreRouge
+interface Aleatoire [[java:zeldiablo.Aleatoire]] {
+	int genererNombreAleatoire(int borneInf, int borneSup)
+}
+interface ObjetTexturer [[java:zeldiablo.ObjetTexturer]] {
+	String getTextureMotCle()
+}
+class Monstre [[java:zeldiablo.Monstre]] {
+	-boolean deplacementPossible
+	-boolean lootable
+	+boolean isLootable()
+	+void setLootable(boolean lootable)
+	+Monstre(Coordonnee c, Salle s)
+	+void setDegats(int degats)
+	+boolean isDeplacementPossible()
+	+void setDeplacementPossible(boolean deplacementPossible)
+	+boolean deplacement(Aleatoire nbrAleatoire)
+	+void changerNiveau(int niv)
+}
+class Personnage [[java:zeldiablo.Personnage]] {
+}
+Personnage <|-- Monstre
+class GestionnaireZone [[java:zeldiablo.GestionnaireZone]] {
+	-ArrayList<Zone> lz
+	-ArrayList<File> lf
+	+GestionnaireZone()
+	+ArrayList<File> getLf()
+	+Zone donnerUneZone(Aleatoire rdm)
+	+ArrayList<Zone> getLz()
+}
+class Controleur [[java:moteur.Controleur]] {
+	+Controleur()
+	+Commande getCommande()
+	+void keyPressed(KeyEvent e)
+	+void keyReleased(KeyEvent e)
+	+void keyTyped(KeyEvent e)
+}
+class Commande [[java:moteur.Commande]] {
+}
+Controleur --> "1" Commande : commandeEnCours
+class Commande [[java:moteur.Commande]] {
+}
+Controleur --> "1" Commande : commandeARetourner
+interface KeyListener [[java:java.awt.event.KeyListener]] {
+}
+KeyListener <|.. Controleur
+class InterfaceGraphique [[java:moteur.InterfaceGraphique]] {
+	+InterfaceGraphique(DessinJeu afficheurUtil, int x, int y)
+	+Controleur getControleur()
+	+void dessiner()
+}
+class PanelDessin [[java:moteur.PanelDessin]] {
+}
+InterfaceGraphique --> "1" PanelDessin : panel
+class Controleur [[java:moteur.Controleur]] {
+}
+InterfaceGraphique --> "1" Controleur : controleur
+class Stats [[java:zeldiablo.Stats]] {
+	-int force
+	-int resistance
+	-int exp
+	-int expPourPasser
+	-int niveau
+	+int getForce()
+	+int getResistance()
+	+Stats(int niv)
+	+void ajoutExp(int aj)
+	+void changementNiveau()
+	+void modifierNiveau(int niv)
+	+int getExp()
+	+int getExpPourPasser()
+	+int getNiveau()
+}
+abstract class Personnage [[java:zeldiablo.Personnage]] {
+	~int baseDegat
+	~int baseVie
+	-int vie
+	-int degats
+	-boolean mort
+	-Image texture
+	-String textureMotCle
+	+String getTextureMotCle()
+	+void setTextureMotCle(String textureMotCle)
+	+Image getTexture()
+	+void setTexture(Image texture)
+	+Personnage()
+	+int getDegats()
+	+void setDegats(int degats)
+	+Personnage(Coordonnee c, Salle l, Etage et)
+	+Personnage(Coordonnee c, Salle l)
+	+void setSalle(Salle salle)
+	+void setEtage(Etage etage)
+	+Salle getSalle()
+	+Etage getEtage()
+	+void soigner(int pv)
+	+void modifierVie(int pv)
+	+void subirDegats(int pv)
+	+void changerCoord(Coordonnee c)
+	+boolean enVie()
+	+int getVie()
+	+int getBaseDegat()
+	+int getBaseVie()
+	+Stats getStat()
+	+void setVie(int vie)
+	+boolean isMort()
+	+void setMort(boolean mort)
+	+Coordonnee getCoor()
+	+void setCoor(Coordonnee coor)
+	+Case getCase()
+	+void majStat()
+}
+class Stats [[java:zeldiablo.Stats]] {
+}
+Personnage --> "1" Stats : stat
+class Coordonnee [[java:zeldiablo.Coordonnee]] {
+}
+Personnage --> "1" Coordonnee : coor
+class Salle [[java:zeldiablo.Salle]] {
+}
+Personnage --> "1" Salle : salle
+class Etage [[java:zeldiablo.Etage]] {
+}
+Personnage --> "1" Etage : etage
+class PortailFin [[java:zeldiablo.PortailFin]] {
+	+PortailFin()
+	+String getType()
+	+String getTextureMotCle()
+	+Coordonnee getCoord()
+	+void setCoord(Coordonnee coord)
+}
+class Coordonnee [[java:zeldiablo.Coordonnee]] {
+}
+PortailFin --> "1" Coordonnee : coord
+class Case [[java:zeldiablo.Case]] {
+}
+Case <|-- PortailFin
+interface Jeu [[java:moteur.Jeu]] {
+	void evoluer(Commande commandeUser)
+	boolean etreFini()
+}
+class Entree [[java:zeldiablo.Entree]] {
+	-{static}long serialVersionUID
+	+Entree(Coordonnee c)
+	+Entree(Salle s, Coordonnee c)
+	+Salle getSallePrecedente()
+	+void setSallePrecedente(Salle sallePrecedente)
+	+String getType()
+	+Coordonnee getC()
+}
+class Salle [[java:zeldiablo.Salle]] {
+}
+Entree --> "1" Salle : sallePrecedente
+class Coordonnee [[java:zeldiablo.Coordonnee]] {
+}
+Entree --> "1" Coordonnee : coord
+class Case [[java:zeldiablo.Case]] {
+}
+Case <|-- Entree
+interface Serializable [[java:java.io.Serializable]] {
+}
+Serializable <|.. Entree
+class ZeldiabloJeu [[java:zeldiablo.ZeldiabloJeu]] {
+	-Image spriteVictoire
+	-Image spriteDefaite
+	-boolean victoire
+	-int compteur
+	+ZeldiabloJeu()
+	+void evoluer(Commande commandeUser)
+	+boolean isVictoire()
+	+void changementEtage()
+	+boolean etreFini()
+	+Aventurier getAv()
+	+Donjon getDj()
+	+Image getSpriteVictoire()
+	+Image getSpriteDefaite()
+}
+class Aventurier [[java:zeldiablo.Aventurier]] {
+}
+ZeldiabloJeu --> "1" Aventurier : av
+class Donjon [[java:zeldiablo.Donjon]] {
+}
+ZeldiabloJeu --> "1" Donjon : dj
+interface Jeu [[java:moteur.Jeu]] {
+}
+Jeu <|.. ZeldiabloJeu
+class Aventurier [[java:zeldiablo.Aventurier]] {
+	+Aventurier()
+	+void setDegats(int degats)
+	+Aventurier(Coordonnee c, Salle l, Etage et)
+	+boolean deplacerAventurier(Coordonnee c)
+	+void changementEtage(Salle s, Etage e)
+	+void changementSalle(Salle s, Case c)
+	+void attaque()
+	+boolean detecterMonstreProximite(Coordonnee monstre)
+	+String getTextureMotCle()
+}
+class Personnage [[java:zeldiablo.Personnage]] {
+}
+Personnage <|-- Aventurier
+interface Serializable [[java:java.io.Serializable]] {
+}
+Serializable <|.. Aventurier
+interface ObjetTexturer [[java:zeldiablo.ObjetTexturer]] {
+}
+ObjetTexturer <|.. Aventurier
+class Zone [[java:zeldiablo.Zone]] {
+	-{static}long serialVersionUID
+	+{static}int TAILLE_ZONE
+	-Case[][] grilleZone
+	-String nomZone
+	+Zone(String pnom)
+	+Case[][] getGrilleZone()
+	+void setGrilleZone(Case[][] grilleZone)
+	+String getNomZone()
+}
+interface Serializable [[java:java.io.Serializable]] {
+}
+Serializable <|.. Zone
+class ZeldiabloDessin [[java:zeldiablo.ZeldiabloDessin]] {
+	+{static}int TAILLE
+	+ZeldiabloDessin(ZeldiabloJeu j)
+	+void dessiner(BufferedImage image)
+	+void afficherBarreVieMonstre(int i, Graphics2D g)
+	+void afficherBarreVieAventurier(Graphics2D g)
+	+void afficherBarreXpAventurier(Graphics2D g)
+}
+class GestionnaireTexture [[java:zeldiablo.GestionnaireTexture]] {
+}
+ZeldiabloDessin --> "1" GestionnaireTexture : gt
+class ZeldiabloJeu [[java:zeldiablo.ZeldiabloJeu]] {
+}
+ZeldiabloDessin --> "1" ZeldiabloJeu : jeu
+interface DessinJeu [[java:moteur.DessinJeu]] {
+}
+DessinJeu <|.. ZeldiabloDessin
+class Texture [[java:zeldiablo.Texture]] {
+	-Image img
+	-String nom
+	+Texture(String n, String chemin)
+	+Image getImg()
+	+String getNom()
+}
+class Mur [[java:zeldiablo.Mur]] {
+	-{static}long serialVersionUID
+	+Mur()
+	+String getType()
+}
+class Case [[java:zeldiablo.Case]] {
+}
+Case <|-- Mur
+interface Serializable [[java:java.io.Serializable]] {
+}
+Serializable <|.. Mur
+class PanelDessin [[java:moteur.PanelDessin]] {
+	-BufferedImage imageSuivante
+	-BufferedImage imageEnCours
+	-int width
+	-int height
+	+PanelDessin(int x, int y, DessinJeu affiche)
+	+void dessinerJeu()
+	+void paint(Graphics g)
+}
+class DessinJeu [[java:moteur.DessinJeu]] {
+}
+PanelDessin --> "1" DessinJeu : dessin
+class JPanel [[java:javax.swing.JPanel]] {
+}
+JPanel <|-- PanelDessin
+
+@enduml
