@@ -180,6 +180,7 @@ public class Salle implements Serializable{
 	public Salle(int o) {
 		this.monstrePresent = new ArrayList<Monstre>();
 		grille = new Case[TAILLE_SALLES][TAILLE_SALLES];
+		itemPresent = new ArrayList<Item>();
 		this.grilleMonstreSpawn = new String[TAILLE_SALLES][TAILLE_SALLES];
 		AleatoireVrai randomV= new AleatoireVrai();
 		Coordonnee cs = placerSurMurAlea(randomV);

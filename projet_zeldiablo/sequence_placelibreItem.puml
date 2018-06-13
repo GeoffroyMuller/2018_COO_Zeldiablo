@@ -1,0 +1,17 @@
+@startuml
+Participant "s : Salle" as s
+Participant "tab_coo : ArrayList<Coordonnee>" as tc
+
+-> s : placeLibreItems
+activate s
+loop : int i=0;i<grille.length;i++
+loop : int j=0;j<grille[0].length;j++
+alt : grille[i][j].estTraversable()&&grille[i][j].getType()!="entree"&&grille[i][j].getType()!="sortie"
+s->tc : add(new Coordonnee(i, j));
+tc-->s
+end
+end
+end
+<--s : tab_coo
+deactivate s
+@enduml

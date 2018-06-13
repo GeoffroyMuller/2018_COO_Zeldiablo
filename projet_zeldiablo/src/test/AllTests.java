@@ -21,7 +21,8 @@ import org.junit.runners.Suite;
     TestSortie.class,
     TestVide.class,
     TestZeldiabloJeu.class,
-    TestZone.class
+    TestZone.class,
+    TestStats.class
     
 })
 public class AllTests {
