@@ -141,6 +141,8 @@ public class ZeldiabloDessin implements DessinJeu {
 	public void afficherStats(Graphics2D g) {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, Salle.TAILLE_SALLES*30+TAILLE_BARRE*2, Salle.TAILLE_SALLES*30, TAILLE_BARRE);
+		g.setColor(Color.white);
+		g.drawString("Niveau : "+this.jeu.getAv().getStat().getNiveau(), ((Salle.TAILLE_SALLES*30)/2)-15, Salle.TAILLE_SALLES*30+TAILLE_BARRE*2+15);
 	}
 
 }
