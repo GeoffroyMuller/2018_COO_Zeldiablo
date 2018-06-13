@@ -299,11 +299,9 @@ public class Salle implements Serializable{
 
 
 		default:
-			System.out.println("erreur sur le random de 4");
 			break;
 		}
 
-		System.out.println("coordonné generer alea  : "+c);
 		return c;
 	}
 
@@ -350,16 +348,11 @@ public class Salle implements Serializable{
 
 			int x = startPos.getX();
 			int y = startPos.getY();
-			System.out.println(x);
-			System.out.println(y);
+
 
 			for (int j = 0; j < Zone.TAILLE_ZONE; j++) {
 				for (int j2 = 0; j2 < Zone.TAILLE_ZONE; j2++) {
-					//System.out.println("x :"+x);
-					//System.out.println("y : "+y);
-					//System.out.println(" yzone :"+j);
-					//System.out.println(" xzone :"+j2);
-					this.grille[x][y]=(Case)tab_caseZone[j2][j];//peut etre probleme car passage d'adresse
+					this.grille[x][y]=(Case)tab_caseZone[j2][j];
 					x++;
 				}
 				x= (int)startPos.getX();
@@ -500,7 +493,6 @@ public class Salle implements Serializable{
 				if(av.getCoor().getY()==itemPresent.get(i).getCoo().getY()) {
 					itemPresent.get(i).effetItem(av);
 					itemPresent.remove(i);
-					System.out.println("item_pris");
 					return true;
 				}
 			}
@@ -529,7 +521,6 @@ public class Salle implements Serializable{
 					(monstre.getCoor().getX() == a.getCoor().getX() && monstre.getCoor().getY()-1 == a.getCoor().getY())) {
 				a.subirDegats(monstre.getDegats());
 				monstre.setDeplacementPossible(false);
-				System.out.println(a.getVie()+"");
 			}else {
 				monstre.setDeplacementPossible(true);
 			}

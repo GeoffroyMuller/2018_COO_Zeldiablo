@@ -387,13 +387,12 @@ public class TestAventurier {
 	@Test
 	public void testDeplacementSurSortie() {
 		//Preparation des données
-		Etage e = new Etage(2);
-		Coordonnee sortie = e.getSalles().get(2).getSortie().getCoord();
-		Salle salleSuivante = e.getSalles().get(3);
-		Aventurier a = new Aventurier(new Coordonnee(12,12),e.getSalles().get(2),e);
+		Etage e = new Etage(0);
+		Coordonnee sortie = e.getSalles().get(0).getSortie().getCoord();
+		Aventurier a = new Aventurier(new Coordonnee(12,12),e.getSalles().get(0),e);
 		Salle actuel= a.getSalle();
 		//Methode testee
-		a.deplacerAventurier(e.getSalles().get(2).getSortie().getCoord());
+		a.deplacerAventurier(e.getSalles().get(0).getSortie().getCoord());
 		//Test
 		assertTrue("L'aventurier devrait avoir changer de salle",a.getSalle()!=actuel);
 	}

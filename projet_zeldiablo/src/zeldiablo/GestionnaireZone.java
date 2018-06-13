@@ -66,9 +66,7 @@ public class GestionnaireZone {
 	 * @return la zone avec le numero donne par l'aleatoire
 	 */
 	public Zone donnerUneZone(Aleatoire rdm){
-		System.out.println("================="+lz.size());
 		int rd = rdm.genererNombreAleatoire(0, this.lz.size()); 
-		System.out.println("==================="+rd);
 		Zone z =  lz.get(rd);
 		return z;
 
