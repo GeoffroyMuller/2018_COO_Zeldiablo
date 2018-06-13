@@ -516,16 +516,28 @@ public class Salle implements Serializable{
 		Monstre monstre = new Monstre(null,null);
 		for(int i = 0;i < this.monstrePresent.size();i++) {
 			monstre = this.monstrePresent.get(i);
-			if((monstre.getCoor().getX()+1 == a.getCoor().getX() && monstre.getCoor().getY() == a.getCoor().getY()) ||
-					(monstre.getCoor().getX()-1 == a.getCoor().getX() && monstre.getCoor().getY() == a.getCoor().getY()) || 
-					(monstre.getCoor().getX() == a.getCoor().getX() && monstre.getCoor().getY()+1 == a.getCoor().getY()) || 
-					(monstre.getCoor().getX() == a.getCoor().getX() && monstre.getCoor().getY()-1 == a.getCoor().getY())) {
+			if(detecterAventurier(a,monstre)) {
+				
 				a.subirDegats(monstre.getDegats());
 				monstre.setDeplacementPossible(false);
+				
 			}else {
 				monstre.setDeplacementPossible(true);
 			}
 		}
+	}
+	
+	public boolean detecterAventurier(Aventurier a, Monstre monstre) {
+		boolean res = false;
+		
+		if( (monstre.getCoor().getX()+1 == a.getCoor().getX() && monstre.getCoor().getY() == a.getCoor().getY()) ||
+				(monstre.getCoor().getX()-1 == a.getCoor().getX() && monstre.getCoor().getY() == a.getCoor().getY()) || 
+				(monstre.getCoor().getX() == a.getCoor().getX() && monstre.getCoor().getY()+1 == a.getCoor().getY()) || 
+				(monstre.getCoor().getX() == a.getCoor().getX() && monstre.getCoor().getY()-1 == a.getCoor().getY())) {
+			res=true;
+		}
+		
+		return res;
 	}
 	/**
 	 * methode qui permet de voir si les monstres sont morts

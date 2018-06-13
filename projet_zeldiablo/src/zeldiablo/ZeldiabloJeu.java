@@ -91,12 +91,14 @@ public class ZeldiabloJeu implements Jeu {
 			}
 		}
 		Aleatoire randomV=new AleatoireVrai();
+
 		if(compteur == 7) {
+			this.av.getSalle().detecterCombat(av);
 			for(int i =0; i< this.av.getSalle().getMonstrePresent().size();i++) {
 				this.av.getSalle().getMonstrePresent().get(i).deplacement(randomV);
 
 			}
-			this.av.getSalle().detecterCombat(av);
+			
 			compteur=0;
 		}
 		compteur++;
