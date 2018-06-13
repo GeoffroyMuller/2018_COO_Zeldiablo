@@ -68,11 +68,12 @@ public class Controleur implements KeyListener {
 			this.commandeEnCours.bas = true;
 			this.commandeARetourner.bas = true;
 			break;
-			// si on appuie sur 'espace', commande joueur est attaque
-		case 'a':
+			
+		}
+		// si on appuie sur 'espace', commande joueur est attaque
+		if(e.getKeyChar() == KeyEvent.VK_SPACE) {
 			this.commandeEnCours.attaque = true;
 			this.commandeARetourner.attaque = true;
-			break;
 		}
 
 	}
