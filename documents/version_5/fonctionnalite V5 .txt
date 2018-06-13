@@ -1,0 +1,33 @@
+Fonctionnalite V5 :
+
+Attribut personnage (experience) et gestion de l'experience monstre et joueur :
+	Description:
+Cette fonctionnalite a pour but de permettre au joueur de gagner de l'experience et d'augmenter
+ses statistiques quand il passe un niveau. Les monstres sont plus fort en fonction de l'étage.
+	Critere de validation :
+- Le joueur doit gagner de l'expérience lorsqu'il tue des monstres
+- Les monstres frappe plus fort en fonction de l'étage
+- Au bout d'un certain montant d'experience, le niveau change et les statistiques augmentes
+	Tache attribué à : Théo Biancalana
+
+Gestion de la mort des monstres et implémentation de nouveau Monstres
+
+	Description :
+Cette fonctionnalite a pour objectif d'implémenter des nouveau type de monstres faisant des dégats 
+différent, lorsqu'on tue un monstre, celui-ci devrat être géré.
+	Critere de validation :
+- Des nouveaux monstres devront apparaitre
+- Les monstres doivent faire des dégâts différents
+- Lorsque le monstre n'a plus de vie,il ne peut plus bouger et peut être traversable
+	Tache attribué à : Lucas Guezennec
+
+Affichage de la vie du joueur, des monstres et de l'expérience du joueur :
+
+	Description :
+Cette fonctionnalité a pour objectif de montrer au joueur sa vie actuel, son expérience ainsi que la vie des monstres
+	Critere de validation :
+- Une barre de vie devrat être affiché
+- Une barre d'expérience devrat être affiché
+- Une barre de vie devrat être affiché au dessus de chaque monstre
+- Les barres de vie devront se réduire si des dégats sont reçu
+	Tache attribué à : Geoffroy Muller
