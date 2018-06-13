@@ -18,7 +18,7 @@ public class Salle implements Serializable{
 	 * attribut Escalier qui contiendra un escalier 
 	 */
 	private Escalier escalier;
-	
+
 	private PortailFin portailFin;
 
 	/**
@@ -456,7 +456,7 @@ public class Salle implements Serializable{
 		ArrayList<Coordonnee> tab_coo = new ArrayList<Coordonnee>();
 		for(int i=0;i<grille.length;i++){
 			for(int j=0;j<grille[0].length;j++){
-				if(grille[i][j].estTraversable()){
+				if(grille[i][j].estTraversable()&&grille[i][j].getType()!="entree"&&grille[i][j].getType()!="sortie"){
 					tab_coo.add(new Coordonnee(i, j));
 				}
 			}
@@ -535,15 +535,15 @@ public class Salle implements Serializable{
 		for(int i = 0; i < this.getMonstrePresent().size(); i++) {
 			if(this.getMonstrePresent().get(i).isMort() && this.getMonstrePresent().get(i).isLootable()) {
 				MonstreMort mM = new MonstreMort(new Coordonnee(this.getMonstrePresent().get(i).getCoor().getX(),this.getMonstrePresent().get(i).getCoor().getY()),this);
-				
+
 				apparaitreLoot(this.getMonstrePresent().get(i), new AleatoireVrai());
-				
+
 				this.getMonstrePresent().remove(this.getMonstrePresent().indexOf(this.getMonstrePresent().get(i)));
 				this.getMonstrePresent().add(mM);
 				this.getGrille()[mM.getCoor().getX()][mM.getCoor().getY()].setEstTraversable(true);
-				
-				
-				
+
+
+
 				res = true;
 			}
 		}

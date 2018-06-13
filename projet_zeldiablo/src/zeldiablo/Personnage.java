@@ -300,8 +300,8 @@ public abstract class Personnage {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * methode qui regarde si le personnage est mort ou non
+	 * @return vrai si le personnage est mort, faux s'il n'est pas mort
 	 */
 	public boolean isMort() {
 		return mort;

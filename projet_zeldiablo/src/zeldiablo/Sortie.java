@@ -22,7 +22,9 @@ public class Sortie extends Case implements Serializable{
 	 * @see Sortie#Sortie(Salle)
 	 */
 	private Salle salleSuivante;
-	
+	/**
+	 * attribut Salle qui contiendra la salle suivante 
+	 */
 	private Coordonnee coord;
 	
 	/**
