@@ -24,12 +24,21 @@ public class ZeldiabloJeu implements Jeu {
 	 * Attribut "dj" de type Donjon correspond à l'ensemble des étage que le joueur est amené a parcourir
 	 */
 	private Donjon dj;
-	
+	/**
+	 * attribut Image qui contiendra le sprite de victoire qui s'affichera 
+	 */
 	private Image spriteVictoire;
+	/**
+	 * attribut Image qui contiendra le sprite de defaite qui s'affichera 
+	 */
 	private Image spriteDefaite;
-	
+	/**
+	 * attribut booleen qui regardera si le joueur a gagne ou non
+	 */
 	private boolean victoire;
-
+	/**
+	 * attribut entier qui sert a ralentir l'allure du monstre
+	 */
 	private int compteur;
 
 	/**
@@ -108,7 +117,10 @@ public class ZeldiabloJeu implements Jeu {
 ;
 
 	}
-
+	/**
+	 * methode qui regarde si le joueur a gagne 
+	 * @return vrai si le jouer a gagne, faux s'il n'a pas gagne
+	 */
 	public boolean isVictoire() {
 		return victoire;
 	}
@@ -159,10 +171,17 @@ public class ZeldiabloJeu implements Jeu {
 	public Donjon getDj() {
 		return dj;
 	}
-	
+	/**
+	 * methode getter qui va chercher le sprite de victoire pour l'afficher
+	 * @return le sprite de victoire
+	 */
 	public Image getSpriteVictoire() {
 		return spriteVictoire;
 	}
+	/**
+	 * methode getter qui va chercher le sprite de victoire pour l'afficher
+	 * @return le sprite de defaite
+	 */
 	public Image getSpriteDefaite() {
 		return spriteDefaite;
 	}

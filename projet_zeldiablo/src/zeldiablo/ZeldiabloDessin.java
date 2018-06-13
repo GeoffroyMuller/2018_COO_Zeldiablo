@@ -52,16 +52,10 @@ public class ZeldiabloDessin implements DessinJeu {
 		g.setColor(Color.BLACK);
 		for(int i = 0; i<salle.TAILLE_SALLES;i++) {
 			for(int j = 0; j<salle.TAILLE_SALLES;j++) {
-				//System.out.print(salle.getGrille()[i][j]);
 				g.drawImage(gt.attribuerTexture(salle.getGrille()[i][j]), i*TAILLE, j*TAILLE,null);
-				//System.out.println(gt.attribuerTexture(salle.getGrille()[i][j]));
 
 			}
-
-			//System.out.println("");
 		}
-
-		//System.out.println("============================================");
 		afficherBarreVieAventurier(g);
 		afficherBarreXpAventurier(g);
 
