@@ -1,6 +1,6 @@
 Fonctionnalite V5 :
 
-Attribut personnage (experience) et gestion de l'experience monstre et joueur :
+Attribut personnage (experience,force,resistance) et gestion de l'experience monstre et joueur :
 	Description:
 Cette fonctionnalite a pour but de permettre au joueur de gagner de l'experience et d'augmenter
 ses statistiques quand il passe un niveau. Les monstres sont plus fort en fonction de l'étage.

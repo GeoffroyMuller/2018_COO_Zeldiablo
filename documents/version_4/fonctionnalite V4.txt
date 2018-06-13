@@ -21,7 +21,7 @@ un nouveau type de portail : "escalier"
 - Lors du passage dans un portail "escalier" le joueur devrat changer d'étage
 	Tache attribué à : Théo Biancalana
 
-Gestion de l'apparition des objets aléatoire :
+Gestion de l'apparition aléatoire des objets et effet potion :
 	Description :
 Cette fonctionnalité à pour but de faire apparaitre de façon aléatoire des objets dans la salle
 ,ici l'objet sera une Potion
