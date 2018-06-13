@@ -7,7 +7,7 @@ de façon aléatoire.
 	Condition de validation :
 - Un trésor apparait quand on tue un Monstre 
 
-Gestion de la fon du jeu :
+Gestion de la fin du jeu :
 	Description :
 Cette fonctionnalité a pour but de gérer la fin du jeu
 	Condition de validation :

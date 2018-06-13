@@ -56,6 +56,7 @@ public class TestSalle {
 		Monstre m = new Monstre(new Coordonnee(14,14),s);
 		Aventurier av = new Aventurier(new Coordonnee(12,12),s,null);
 		m.setMort(true);
+		m.setLootable(true);
 		av.setSalle(s);
 		s.getMonstrePresent().add(m);
 		//Methode teste
